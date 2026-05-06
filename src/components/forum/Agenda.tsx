@@ -241,7 +241,7 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Claudia Romano", role: "VP, Yduqs", note: "TBC" },
-      { name: "Vivian Broge", role: "TOTVS" },
+      { name: "Vivian Broge", role: "Vice-Presidente de RH e Marketing, TOTVS" },
       { name: "Naiá Tupinambá", role: "Liderança Indígena", note: "TBC" },
       { name: "Daniel Duque", role: "Pesquisador, FGV" },
       { name: "Grazi Mendes", role: "Head de Diversidade, Equidade e Inclusão para as Américas, ThoughtWorks" },
