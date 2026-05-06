@@ -46,7 +46,7 @@ export function About() {
                 </p>
                 <p className="font-bold text-white/88">
                   Em um momento em que o mundo cobra das empresas não apenas discurso, mas
-                  evidências de impacto, o Fórum posiciona as organizações engajadas como
+                  evidências de impacto, o Fórum posiciona as organizações comprometidas como
                   protagonistas da transição para uma economia mais sustentável.
                 </p>
               </div>

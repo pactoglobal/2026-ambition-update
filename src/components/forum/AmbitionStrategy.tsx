@@ -5,7 +5,7 @@ import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines, identityAssets } from "./identity-assets";
 
 const ambitionMetrics = [
-  { value: "362+", label: "Organizações engajadas" },
+  { value: "362+", label: "Organizações comprometidas" },
   { value: "+1,6 mi", label: "Pessoas trabalhadoras impactadas" },
   { value: "+1.600", label: "Metas públicas assumidas" },
   { value: "21%+", label: "Do PIB brasileiro representado" },

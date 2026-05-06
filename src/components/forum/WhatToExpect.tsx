@@ -22,7 +22,7 @@ const BENTO_ITEMS = [
   },
   {
     title: "Parcerias",
-    desc: "Conexões com organizações engajadas, especialistas e atores institucionais.",
+    desc: "Conexões com organizações comprometidas, especialistas e atores institucionais.",
     icon: Handshake,
     className: "border-forum-gold/22 bg-forum-gold/8",
     color: "text-forum-gold",
