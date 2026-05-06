@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4º Fórum Ambição 2030 — A Década da Implementação</title>
+    
+    <!-- Tailwind CSS v3 via Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ungc-blue': '#1E3250',
+                        'ungc-tone1': '#4D5E77',
+                        'ungc-tone2': '#1EABFF',
+                        'ungc-tone3': '#AECFE6',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Fraunces', 'serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'flama': ['Flama', 'sans-serif']
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateY(0)', opacity: '1' },
+                            '100%': { transform: 'translateY(14px)', opacity: '0' },
+                        },
+                        kenburns: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.15)' },
+                        }
+                    },
+                    animation: {
+                        'scroll': 'scroll 2s infinite',
+                        'kenburns': 'kenburns 20s infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- AOS.js CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Flama';
+            src: url('./assets/fonts/Flama-Basic.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Flama';
+            src: url('./assets/fonts/Flama-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Flama';
+            src: url('./assets/fonts/Flama-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-display: swap;
+        }
+
+        .font-flama { font-family: 'Flama', sans-serif; }
+        
+        [x-cloak] { display: none !important; }
+        
+        .glass-nav {
+            background: rgba(30, 50, 80, 0.98) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(174, 207, 230, 0.15);
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 1px currentColor;
+            color: transparent;
+        }
+
+        .swiper-pagination-bullet-active { background: #1EABFF !important; }
+
+        .brutalist-card {
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .brutalist-card:hover {
+            border-color: #AECFE6;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30,50,80,0.1);
+        }
+    </style>
+</head>
+<body 
+    class="bg-[#0A1A2F] text-ungc-blue font-sans selection:bg-ungc-tone3 selection:text-ungc-blue overflow-x-hidden" 
+    x-data="{ 
+        mobileMenu: false, 
+        scrolled: false, 
+        activeDay: 1,
+        activeFaq: null,
+        init() {
+            window.addEventListener('scroll', () => {
+                this.scrolled = window.scrollY > 50;
+            });
+        }
+    }"
+>
+
+    <!-- NAVBAR -->
+    <header 
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        :class="scrolled ? 'glass-nav h-20 shadow-xl' : 'bg-transparent h-24'"
+    >
+        <div class="container mx-auto px-6 lg:px-12 flex items-center justify-between h-full">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <img src="./assets/nome_evento.png" alt="Fórum Ambição 2030" class="h-10 lg:h-12 w-auto object-contain brightness-0 invert" />
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#hero" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Início</a>
+                <a href="#sobre" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Sobre</a>
+                <a href="#speakers" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Speakers</a>
+                <a href="#agenda" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Agenda</a>
+                <a href="#galeria" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Galeria</a>
+                <a href="#local" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">Local</a>
+                <a href="#faq" class="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-ungc-tone3 transition-colors">FAQ</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center">
+                <a href="#faq" class="bg-ungc-tone2 hover:bg-white text-white hover:text-ungc-blue px-8 py-3 rounded-full font-black uppercase tracking-widest text-[10px] transition-all shadow-xl">
+                    Inscreva-se
+                </a>
+            </div>
+
+            <button class="lg:hidden text-white p-2" @click="mobileMenu = true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div x-show="mobileMenu" x-cloak class="fixed inset-0 z-[60] lg:hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" @click="mobileMenu = false"></div>
+        <div class="absolute top-0 right-0 bottom-0 w-80 bg-ungc-blue p-8 flex flex-col shadow-2xl">
+            <button class="self-end text-white/60 p-2" @click="mobileMenu = false"><svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            <nav class="flex flex-col gap-2 mt-12">
+                <a href="#hero" @click="mobileMenu = false" class="text-white font-black uppercase tracking-widest text-sm py-4 border-b border-white/10">Início</a>
+                <a href="#sobre" @click="mobileMenu = false" class="text-white font-black uppercase tracking-widest text-sm py-4 border-b border-white/10">Sobre</a>
+                <a href="#speakers" @click="mobileMenu = false" class="text-white font-black uppercase tracking-widest text-sm py-4 border-b border-white/10">Speakers</a>
+                <a href="#agenda" @click="mobileMenu = false" class="text-white font-black uppercase tracking-widest text-sm py-4 border-b border-white/10">Agenda</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="bg-white">
+        
+        <!-- HERO (Sempre Visível) -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A1A2F]">
+            <div class="absolute inset-0 z-0">
+                <img src="./assets/hero_1.jpg" alt="" class="w-full h-full object-cover animate-kenburns opacity-60" />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0A1A2F]"></div>
+            </div>
+
+            <div class="container relative z-10 mx-auto px-6 lg:px-12 pt-24 text-center">
+                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2.5 text-ungc-tone3 text-[10px] font-black uppercase tracking-[0.2em] mb-12">
+                    <span class="w-2 h-2 rounded-full bg-ungc-tone3 animate-pulse"></span>
+                    4ª Edição · 02 Junho 2026 · MASP
+                </div>
+
+                <img src="./assets/nome_evento.png" alt="4º Fórum Ambição 2030" class="w-full max-w-5xl mx-auto drop-shadow-2xl mb-12" />
+                
+                <p class="text-xl lg:text-3xl text-white/80 font-serif italic max-w-4xl mx-auto mb-14 leading-tight">
+                    Múltiplos movimentos. Uma só ação. O maior encontro de liderança corporativa sustentável do Brasil.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#agenda" class="bg-ungc-tone2 hover:bg-white text-white hover:text-ungc-blue px-12 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all shadow-2xl">Ver Programação</a>
+                    <a href="#local" class="bg-transparent border-2 border-white/20 hover:border-white text-white px-12 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all backdrop-blur-sm">Como Chegar</a>
+                </div>
+
+                <div class="mt-24 flex justify-center gap-12 lg:gap-32 border-t border-white/10 pt-12">
+                    <div class="text-center">
+                        <p class="text-5xl lg:text-6xl font-black text-white tracking-tighter">1.2k+</p>
+                        <p class="text-[9px] text-white/40 font-black uppercase tracking-[0.3em] mt-2">Líderes</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-5xl lg:text-6xl font-black text-white tracking-tighter">100+</p>
+                        <p class="text-[9px] text-white/40 font-black uppercase tracking-[0.3em] mt-2">Speakers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40">
+                <div class="w-6 h-10 rounded-full border-2 border-white flex justify-center p-1.5">
+                    <div class="w-1 h-2 bg-white rounded-full animate-scroll"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFO BAR -->
+        <section class="bg-white py-16 relative z-20">
+            <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex items-center gap-6 p-10 rounded-[2.5rem] bg-[#EEF2F8] brutalist-card" data-aos="fade-up">
+                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-ungc-blue shadow-lg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[9px] font-black uppercase tracking-[0.3em] text-ungc-tone3 mb-1">Agenda</h4>
+                        <p class="text-xl lg:text-2xl font-black text-ungc-blue">02 Jun 2026</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 p-10 rounded-[2.5rem] bg-[#EEF2F8] brutalist-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-ungc-blue shadow-lg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[9px] font-black uppercase tracking-[0.3em] text-ungc-tone3 mb-1">Horário</h4>
+                        <p class="text-xl lg:text-2xl font-black text-ungc-blue">09h às 18h</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 p-10 rounded-[2.5rem] bg-[#EEF2F8] brutalist-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-ungc-blue shadow-lg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[9px] font-black uppercase tracking-[0.3em] text-ungc-tone3 mb-1">Local</h4>
+                        <p class="text-xl lg:text-2xl font-black text-ungc-blue">MASP, SP</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="sobre" class="py-24 lg:py-32 bg-white">
+            <div class="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-24 items-center">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <span class="text-ungc-tone1 font-bold tracking-widest uppercase text-sm">O Movimento</span>
+                    <h2 class="text-5xl lg:text-7xl font-black text-ungc-blue tracking-tighter uppercase mt-4 mb-10 leading-[0.9]">
+                        A Década da <br/>
+                        <span class="text-stroke">Implementação</span>
+                    </h2>
+                    <div class="space-y-8 text-xl lg:text-2xl text-ungc-tone1 font-serif italic leading-relaxed">
+                        <p>O Fórum Ambição 2030 é o ponto de convergência para o setor privado brasileiro que busca liderança real na agenda climática e social.</p>
+                        <p>Focamos na escala: como tirar as metas do papel e integrar a regeneração no núcleo das operações corporativas.</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative" data-aos="zoom-in">
+                    <div class="aspect-square rounded-[5rem] overflow-hidden rotate-6 shadow-2xl">
+                        <img src="./assets/hero_1.jpg" alt="" class="w-full h-full object-cover scale-110" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section id="agenda" class="py-24 lg:py-32 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <h2 class="text-5xl lg:text-7xl font-black text-ungc-blue tracking-tighter uppercase mb-12">Cronograma <span class="text-stroke">2026</span></h2>
+                    <div class="flex justify-center gap-4 bg-[#EEF2F8] p-2 rounded-full w-fit mx-auto">
+                        <button @click="activeDay = 1" :class="activeDay === 1 ? 'bg-ungc-blue text-white shadow-xl' : 'text-ungc-blue'" class="px-10 py-4 rounded-full font-black uppercase tracking-[0.2em] text-[10px] transition-all">02 de Junho</button>
+                        <button @click="activeDay = 2" :class="activeDay === 2 ? 'bg-ungc-blue text-white shadow-xl' : 'text-ungc-blue'" class="px-10 py-4 rounded-full font-black uppercase tracking-[0.2em] text-[10px] transition-all">03 de Junho</button>
+                    </div>
+                </div>
+
+                <div class="max-w-5xl mx-auto space-y-6">
+                    <div x-show="activeDay === 1" x-transition.opacity class="space-y-6">
+                        <div class="bg-[#EEF2F8] p-10 rounded-[3rem] flex flex-col md:flex-row gap-10 items-center brutalist-card" data-aos="fade-up">
+                            <span class="text-5xl font-black text-ungc-tone3 tabular-nums">09:30</span>
+                            <div class="flex-1 text-center md:text-left">
+                                <h4 class="text-2xl font-black text-ungc-blue uppercase mb-2">Credenciamento</h4>
+                                <p class="text-lg font-serif italic text-ungc-tone1">Networking estratégico inicial.</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#EEF2F8] p-10 rounded-[3rem] flex flex-col md:flex-row gap-10 items-center brutalist-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="text-5xl font-black text-ungc-tone3 tabular-nums">10:00</span>
+                            <div class="flex-1 text-center md:text-left">
+                                <h4 class="text-2xl font-black text-ungc-blue uppercase mb-2">Painel de Abertura</h4>
+                                <p class="text-lg font-serif italic text-ungc-tone1">O Brasil no centro da Agenda 2030.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-24 lg:py-32 bg-[#EEF2F8]">
+            <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-3 gap-24">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl lg:text-7xl font-black text-ungc-blue tracking-tighter uppercase leading-[0.9]">Dúvidas <span class="text-stroke">Comuns</span></h2>
+                </div>
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="rounded-[2rem] bg-white p-2 border-2 border-white transition-all overflow-hidden" :class="activeFaq === 1 ? 'border-ungc-blue shadow-xl' : ''">
+                        <button @click="activeFaq = (activeFaq === 1 ? null : 1)" class="w-full text-left px-10 py-8 flex items-center justify-between">
+                            <span class="text-xl lg:text-2xl font-black uppercase tracking-tight">O que é o Fórum Ambição 2030?</span>
+                            <span class="text-ungc-tone2 transition-transform" :class="activeFaq === 1 ? 'rotate-180' : ''">▼</span>
+                        </button>
+                        <div x-show="activeFaq === 1" x-collapse class="px-10 pb-10 text-xl text-ungc-tone1 font-serif italic border-t border-gray-50 pt-6">
+                            O principal encontro de lideranças do Pacto Global da ONU no Brasil focado em impacto real.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-ungc-blue text-white py-24">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+            <img src="./assets/nome_evento.png" alt="" class="h-12 w-auto brightness-0 invert opacity-40 mx-auto mb-8" />
+            <p class="text-[9px] text-white/20 font-black uppercase tracking-[0.3em]">© 2026 Pacto Global ONU Rede Brasil</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ once: true, offset: 50, duration: 800 });
+        });
+    </script>
+</body>
+</html>

@@ -1,22 +1,29 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@font-face {
+  font-family: "Flama";
+  src: url("./assets/fonts/Flama-Basic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+@font-face {
+  font-family: "Flama";
+  src: url("./assets/fonts/Flama-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Flama";
+  src: url("./assets/fonts/Flama-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -26,12 +33,9 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -45,102 +49,88 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-brand-light-blue: var(--brand-light-blue);
-  --color-brand-teal: var(--brand-teal);
-  --color-brand-deep: var(--brand-deep);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* UN Global Compact Official Tokens */
+  --color-ungc-blue: #1e3250;
+  --color-ungc-tone1: #4c6b8b;
+  --color-ungc-tone2: #699cc6;
+  --color-ungc-tone3: #aecfe6;
+  --color-ungc-purple: #6e417a;
+  --color-ungc-green: #297d6d;
+  --color-ungc-gold: #ccb146;
+  --color-ungc-red: #ec3740;
+
+  /* Fórum Ambição 2030 2026 Key Visual */
+  --color-forum-navy: #0b243c;
+  --color-forum-deep: #102f4f;
+  --color-forum-ink: #071a2c;
+  --color-forum-cyan: #23b9d6;
+  --color-forum-blue: #08799c;
+  --color-forum-magenta: #c0185c;
+  --color-forum-pink: #e21a72;
+  --color-forum-green: #4ea43f;
+  --color-forum-red: #ef3d34;
+  --color-forum-gold: #b8893f;
+  --color-forum-orange: #f36c2d;
+
+  /* Legacy/Brand Mappings to avoid breakage, now redirected to UNGC Blue */
+  --color-brand-deep: #102f4f;
+  --color-brand-primary: #23b9d6;
+  --color-brand-secondary: #b8893f;
+  --color-brand-accent: #c0185c;
+  --color-brand-teal: #4ea43f;
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Flama", sans-serif;
+  --font-mono: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", serif;
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Pacto Global brand: deep navy + light blue */
-  --background: oklch(0.18 0.04 255);
-  --foreground: oklch(0.98 0.005 250);
-  --card: oklch(0.22 0.045 255);
-  --card-foreground: oklch(0.98 0.005 250);
-  --popover: oklch(0.22 0.045 255);
-  --popover-foreground: oklch(0.98 0.005 250);
-  --primary: oklch(0.72 0.11 235);
-  --primary-foreground: oklch(0.18 0.04 255);
-  --secondary: oklch(0.28 0.05 255);
-  --secondary-foreground: oklch(0.98 0.005 250);
-  --muted: oklch(0.28 0.05 255);
-  --muted-foreground: oklch(0.78 0.03 250);
-  --accent: oklch(0.78 0.13 195);
-  --accent-foreground: oklch(0.18 0.04 255);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.35 0.05 245 / 60%);
-  --input: oklch(0.32 0.05 245);
-  --ring: oklch(0.72 0.11 235);
-  --brand-light-blue: oklch(0.78 0.10 240);
-  --brand-teal: oklch(0.78 0.13 195);
-  --brand-deep: oklch(0.18 0.04 255);
-  --gradient-hero: linear-gradient(135deg, oklch(0.16 0.04 255) 0%, oklch(0.22 0.06 250) 60%, oklch(0.28 0.08 220) 100%);
-  --gradient-accent: linear-gradient(90deg, var(--brand-teal), var(--brand-light-blue));
-  --shadow-glow: 0 20px 60px -20px oklch(0.78 0.13 195 / 0.35);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.5rem;
+
+  /* UN Global Compact Palette — Official Hierachy */
+  --background: #102f4f;
+  --foreground: #eef2f8;
+  --card: #ffffff;
+  --card-foreground: #1e3250;
+  --popover: #ffffff;
+  --popover-foreground: #1e3250;
+  --primary: #1e3250; /* Global Compact Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #aecfe6; /* Tone 3 */
+  --secondary-foreground: #1e3250;
+  --muted: #f1f5f9;
+  --muted-foreground: #4c6b8b; /* Tone 1 */
+  --accent: #ccb146; /* Gold */
+  --accent-foreground: #1e3250;
+  --destructive: #ec3740;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #1e3250;
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: #0f1a2a; /* Deeper variant of Global Compact Blue for Dark Mode */
+  --foreground: #eef2f8;
+  --card: #1e3250;
+  --card-foreground: #ffffff;
+  --popover: #1e3250;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #1e3250;
+  --secondary: #4c6b8b; /* Tone 1 */
+  --secondary-foreground: #ffffff;
+  --muted: #1e3250;
+  --muted-foreground: #aecfe6; /* Tone 3 */
+  --accent: #ccb146;
+  --accent-foreground: #1e3250;
+  --destructive: #ec3740;
+  --destructive-foreground: #ffffff;
+  --border: #2c4260;
+  --input: #2c4260;
+  --ring: #aecfe6;
 }
 
 @layer base {
@@ -149,7 +139,91 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-color: var(--color-forum-deep);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    color-scheme: dark;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forum-cyan);
+    outline-offset: 4px;
+  }
+}
+
+@layer utilities {
+  .forum-surface {
+    background:
+      radial-gradient(circle at 14% 10%, rgba(35, 185, 214, 0.12), transparent 30%),
+      radial-gradient(circle at 88% 34%, rgba(192, 24, 92, 0.1), transparent 28%),
+      linear-gradient(180deg, #102f4f 0%, #0b243c 100%);
+  }
+
+  .forum-card {
+    position: relative;
+    border: 1px solid rgba(174, 207, 230, 0.2);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035)),
+      rgba(9, 29, 50, 0.48);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 24px 80px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+  }
+
+  .forum-glass {
+    border: 1px solid rgba(174, 207, 230, 0.22);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+      rgba(8, 24, 43, 0.58);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 24px 90px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+  }
+
+  .forum-glass-soft {
+    border: 1px solid rgba(174, 207, 230, 0.16);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+  }
+
+  .forum-outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(174, 207, 230, 0.48);
+  }
+
+  .patchwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px; /* Mathematically consistent gap as per guidelines */
+  }
+
+  .patchwork-item {
+    background: white;
+    padding: 2rem;
+    aspect-ratio: 1/1;
   }
 }

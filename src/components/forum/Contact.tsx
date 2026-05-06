@@ -1,53 +1,72 @@
+import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-
-const contacts = [
-  { name: "Ana Urquiza", role: "Gerente de Eventos · Pacto Global – Rede Brasil", email: "ana.urquiza@pactoglobal.org.br" },
-  { name: "Luiza Maruche", role: "Produção · Yellow Eventos", email: "producao@pactoglobal.org.br", phone: "+55 21 9856-5276" },
-  { name: "Tania Fioratti", role: "Produção · Yellow Eventos", email: "tania.fioratti@yelloweventos.com.br", phone: "+55 22 98179-1128" },
-];
+import { KineticBackdrop, SectionHeader } from "./Identity";
 
 export function Contact() {
   return (
-    <section id="contato" className="py-20">
-      <div className="container mx-auto px-6">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-teal">
-          Fale conosco
-        </p>
-        <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">Contatos</h2>
+    <section id="contato" className="forum-surface relative overflow-hidden py-24">
+      <KineticBackdrop image="deepField" />
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {contacts.map((c) => (
-            <div
-              key={c.name}
-              className="rounded-2xl border border-brand-teal/30 bg-card/60 p-6"
-            >
-              <p className="text-lg font-semibold text-foreground">{c.name}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{c.role}</p>
-              <a
-                href={`mailto:${c.email}`}
-                className="mt-4 flex items-center gap-2 text-sm text-brand-teal hover:underline"
-              >
-                <Mail className="h-4 w-4" />
-                {c.email}
-              </a>
-              {c.phone && (
-                <p className="mt-2 text-sm text-muted-foreground">{c.phone}</p>
-              )}
-            </div>
-          ))}
+      <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
+        <div className="mb-16 text-center">
+          <SectionHeader
+            eyebrow="Canais de Atendimento"
+            title="Fale"
+            outline="Conosco"
+            align="center"
+          />
         </div>
 
-        <div className="mt-12 rounded-2xl border border-brand-teal/40 bg-brand-teal/10 p-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-teal">
-            Dúvidas sobre RSVP
-          </p>
-          <a
-            href="mailto:rsvp@pactoglobal.org.br"
-            className="mt-2 inline-block text-2xl font-bold text-foreground hover:underline"
+        <div className="grid gap-6 md:grid-cols-2">
+          <motion.div
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.45 }}
+            className="forum-card rounded-xl border-forum-cyan/24 p-8 text-center sm:p-12"
           >
-            rsvp@pactoglobal.org.br
-          </a>
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-forum-cyan/34 bg-forum-cyan/12 text-forum-cyan">
+              <Mail aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
+            </div>
+            <p className="mb-3 text-[9px] font-black uppercase tracking-[0.36em] text-forum-cyan/78">
+              RSVP — Convidados
+            </p>
+            <a
+              href="mailto:rsvp@pactoglobal.org.br"
+              className="block break-words text-xl font-display font-black tracking-tight text-white transition-colors hover:text-forum-cyan sm:text-2xl"
+            >
+              rsvp@pactoglobal.org.br
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.45 }}
+            className="forum-card rounded-xl border-white/12 bg-white/5 p-8 text-center sm:p-12"
+          >
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/22 bg-white/8 text-white">
+              <Mail aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
+            </div>
+            <p className="mb-3 text-[9px] font-black uppercase tracking-[0.36em] text-white/64">
+              Parcerias e Apoio
+            </p>
+            <p className="text-xl font-display font-black uppercase tracking-tight text-white">
+              Rafael Carmo
+            </p>
+            <a
+              href="mailto:rafael.carmo@pactoglobal.org.br"
+              className="mt-1 block break-words text-sm font-bold text-forum-cyan transition-colors hover:text-white"
+            >
+              rafael.carmo@pactoglobal.org.br
+            </a>
+          </motion.div>
         </div>
+
+        <p className="mt-12 text-center text-sm font-bold uppercase tracking-widest text-white/44">
+          Evento exclusivo para convidados — Vagas limitadas
+        </p>
       </div>
     </section>
   );

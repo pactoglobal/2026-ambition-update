@@ -1,88 +1,122 @@
-const agenda = [
-  {
-    time: "9h30",
-    title: "Abertura",
-    desc: "Guilherme Xavier (Diretor Executivo, Pacto Global – Rede Brasil), Presidente do Conselho do Pacto Global – Rede Brasil e Coordenador Residente do Sistema ONU.",
-  },
-  {
-    time: "9h50",
-    title: "Keynote — Como o setor privado pode fortalecer o Multilateralismo",
-    desc: "Oliver Stuenkel, jornalista (TBC).",
-  },
-  {
-    time: "10h10",
-    title: "Painel — Transição energética",
-    desc: "Marian Schuegraf (UE no Brasil), Carlos Carbone (Itaipu), Manuel Reyes-Retana (IFC Brasil). Moderação: Giovana Girardi (Estadão). [TBC]",
-  },
-  {
-    time: "11h00",
-    title: "Business Case — Riscos de Integridade na cadeia produtiva",
-    desc: "Como identificar e mitigar riscos de integridade ao longo da cadeia.",
-  },
-  {
-    time: "11h20",
-    title: "Painel — Transformação das cadeias produtivas",
-    desc: "Diálogo sobre a reconfiguração de cadeias para um futuro sustentável.",
-  },
-  {
-    time: "12h10",
-    title: "Business Case",
-    desc: "Adriana Albanese, Diretora de Sustentabilidade da Aegea (TBC).",
-  },
-  { time: "12h30", title: "Almoço", desc: "Intervalo para networking." },
-  {
-    time: "14h30",
-    title: "Painel — Recomeços que inspiram e lideram",
-    desc: "Movimento Elas Lideram. Dani Suzuki, Fernando Viriato (Accor), pessoa refugiada e Pedro Bial (TBC).",
-  },
-  {
-    time: "15h10",
-    title: "Apresentação dos Movimentos Ambição 2030",
-    desc: "Mônica Gregori, Diretora de Impacto, Pacto Global – Rede Brasil.",
-  },
-  { time: "16h10", title: "Apresentação Artística", desc: "Momento cultural." },
-  {
-    time: "16h30",
-    title: "Painel — Economia circular e gestão de recursos naturais",
-    desc: "Milton Pilão (Orizon), Valdir Beira Junior (Ypê), Roberto Rocha (Ancat). Moderação: Renata Faber (Exame). [TBC]",
-  },
-  {
-    time: "17h20",
-    title: "Painel — Futuro do trabalho e uso ético da Inteligência Artificial",
-    desc: "Claudia Romano (Yduqs), Vivian Broge (TOTVS), Naiá Tupinambá, Nina da Hora. Moderação: Vinicius Pinheiro (OIT). [TBC]",
-  },
-  { time: "18h00", title: "Encerramento", desc: "Considerações finais." },
-  { time: "18h10", title: "Networking & Coquetel", desc: "Encontro de lideranças." },
-];
+import { motion } from "framer-motion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { KineticBackdrop, SectionHeader } from "./Identity";
+
+const scheduleData = {
+  "02 de Junho": [
+    {
+      time: "09h30",
+      title: "Abertura",
+      desc: "Guilherme Xavier, Diretor Executivo do Pacto Global - Rede Brasil, e Rachel Maia, Presidente do Conselho do Pacto Global - Rede Brasil.",
+    },
+    { time: "09h50", title: "Keynote Speaker", desc: "Palestra de abertura estratégica." },
+    {
+      time: "10h10",
+      title: "Painel: Transição climática e energética",
+      desc: "Debate sobre caminhos de implementação para clima, energia e competitividade.",
+    },
+    {
+      time: "11h00",
+      title: "FireChat: Integridade e governança corporativa",
+      desc: "Conversa sobre governança, transparência e confiança como bases da agenda empresarial.",
+    },
+    {
+      time: "11h20",
+      title: "Painel: Transformação das cadeias produtivas",
+      desc: "Como empresas estão redesenhando cadeias para ampliar impacto, resiliência e responsabilidade.",
+    },
+    { time: "12h10", title: "Apresentação Artística", desc: "Intervenção cultural e reflexiva." },
+    {
+      time: "12h30",
+      title: "Almoço",
+      desc: "Momento de networking e pausa estratégica.",
+    },
+    { time: "14h30", title: "Keynote Speaker", desc: "Palestra estratégica da tarde." },
+    {
+      time: "14h50",
+      title: "Apresentação Movimentos",
+      desc: "Mônica Gregori, Diretora de Impacto do Pacto Global - Rede Brasil, compartilha como os Movimentos influenciam decisões estratégicas no setor privado, mostrando que a sustentabilidade é uma exigência para o futuro dos negócios.",
+    },
+    {
+      time: "15h00",
+      title: "Painel: Economia circular e gestão de recursos naturais",
+      desc: "Discussão sobre uso inteligente de recursos, circularidade e conservação como estratégia de negócio.",
+    },
+    {
+      time: "15h50",
+      title: "Apresentação de Business Case",
+      desc: "Caso prático de implementação.",
+    },
+    {
+      time: "16h10",
+      title: "Painel: Futuro do trabalho e inclusão",
+      desc: "Como inclusão, trabalho digno e novas competências sustentam a Década da Implementação.",
+    },
+    { time: "17h00", title: "Encerramento", desc: "Considerações finais e fechamento do Fórum." },
+    {
+      time: "17h10",
+      title: "Recepção de Encerramento",
+      desc: "Momento final de relacionamento e conexões qualificadas.",
+    },
+  ],
+} as const;
+
+type ScheduleDay = keyof typeof scheduleData;
+
+const scheduleDays = Object.keys(scheduleData) as ScheduleDay[];
 
 export function Agenda() {
   return (
-    <section id="agenda" className="py-20">
-      <div className="container mx-auto px-6">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-teal">
-          Programação preliminar
-        </p>
-        <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">Agenda 2026</h2>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          Versão preliminar — em construção. Confirmações em breve.
-        </p>
+    <section id="agenda" className="forum-surface relative overflow-hidden py-24">
+      <KineticBackdrop image="lineField" intensity="soft" />
 
-        <div className="mt-12 overflow-hidden rounded-2xl border border-brand-teal/30">
-          {agenda.map((item, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-1 gap-2 border-b border-border/40 bg-card/40 p-6 last:border-b-0 md:grid-cols-[140px_1fr] md:gap-8"
+      <div className="relative z-10 mx-auto max-w-screen-xl px-6 lg:px-12">
+        <Tabs defaultValue={scheduleDays[0]}>
+          <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <SectionHeader eyebrow="Programação Completa" title="Agenda" outline="2026" />
+
+            <TabsList
+              aria-label="Dias do evento"
+              className="self-start rounded-xl border border-white/12 bg-white/7 p-1 backdrop-blur-md h-auto"
             >
-              <div className="font-mono text-lg font-semibold text-brand-teal">
-                {item.time}
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{item.desc}</p>
-              </div>
-            </div>
+              {scheduleDays.map((day) => (
+                <TabsTrigger
+                  key={day}
+                  value={day}
+                  className="rounded-lg px-8 py-3 text-[10px] font-sans font-black uppercase tracking-widest text-white/56 transition-colors duration-200 data-[state=active]:bg-forum-cyan data-[state=active]:text-forum-deep data-[state=active]:shadow-[0_0_28px_rgba(35,185,214,0.24)] data-[state=inactive]:hover:bg-white/8 data-[state=inactive]:hover:text-white"
+                >
+                  {day}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+
+          {scheduleDays.map((day) => (
+            <TabsContent key={day} value={day} className="grid grid-cols-1 gap-4 mt-0">
+              {scheduleData[day].map((item, index) => (
+                <motion.article
+                  key={`${item.time}-${item.title}`}
+                  initial={false}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.035 }}
+                  className="forum-card group flex flex-col gap-6 rounded-xl p-6 transition-colors hover:border-forum-cyan/35 hover:bg-white/8 md:flex-row md:items-center md:p-8"
+                >
+                  <time className="min-w-[120px] font-display text-4xl font-bold tracking-tight text-white/22 transition-colors group-hover:text-forum-cyan">
+                    {item.time}
+                  </time>
+                  <div className="flex-1">
+                    <h3 className="mb-2 text-2xl font-display font-black uppercase tracking-tight text-white">
+                      {item.title}
+                    </h3>
+                    <p className="max-w-3xl leading-relaxed text-white/64">{item.desc}</p>
+                  </div>
+                  <div className="h-px w-full bg-gradient-to-r from-forum-cyan via-forum-magenta to-forum-green md:h-px md:w-28" />
+                </motion.article>
+              ))}
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </div>
     </section>
   );
