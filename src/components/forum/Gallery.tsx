@@ -6,24 +6,52 @@ import { Dialog, DialogClose, DialogContent, DialogTitle } from "@/components/ui
 import { AnimatedSection } from "./AnimatedSection";
 import { SectionHeader } from "./Identity";
 
-const galleryImages = [
-  { src: "/img/galeria-de-momentos/event-gallery-9.jpg",  title: "Plenária",               category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-14.jpg", title: "Bruno & Giovana",         category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-15.jpg", title: "Bruno Gagliasso",         category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-16.jpg", title: "Giovanna Ewbank",         category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-10.jpg", title: "Salas Dinâmicas",         category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-11.jpg", title: "Troca de Práticas",       category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-12.jpg", title: "Grupos de Trabalho",      category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-13.jpg", title: "Colaboração em Ação",     category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-1.jpg",  title: "Fórum Ambição 2030",      category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-2.jpg",  title: "Auditório em Diálogo",    category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-3.jpg",  title: "Keynotes",                category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-4.jpg",  title: "Networking",              category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-5.jpg",  title: "Lideranças Presentes",    category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-6.jpg",  title: "Momentos do Evento",      category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-7.jpg",  title: "Impacto e Conexões",      category: "Edições Anteriores" },
-  { src: "/img/galeria-de-momentos/event-gallery-8.jpg",  title: "A Força do Coletivo",     category: "Edições Anteriores" },
+// Auto-picks every image dropped into assets/img/galeria-de-momentos/
+// No code changes needed when adding new photos.
+const assetModules = import.meta.glob(
+  "../../../assets/img/galeria-de-momentos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  { eager: true, query: "?url", import: "default" }
+) as Record<string, string>;
+
+function toTitle(filename: string) {
+  return filename
+    .replace(/\.[^.]+$/, "")          // remove extension
+    .replace(/_\d{4}(\s+\d+)?$/, "")  // remove trailing year/number like _2025 or _2025 1
+    .replace(/[-_ ]+/g, " ")          // underscores/dashes to spaces
+    .replace(/\b\w/g, (c) => c.toUpperCase()) // Title Case
+    .trim();
+}
+
+function getCategory(filename: string) {
+  if (filename.includes("2025") || filename.includes("ewbank") || filename.includes("gagliasso")) return "Edição 2025";
+  return "Edições Anteriores";
+}
+
+const dynamicImages = Object.entries(assetModules)
+  .map(([path, url]) => {
+    const filename = path.split("/").pop() ?? "";
+    return { src: url, title: toTitle(filename), category: getCategory(filename.toLowerCase()), filename };
+  })
+  .sort((a, b) => {
+    // 2025 images first, then alphabetical
+    if (a.category !== b.category) return a.category === "Edição 2025" ? -1 : 1;
+    return a.filename.localeCompare(b.filename);
+  });
+
+// Fallback static images (public folder) for older editions
+const staticImages = [
+  { src: "/img/galeria-de-momentos/event-gallery-2.jpg", title: "Auditório em Diálogo",  category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-3.jpg", title: "Keynotes",               category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-4.jpg", title: "Networking",             category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-5.jpg", title: "Lideranças Presentes",   category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-6.jpg", title: "Momentos do Evento",     category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-7.jpg", title: "Impacto e Conexões",     category: "Edições Anteriores", filename: "" },
+  { src: "/img/galeria-de-momentos/event-gallery-8.jpg", title: "A Força do Coletivo",    category: "Edições Anteriores", filename: "" },
 ];
+
+const galleryImages = [...dynamicImages, ...staticImages];
+
+type GalleryImage = (typeof galleryImages)[number];
 
 export function Gallery() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -34,7 +62,7 @@ export function Gallery() {
   });
   const [progress, setProgress] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [lightboxImage, setLightboxImage] = useState<(typeof galleryImages)[number] | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
 
   const onScroll = useCallback(() => {
     if (!emblaApi) return;
@@ -104,7 +132,7 @@ export function Gallery() {
         <div className="flex touch-pan-y gap-4 px-5 sm:gap-6 sm:px-8 lg:px-[max(3rem,calc((100vw-1280px)/2+3rem))]">
           {galleryImages.map((image, index) => (
             <motion.article
-              key={image.title}
+              key={image.src}
               className="forum-card group relative w-[84vw] flex-[0_0_auto] cursor-grab overflow-hidden rounded-xl active:cursor-grabbing sm:w-[58vw] lg:w-[42rem]"
               initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -116,6 +144,7 @@ export function Gallery() {
                 alt={image.title}
                 width={1200}
                 height={760}
+                loading={index < 3 ? "eager" : "lazy"}
                 className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 draggable={false}
               />
