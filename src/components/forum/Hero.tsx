@@ -128,7 +128,7 @@ export function Hero() {
               {HERO_PARTNERS.map(({ label, src, alt, width, height, className }, index) => (
                 <div
                   key={label}
-                  className={`flex min-h-[132px] flex-col justify-center gap-4 border-white/12 px-5 py-6 sm:px-6 ${
+                  className={`flex min-h-[132px] flex-col items-center justify-center gap-3 border-white/12 px-5 py-6 text-center sm:px-6 ${
                     index < 2 ? "border-b sm:border-b-0 sm:border-r" : ""
                   }`}
                 >
@@ -140,7 +140,7 @@ export function Hero() {
                     alt={alt}
                     width={width}
                     height={height}
-                    className={`${className} h-14 w-auto max-w-[190px] object-contain opacity-95`}
+                    className={`${className} w-auto max-w-[160px] object-contain opacity-95`}
                   />
                 </div>
               ))}
