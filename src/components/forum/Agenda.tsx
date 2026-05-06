@@ -127,7 +127,7 @@ const SESSIONS: Session[] = [
       { name: "Irina Bacci", role: "PADF", note: "TBC" },
       { name: "Waleria Sampaio", role: "Gerente Executiva de Estratégia e Governança de Sustentabilidade", note: "TBC" },
       { name: "Vinicius Pinheiro", role: "OIT – Organização Internacional do Trabalho", note: "TBC" },
-      { name: "Malu Paiva", role: "Vice-Presidente de Sustentabilidade e Comunicação, Suzano", note: "TBC" },
+      { name: "Maria Luiza de Oliveira Pinto", role: "Vice-Presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca, Suzano" },
     ],
     moderator: { name: "Caco Barcelos", role: "Jornalista", note: "TBC" },
   },
