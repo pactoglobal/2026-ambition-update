@@ -28,7 +28,7 @@ function IconYouTube({ size = 14 }: { size?: number }) {
 const links = [
   { label: "Instagram", href: "https://www.instagram.com/pactoglobalonubr", Icon: IconInstagram },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/pactoglobalonubr/", Icon: IconLinkedIn },
-  { label: "YouTube", href: "https://www.youtube.com/@PactoGlobalBrasil", Icon: IconYouTube },
+  { label: "YouTube", href: "https://www.youtube.com/@pactoglobalonubr", Icon: IconYouTube },
   { label: "pactoglobal.org.br", href: "https://www.pactoglobal.org.br/", Icon: Globe },
 ];
 
