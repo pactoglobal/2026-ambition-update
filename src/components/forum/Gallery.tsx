@@ -5,38 +5,36 @@ import { Dialog, DialogClose, DialogContent, DialogTitle } from "@/components/ui
 import { AnimatedSection } from "./AnimatedSection";
 import { SectionHeader } from "./Identity";
 
-// Drop any photo into assets/img/galeria-de-momentos/ and it appears automatically.
+// Drop photos into assets/img/galeria-de-momentos/<ano>/ (e.g. 2025/, 2024/, 2023/)
+// Each subfolder becomes a tab automatically — no code changes needed.
 const assetModules = import.meta.glob(
-  "../../../assets/img/galeria-de-momentos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  "../../../assets/img/galeria-de-momentos/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
-function toTitle(filename: string) {
-  return filename
-    .replace(/\.[^.]+$/, "")
-    .replace(/[_\s]+\d{4}(\s+\d+)?$/, "")
-    .replace(/[-_]+/g, " ")
-    .replace(/\s{2,}/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase())
-    .trim();
+interface GalleryImage {
+  src: string;
+  year: string;
+  index: number;
 }
 
-const galleryImages = Object.entries(assetModules)
-  .map(([path, url]) => {
-    const filename = path.split("/").pop() ?? "";
-    return { src: url, title: toTitle(filename), filename };
-  })
-  .sort((a, b) => a.filename.localeCompare(b.filename));
+// Group by subfolder name (the year)
+const byYear: Record<string, GalleryImage[]> = {};
+Object.entries(assetModules).forEach(([path, url]) => {
+  const parts = path.split("/");
+  const year = parts[parts.length - 2] ?? "Outros";
+  if (!byYear[year]) byYear[year] = [];
+  byYear[year].push({ src: url, year, index: byYear[year].length });
+});
 
-type GalleryImage = (typeof galleryImages)[number];
+// Sort years descending (most recent first)
+const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a));
 
-export function Gallery() {
+function CarouselTrack({ images }: { images: GalleryImage[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
     loop: true,
-    dragFree: false,
-    watchDrag: true,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -58,115 +56,109 @@ export function Gallery() {
     };
   }, [emblaApi, onSelect]);
 
-  if (galleryImages.length === 0) return null;
+  // Reset when image list changes
+  useEffect(() => {
+    emblaApi?.reInit();
+    setSelectedIndex(0);
+  }, [emblaApi, images]);
 
   return (
-    <section id="galeria" className="forum-surface overflow-hidden py-24">
-      <div className="mx-auto mb-10 max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <AnimatedSection className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeader
-            eyebrow="Edições Anteriores"
-            title="Galeria de"
-            outline="Momentos"
-            description="Reviva os momentos de encontro, debate e transformação das edições anteriores do Fórum Ambição 2030."
-          />
+    <>
+      {/* Counter + arrows */}
+      <div className="mb-6 flex items-center justify-between px-5 sm:px-8 lg:px-12">
+        <span className="font-sans text-sm font-bold tabular-nums text-white/40">
+          {String(selectedIndex + 1).padStart(2, "0")}
+          <span className="mx-1.5 opacity-40">/</span>
+          {String(images.length).padStart(2, "0")}
+        </span>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            aria-label="Imagem anterior"
+            onClick={() => emblaApi?.scrollPrev()}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+          >
+            <ChevronLeft aria-hidden="true" size={18} />
+          </button>
+          <button
+            type="button"
+            aria-label="Próxima imagem"
+            onClick={() => emblaApi?.scrollNext()}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+          >
+            <ChevronRight aria-hidden="true" size={18} />
+          </button>
+        </div>
+      </div>
 
-          <div className="flex items-center gap-6">
-            <span className="font-sans text-sm font-bold tabular-nums text-white/52">
-              {String(selectedIndex + 1).padStart(2, "0")}
-              <span className="mx-1 opacity-40">/</span>
-              {String(galleryImages.length).padStart(2, "0")}
-            </span>
-            <div className="flex gap-3">
+      {/* Carousel */}
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex gap-4 px-5 sm:gap-5 sm:px-8 lg:px-[max(3rem,calc((100vw-1280px)/2+3rem))]">
+          {images.map((image, i) => (
+            <div
+              key={image.src}
+              className="group relative flex-[0_0_84vw] overflow-hidden rounded-xl sm:flex-[0_0_58vw] lg:flex-[0_0_42rem]"
+            >
+              <img
+                src={image.src}
+                alt={`Fórum Ambição 2030 · Edição ${image.year} · Foto ${i + 1}`}
+                width={1200}
+                height={760}
+                loading={i < 3 ? "eager" : "lazy"}
+                draggable={false}
+                className="aspect-[16/10] w-full select-none object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-forum-ink/80 via-forum-ink/20 to-transparent px-6 pb-5 pt-16">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan/80">
+                  Edição {image.year}
+                </p>
+              </div>
               <button
                 type="button"
-                aria-label="Imagem anterior"
-                onClick={() => emblaApi?.scrollPrev()}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/6 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+                aria-label="Ver em tela cheia"
+                onClick={() => setLightboxImage(image)}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100 hover:bg-forum-cyan hover:text-forum-deep"
               >
-                <ChevronLeft aria-hidden="true" size={20} />
-              </button>
-              <button
-                type="button"
-                aria-label="Próxima imagem"
-                onClick={() => emblaApi?.scrollNext()}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/6 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
-              >
-                <ChevronRight aria-hidden="true" size={20} />
+                <Maximize2 aria-hidden="true" size={15} />
               </button>
             </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Progress dots */}
-        <div className="flex gap-1.5">
-          {galleryImages.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Ir para imagem ${i + 1}`}
-              onClick={() => emblaApi?.scrollTo(i)}
-              className={`h-0.5 rounded-full transition-all duration-300 ${
-                i === selectedIndex ? "w-8 bg-forum-cyan" : "w-2 bg-white/20"
-              }`}
-            />
           ))}
         </div>
       </div>
 
-      {/* Carousel — plain div, no Framer Motion wrapper that breaks Embla sizing */}
-      <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex gap-4 px-5 sm:gap-5 sm:px-8 lg:px-[max(3rem,calc((100vw-1280px)/2+3rem))]">
-          {galleryImages.map((image, index) => (
-            <div
-              key={image.src}
-              className="group relative flex-[0_0_84vw] cursor-grab overflow-hidden rounded-xl sm:flex-[0_0_58vw] lg:flex-[0_0_42rem] active:cursor-grabbing"
-            >
-              <img
-                src={image.src}
-                alt={image.title}
-                width={1200}
-                height={760}
-                loading={index < 3 ? "eager" : "lazy"}
-                draggable={false}
-                className="aspect-[16/10] w-full select-none object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-forum-ink/80 via-forum-ink/30 to-transparent px-6 pb-6 pt-16">
-                <h3 className="text-xl font-display font-black uppercase tracking-tight text-white">
-                  {image.title}
-                </h3>
-              </div>
-              <button
-                type="button"
-                aria-label={`Ver ${image.title} em tela cheia`}
-                onClick={() => setLightboxImage(image)}
-                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-0 backdrop-blur-md transition-opacity duration-200 group-hover:opacity-100 hover:bg-forum-cyan hover:text-forum-deep"
-              >
-                <Maximize2 aria-hidden="true" size={16} />
-              </button>
-            </div>
-          ))}
-        </div>
+      {/* Dot indicators */}
+      <div className="mt-5 flex justify-center gap-1.5 px-5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Ir para foto ${i + 1}`}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`h-0.5 rounded-full transition-all duration-300 ${
+              i === selectedIndex ? "w-6 bg-forum-cyan" : "w-1.5 bg-white/20"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Lightbox */}
       <Dialog open={lightboxImage !== null} onOpenChange={(open) => !open && setLightboxImage(null)}>
         <DialogContent className="max-w-5xl border-white/10 bg-forum-ink/95 p-0 backdrop-blur-2xl">
           <DialogTitle className="sr-only">
-            {lightboxImage?.title ?? "Visualização de imagem"}
+            Fórum Ambição 2030 · Edição {lightboxImage?.year}
           </DialogTitle>
           {lightboxImage && (
             <>
               <img
                 src={lightboxImage.src}
-                alt={lightboxImage.title}
+                alt={`Fórum Ambição 2030 · Edição ${lightboxImage.year}`}
                 width={1200}
                 height={760}
                 className="h-auto max-h-[80vh] w-full rounded-lg object-contain"
               />
-              <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-gradient-to-t from-forum-ink/90 to-transparent p-6">
-                <p className="text-xl font-display font-black uppercase tracking-tight text-white">
-                  {lightboxImage.title}
+              <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-gradient-to-t from-forum-ink/90 to-transparent p-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan">
+                  Fórum Ambição 2030 · Edição {lightboxImage.year}
                 </p>
               </div>
               <DialogClose className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-70 backdrop-blur-md transition-opacity hover:opacity-100 hover:bg-forum-cyan hover:text-forum-deep focus:ring-forum-cyan">
@@ -177,6 +169,51 @@ export function Gallery() {
           )}
         </DialogContent>
       </Dialog>
+    </>
+  );
+}
+
+export function Gallery() {
+  const [activeYear, setActiveYear] = useState(years[0] ?? "");
+
+  if (years.length === 0) return null;
+
+  const images = byYear[activeYear] ?? [];
+
+  return (
+    <section id="galeria" className="forum-surface overflow-hidden py-24">
+      <div className="mx-auto mb-10 max-w-screen-xl px-5 sm:px-8 lg:px-12">
+        <AnimatedSection className="mb-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            eyebrow="Edições Anteriores"
+            title="Galeria de"
+            outline="Momentos"
+            description="Reviva os momentos de encontro, debate e transformação das edições do Fórum Ambição 2030."
+          />
+        </AnimatedSection>
+
+        {/* Year tabs */}
+        {years.length > 1 && (
+          <div className="flex gap-2">
+            {years.map((year) => (
+              <button
+                key={year}
+                type="button"
+                onClick={() => setActiveYear(year)}
+                className={`rounded-full border px-5 py-2 text-[11px] font-black uppercase tracking-[0.24em] transition-all ${
+                  activeYear === year
+                    ? "border-forum-cyan bg-forum-cyan/15 text-forum-cyan"
+                    : "border-white/12 bg-white/4 text-white/45 hover:border-white/24 hover:text-white/70"
+                }`}
+              >
+                {year}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <CarouselTrack key={activeYear} images={images} />
     </section>
   );
 }
