@@ -303,11 +303,11 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
         <div className="flex items-start gap-0 pl-5 pr-5 py-5 md:pl-7 md:pr-7 md:py-6">
           {/* Time column */}
           <div className="mr-5 shrink-0 md:mr-7">
-            <time className="block font-display text-2xl font-black leading-none tracking-tight text-white/22 transition-colors group-hover:text-white/38 md:text-3xl">
+            <time className="block font-display text-2xl font-black leading-none tracking-tight text-white/50 transition-colors group-hover:text-white/75 md:text-3xl">
               {session.time}
             </time>
             {session.duration && (
-              <span className="mt-1 block text-[10px] font-bold uppercase tracking-widest text-white/20">
+              <span className="mt-1 block text-[10px] font-bold uppercase tracking-widest text-white/35">
                 {session.duration}
               </span>
             )}
@@ -329,14 +329,14 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
 
               {/* Theme */}
               {session.theme && (
-                <p className="mt-1.5 text-sm font-medium italic text-white/46 leading-snug">
+                <p className="mt-1.5 text-sm font-medium italic text-white/65 leading-snug">
                   {session.theme}
                 </p>
               )}
 
               {/* Speakers preview (collapsed) */}
               {!isInterval && session.speakers && !open && (
-                <p className="mt-3 text-[11px] text-white/32 line-clamp-1 tracking-wide">
+                <p className="mt-3 text-[11px] text-white/48 line-clamp-1 tracking-wide">
                   {session.speakers.map((s) => s.name).join("  ·  ")}
                 </p>
               )}
@@ -364,13 +364,13 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="border-x border-b border-white/8 rounded-b-xl bg-white/[0.035] px-5 pb-6 pt-5 md:px-7 md:pb-8">
+            <div className="border-x border-b border-white/12 rounded-b-xl bg-white/[0.05] px-5 pb-6 pt-5 md:px-7 md:pb-8">
               {/* Divider */}
-              <div className="mb-5 h-px w-full bg-white/8" />
+              <div className="mb-5 h-px w-full bg-white/10" />
 
               {/* Description */}
               {session.desc && (
-                <p className="mb-5 text-sm leading-relaxed text-white/60 md:text-[0.94rem]">
+                <p className="mb-5 text-sm leading-relaxed text-white/82 md:text-[0.94rem]">
                   {session.desc}
                 </p>
               )}
@@ -378,13 +378,13 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
               {/* Key topics */}
               {session.points && session.points.length > 0 && (
                 <div className="mb-6">
-                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.32em] text-white/35">
+                  <p className={`mb-3 text-[9px] font-black uppercase tracking-[0.32em] ${config.badge.split(" ")[0]}`}>
                     Tópicos em debate
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {session.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2.5 text-sm text-white/58 leading-snug">
-                        <span className={`mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full ${config.accent} opacity-70`} />
+                      <li key={point} className="flex items-start gap-3 text-sm text-white/86 leading-snug">
+                        <span className={`mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
                         {point}
                       </li>
                     ))}
@@ -395,28 +395,28 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
               {/* Speakers */}
               {session.speakers && session.speakers.length > 0 && (
                 <div className="mb-4">
-                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.32em] text-white/35">
+                  <p className={`mb-3 text-[9px] font-black uppercase tracking-[0.32em] ${config.badge.split(" ")[0]}`}>
                     {session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas"}
                   </p>
                   <ul className={`grid gap-2 ${session.speakers.length > 3 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-lg"}`}>
                     {session.speakers.map((s) => (
                       <li
                         key={s.name}
-                        className="flex items-start gap-3 rounded-lg border border-white/7 bg-white/4 px-4 py-3"
+                        className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"
                       >
-                        <div className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${config.accent} opacity-60`} />
+                        <div className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="text-[13px] font-bold text-white leading-snug">
                               {s.name}
                             </span>
                             {s.note && (
-                              <span className="rounded border border-white/14 px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider text-white/30">
+                              <span className={`rounded border px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider ${config.badge.split(" ")[0]} border-current opacity-60`}>
                                 {s.note}
                               </span>
                             )}
                           </div>
-                          <span className="mt-0.5 block text-[11px] leading-snug text-white/42">
+                          <span className="mt-0.5 block text-[12px] leading-snug text-white/65">
                             {s.role}
                           </span>
                         </div>
@@ -428,10 +428,10 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
 
               {/* Moderator */}
               {session.moderator && (
-                <div className="flex items-start gap-3 rounded-lg border border-white/7 bg-white/[0.02] px-4 py-3">
-                  <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
+                <div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
+                  <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
                   <div className="min-w-0">
-                    <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.28em] text-white/30">
+                    <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.28em] text-white/50">
                       Moderação
                     </p>
                     <div className="flex flex-wrap items-center gap-2">
@@ -439,12 +439,12 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
                         {session.moderator.name}
                       </span>
                       {session.moderator.note && (
-                        <span className="rounded border border-white/14 px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider text-white/30">
+                        <span className="rounded border border-white/20 px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider text-white/50">
                           {session.moderator.note}
                         </span>
                       )}
                     </div>
-                    <span className="text-[11px] text-white/42">{session.moderator.role}</span>
+                    <span className="text-[12px] text-white/65">{session.moderator.role}</span>
                   </div>
                 </div>
               )}
