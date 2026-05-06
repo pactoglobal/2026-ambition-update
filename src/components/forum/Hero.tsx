@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin } from "lucide-react";
+import heroBg from "../../../assets/img/hero/hero-bg.jpg?url";
 import { identityAssets } from "./identity-assets";
 
 const EVENT_DETAILS = [
@@ -42,7 +43,7 @@ export function Hero() {
   return (
     <section id="hero" className="relative isolate min-h-screen overflow-hidden bg-forum-deep">
       <img
-        src="/img/hero/hero-bg.jpg"
+        src={heroBg}
         alt=""
         width={1920}
         height={1080}
