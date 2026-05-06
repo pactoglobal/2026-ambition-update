@@ -43,17 +43,17 @@ const speakers = [
 ];
 
 const historicalSpeakers = [
-  { name: "Paul Polman", role: "Unilever", photo: "/img/liderancas/speaker-1.jpg" },
-  { name: "Luiza Trajano", role: "Magalu", photo: "/img/liderancas/speaker-2.jpg" },
-  { name: "Bela Gil", role: "Ativista e comunicadora", photo: "/img/liderancas/speaker-3.jpg" },
-  { name: "Marta Suplicy", role: "Gestão pública", photo: "/img/liderancas/speaker-4.jpg" },
-  { name: "Luis Guimarães", role: "Cosan", photo: "/img/liderancas/speaker-5.jpg" },
+  { name: "Paul Polman", role: "Unilever", photo: "/img/liderancas/historicos/paul_polman.jpeg" },
+  { name: "Luiza Trajano", role: "Magalu", photo: "/img/liderancas/historicos/luiza_trajano.jpg" },
+  { name: "Bela Gil", role: "Ativista e comunicadora", photo: "/img/liderancas/historicos/bela_gil.jpeg" },
+  { name: "Marta Suplicy", role: "Gestão pública", photo: "/img/liderancas/historicos/marta_suplicy.jpeg" },
+  { name: "Luis Guimarães", role: "Cosan", photo: "/img/liderancas/historicos/luis_guimaraes.jpeg" },
   {
     name: "Patricia Hill Collins",
     role: "Acadêmica e referência em equidade",
-    photo: "/img/liderancas/speaker-6.jpg",
+    photo: "/img/liderancas/historicos/Patricia_Hill_Collins.png",
   },
-  { name: "Albert Cheung", role: "BloombergNEF", photo: "/img/liderancas/speaker.jpg" },
+  { name: "Albert Cheung", role: "BloombergNEF", photo: "/img/liderancas/historicos/albert_cheung.png" },
 ];
 
 export function Speakers() {
@@ -153,9 +153,9 @@ export function Speakers() {
           <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeader
               eyebrow="Legado de Autoridade"
-              title="Speakers"
-              outline="Históricos"
-              description="Cards em slide para inserir e destacar as fotos das lideranças que já passaram pelo Fórum."
+              title="SPEAKERS QUE JÁ ESTIVERAM NO"
+              outline="PALCO DO FÓRUM AMBIÇÃO 2030"
+              description="Lideranças que já estiveram no palco e ajudaram a construir a história do Fórum Ambição 2030."
             />
             <div className="flex gap-4">
               <button
