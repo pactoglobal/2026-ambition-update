@@ -203,7 +203,7 @@ export function Speakers() {
         </div>
 
         <SpeakerCarousel
-          speakers={speakers}
+          speakers={speakers.filter((s) => !!photoByKey(confirmedPhotos, s.photoKey ?? ""))}
           slideWidth="w-[86%] sm:w-[50%] lg:w-[33.333%]"
           photoSource={confirmedPhotos}
           ariaLabel="speaker"
