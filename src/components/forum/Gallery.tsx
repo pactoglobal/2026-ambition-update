@@ -7,33 +7,14 @@ import { AnimatedSection } from "./AnimatedSection";
 import { SectionHeader } from "./Identity";
 
 const galleryImages = [
-  {
-    src: "/img/galeria-de-momentos/event-gallery-2.jpg",
-    title: "Auditório em Diálogo",
-    category: "Edição 2025",
-  },
-  { src: "/img/galeria-de-momentos/event-gallery-3.jpg", title: "Keynotes", category: "Edição 2025" },
-  { src: "/img/galeria-de-momentos/event-gallery-4.jpg", title: "Networking", category: "Edição 2025" },
-  {
-    src: "/img/galeria-de-momentos/event-gallery-5.jpg",
-    title: "Lideranças Presentes",
-    category: "Edições Anteriores",
-  },
-  {
-    src: "/img/galeria-de-momentos/event-gallery-6.jpg",
-    title: "Momentos do Evento",
-    category: "Edições Anteriores",
-  },
-  {
-    src: "/img/galeria-de-momentos/event-gallery-7.jpg",
-    title: "Impacto e Conexões",
-    category: "Edições Anteriores",
-  },
-  {
-    src: "/img/galeria-de-momentos/event-gallery-8.jpg",
-    title: "A Força do Coletivo",
-    category: "Edições Anteriores",
-  },
+  { src: "/img/galeria-de-momentos/event-gallery-1.jpg", title: "Fórum Ambição 2030",       category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-2.jpg", title: "Auditório em Diálogo",      category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-3.jpg", title: "Keynotes",                  category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-4.jpg", title: "Networking",                category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-5.jpg", title: "Lideranças Presentes",      category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-6.jpg", title: "Momentos do Evento",        category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-7.jpg", title: "Impacto e Conexões",        category: "Edições Anteriores" },
+  { src: "/img/galeria-de-momentos/event-gallery-8.jpg", title: "A Força do Coletivo",       category: "Edições Anteriores" },
 ];
 
 export function Gallery() {
