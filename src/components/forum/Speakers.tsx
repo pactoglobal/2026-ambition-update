@@ -60,6 +60,12 @@ const speakers = [
     tag: "Painel",
     photoKey: "camila",
   },
+  {
+    name: "Alexandre Coimbra",
+    role: "Consultor de Saúde Mental, Escritor e Colunista do Valor Econômico e TV Globo",
+    tag: "Palestrante",
+    photoKey: "alexandre_coimbra",
+  },
 ];
 
 const historicalSpeakers = [
