@@ -144,7 +144,7 @@ const SESSIONS: Session[] = [
       "Lições aprendidas e replicabilidade do modelo",
     ],
     speakers: [
-      { name: "Adriana Albanese", role: "Diretora de Sustentabilidade, Aegea" },
+      { name: "Adriana Albanese", role: "Diretora de Relações com Investidores e Sustentabilidade, Aegea" },
     ],
   },
   {
