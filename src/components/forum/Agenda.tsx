@@ -461,7 +461,7 @@ export function Agenda() {
     <section id="agenda" className="forum-surface relative overflow-hidden py-24">
       <KineticBackdrop image="lineField" intensity="soft" />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="mb-14">
           <SectionHeader
             eyebrow="02 de Junho de 2026 · MASP · São Paulo"

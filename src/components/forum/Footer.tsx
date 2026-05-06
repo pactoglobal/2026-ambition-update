@@ -41,7 +41,7 @@ export function Footer() {
         className="pointer-events-none absolute left-1/2 top-0 w-[1300px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-[0.16]"
       />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-center gap-6">
           <img
             src={identityAssets.logo}

@@ -42,7 +42,7 @@ export function SectionHeader({
       <span className="mb-3 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-cyan">
         {eyebrow}
       </span>
-      <h2 className="text-5xl font-display font-black uppercase leading-[0.92] tracking-tight text-white md:text-6xl lg:text-7xl">
+      <h2 className="text-4xl font-display font-black uppercase leading-[0.92] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
         {title}
         {outline ? (
           <>

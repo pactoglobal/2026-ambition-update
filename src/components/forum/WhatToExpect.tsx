@@ -70,7 +70,7 @@ export function WhatToExpect() {
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 gap-6 md:auto-rows-[230px] md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:auto-rows-[230px] md:grid-cols-3">
           {BENTO_ITEMS.map((item, index) => (
             <motion.div
               key={item.title}

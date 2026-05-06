@@ -40,7 +40,7 @@ export function Faq() {
     <section id="faq" className="forum-surface relative overflow-hidden py-24">
       <KineticBackdrop image="waves" />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-32">
           <AnimatedSection className="lg:w-1/3">
             <SectionHeader

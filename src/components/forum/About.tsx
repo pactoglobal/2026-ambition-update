@@ -18,7 +18,7 @@ export function About() {
     <section id="sobre" className="forum-surface relative overflow-hidden py-24 lg:py-32">
       <KineticBackdrop image="deepField" intensity="soft" />
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <AnimatedSection>
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
             <div className="forum-card rounded-2xl p-7 sm:p-9 lg:p-12">

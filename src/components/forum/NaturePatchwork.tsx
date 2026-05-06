@@ -7,7 +7,7 @@ const panels = [
 export function NaturePatchwork() {
   return (
     <section className="bg-forum-deep" aria-label="Galeria do Fórum Ambição 2030">
-      <div className="grid grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-4">
         {panels.map((panel) => (
           <div
             key={panel.label}

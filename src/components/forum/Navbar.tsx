@@ -67,7 +67,7 @@ export function Navbar() {
               : "bg-transparent py-5"
           }`}
         >
-          <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 lg:px-12">
+          <div className="mx-auto flex max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-12">
             <button
               type="button"
               aria-label="Voltar ao topo"

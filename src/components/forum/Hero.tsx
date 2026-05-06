@@ -51,11 +51,13 @@ export function Hero() {
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.22),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.92)_4%,rgba(7,25,44,0.78)_42%,rgba(7,26,45,0.58)_72%,rgba(7,26,45,0.72)_100%)]" />
-      <img
-        src={identityAssets.waves}
-        alt=""
-        className="pointer-events-none absolute left-1/2 top-[45%] z-[2] w-[1900px] max-w-none -translate-x-1/2 opacity-[0.5] mix-blend-screen sm:top-[46%] lg:top-[47%] lg:w-[2200px]"
-      />
+      <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
+        <img
+          src={identityAssets.waves}
+          alt=""
+          className="absolute left-1/2 top-[45%] w-[1900px] max-w-none -translate-x-1/2 opacity-[0.5] mix-blend-screen sm:top-[46%] lg:top-[47%] lg:w-[2200px]"
+        />
+      </div>
       <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-forum-deep to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-screen-xl flex-col justify-center px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:px-12">

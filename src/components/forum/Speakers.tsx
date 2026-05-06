@@ -93,7 +93,7 @@ function SpeakerCarousel({
 
   return (
     <div className="relative">
-      <div className="mb-4 flex justify-end gap-3 px-6 lg:px-12">
+      <div className="mb-4 flex justify-end gap-3 px-4 sm:px-6 lg:px-12">
         <button
           type="button"
           aria-label={`${ariaLabel} anterior`}
@@ -112,7 +112,7 @@ function SpeakerCarousel({
         </button>
       </div>
 
-      <div ref={emblaRef} className="overflow-hidden px-6 lg:px-12">
+      <div ref={emblaRef} className="overflow-hidden px-4 sm:px-6 lg:px-12">
         <div className="flex gap-4">
           {list.map((speaker, index) => {
             const photo = photoByKey(photoSource, speaker.photoKey ?? "");
@@ -191,7 +191,7 @@ export function Speakers() {
       <KineticBackdrop image="deepField" />
 
       <div className="relative z-10">
-        <div className="mx-auto mb-12 max-w-screen-xl px-6 lg:px-12">
+        <div className="mx-auto mb-12 max-w-screen-xl px-4 sm:px-6 lg:px-12">
           <AnimatedSection>
             <SectionHeader
               eyebrow="Keynotes & Painelistas"
@@ -209,7 +209,7 @@ export function Speakers() {
           ariaLabel="speaker"
         />
 
-        <div className="mx-auto mt-24 max-w-screen-xl px-6 lg:px-12">
+        <div className="mx-auto mt-24 max-w-screen-xl px-4 sm:px-6 lg:px-12">
           <div className="mb-10 border-t border-white/12 pt-16">
             <AnimatedSection>
               <SectionHeader

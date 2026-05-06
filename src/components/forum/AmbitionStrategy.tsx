@@ -36,7 +36,7 @@ export function AmbitionStrategy() {
       <img
         src={identityAssets.lineField}
         alt=""
-        className="pointer-events-none absolute -right-64 top-16 w-[980px] max-w-none opacity-[0.12]"
+        className="pointer-events-none absolute -right-64 top-16 w-[980px] max-w-[200%] opacity-[0.12]"
       />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">

@@ -37,7 +37,7 @@ export function Venue() {
             <img
               src={identityAssets.waves}
               alt=""
-              className="pointer-events-none absolute -right-44 top-8 w-[820px] max-w-none opacity-[0.18]"
+              className="pointer-events-none absolute -right-44 top-8 w-[820px] max-w-[200%] opacity-[0.18]"
             />
             <div className="relative z-10 mb-8 flex items-start justify-between gap-4">
               <h3 className="text-5xl font-display font-black uppercase tracking-tight text-white">
@@ -58,17 +58,14 @@ export function Venue() {
             </p>
 
             <div className="relative z-10 flex flex-col gap-4">
-              {[
-                { label: "Endereço", text: "Avenida Paulista, 1578 - Bela Vista, São Paulo - SP" },
-                { label: "Informações", text: "+55 (11) 3149-5959" },
-              ].map(({ label, text }) => (
-                <div key={label} className="rounded-xl border border-white/10 bg-white/6 p-5">
-                  <p className="text-[9px] font-black uppercase tracking-widest text-forum-cyan">
-                    {label}
-                  </p>
-                  <p className="mt-2 text-sm font-bold text-white/90">{text}</p>
-                </div>
-              ))}
+              <div className="rounded-xl border border-white/10 bg-white/6 p-5">
+                <p className="text-[9px] font-black uppercase tracking-widest text-forum-cyan">
+                  Endereço
+                </p>
+                <p className="mt-2 text-sm font-bold text-white/90">
+                  Avenida Paulista, 1578 - Bela Vista, São Paulo - SP
+                </p>
+              </div>
             </div>
           </div>
         </div>
