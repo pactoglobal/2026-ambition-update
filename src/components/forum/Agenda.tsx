@@ -263,7 +263,7 @@ const SESSIONS: Session[] = [
       { name: "Gilson Rodrigues", role: "Fundador, G10 Favelas", note: "TBC" },
       { name: "Nina da Hora", role: "Pesquisadora e Ativista em Tecnologia", note: "TBC" },
     ],
-    moderator: { name: "Ana Bavon", role: "CEO e Head de Estratégia, Ana Bavon Strategic Consulting" },
+    moderator: { name: "Ana Bavon", role: "CEO e Head de Estratégia da Ana Bavon Strategic Consulting" },
   },
   {
     time: "18h00",
@@ -300,11 +300,11 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
   const config = TYPE_CONFIG[session.type];
   const Icon = config.icon;
-  // Only show confirmed speakers (no TBC note) publicly
   const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
   const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
   const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator);
   const isInterval = session.type === "intervalo" || session.type === "encerramento";
+  const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
 
   return (
     <motion.article
@@ -324,10 +324,9 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
             : "border-white/8 bg-white/[0.03] hover:border-white/14 hover:bg-white/[0.05]"
         } ${hasDetails ? "cursor-pointer" : "cursor-default"}`}
       >
-        {/* Left accent bar */}
         <div className={`absolute inset-y-0 left-0 w-[3px] ${config.accent} opacity-70 transition-opacity ${open ? "opacity-100" : "group-hover:opacity-90"}`} />
 
-        <div className="flex items-start gap-0 pl-5 pr-5 py-5 md:pl-7 md:pr-7 md:py-6">
+        <div className="flex items-start gap-0 py-5 pl-5 pr-5 md:py-6 md:pl-7 md:pr-7">
           {/* Time column */}
           <div className="mr-5 shrink-0 md:mr-7">
             <time className="block font-display text-2xl font-black leading-none tracking-tight text-white/50 transition-colors group-hover:text-white/75 md:text-3xl">
@@ -343,32 +342,35 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
           {/* Main content */}
           <div className="flex flex-1 items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
-              {/* Badge */}
               <span className={`mb-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.24em] ${config.badge}`}>
                 <Icon aria-hidden="true" size={9} strokeWidth={2.5} />
                 {config.label}
               </span>
-
-              {/* Title */}
               <h3 className="text-base font-display font-black uppercase leading-tight tracking-tight text-white md:text-lg">
                 {session.title}
               </h3>
-
-              {/* Theme */}
               {session.theme && (
-                <p className="mt-1.5 text-sm font-medium italic text-white/65 leading-snug">
+                <p className="mt-1.5 text-sm font-medium italic leading-snug text-white/65">
                   {session.theme}
                 </p>
               )}
-
-              {/* Speakers preview (collapsed) */}
-              {!isInterval && confirmedSpeakers.length > 0 && !open && (
-                <p className="mt-3 text-[11px] text-white/48 line-clamp-1 tracking-wide">
-                  {confirmedSpeakers.map((s) => s.name).join("  ·  ")}
-                </p>
+              {/* Collapsed preview: speakers + moderator */}
+              {!isInterval && !open && (confirmedSpeakers.length > 0 || confirmedModerator) && (
+                <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  {confirmedSpeakers.length > 0 && (
+                    <p className="text-[11px] tracking-wide text-white/48 line-clamp-1">
+                      {confirmedSpeakers.map((s) => s.name).join("  ·  ")}
+                    </p>
+                  )}
+                  {confirmedModerator && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-forum-cyan/20 bg-forum-cyan/8 px-2.5 py-0.5 text-[10px] font-bold text-forum-cyan/80">
+                      <Mic aria-hidden="true" size={8} strokeWidth={2.5} />
+                      {confirmedModerator.name}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
-
             {hasDetails && (
               <ChevronDown
                 aria-hidden="true"
@@ -391,26 +393,23 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="border-x border-b border-white/12 rounded-b-xl bg-white/[0.05] px-5 pb-6 pt-5 md:px-7 md:pb-8">
-              {/* Divider */}
+            <div className="rounded-b-xl border-x border-b border-white/12 bg-white/[0.05] px-5 pb-7 pt-5 md:px-7 md:pb-8">
               <div className="mb-5 h-px w-full bg-white/10" />
 
-              {/* Description */}
               {session.desc && (
-                <p className="mb-5 text-sm leading-relaxed text-white/82 md:text-[0.94rem]">
+                <p className="mb-5 text-sm leading-relaxed text-white/80 md:text-[0.94rem]">
                   {session.desc}
                 </p>
               )}
 
-              {/* Key topics */}
               {session.points && session.points.length > 0 && (
                 <div className="mb-6">
-                  <p className={`mb-3 text-[9px] font-black uppercase tracking-[0.32em] ${config.badge.split(" ")[0]}`}>
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.32em] text-white/40">
                     Tópicos em debate
                   </p>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {session.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-sm text-white/86 leading-snug">
+                      <li key={point} className="flex items-start gap-3 text-sm leading-snug text-white/82">
                         <span className={`mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
                         {point}
                       </li>
@@ -421,24 +420,22 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
 
               {/* Speakers */}
               {confirmedSpeakers.length > 0 && (
-                <div className="mb-4">
-                  <p className={`mb-3 text-[9px] font-black uppercase tracking-[0.32em] ${config.badge.split(" ")[0]}`}>
-                    {session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas"}
+                <div className={confirmedModerator ? "mb-3" : ""}>
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.32em] text-white/40">
+                    {speakerLabel}
                   </p>
-                  <ul className={`grid gap-2 ${confirmedSpeakers.length > 3 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-lg"}`}>
-                    {confirmedSpeakers.map((s) => (
+                  <ul className={`grid gap-2 ${confirmedSpeakers.length > 2 ? "sm:grid-cols-2" : ""}`}>
+                    {confirmedSpeakers.map((s, i) => (
                       <li
                         key={s.name}
-                        className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"
+                        className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3"
                       >
-                        <div className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[9px] font-black text-white/50">
+                          {i + 1}
+                        </span>
                         <div className="min-w-0">
-                          <span className="text-[13px] font-bold text-white leading-snug">
-                            {s.name}
-                          </span>
-                          <span className="mt-0.5 block text-[12px] leading-snug text-white/65">
-                            {s.role}
-                          </span>
+                          <p className="text-[13px] font-bold leading-snug text-white">{s.name}</p>
+                          <p className="mt-0.5 text-[11px] leading-snug text-white/58">{s.role}</p>
                         </div>
                       </li>
                     ))}
@@ -446,18 +443,18 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
                 </div>
               )}
 
-              {/* Moderator */}
+              {/* Moderator — visually distinct */}
               {confirmedModerator && (
-                <div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
-                  <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
+                <div className="mt-3 flex items-center gap-4 rounded-xl border border-forum-cyan/25 bg-forum-cyan/[0.07] px-5 py-4">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-forum-cyan/30 bg-forum-cyan/12">
+                    <Mic aria-hidden="true" size={14} className="text-forum-cyan" strokeWidth={2} />
+                  </div>
                   <div className="min-w-0">
-                    <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.28em] text-white/50">
+                    <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.32em] text-forum-cyan/80">
                       Moderação
                     </p>
-                    <span className="text-[13px] font-bold text-white">
-                      {confirmedModerator.name}
-                    </span>
-                    <span className="mt-0.5 block text-[12px] text-white/65">{confirmedModerator.role}</span>
+                    <p className="text-[13px] font-bold leading-snug text-white">{confirmedModerator.name}</p>
+                    <p className="mt-0.5 text-[11px] leading-snug text-white/65">{confirmedModerator.role}</p>
                   </div>
                 </div>
               )}
