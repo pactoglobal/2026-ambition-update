@@ -10,7 +10,7 @@ const partners = [
     className: "h-24",
   },
   { label: "Patrocinador Master", logo: identityAssets.aegea, alt: "Aegea", className: "h-16" },
-  { label: "Apoio", logo: identityAssets.aya, alt: "Aya Earth Partners", className: "h-16" },
+  // { label: "Apoio", logo: identityAssets.aya, alt: "Aya Earth Partners", className: "h-16" },
 ];
 
 export function Sponsors() {
