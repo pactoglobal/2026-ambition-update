@@ -48,12 +48,12 @@ function Index() {
         {/* ATO 1 — A PROMESSA */}
         <Hero />
         <About />
+        <Speakers />
+        <Agenda />
         <WhatToExpect />
         <Stats />
 
         {/* ATO 2 — O CONTEÚDO */}
-        <Speakers />
-        <Agenda />
         <Venue />
 
         {/* ATO 3 — A CREDIBILIDADE */}
