@@ -6,7 +6,7 @@ import { accentLines } from "./identity-assets";
 
 // Auto-loads any photo dropped into assets/img/liderancas/confirmados-2026/
 const confirmedPhotos = import.meta.glob(
-  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
