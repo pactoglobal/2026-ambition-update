@@ -83,6 +83,7 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
+      { name: "Rafaela Guedes", role: "CEBRI" },
       { name: "Marian Schuegraf", role: "Chefe da Delegação da União Europeia no Brasil", note: "TBC" },
       { name: "Carlos Carboni", role: "Diretor de Cooperação, Itaipu Binacional", note: "TBC" },
       { name: "Manuel Reyes-Retana", role: "Diretor IFC Brasil", note: "TBC" },
@@ -123,11 +124,11 @@ const SESSIONS: Session[] = [
       "Casos de fornecedores de alto risco transformados",
     ],
     speakers: [
+      { name: "Malu Pinto", role: "Vice-Presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca, Suzano" },
       { name: "Ricardo Wagner", role: "Diretor de Compliance, Petrobras", note: "TBC" },
       { name: "Irina Bacci", role: "PADF", note: "TBC" },
       { name: "Waleria Sampaio", role: "Gerente Executiva de Estratégia e Governança de Sustentabilidade", note: "TBC" },
       { name: "Vinicius Pinheiro", role: "OIT – Organização Internacional do Trabalho", note: "TBC" },
-      { name: "Maria Luiza de Oliveira Pinto", role: "Vice-Presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca, Suzano" },
     ],
     moderator: { name: "Caco Barcelos", role: "Jornalista", note: "TBC" },
   },
@@ -144,7 +145,7 @@ const SESSIONS: Session[] = [
       "Lições aprendidas e replicabilidade do modelo",
     ],
     speakers: [
-      { name: "Adriana Albanese", role: "Diretora de Relações com Investidores e Sustentabilidade, Aegea" },
+      { name: "Adriana Albanese", role: "Diretora de Sustentabilidade, Aegea" },
     ],
   },
   {
@@ -240,14 +241,13 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
+      { name: "Vivian Broge", role: "TOTVS" },
       { name: "Claudia Romano", role: "VP, Yduqs", note: "TBC" },
-      { name: "Vivian Broge", role: "Vice-Presidente de RH e Marketing, TOTVS" },
-      { name: "Naiá Tupinambá", role: "Liderança Indígena", note: "TBC" },
-      { name: "Daniel Duque", role: "Pesquisador, FGV" },
-      { name: "Grazi Mendes", role: "Head de Diversidade, Equidade e Inclusão para as Américas, ThoughtWorks" },
+      { name: "Daniel Duque", role: "Pesquisador, FGV", note: "TBC" },
+      { name: "Gilson Rodrigues", role: "Fundador, G10 Favelas", note: "TBC" },
       { name: "Nina da Hora", role: "Pesquisadora e Ativista em Tecnologia", note: "TBC" },
     ],
-    moderator: { name: "Vinicius Pinheiro", role: "OIT – Organização Internacional do Trabalho" },
+    moderator: { name: "Ana Bavon", role: "CEO e Head de Estratégia, Ana Bavon Strategic Consulting" },
   },
   {
     time: "18h00",
@@ -276,7 +276,10 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
   const config = TYPE_CONFIG[session.type];
   const Icon = config.icon;
-  const hasDetails = !!(session.desc || session.points?.length || session.speakers?.length || session.moderator);
+  // Only show confirmed speakers (no TBC note) publicly
+  const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
+  const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
+  const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator);
   const isInterval = session.type === "intervalo" || session.type === "encerramento";
 
   return (
@@ -335,9 +338,9 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
               )}
 
               {/* Speakers preview (collapsed) */}
-              {!isInterval && session.speakers && !open && (
+              {!isInterval && confirmedSpeakers.length > 0 && !open && (
                 <p className="mt-3 text-[11px] text-white/48 line-clamp-1 tracking-wide">
-                  {session.speakers.map((s) => s.name).join("  ·  ")}
+                  {confirmedSpeakers.map((s) => s.name).join("  ·  ")}
                 </p>
               )}
             </div>
@@ -393,29 +396,22 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
               )}
 
               {/* Speakers */}
-              {session.speakers && session.speakers.length > 0 && (
+              {confirmedSpeakers.length > 0 && (
                 <div className="mb-4">
                   <p className={`mb-3 text-[9px] font-black uppercase tracking-[0.32em] ${config.badge.split(" ")[0]}`}>
                     {session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas"}
                   </p>
-                  <ul className={`grid gap-2 ${session.speakers.length > 3 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-lg"}`}>
-                    {session.speakers.map((s) => (
+                  <ul className={`grid gap-2 ${confirmedSpeakers.length > 3 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-lg"}`}>
+                    {confirmedSpeakers.map((s) => (
                       <li
                         key={s.name}
                         className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"
                       >
                         <div className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
                         <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-[13px] font-bold text-white leading-snug">
-                              {s.name}
-                            </span>
-                            {s.note && (
-                              <span className={`rounded border px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider ${config.badge.split(" ")[0]} border-current opacity-60`}>
-                                {s.note}
-                              </span>
-                            )}
-                          </div>
+                          <span className="text-[13px] font-bold text-white leading-snug">
+                            {s.name}
+                          </span>
                           <span className="mt-0.5 block text-[12px] leading-snug text-white/65">
                             {s.role}
                           </span>
@@ -427,24 +423,17 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
               )}
 
               {/* Moderator */}
-              {session.moderator && (
+              {confirmedModerator && (
                 <div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
                   <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
                   <div className="min-w-0">
                     <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.28em] text-white/50">
                       Moderação
                     </p>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[13px] font-bold text-white">
-                        {session.moderator.name}
-                      </span>
-                      {session.moderator.note && (
-                        <span className="rounded border border-white/20 px-1.5 py-0.5 text-[8px] font-black uppercase tracking-wider text-white/50">
-                          {session.moderator.note}
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-[12px] text-white/65">{session.moderator.role}</span>
+                    <span className="text-[13px] font-bold text-white">
+                      {confirmedModerator.name}
+                    </span>
+                    <span className="mt-0.5 block text-[12px] text-white/65">{confirmedModerator.role}</span>
                   </div>
                 </div>
               )}
