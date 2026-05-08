@@ -10,6 +10,7 @@ import { Agenda } from "@/components/forum/Agenda";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { Audience } from "@/components/forum/Audience";
 import { Sponsors } from "@/components/forum/Sponsors";
+import { Waitlist } from "@/components/forum/Waitlist";
 import { Contact } from "@/components/forum/Contact";
 import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
 import { Footer } from "@/components/forum/Footer";
@@ -58,6 +59,7 @@ function Index() {
         <Venue />
         <Faq />
         <Sponsors />
+        <Waitlist />
         <Contact />
         <PactoGlobalInfo />
         <Footer />
