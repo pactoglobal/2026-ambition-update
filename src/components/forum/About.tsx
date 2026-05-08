@@ -37,17 +37,23 @@ export function About() {
                   posicionamento estratégico.
                 </p>
                 <p>
-                  Em 2026, o Fórum Ambição 2030 chega à sua 4ª edição consolidado como o principal
-                  encontro de sustentabilidade corporativa do Brasil. Estruturado a partir dos 10
-                  Movimentos do Pacto Global da ONU - Rede Brasil, que traduzem os ODS em
-                  compromissos concretos para o setor privado, o evento reúne centenas de altas
-                  lideranças para ir além do diagnóstico: trocar boas práticas, firmar parcerias e
-                  transformar intenção em ação.
+                  O Fórum Ambição 2030 é o maior evento sobre sustentabilidade corporativa do
+                  Brasil, promovido pelo Pacto Global da ONU – Rede Brasil. Em sua quarta edição,
+                  reunirá centenas de altas lideranças empresariais, da sociedade civil e do poder
+                  público para promover diálogos estratégicos e cocriar soluções concretas rumo aos
+                  Objetivos de Desenvolvimento Sustentável (ODS).
+                </p>
+                <p>
+                  Após anos de compromissos e declarações públicas, o desafio agora está na
+                  transformação concreta dos modelos de negócio, cadeias produtivas, investimentos
+                  e práticas de governança. O evento propõe uma reflexão sobre como o setor
+                  empresarial brasileiro está incorporando a sustentabilidade como elemento central
+                  da estratégia corporativa — impulsionando competitividade e geração de valor para
+                  a sociedade.
                 </p>
                 <p className="font-bold text-white/88">
-                  Em um momento em que o mundo cobra das empresas não apenas discurso, mas
-                  evidências de impacto, o Fórum posiciona as organizações comprometidas como
-                  protagonistas da transição para uma economia mais sustentável.
+                  Em um momento decisivo para a Agenda 2030, o Fórum posiciona as organizações
+                  comprometidas como protagonistas da Década da Implementação.
                 </p>
               </div>
             </div>

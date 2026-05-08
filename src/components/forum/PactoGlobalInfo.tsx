@@ -5,13 +5,13 @@ import { identityAssets } from "./identity-assets";
 const highlights = [
   {
     icon: Globe2,
-    title: "Maior iniciativa de sustentabilidade corporativa",
-    text: "O Pacto Global da ONU mobiliza empresas para alinhar estratégia e operações a princípios universais.",
+    title: "Maior iniciativa de sustentabilidade corporativa do mundo",
+    text: "Mais de 20 mil participantes em 62 redes cobrindo 77 países, comprometidos com os 10 Princípios universais da ONU.",
   },
   {
     icon: Building2,
-    title: "Rede Brasil entre as maiores do mundo",
-    text: "A Rede Brasil conecta empresas de todos os setores com foco em implementação e impacto mensurável.",
+    title: "2ª maior rede local do mundo",
+    text: "Criada em 2003, a Rede Brasil conta com mais de 2.000 participantes e conecta empresas de todos os setores em torno de metas concretas.",
   },
   {
     icon: Scale,
