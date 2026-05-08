@@ -83,6 +83,7 @@ const speakers = [
     role: "Atriz e Embaixadora da ONU Mulheres",
     tag: "Painel",
     photoKey: "camila",
+    note: "TBC",
   },
 ];
 

@@ -66,7 +66,7 @@ const SESSIONS: Session[] = [
       "Oportunidades para o Brasil na nova economia",
     ],
     speakers: [
-      { name: "Avanish Sahai", role: "Keynote Speaker" },
+      { name: "Avanish Sahai", role: "Keynote Speaker", note: "TBC" },
     ],
   },
   {
@@ -168,7 +168,7 @@ const SESSIONS: Session[] = [
       "Representatividade e visibilidade como alavancas de mudança",
     ],
     speakers: [
-      { name: "Camila Pitanga", role: "Atriz e Embaixadora da ONU Mulheres" },
+      { name: "Camila Pitanga", role: "Atriz e Embaixadora da ONU Mulheres", note: "TBC" },
       { name: "Fernanda Torres", role: "Atriz", note: "TBC" },
       { name: "Maria Prata", role: "Escritora e Roteirista", note: "TBC" },
     ],
