@@ -9,55 +9,43 @@ const BENTO_ITEMS = [
     title: "Posicionamento Estratégico",
     desc: "Sua organização conectada à agenda que influencia o futuro da sustentabilidade empresarial no Brasil.",
     icon: LineChart,
-    // ODS 8 — Trabalho Decente e Crescimento Econômico (vermelho-laranja)
     bg: "#A21942",
     span: "md:col-span-2",
-    ods: "ODS 8",
   },
   {
     title: "Boas Práticas",
     desc: "Trocas reais entre lideranças que já estão transformando metas em implementação.",
     icon: BadgeCheck,
-    // ODS 13 — Ação Contra a Mudança Global do Clima (verde-escuro)
     bg: "#3F7E44",
     span: "",
-    ods: "ODS 13",
   },
   {
     title: "Parcerias",
     desc: "Conexões com organizações comprometidas, especialistas e atores institucionais.",
     icon: Handshake,
-    // ODS 17 — Parcerias e Meios de Implementação (azul-marinho)
     bg: "#19486A",
     span: "",
-    ods: "ODS 17",
   },
   {
     title: "Evidências de Impacto",
     desc: "Discussões orientadas por dados, compromissos públicos e resultados mensuráveis.",
     icon: ShieldCheck,
-    // ODS 16 — Paz, Justiça e Instituições Eficazes (azul-petróleo)
     bg: "#00689D",
     span: "",
-    ods: "ODS 16",
   },
   {
     title: "Networking Qualificado",
     desc: "Ambiente exclusivo para lideranças, gestores e áreas estratégicas.",
     icon: Network,
-    // ODS 9 — Indústria, Inovação e Infraestrutura (laranja)
     bg: "#FD6925",
     span: "",
-    ods: "ODS 9",
   },
   {
     title: "Protagonismo Empresarial",
     desc: "Participação ativa na construção da Década da Implementação ao lado das maiores lideranças do Brasil.",
     icon: Users,
-    // ODS 12 — Consumo e Produção Responsáveis (amarelo-torrado)
     bg: "#BF8B2E",
     span: "md:col-span-2",
-    ods: "ODS 12",
   },
 ];
 
@@ -96,14 +84,9 @@ export function WhatToExpect() {
               <div className="pointer-events-none absolute -left-8 -top-8 h-48 w-48 rounded-full bg-white/15 blur-2xl" />
 
               <div className="relative z-10 flex h-full flex-col justify-between">
-                {/* Top: ODS badge + icon */}
-                <div className="flex items-start justify-between">
-                  <div className="rounded-xl bg-white/15 p-3 backdrop-blur-sm">
-                    <item.icon aria-hidden="true" size={26} strokeWidth={1.8} className="text-white" />
-                  </div>
-                  <span className="rounded-full bg-white/20 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.28em] text-white/90">
-                    {item.ods}
-                  </span>
+                {/* Top: icon */}
+                <div className="rounded-xl bg-white/15 p-3 backdrop-blur-sm w-fit">
+                  <item.icon aria-hidden="true" size={26} strokeWidth={1.8} className="text-white" />
                 </div>
 
                 {/* Bottom: title + desc */}
