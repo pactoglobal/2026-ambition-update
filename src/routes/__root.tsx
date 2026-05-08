@@ -49,6 +49,8 @@ export const Route = createRootRoute({
       { name: "twitter:site", content: "@PactoGlobalBR" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
