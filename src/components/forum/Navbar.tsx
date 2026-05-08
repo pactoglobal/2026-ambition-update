@@ -8,12 +8,13 @@ import { identityAssets } from "./identity-assets";
 
 const NAV_LINKS = [
   { label: "O Evento", href: "#sobre" },
-  { label: "Ambição 2030", href: "#ambicao-2030" },
-  { label: "Agenda", href: "#agenda" },
   { label: "Speakers", href: "#speakers" },
+  { label: "Agenda", href: "#agenda" },
   { label: "Local", href: "#local" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Edições Anteriores", href: "#galeria" },
+  { label: "Ambição 2030", href: "#ambicao-2030" },
   { label: "Parceiros", href: "#sponsors" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -114,7 +115,7 @@ export function Navbar() {
               <motion.button
                 type="button"
                 aria-label="Participar do evento"
-                onClick={() => scrollTo("#contato")}
+                onClick={() => scrollTo("#lista-de-espera")}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.98 }}
                 className="hidden rounded-full border border-forum-cyan/50 bg-forum-cyan/10 px-6 py-2.5 text-[10px] font-sans font-black uppercase tracking-widest text-forum-cyan backdrop-blur-sm transition-colors duration-200 hover:bg-forum-cyan hover:text-forum-deep sm:block"
@@ -191,7 +192,7 @@ export function Navbar() {
                       <button
                         type="button"
                         aria-label="Participar do evento"
-                        onClick={() => scrollTo("#contato")}
+                        onClick={() => scrollTo("#lista-de-espera")}
                         className="w-full rounded-full bg-forum-cyan py-4 text-xs font-sans font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
                       >
                         Participar Agora
