@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
 
+const MASP_PHOTOS = [
+  { src: "/img/local-masp/masp-exterior.webp", alt: "MASP - fachada na Avenida Paulista ao entardecer" },
+  { src: "/img/local-masp/masp-cafe.png", alt: "MASP Café - área de networking preparada para evento" },
+  { src: "/img/local-masp/masp-auditorio-palco.png", alt: "MASP - auditório visto do palco" },
+  { src: "/img/local-masp/masp-auditorio-plateia.png", alt: "MASP - auditório visto da plateia" },
+];
+
 export function Venue() {
   return (
     <section id="local" className="forum-surface relative overflow-hidden py-24">
@@ -71,15 +78,15 @@ export function Venue() {
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {[1, 2, 3, 4].map((i) => (
+          {MASP_PHOTOS.map(({ src, alt }) => (
             <motion.div
-              key={i}
+              key={src}
               whileHover={{ y: -4 }}
               className="group h-36 overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:h-44"
             >
               <img
-                src={`/img/local-masp/venue-gallery-${i}.jpg`}
-                alt={`MASP - vista ${i}`}
+                src={src}
+                alt={alt}
                 width={360}
                 height={240}
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
