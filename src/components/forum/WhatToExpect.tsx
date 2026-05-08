@@ -3,54 +3,61 @@ import { BadgeCheck, Handshake, LineChart, Network, ShieldCheck, Users } from "l
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 
+// ODS official colors
 const BENTO_ITEMS = [
   {
     title: "Posicionamento Estratégico",
     desc: "Sua organização conectada à agenda que influencia o futuro da sustentabilidade empresarial no Brasil.",
     icon: LineChart,
-    className: "md:col-span-2 border-forum-cyan/30 bg-forum-cyan/10",
-    color: "text-forum-cyan",
-    bg: "/img/galeria-de-momentos/event-gallery-2.jpg",
+    // ODS 8 — Trabalho Decente e Crescimento Econômico (vermelho-laranja)
+    bg: "#A21942",
+    span: "md:col-span-2",
+    ods: "ODS 8",
   },
   {
     title: "Boas Práticas",
     desc: "Trocas reais entre lideranças que já estão transformando metas em implementação.",
     icon: BadgeCheck,
-    className: "border-forum-green/22 bg-forum-green/8",
-    color: "text-forum-green",
-    bg: "/identity/ods/ods-08.jpg",
+    // ODS 13 — Ação Contra a Mudança Global do Clima (verde-escuro)
+    bg: "#3F7E44",
+    span: "",
+    ods: "ODS 13",
   },
   {
     title: "Parcerias",
     desc: "Conexões com organizações comprometidas, especialistas e atores institucionais.",
     icon: Handshake,
-    className: "border-forum-gold/22 bg-forum-gold/8",
-    color: "text-forum-gold",
-    bg: "/img/local-masp/venue-gallery-1.jpg",
+    // ODS 17 — Parcerias e Meios de Implementação (azul-marinho)
+    bg: "#19486A",
+    span: "",
+    ods: "ODS 17",
   },
   {
     title: "Evidências de Impacto",
     desc: "Discussões orientadas por dados, compromissos públicos e resultados mensuráveis.",
     icon: ShieldCheck,
-    className: "border-forum-magenta/24 bg-forum-magenta/8",
-    color: "text-forum-magenta",
-    bg: "/identity/ods/ods-16.jpg",
+    // ODS 16 — Paz, Justiça e Instituições Eficazes (azul-petróleo)
+    bg: "#00689D",
+    span: "",
+    ods: "ODS 16",
   },
   {
     title: "Networking Qualificado",
     desc: "Ambiente exclusivo para lideranças, gestores e áreas estratégicas.",
     icon: Network,
-    className: "border-forum-red/24 bg-forum-red/8",
-    color: "text-forum-red",
-    bg: "/img/galeria-de-momentos/event-gallery-6.jpg",
+    // ODS 9 — Indústria, Inovação e Infraestrutura (laranja)
+    bg: "#FD6925",
+    span: "",
+    ods: "ODS 9",
   },
   {
     title: "Protagonismo Empresarial",
-    desc: "Participação ativa na construção da Década da Implementação.",
+    desc: "Participação ativa na construção da Década da Implementação ao lado das maiores lideranças do Brasil.",
     icon: Users,
-    className: "md:col-span-2 border-forum-blue/24 bg-forum-blue/10",
-    color: "text-forum-cyan",
-    bg: "/identity/ods/ods-17.jpg",
+    // ODS 12 — Consumo e Produção Responsáveis (amarelo-torrado)
+    bg: "#BF8B2E",
+    span: "md:col-span-2",
+    ods: "ODS 12",
   },
 ];
 
@@ -70,34 +77,43 @@ export function WhatToExpect() {
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:auto-rows-[230px] md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[220px] md:grid-cols-3">
           {BENTO_ITEMS.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={false}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.06, duration: 0.45 }}
-              className={`forum-card group relative overflow-hidden rounded-xl border p-8 transition-colors duration-300 hover:border-white/32 ${item.className}`}
+              transition={{ delay: index * 0.07, duration: 0.45 }}
+              className={`group relative overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1 ${item.span}`}
+              style={{ backgroundColor: item.bg }}
             >
-              <img
-                src={item.bg}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover opacity-[0.18] transition-opacity duration-300 group-hover:opacity-[0.24]"
+              {/* Subtle inner grain for depth */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-[0.06]"
+                style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/80 via-forum-ink/58 to-forum-ink/30" />
+              {/* Radial light from top-left */}
+              <div className="pointer-events-none absolute -left-8 -top-8 h-48 w-48 rounded-full bg-white/15 blur-2xl" />
+
               <div className="relative z-10 flex h-full flex-col justify-between">
-                <div className={`mb-4 w-fit rounded-lg bg-white/8 p-3 ${item.color}`}>
-                  <item.icon aria-hidden="true" size={28} strokeWidth={1.5} />
+                {/* Top: ODS badge + icon */}
+                <div className="flex items-start justify-between">
+                  <div className="rounded-xl bg-white/15 p-3 backdrop-blur-sm">
+                    <item.icon aria-hidden="true" size={26} strokeWidth={1.8} className="text-white" />
+                  </div>
+                  <span className="rounded-full bg-white/20 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.28em] text-white/90">
+                    {item.ods}
+                  </span>
                 </div>
+
+                {/* Bottom: title + desc */}
                 <div>
-                  <h3 className="mb-2 text-xl font-display font-black uppercase tracking-tight text-white transition-colors group-hover:text-forum-cyan">
+                  <h3 className="mb-2 font-display text-xl font-black uppercase leading-tight tracking-tight text-white">
                     {item.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/62">{item.desc}</p>
+                  <p className="text-[13px] leading-relaxed text-white/80">{item.desc}</p>
                 </div>
               </div>
-              <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-forum-cyan via-forum-magenta to-forum-green opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </motion.div>
           ))}
         </div>
