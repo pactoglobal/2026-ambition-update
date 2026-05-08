@@ -45,23 +45,30 @@ function Index() {
     <>
       <Navbar />
       <main className="min-h-screen">
+        {/* ATO 1 — A PROMESSA */}
         <Hero />
         <About />
-        <AmbitionStrategy />
         <WhatToExpect />
         <Stats />
+
+        {/* ATO 2 — O CONTEÚDO */}
         <Speakers />
         <Agenda />
-        <CLevelExperience />
-        <NaturePatchwork />
-        <Audience />
-        <Gallery />
         <Venue />
-        <Faq />
+
+        {/* ATO 3 — A CREDIBILIDADE */}
+        <Gallery />
+        <CLevelExperience />
+        <AmbitionStrategy />
+        <NaturePatchwork />
+        <PactoGlobalInfo />
+        <Audience />
         <Sponsors />
+
+        {/* CONVERSÃO */}
+        <Faq />
         <Waitlist />
         <Contact />
-        <PactoGlobalInfo />
         <Footer />
       </main>
     </>
