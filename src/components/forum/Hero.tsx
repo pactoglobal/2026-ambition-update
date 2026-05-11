@@ -26,14 +26,7 @@ const HERO_PARTNERS = [
     height: 445,
     className: "h-10 sm:h-12",
   },
-  {
-    label: "Apoio",
-    src: identityAssets.aya,
-    alt: "Aya Earth Partners",
-    width: 600,
-    height: 200,
-    className: "h-10 sm:h-12",
-  },
+  // { label: "Apoio", src: identityAssets.aya, alt: "Aya Earth Partners", width: 600, height: 200, className: "h-10 sm:h-12" },
 ];
 
 export function Hero() {

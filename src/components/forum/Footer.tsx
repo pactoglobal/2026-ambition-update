@@ -67,12 +67,7 @@ export function Footer() {
               alt: "Aegea",
               className: "h-10",
             },
-            {
-              label: "Apoio",
-              src: identityAssets.aya,
-              alt: "Aya Earth Partners",
-              className: "h-10",
-            },
+            // { label: "Apoio", src: identityAssets.aya, alt: "Aya Earth Partners", className: "h-10" },
           ].map(({ label, src, alt, className }) => (
             <div key={label} className="flex flex-col items-center gap-4">
               <p className="text-[10px] font-black uppercase tracking-[0.36em] text-white/38">
