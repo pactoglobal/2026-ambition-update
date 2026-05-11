@@ -17,21 +17,11 @@ const faqs = [
   {
     question: "Quem pode participar?",
     answer:
-      "Líderes empresariais, representantes governamentais, especialistas do terceiro setor e investidores comprometidos com a agenda ESG e o desenvolvimento sustentável.",
-  },
-  {
-    question: "Como funciona o ingresso solidário?",
-    answer:
-      "Parte do valor dos ingressos é revertida para iniciativas de impacto local e projetos de aceleração dos ODS no Brasil, alinhados com a missão do UN Global Compact.",
+      "O evento é exclusivo para convidados — líderes empresariais, representantes governamentais e especialistas do terceiro setor comprometidos com a agenda ESG e o desenvolvimento sustentável.",
   },
   {
     question: "Onde será realizado o evento?",
     answer: "O Fórum será realizado presencialmente em São Paulo, no MASP, na Avenida Paulista.",
-  },
-  {
-    question: "O evento oferece certificado?",
-    answer:
-      "Sim, todos os participantes receberão um certificado oficial do Pacto Global da ONU - Rede Brasil ao final do evento.",
   },
 ];
 
