@@ -56,19 +56,19 @@ export function CLevelExperience() {
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-forum-cyan/10 blur-[80px]" />
             
             <h3 className="mb-8 font-display text-2xl font-black uppercase tracking-tight text-white">
-              Agenda Preliminar <span className="text-forum-cyan">· 02/06</span>
+              Agenda Preliminar <span className="text-forum-cyan">· 01/06</span>
             </h3>
 
             <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-white/10">
               <div className="relative pl-10">
                 <div className="absolute left-0 top-1.5 h-[22px] w-[22px] rounded-full border-4 border-forum-ink bg-forum-cyan" />
-                <time className="text-[10px] font-black uppercase tracking-widest text-forum-cyan">17h00 às 17h40</time>
+                <time className="text-[10px] font-black uppercase tracking-widest text-forum-cyan">18h30 às 19h10</time>
                 <p className="mt-1 font-display text-lg font-bold text-white uppercase">Keynote Speaker</p>
               </div>
               
               <div className="relative pl-10">
                 <div className="absolute left-0 top-1.5 h-[22px] w-[22px] rounded-full border-4 border-forum-ink bg-white/20" />
-                <time className="text-[10px] font-black uppercase tracking-widest text-white/42">17h40 às 19h00</time>
+                <time className="text-[10px] font-black uppercase tracking-widest text-white/42">19h10 às 20h00</time>
                 <p className="mt-1 font-display text-lg font-bold text-white uppercase">Coquetel de Relacionamento</p>
               </div>
             </div>
