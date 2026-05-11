@@ -45,55 +45,59 @@ function PhotoCarousel() {
 
   return (
     <div className="mt-6">
-      {/* label + arrows */}
-      <div className="mb-3 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <img
-            src={identityAssets.aya}
-            alt="Aya Earth Partners"
-            className="h-4 w-auto object-contain opacity-60"
-          />
-          <span className="text-[9px] font-black uppercase tracking-[0.28em] text-white/40">
-            Cidade Matarazzo · São Paulo
-          </span>
-        </div>
-        <div className="flex gap-1.5">
-          <button
-            type="button"
-            aria-label="Foto anterior"
-            onClick={() => emblaApi?.scrollPrev()}
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-white/14 bg-white/6 text-white/70 transition-colors hover:bg-forum-cyan hover:text-forum-deep"
-          >
-            <ChevronLeft aria-hidden="true" size={13} />
-          </button>
-          <button
-            type="button"
-            aria-label="Próxima foto"
-            onClick={() => emblaApi?.scrollNext()}
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-white/14 bg-white/6 text-white/70 transition-colors hover:bg-forum-cyan hover:text-forum-deep"
-          >
-            <ChevronRight aria-hidden="true" size={13} />
-          </button>
-        </div>
-      </div>
-
-      {/* carousel */}
-      <div ref={emblaRef} className="overflow-hidden rounded-xl">
-        <div className="flex gap-2">
+      {/* carousel with overlay controls */}
+      <div className="relative overflow-hidden rounded-2xl" ref={emblaRef}>
+        <div className="flex">
           {photos.map((src, i) => (
-            <div key={src} className="relative flex-[0_0_calc(50%-4px)]">
-              <img
-                src={src}
-                alt={`Aya Earth Hub · Foto ${i + 1}`}
-                width={600}
-                height={400}
-                loading="lazy"
-                className="aspect-[4/3] w-full rounded-xl object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-forum-ink/40 to-transparent" />
+            <div key={src} className="relative flex-[0_0_100%]">
+              <div className="flex gap-1.5">
+                {/* show this photo and the next one side by side */}
+                {[photos[i], photos[i + 1]].filter(Boolean).map((p, j) => (
+                  <img
+                    key={j}
+                    src={p}
+                    alt={`Aya Earth Hub · Foto ${i + j + 1}`}
+                    width={600}
+                    height={400}
+                    loading="lazy"
+                    className="aspect-[3/2] w-full flex-1 rounded-xl object-cover"
+                  />
+                ))}
+              </div>
+              {/* gradient overlay bottom */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-forum-ink/70 via-transparent to-transparent" />
+              {/* logo + location overlay */}
+              <div className="absolute bottom-4 left-4 flex items-center gap-2.5">
+                <img
+                  src={identityAssets.aya}
+                  alt="Aya Earth Partners"
+                  className="h-5 w-auto object-contain brightness-0 invert opacity-70"
+                />
+                <span className="text-[9px] font-bold uppercase tracking-[0.26em] text-white/55">
+                  Cidade Matarazzo · São Paulo
+                </span>
+              </div>
             </div>
-          ))}
+          )).filter((_, i) => i % 2 === 0)}
         </div>
+
+        {/* side arrows */}
+        <button
+          type="button"
+          aria-label="Foto anterior"
+          onClick={() => emblaApi?.scrollPrev()}
+          className="absolute left-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white/80 backdrop-blur-sm transition-all hover:border-forum-cyan/60 hover:bg-forum-ink/80 hover:text-forum-cyan"
+        >
+          <ChevronLeft aria-hidden="true" size={14} />
+        </button>
+        <button
+          type="button"
+          aria-label="Próxima foto"
+          onClick={() => emblaApi?.scrollNext()}
+          className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white/80 backdrop-blur-sm transition-all hover:border-forum-cyan/60 hover:bg-forum-ink/80 hover:text-forum-cyan"
+        >
+          <ChevronRight aria-hidden="true" size={14} />
+        </button>
       </div>
 
       {/* dots */}
