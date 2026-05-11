@@ -6,6 +6,19 @@ import {
 import { SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
 
+const artPhotos = import.meta.glob(
+  "../../../assets/img/liderancas/atracao-artistica/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
+  { eager: true, query: "?url", import: "default" }
+) as Record<string, string>;
+
+function photoByArtist(name: string): string | undefined {
+  const key = name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const entry = Object.entries(artPhotos).find(([path]) =>
+    path.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").includes(key)
+  );
+  return entry?.[1];
+}
+
 type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento";
 
 interface Speaker {
@@ -362,6 +375,86 @@ function ModeratorCard({ moderator }: { moderator: Speaker }) {
   );
 }
 
+function ArteFeatureRow({ session, index }: { session: Session; index: number }) {
+  const cfg = TYPE_CONFIG[session.type];
+  const artist = session.speakers?.[0];
+  const photo = artist ? photoByArtist(artist.name) : undefined;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-32px" }}
+      transition={{ delay: index * 0.02, duration: 0.38 }}
+      className={`relative border-l-[4px] ${cfg.borderColor} overflow-hidden`}
+    >
+      <div className="flex items-stretch bg-forum-navy/40">
+        {/* Time block */}
+        <div className="flex w-24 shrink-0 flex-col justify-center border-r border-white/8 px-4 py-5 md:w-28 md:px-5">
+          <time className="block font-display text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+            {session.time}
+          </time>
+          {session.duration && (
+            <span className="mt-1.5 block text-[9px] font-bold uppercase tracking-widest text-white/35">
+              {session.duration}
+            </span>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-1 items-center gap-5 px-5 py-5 md:px-7">
+          <div className="min-w-0 flex-1">
+            <span className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}>
+              <Music aria-hidden="true" size={8} strokeWidth={2.5} />
+              {cfg.label}
+            </span>
+            <h3 className="text-[15px] font-bold leading-snug tracking-tight text-white md:text-base">
+              {session.title}
+            </h3>
+            {session.theme && (
+              <p className="mt-1 text-[12px] leading-snug text-white/52 md:text-[13px]">{session.theme}</p>
+            )}
+            {artist && (
+              <div className="mt-3 flex items-center gap-3">
+                {photo && (
+                  <img
+                    src={photo}
+                    alt={artist.name}
+                    width={300}
+                    height={300}
+                    className="h-12 w-12 rounded-full border-2 border-forum-magenta/40 object-cover object-top"
+                  />
+                )}
+                <div>
+                  <p className={`text-[13px] font-black uppercase tracking-tight ${cfg.tagText}`}>
+                    {artist.name}
+                  </p>
+                  {artist.title && (
+                    <p className="text-[11px] text-white/55">{artist.title}</p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Large photo on desktop */}
+          {photo && (
+            <div className="hidden shrink-0 overflow-hidden rounded-xl md:block">
+              <img
+                src={photo}
+                alt={artist?.name ?? "Atração Artística"}
+                width={300}
+                height={300}
+                className="h-28 w-28 object-cover object-top lg:h-32 lg:w-32"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 function SessionRow({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
   const cfg = TYPE_CONFIG[session.type];
@@ -424,18 +517,20 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                 </p>
               )}
 
-              {/* Collapsed speaker preview */}
+              {/* Collapsed speaker preview — confirmed only, with title */}
               {!isBreak && !open && (confirmedSpeakers.length > 0 || confirmedModerator) && (
-                <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                  {confirmedSpeakers.length > 0 && (
-                    <p className="text-[11px] text-white/38 line-clamp-1">
-                      {confirmedSpeakers.map((s) => s.name).join(" · ")}
-                    </p>
-                  )}
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {confirmedSpeakers.map((s) => (
+                    <span key={s.name} className="inline-flex items-baseline gap-1.5 rounded-sm border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] leading-tight">
+                      <span className="font-bold text-white/75">{s.name}</span>
+                      {s.title && <span className="text-white/35">{s.title}{s.org ? ` · ${s.org}` : ""}</span>}
+                    </span>
+                  ))}
                   {confirmedModerator && (
-                    <span className="inline-flex items-center gap-1 rounded-sm border border-forum-cyan/20 bg-forum-cyan/8 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.2em] text-forum-cyan/75">
-                      <Mic aria-hidden="true" size={7} strokeWidth={2.5} />
-                      {confirmedModerator.name}
+                    <span className="inline-flex items-center gap-1.5 rounded-sm border border-forum-cyan/20 bg-forum-cyan/8 px-2.5 py-1 text-[10px] leading-tight">
+                      <Mic aria-hidden="true" size={8} strokeWidth={2.5} className="shrink-0 text-forum-cyan/70" />
+                      <span className="font-bold text-forum-cyan/80">{confirmedModerator.name}</span>
+                      {confirmedModerator.title && <span className="text-forum-cyan/45">{confirmedModerator.title}</span>}
                     </span>
                   )}
                 </div>
@@ -559,13 +654,21 @@ export function Agenda() {
         {/* Session list — sharp institutional rows */}
         <div className="overflow-hidden rounded-xl border border-white/10">
           <div className="divide-y divide-white/8">
-            {SESSIONS.map((session, index) => (
-              <SessionRow
-                key={`${session.time}-${session.title}`}
-                session={session}
-                index={index}
-              />
-            ))}
+            {SESSIONS.map((session, index) =>
+              session.type === "arte" ? (
+                <ArteFeatureRow
+                  key={`${session.time}-${session.title}`}
+                  session={session}
+                  index={index}
+                />
+              ) : (
+                <SessionRow
+                  key={`${session.time}-${session.title}`}
+                  session={session}
+                  index={index}
+                />
+              )
+            )}
           </div>
         </div>
 
