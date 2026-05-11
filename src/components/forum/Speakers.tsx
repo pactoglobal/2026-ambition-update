@@ -73,6 +73,12 @@ const speakers = [
     photoKey: "ana_bavon",
   },
   {
+    name: "Jera Guarani",
+    role: "Liderança Indígena, Aldeia Kalipety",
+    tag: "Painel",
+    photoKey: "jera_guarani",
+  },
+  {
     name: "Camila Pitanga",
     role: "Atriz e Embaixadora da ONU Mulheres",
     tag: "Painel",
