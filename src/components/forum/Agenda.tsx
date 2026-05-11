@@ -223,7 +223,7 @@ const SESSIONS: Session[] = [
     speakers: [
       { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
     ],
-    moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
+    moderator: { name: "Ana Bavon", title: "Consultora", org: "Ana Bavon Strategic Consulting" },
   },
   {
     time: "18h00",

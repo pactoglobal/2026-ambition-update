@@ -68,7 +68,7 @@ const speakers = [
   },
   {
     name: "Ana Bavon",
-    role: "CEO e Head de Estratégia, Ana Bavon Strategic Consulting",
+    role: "Consultora, Ana Bavon Strategic Consulting",
     tag: "Moderação",
     photoKey: "ana_bavon",
   },
