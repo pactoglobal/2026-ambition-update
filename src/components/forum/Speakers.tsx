@@ -38,7 +38,7 @@ const speakers = [
   },
   {
     name: "Adriana Albanese",
-    role: "Diretora de Sustentabilidade, Aegea",
+    role: "Diretora de Relações com Investidores e Sustentabilidade, Aegea",
     tag: "Business Case",
     photoKey: "adriana",
   },

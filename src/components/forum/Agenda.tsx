@@ -147,7 +147,7 @@ const SESSIONS: Session[] = [
     theme: "Financiamento Sustentável",
     desc: "Como o financiamento sustentável viabiliza a implementação de estratégias ESG em escala, com resultados mensuráveis e impacto real.",
     speakers: [
-      { name: "Adriana Albanese", title: "Diretora de Sustentabilidade", org: "Aegea" },
+      { name: "Adriana Albanese", title: "Diretora de Relações com Investidores e Sustentabilidade", org: "Aegea" },
     ],
   },
   {
