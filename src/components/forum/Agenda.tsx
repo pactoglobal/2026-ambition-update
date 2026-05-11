@@ -245,7 +245,7 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Waldir Beira Junior", title: "CEO", org: "Ypê" },
-      { name: "Jera Guarani", title: "Liderança Indígena" },
+      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Kalipety" },
       { name: "Milton Pilão", title: "CEO", org: "Orizon", note: "TBC" },
       { name: "Aline Matulja", title: "Comunicadora e Ativista", note: "TBC" },
     ],
