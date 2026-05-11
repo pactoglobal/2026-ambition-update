@@ -120,12 +120,12 @@ export function Hero() {
               ))}
             </div>
 
-            <div className="forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] sm:grid-cols-3">
+            <div className="forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] sm:grid-cols-2">
               {HERO_PARTNERS.map(({ label, src, alt, width, height, className }, index) => (
                 <div
                   key={label}
                   className={`flex min-h-[132px] flex-col items-center justify-center gap-3 border-white/12 px-5 py-6 text-center sm:px-6 ${
-                    index < 2 ? "border-b sm:border-b-0 sm:border-r" : ""
+                    index < 1 ? "border-b sm:border-b-0 sm:border-r" : ""
                   }`}
                 >
                   <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan/82">

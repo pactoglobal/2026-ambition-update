@@ -53,7 +53,7 @@ export function Footer() {
           <div className="h-0.5 w-12 bg-forum-cyan" />
         </div>
 
-        <div className="forum-card mx-auto mb-16 grid max-w-3xl grid-cols-1 gap-10 rounded-xl p-10 sm:grid-cols-3">
+        <div className="forum-card mx-auto mb-16 grid max-w-2xl grid-cols-1 gap-10 rounded-xl p-10 sm:grid-cols-2">
           {[
             {
               label: "Realização",
