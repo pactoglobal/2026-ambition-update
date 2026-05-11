@@ -55,8 +55,6 @@ function Index() {
 
         {/* ATO 2 — O CONTEÚDO */}
         <Venue />
-
-        {/* ATO 3 — A CREDIBILIDADE */}
         <Gallery />
         <CLevelExperience />
         <AmbitionStrategy />
