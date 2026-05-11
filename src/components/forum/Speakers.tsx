@@ -56,13 +56,13 @@ const speakers = [
   },
   {
     name: "Vivian Broge",
-    role: "TOTVS",
+    role: "Vice-Presidente de Relações Humanas e Marketing, TOTVS",
     tag: "Painel",
     photoKey: "vivian",
   },
   {
     name: "Rafaela Guedes",
-    role: "CEBRI",
+    role: "CEO e Fundadora, RG Impact & Senior Fellow CEBRI",
     tag: "Painel",
     photoKey: "rafaela_guedes",
   },

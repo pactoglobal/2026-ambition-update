@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Mic, Users, Coffee, Star, Music, Award, ArrowRight, Building2 } from "lucide-react";
-import { KineticBackdrop, SectionHeader } from "./Identity";
+import {
+  ChevronDown, Mic, Users, Coffee, Star, Music, Award, ArrowRight, Building2,
+} from "lucide-react";
+import { SectionHeader } from "./Identity";
+import { identityAssets } from "./identity-assets";
 
 type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento";
 
@@ -24,15 +27,23 @@ interface Session {
   moderator?: Speaker;
 }
 
-const TYPE_CONFIG: Record<SessionType, { label: string; accent: string; accentText: string; badge: string; icon: React.ElementType }> = {
-  abertura:    { label: "Abertura",      accent: "bg-forum-cyan",    accentText: "text-forum-cyan",    badge: "text-forum-cyan  border-forum-cyan/30  bg-forum-cyan/8",      icon: Star },
-  keynote:     { label: "Keynote",       accent: "bg-forum-gold",    accentText: "text-forum-gold",    badge: "text-forum-gold  border-forum-gold/30  bg-forum-gold/8",      icon: Mic },
-  painel:      { label: "Painel",        accent: "bg-forum-blue",    accentText: "text-forum-blue",    badge: "text-forum-blue  border-forum-blue/30  bg-forum-blue/8",      icon: Users },
-  business:    { label: "Business Case", accent: "bg-forum-green",   accentText: "text-forum-green",   badge: "text-forum-green border-forum-green/30 bg-forum-green/8",     icon: Award },
-  intervalo:   { label: "Intervalo",     accent: "bg-white/20",      accentText: "text-white/40",      badge: "text-white/40    border-white/12        bg-white/4",           icon: Coffee },
-  arte:        { label: "Apresentação",  accent: "bg-forum-magenta", accentText: "text-forum-magenta", badge: "text-forum-magenta border-forum-magenta/30 bg-forum-magenta/8", icon: Music },
-  estrategia:  { label: "Estratégia",    accent: "bg-forum-cyan",    accentText: "text-forum-cyan",    badge: "text-forum-cyan  border-forum-cyan/30  bg-forum-cyan/8",      icon: ArrowRight },
-  encerramento:{ label: "Encerramento",  accent: "bg-white/30",      accentText: "text-white/50",      badge: "text-white/50    border-white/16        bg-white/5",           icon: Star },
+// Colors aligned with Pacto Global ONU brand + ODS palette
+const TYPE_CONFIG: Record<SessionType, {
+  label: string;
+  borderColor: string;   // Tailwind border class
+  tagBg: string;         // tag pill background
+  tagText: string;       // tag pill text
+  dot: string;           // bullet dot color
+  icon: React.ElementType;
+}> = {
+  abertura:    { label: "Abertura",      borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: Star },
+  keynote:     { label: "Keynote",       borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/15",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Mic },
+  painel:      { label: "Painel",        borderColor: "border-l-[#23b9d6]",     tagBg: "bg-[#23b9d6]/12",     tagText: "text-[#23b9d6]",     dot: "bg-[#23b9d6]",     icon: Users },
+  business:    { label: "Business Case", borderColor: "border-l-forum-green",   tagBg: "bg-forum-green/12",   tagText: "text-forum-green",   dot: "bg-forum-green",   icon: Award },
+  intervalo:   { label: "Intervalo",     borderColor: "border-l-white/20",      tagBg: "bg-white/8",          tagText: "text-white/45",      dot: "bg-white/30",      icon: Coffee },
+  arte:        { label: "Apresentação",  borderColor: "border-l-forum-magenta", tagBg: "bg-forum-magenta/12", tagText: "text-forum-magenta", dot: "bg-forum-magenta", icon: Music },
+  estrategia:  { label: "Estratégia",    borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: ArrowRight },
+  encerramento:{ label: "Encerramento",  borderColor: "border-l-white/25",      tagBg: "bg-white/6",          tagText: "text-white/40",      dot: "bg-white/30",      icon: Star },
 };
 
 const SESSIONS: Session[] = [
@@ -84,7 +95,7 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
-      { name: "Rafaela Guedes", org: "CEBRI" },
+      { name: "Rafaela Guedes", title: "CEO e Fundadora", org: "RG Impact & Senior Fellow CEBRI" },
       { name: "Marian Schuegraf", title: "Chefe da Delegação", org: "União Europeia no Brasil", note: "TBC" },
       { name: "Carlos Carboni", title: "Diretor de Cooperação", org: "Itaipu Binacional", note: "TBC" },
       { name: "Manuel Reyes-Retana", title: "Diretor", org: "IFC Brasil", note: "TBC" },
@@ -113,7 +124,7 @@ const SESSIONS: Session[] = [
     type: "painel",
     title: "Rastreabilidade e Transparência na Cadeia de Valor",
     theme: "Onde compliance, rastreabilidade e direitos humanos se encontram",
-    desc: "Como empresas estão transformando suas cadeias produtivas para garantir integridade, rastreabilidade e respeito aos direitos humanos — da extração ao consumidor final.",
+    desc: "Como empresas estão transformando suas cadeias produtivas para garantir integridade, rastreabilidade e respeito aos direitos humanos.",
     points: [
       "Due diligence em direitos humanos: da teoria à prática",
       "Tecnologia e rastreabilidade na cadeia produtiva",
@@ -159,7 +170,7 @@ const SESSIONS: Session[] = [
     type: "painel",
     title: "Protagonismo sem Fronteiras",
     theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
-    desc: "A agenda de gênero em tempos de crise — como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública sobre igualdade e representatividade.",
+    desc: "A agenda de gênero em tempos de crise — como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
     points: [
       "Arte como instrumento de transformação social e política",
       "Ativismo e protagonismo feminino na cena pública",
@@ -255,7 +266,7 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
-      { name: "Vivian Broge", org: "TOTVS" },
+      { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
       { name: "Claudia Romano", title: "VP", org: "Yduqs", note: "TBC" },
       { name: "Daniel Duque", title: "Pesquisador", org: "FGV", note: "TBC" },
       { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas", note: "TBC" },
@@ -294,47 +305,38 @@ const SESSIONS: Session[] = [
   },
 ];
 
-function SpeakerCard({ speaker, index, accentText }: { speaker: Speaker; index: number; accentText: string }) {
+function SpeakerCard({ speaker, index }: { speaker: Speaker; index: number }) {
   return (
-    <li className="group/card relative flex flex-col justify-between gap-3 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-colors duration-200 hover:border-white/18 hover:bg-white/[0.07]">
-      {/* Number badge */}
-      <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-white/8 text-[9px] font-black text-white/35">
+    <li className="flex items-start gap-3 rounded-xl border border-white/10 bg-forum-navy/60 p-4 backdrop-blur-sm">
+      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/8 text-[10px] font-black text-white/50">
         {index + 1}
       </span>
-
-      {/* Name */}
-      <div className="pr-6">
-        <p className="text-[14px] font-bold leading-snug tracking-tight text-white">
-          {speaker.name}
-        </p>
+      <div className="min-w-0">
+        <p className="text-[13px] font-bold leading-snug text-white">{speaker.name}</p>
         {speaker.title && (
-          <p className="mt-1 text-[12px] leading-snug text-white/60">
-            {speaker.title}
-          </p>
+          <p className="mt-0.5 text-[11px] leading-snug text-white/58">{speaker.title}</p>
+        )}
+        {speaker.org && (
+          <div className="mt-1.5 flex items-center gap-1.5">
+            <Building2 aria-hidden="true" size={9} className="shrink-0 text-forum-cyan/60" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-forum-cyan/75">
+              {speaker.org}
+            </span>
+          </div>
         )}
       </div>
-
-      {/* Org pill */}
-      {speaker.org && (
-        <div className="flex items-center gap-1.5">
-          <Building2 aria-hidden="true" size={9} className={`shrink-0 ${accentText} opacity-70`} />
-          <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${accentText} opacity-80`}>
-            {speaker.org}
-          </span>
-        </div>
-      )}
     </li>
   );
 }
 
 function ModeratorCard({ moderator }: { moderator: Speaker }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-forum-cyan/25 bg-forum-cyan/[0.07] px-5 py-4">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forum-cyan/30 bg-forum-cyan/12">
-        <Mic aria-hidden="true" size={15} className="text-forum-cyan" strokeWidth={2} />
+    <div className="flex items-center gap-4 rounded-xl border border-forum-cyan/30 bg-forum-cyan/8 px-5 py-4">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forum-cyan/30 bg-forum-cyan/15">
+        <Mic aria-hidden="true" size={16} className="text-forum-cyan" strokeWidth={1.8} />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="mb-1 text-[9px] font-black uppercase tracking-[0.36em] text-forum-cyan/80">
+        <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.38em] text-forum-cyan/80">
           Moderação
         </p>
         <p className="text-[14px] font-bold leading-snug text-white">{moderator.name}</p>
@@ -343,8 +345,8 @@ function ModeratorCard({ moderator }: { moderator: Speaker }) {
         )}
         {moderator.org && (
           <div className="mt-1.5 flex items-center gap-1.5">
-            <Building2 aria-hidden="true" size={9} className="shrink-0 text-forum-cyan/60" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-forum-cyan/70">
+            <Building2 aria-hidden="true" size={9} className="shrink-0 text-forum-cyan/55" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-forum-cyan/65">
               {moderator.org}
             </span>
           </div>
@@ -354,79 +356,79 @@ function ModeratorCard({ moderator }: { moderator: Speaker }) {
   );
 }
 
-function SessionCard({ session, index }: { session: Session; index: number }) {
+function SessionRow({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
-  const config = TYPE_CONFIG[session.type];
-  const Icon = config.icon;
+  const cfg = TYPE_CONFIG[session.type];
+  const Icon = cfg.icon;
   const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
   const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
   const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator);
-  const isInterval = session.type === "intervalo" || session.type === "encerramento";
+  const isBreak = session.type === "intervalo" || session.type === "encerramento";
   const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
-  const useGrid = confirmedSpeakers.length > 1;
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 6 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: index * 0.025, duration: 0.35 }}
-      className="group"
+      viewport={{ once: true, margin: "-32px" }}
+      transition={{ delay: index * 0.02, duration: 0.38 }}
     >
+      {/* Row header */}
       <button
         type="button"
         onClick={() => hasDetails && setOpen((o) => !o)}
         aria-expanded={hasDetails ? open : undefined}
-        className={`relative w-full overflow-hidden rounded-xl border text-left transition-all duration-200 ${
+        className={`group relative w-full border-l-[4px] text-left transition-colors duration-200 ${cfg.borderColor} ${
           open
-            ? "border-white/16 bg-white/[0.06]"
-            : "border-white/8 bg-white/[0.03] hover:border-white/14 hover:bg-white/[0.05]"
+            ? "bg-forum-navy/80"
+            : "bg-forum-navy/40 hover:bg-forum-navy/65"
         } ${hasDetails ? "cursor-pointer" : "cursor-default"}`}
       >
-        <div className={`absolute inset-y-0 left-0 w-[3px] ${config.accent} opacity-70 transition-opacity ${open ? "opacity-100" : "group-hover:opacity-90"}`} />
-
-        <div className="flex items-start py-5 pl-5 pr-5 md:py-6 md:pl-7 md:pr-7">
-          {/* Time column */}
-          <div className="mr-5 w-16 shrink-0 md:mr-7 md:w-20">
-            <time className="block font-display text-2xl font-black leading-none tracking-tight text-white/50 transition-colors group-hover:text-white/75 md:text-3xl">
+        <div className="flex items-stretch">
+          {/* Time block */}
+          <div className="flex w-24 shrink-0 flex-col justify-center border-r border-white/8 px-4 py-5 md:w-28 md:px-5">
+            <time className="block font-display text-xl font-black leading-none tracking-tight text-white md:text-2xl">
               {session.time}
             </time>
             {session.duration && (
-              <span className="mt-1 block text-[10px] font-bold uppercase tracking-widest text-white/30">
+              <span className="mt-1.5 block text-[9px] font-bold uppercase tracking-widest text-white/35">
                 {session.duration}
               </span>
             )}
           </div>
 
-          {/* Main content */}
-          <div className="flex flex-1 items-start justify-between gap-4 min-w-0">
+          {/* Content block */}
+          <div className="flex flex-1 items-center justify-between gap-4 px-5 py-5 md:px-7">
             <div className="min-w-0 flex-1">
-              <span className={`mb-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.24em] ${config.badge}`}>
-                <Icon aria-hidden="true" size={9} strokeWidth={2.5} />
-                {config.label}
+              {/* Type tag */}
+              <span className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}>
+                <Icon aria-hidden="true" size={8} strokeWidth={2.5} />
+                {cfg.label}
               </span>
 
-              <h3 className="text-base font-display font-black uppercase leading-tight tracking-tight text-white md:text-lg">
+              {/* Title */}
+              <h3 className="text-[15px] font-bold leading-snug tracking-tight text-white md:text-base">
                 {session.title}
               </h3>
 
-              {session.theme && (
-                <p className="mt-1.5 text-sm font-medium italic leading-snug text-white/58">
+              {/* Theme */}
+              {session.theme && !isBreak && (
+                <p className="mt-1 text-[12px] leading-snug text-white/52 md:text-[13px]">
                   {session.theme}
                 </p>
               )}
 
-              {/* Collapsed preview */}
-              {!isInterval && !open && (confirmedSpeakers.length > 0 || confirmedModerator) && (
-                <div className="mt-3 flex flex-wrap items-center gap-2">
+              {/* Collapsed speaker preview */}
+              {!isBreak && !open && (confirmedSpeakers.length > 0 || confirmedModerator) && (
+                <div className="mt-2.5 flex flex-wrap items-center gap-2">
                   {confirmedSpeakers.length > 0 && (
-                    <p className="text-[11px] tracking-wide text-white/42 line-clamp-1">
-                      {confirmedSpeakers.map((s) => s.name).join("  ·  ")}
+                    <p className="text-[11px] text-white/38 line-clamp-1">
+                      {confirmedSpeakers.map((s) => s.name).join(" · ")}
                     </p>
                   )}
                   {confirmedModerator && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-forum-cyan/20 bg-forum-cyan/8 px-2.5 py-0.5 text-[10px] font-bold text-forum-cyan/75">
-                      <Mic aria-hidden="true" size={8} strokeWidth={2.5} />
+                    <span className="inline-flex items-center gap-1 rounded-sm border border-forum-cyan/20 bg-forum-cyan/8 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.2em] text-forum-cyan/75">
+                      <Mic aria-hidden="true" size={7} strokeWidth={2.5} />
                       {confirmedModerator.name}
                     </span>
                   )}
@@ -437,43 +439,42 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
             {hasDetails && (
               <ChevronDown
                 aria-hidden="true"
-                size={16}
-                className={`mt-1 shrink-0 text-white/28 transition-all duration-300 ${open ? "rotate-180 text-forum-cyan/70" : ""}`}
+                size={15}
+                className={`shrink-0 text-white/25 transition-all duration-300 ${open ? "rotate-180 text-forum-cyan/60" : ""}`}
               />
             )}
           </div>
         </div>
       </button>
 
-      {/* Expanded content */}
+      {/* Expanded panel */}
       <AnimatePresence initial={false}>
         {open && hasDetails && (
           <motion.div
-            key="content"
+            key="expanded"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="rounded-b-xl border-x border-b border-white/12 bg-white/[0.04] px-5 pb-7 pt-5 md:px-7 md:pb-8">
-              <div className="mb-5 h-px w-full bg-white/8" />
+            <div className={`border-l-[4px] ${cfg.borderColor} border-b border-r border-white/8 bg-forum-ink/60 px-5 pb-7 pt-5 md:pl-[calc(7rem+1.75rem)] md:pr-8`}>
 
               {session.desc && (
-                <p className="mb-6 text-sm leading-relaxed text-white/75 md:text-[0.94rem]">
+                <p className="mb-5 max-w-2xl text-[13px] leading-relaxed text-white/72 md:text-sm">
                   {session.desc}
                 </p>
               )}
 
               {session.points && session.points.length > 0 && (
-                <div className="mb-7">
-                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.36em] text-white/35">
+                <div className="mb-6">
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
                     Tópicos em debate
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {session.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-[13px] leading-snug text-white/78">
-                        <span className={`mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full ${config.accent}`} />
+                      <li key={point} className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75">
+                        <span className={`mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full ${cfg.dot}`} />
                         {point}
                       </li>
                     ))}
@@ -481,27 +482,22 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
                 </div>
               )}
 
-              {/* Speaker bento grid */}
+              {/* Speaker grid */}
               {confirmedSpeakers.length > 0 && (
                 <div className={confirmedModerator ? "mb-3" : ""}>
-                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.36em] text-white/35">
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
                     {speakerLabel}
                   </p>
-                  <ul className={`grid gap-2 ${useGrid ? "sm:grid-cols-2" : "max-w-sm"}`}>
+                  <ul className={`grid gap-2 ${confirmedSpeakers.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}>
                     {confirmedSpeakers.map((s, i) => (
-                      <SpeakerCard
-                        key={s.name}
-                        speaker={s}
-                        index={i}
-                        accentText={config.accentText}
-                      />
+                      <SpeakerCard key={s.name} speaker={s} index={i} />
                     ))}
                   </ul>
                 </div>
               )}
 
               {confirmedModerator && (
-                <div className="mt-3">
+                <div className="mt-3 max-w-sm">
                   <ModeratorCard moderator={confirmedModerator} />
                 </div>
               )}
@@ -515,40 +511,59 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
 
 export function Agenda() {
   return (
-    <section id="agenda" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="lineField" intensity="soft" />
+    <section id="agenda" className="relative overflow-hidden bg-forum-deep py-24">
+      {/* KV background — subtle */}
+      <div className="pointer-events-none absolute inset-0">
+        <img
+          src={identityAssets.kv}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forum-deep via-forum-deep/95 to-forum-deep" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
-        <div className="mb-14">
+        {/* Header */}
+        <div className="mb-12">
           <SectionHeader
             eyebrow="02 de Junho de 2026 · MASP · São Paulo"
             title="Programação"
             outline="do Evento"
-            description="Clique em qualquer sessão para expandir tema, tópicos em debate, painelistas e detalhes."
+            description="Clique em qualquer sessão para ver tema, tópicos em debate, painelistas e detalhes."
           />
         </div>
 
         {/* Legend */}
-        <div className="mb-8 flex flex-wrap gap-2.5">
+        <div className="mb-6 flex flex-wrap gap-2">
           {(["keynote", "painel", "business", "arte", "estrategia"] as SessionType[]).map((type) => {
             const c = TYPE_CONFIG[type];
             const Ic = c.icon;
             return (
-              <span key={type} className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] ${c.badge}`}>
-                <Ic aria-hidden="true" size={9} strokeWidth={2.5} />
+              <span
+                key={type}
+                className={`inline-flex items-center gap-1.5 rounded-sm border border-white/8 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.24em] ${c.tagBg} ${c.tagText}`}
+              >
+                <Ic aria-hidden="true" size={8} strokeWidth={2.5} />
                 {c.label}
               </span>
             );
           })}
         </div>
 
-        <div className="space-y-1.5">
-          {SESSIONS.map((session, index) => (
-            <SessionCard key={`${session.time}-${session.title}`} session={session} index={index} />
-          ))}
+        {/* Session list — sharp institutional rows */}
+        <div className="overflow-hidden rounded-xl border border-white/10">
+          <div className="divide-y divide-white/8">
+            {SESSIONS.map((session, index) => (
+              <SessionRow
+                key={`${session.time}-${session.title}`}
+                session={session}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
 
-        <p className="mt-8 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/22">
+        <p className="mt-6 text-center text-[9px] font-bold uppercase tracking-[0.32em] text-white/20">
           Programação sujeita a alterações
         </p>
       </div>
