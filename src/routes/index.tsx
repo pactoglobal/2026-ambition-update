@@ -56,7 +56,6 @@ function Index() {
         <Gallery />
         <CLevelExperience />
         <AmbitionStrategy />
-        <NaturePatchwork />
         <PactoGlobalInfo />
         <Sponsors />
 
