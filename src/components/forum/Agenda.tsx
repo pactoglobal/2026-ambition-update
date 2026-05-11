@@ -241,9 +241,6 @@ const SESSIONS: Session[] = [
     title: "Apresentação Artística",
     theme: "Cultura integrada à agenda de sustentabilidade",
     desc: "Intervenção cultural e reflexiva integrada à programação do evento — arte como expressão dos valores da Década da Implementação.",
-    speakers: [
-      { name: "Céu", title: "Cantora e Compositora Brasileira" },
-    ],
   },
   {
     time: "16h30",
