@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, GlassWater, MapPin, Users } from "lucide-rea
 import { useCallback, useEffect, useState } from "react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
+import { identityAssets } from "./identity-assets";
 
 const coquételPhotos = import.meta.glob(
   "../../../assets/img/coquetel-ceos/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
@@ -46,9 +47,16 @@ function PhotoCarousel() {
     <div className="mt-6">
       {/* label + arrows */}
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-[9px] font-black uppercase tracking-[0.28em] text-forum-cyan/60">
-          Aya Earth Hub · São Paulo
-        </p>
+        <div className="flex items-center gap-2.5">
+          <img
+            src={identityAssets.aya}
+            alt="Aya Earth Partners"
+            className="h-4 w-auto object-contain opacity-60"
+          />
+          <span className="text-[9px] font-black uppercase tracking-[0.28em] text-white/40">
+            Cidade Matarazzo · São Paulo
+          </span>
+        </div>
         <div className="flex gap-1.5">
           <button
             type="button"
