@@ -72,8 +72,6 @@ const SESSIONS: Session[] = [
     title: "Abertura",
     speakers: [
       { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global - Rede Brasil" },
-      { name: "Presidente do Conselho", org: "Pacto Global - Rede Brasil", note: "TBC" },
-      { name: "Coordenador Residente do Sistema ONU", note: "TBC" },
     ],
   },
   {
@@ -91,12 +89,9 @@ const SESSIONS: Session[] = [
       "Métricas de impacto ambiental e social integradas",
     ],
     speakers: [
-      { name: "Milton Pilão", title: "CEO", org: "Orizon", note: "TBC" },
       { name: "Waldir Beira Junior", title: "CEO", org: "Ypê" },
-      { name: "Aline Matulja", title: "Comunicadora e Ativista", note: "TBC" },
       { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Kalipety" },
     ],
-    moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular", note: "TBC" },
   },
   {
     time: "10h30",
@@ -112,12 +107,8 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
-      { name: "Marian Schuegraf", title: "Chefe da Delegação da União Europeia no Brasil", note: "TBC" },
-      { name: "Carlos Carboni", title: "Diretor de Cooperação", org: "Itaipu", note: "TBC" },
-      { name: "Manuel Reyes-Retana", title: "Diretor IFC Brasil", note: "TBC" },
       { name: "Rafaela Guedes", title: "CEO e Fundadora", org: "RG Impact & Senior Fellow CEBRI" },
     ],
-    moderator: { name: "Giovana Girardi", title: "Jornalista", org: "Estadão", note: "TBC" },
   },
   {
     time: "11h10",
@@ -144,12 +135,9 @@ const SESSIONS: Session[] = [
       "Trabalho digno e certificações internacionais",
     ],
     speakers: [
-      { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras", note: "TBC" },
-      { name: "Irina Bacci", org: "PADF", note: "TBC" },
-      { name: "Tarciana Medeiros", title: "Presidente", org: "Banco do Brasil", note: "TBC" },
+      { name: "Irina Bacci", org: "PADF" },
       { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
-    moderator: { name: "Caco Barcelos", title: "Jornalista", note: "TBC" },
   },
   {
     time: "12h10",
@@ -176,10 +164,6 @@ const SESSIONS: Session[] = [
     title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
     theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
     desc: "Como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
-    speakers: [
-      { name: "Camila Pitanga", title: "Atriz e Embaixadora da ONU Mulheres", note: "TBC" },
-      { name: "Maria Prata", note: "TBC" },
-    ],
   },
   {
     time: "14h50",
@@ -189,11 +173,8 @@ const SESSIONS: Session[] = [
     theme: "Recomeços que Inspiram e Lideram",
     desc: "Trajetórias reais de superação e liderança — como diversidade, inclusão e recomeços são forças estratégicas para as organizações e para a sociedade.",
     speakers: [
-      { name: "Dani Suzuki", note: "TBC" },
       { name: "Pessoa Refugiada" },
-      { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas", note: "TBC" },
     ],
-    moderator: { name: "Maria Prata", note: "TBC" },
   },
   {
     time: "15h20",
@@ -219,9 +200,6 @@ const SESSIONS: Session[] = [
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
-    speakers: [
-      { name: "Fernanda Torres", title: "Atriz", note: "TBC" },
-    ],
   },
   {
     time: "16h30",
@@ -243,10 +221,7 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
-      { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs", note: "TBC" },
       { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
-      { name: "Daniel Duque", title: "Pesquisador", org: "FGV", note: "TBC" },
-      { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas", note: "TBC" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
   },
