@@ -58,7 +58,6 @@ function Index() {
         <AmbitionStrategy />
         <NaturePatchwork />
         <PactoGlobalInfo />
-        <Audience />
         <Sponsors />
 
         {/* CONVERSÃO */}
