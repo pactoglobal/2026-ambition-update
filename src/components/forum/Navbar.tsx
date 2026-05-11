@@ -11,10 +11,7 @@ const NAV_LINKS = [
   { label: "Speakers", href: "#speakers" },
   { label: "Agenda", href: "#agenda" },
   { label: "Local", href: "#local" },
-  { label: "Edições Anteriores", href: "#galeria" },
-  { label: "Ambição 2030", href: "#ambicao-2030" },
   { label: "Parceiros", href: "#sponsors" },
-  { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
 
