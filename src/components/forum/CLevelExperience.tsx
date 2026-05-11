@@ -21,6 +21,12 @@ const experienceDetails = [
   { icon: GlassWater, label: "Formato", value: "Keynote + Coquetel de Relacionamento" },
 ];
 
+// Group photos into pairs for side-by-side slides
+const photoPairs: string[][] = [];
+for (let i = 0; i < photos.length; i += 2) {
+  photoPairs.push(photos.slice(i, i + 2));
+}
+
 function PhotoCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -41,44 +47,44 @@ function PhotoCarousel() {
     };
   }, [emblaApi, onSelect]);
 
-  if (photos.length === 0) return null;
+  if (photoPairs.length === 0) return null;
 
   return (
     <div className="mt-6">
-      {/* carousel with overlay controls */}
-      <div className="relative overflow-hidden rounded-2xl" ref={emblaRef}>
-        <div className="flex">
-          {photos.map((src, i) => (
-            <div key={src} className="relative flex-[0_0_100%]">
-              <div className="flex gap-1.5">
-                {/* show this photo and the next one side by side */}
-                {[photos[i], photos[i + 1]].filter(Boolean).map((p, j) => (
+      <div className="relative">
+        {/* embla viewport */}
+        <div ref={emblaRef} className="overflow-hidden rounded-2xl">
+          <div className="flex">
+            {photoPairs.map((pair, i) => (
+              <div key={i} className="relative min-w-0 flex-[0_0_100%]">
+                <div className="flex gap-1.5">
+                  {pair.map((src, j) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt={`Aya Earth Hub · Foto ${i * 2 + j + 1}`}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      className="aspect-[3/2] flex-1 rounded-xl object-cover"
+                    />
+                  ))}
+                </div>
+                {/* gradient + logo overlay */}
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-forum-ink/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 flex items-center gap-2.5">
                   <img
-                    key={j}
-                    src={p}
-                    alt={`Aya Earth Hub · Foto ${i + j + 1}`}
-                    width={600}
-                    height={400}
-                    loading="lazy"
-                    className="aspect-[3/2] w-full flex-1 rounded-xl object-cover"
+                    src={identityAssets.aya}
+                    alt="Aya Earth Partners"
+                    className="h-5 w-auto object-contain brightness-0 invert opacity-70"
                   />
-                ))}
+                  <span className="text-[9px] font-bold uppercase tracking-[0.26em] text-white/55">
+                    Cidade Matarazzo · São Paulo
+                  </span>
+                </div>
               </div>
-              {/* gradient overlay bottom */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-forum-ink/70 via-transparent to-transparent" />
-              {/* logo + location overlay */}
-              <div className="absolute bottom-4 left-4 flex items-center gap-2.5">
-                <img
-                  src={identityAssets.aya}
-                  alt="Aya Earth Partners"
-                  className="h-5 w-auto object-contain brightness-0 invert opacity-70"
-                />
-                <span className="text-[9px] font-bold uppercase tracking-[0.26em] text-white/55">
-                  Cidade Matarazzo · São Paulo
-                </span>
-              </div>
-            </div>
-          )).filter((_, i) => i % 2 === 0)}
+            ))}
+          </div>
         </div>
 
         {/* side arrows */}
@@ -101,16 +107,16 @@ function PhotoCarousel() {
       </div>
 
       {/* dots */}
-      {photos.length > 2 && (
+      {photoPairs.length > 1 && (
         <div className="mt-3 flex justify-center gap-1.5">
-          {Array.from({ length: Math.ceil(photos.length / 2) }).map((_, i) => (
+          {photoPairs.map((_, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`Ir para foto ${i * 2 + 1}`}
-              onClick={() => emblaApi?.scrollTo(i * 2)}
+              aria-label={`Ir para slide ${i + 1}`}
+              onClick={() => emblaApi?.scrollTo(i)}
               className={`h-0.5 rounded-full transition-all duration-300 ${
-                Math.floor(selectedIndex / 2) === i ? "w-5 bg-forum-cyan" : "w-1.5 bg-white/20"
+                selectedIndex === i ? "w-5 bg-forum-cyan" : "w-1.5 bg-white/20"
               }`}
             />
           ))}
