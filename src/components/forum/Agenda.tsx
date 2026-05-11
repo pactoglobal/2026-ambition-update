@@ -19,7 +19,7 @@ function photoByArtist(name: string): string | undefined {
   return entry?.[1];
 }
 
-type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento";
+type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable";
 
 interface Speaker {
   name: string;
@@ -57,49 +57,53 @@ const TYPE_CONFIG: Record<SessionType, {
   arte:        { label: "Apresentação",  borderColor: "border-l-forum-magenta", tagBg: "bg-forum-magenta/12", tagText: "text-forum-magenta", dot: "bg-forum-magenta", icon: Music },
   estrategia:  { label: "Estratégia",    borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: ArrowRight },
   encerramento:{ label: "Encerramento",  borderColor: "border-l-white/25",      tagBg: "bg-white/6",          tagText: "text-white/40",      dot: "bg-white/30",      icon: Star },
+  debatable:   { label: "Debatable",     borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/12",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Users },
 };
 
 const SESSIONS: Session[] = [
   {
     time: "09h30",
-    duration: "20 min",
     type: "abertura",
-    title: "Abertura Oficial",
-    theme: "A Década da Implementação",
-    desc: "Boas-vindas institucionais e apresentação da 4ª edição do Fórum Ambição 2030 — o maior encontro de sustentabilidade corporativa do Brasil.",
-    points: [
-      "Contexto da Agenda 2030 e urgência da implementação",
-      "Papel estratégico do setor privado brasileiro",
-      "Destaques da edição 2026",
-    ],
+    title: "Vídeo Apresentação Movimentos Pacto Global da ONU - Rede Brasil",
+  },
+  {
+    time: "09h35",
+    type: "abertura",
+    title: "Abertura",
     speakers: [
-      { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global – Rede Brasil" },
-      { name: "Presidente do Conselho", title: "Presidente do Conselho", org: "Pacto Global – Rede Brasil" },
-      { name: "Coordenador Residente", title: "Coordenador Residente do Sistema ONU", org: "ONU Brasil" },
+      { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global - Rede Brasil" },
+      { name: "Presidente do Conselho", org: "Pacto Global - Rede Brasil", note: "TBC" },
+      { name: "Coordenador Residente do Sistema ONU", note: "TBC" },
     ],
   },
   {
     time: "09h50",
-    duration: "20 min",
-    type: "keynote",
-    title: "Keynote de Abertura",
-    theme: "Liderança global na era da transformação",
-    desc: "Palestra de abertura com perspectiva global sobre o papel das empresas na construção de um futuro mais sustentável e equitativo.",
+    duration: "40 min",
+    type: "painel",
+    title: "Da Extração à Regeneração",
+    theme: "Novos caminhos para a gestão de recursos naturais",
+    desc: "Como empresas e movimentos sociais constroem juntos a transição para modelos regenerativos — da economia circular à gestão responsável de resíduos e recursos naturais.",
     points: [
-      "Tendências globais de sustentabilidade corporativa",
-      "O que as empresas líderes estão fazendo diferente",
-      "Oportunidades para o Brasil na nova economia",
+      "Economia circular como modelo de negócio lucrativo",
+      "Gestão de resíduos sólidos e responsabilidade estendida",
+      "Comunidades tradicionais e saberes ancestrais na regeneração",
+      "Catadores como agentes da economia circular",
+      "Métricas de impacto ambiental e social integradas",
     ],
     speakers: [
-      { name: "Avanish Sahai", title: "Keynote Speaker", note: "TBC" },
+      { name: "Milton Pilão", title: "CEO", org: "Orizon", note: "TBC" },
+      { name: "Waldir Beira Junior", title: "CEO", org: "Ypê" },
+      { name: "Aline Matulja", title: "Comunicadora e Ativista", note: "TBC" },
+      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Kalipety" },
     ],
+    moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular", note: "TBC" },
   },
   {
-    time: "10h10",
-    duration: "50 min",
+    time: "10h30",
+    duration: "40 min",
     type: "painel",
     title: "Transição Energética: Oportunidade ou Obrigação?",
-    theme: "O Brasil diante da nova economia de baixo carbono",
+    theme: "O Brasil diante da nova economia",
     desc: "Debate sobre os caminhos concretos da transição energética no Brasil — quem financia, quem regula e quem implementa.",
     points: [
       "Financiamento climático e papel dos bancos de desenvolvimento",
@@ -108,64 +112,52 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
+      { name: "Marian Schuegraf", title: "Chefe da Delegação da União Europeia no Brasil", note: "TBC" },
+      { name: "Carlos Carboni", title: "Diretor de Cooperação", org: "Itaipu", note: "TBC" },
+      { name: "Manuel Reyes-Retana", title: "Diretor IFC Brasil", note: "TBC" },
       { name: "Rafaela Guedes", title: "CEO e Fundadora", org: "RG Impact & Senior Fellow CEBRI" },
-      { name: "Marian Schuegraf", title: "Chefe da Delegação", org: "União Europeia no Brasil", note: "TBC" },
-      { name: "Carlos Carboni", title: "Diretor de Cooperação", org: "Itaipu Binacional", note: "TBC" },
-      { name: "Manuel Reyes-Retana", title: "Diretor", org: "IFC Brasil", note: "TBC" },
     ],
     moderator: { name: "Giovana Girardi", title: "Jornalista", org: "Estadão", note: "TBC" },
   },
   {
-    time: "11h00",
+    time: "11h10",
     duration: "20 min",
     type: "keynote",
-    title: "Keynote: Liderança com Saúde Mental e Significado",
-    theme: "Alta performance com propósito e bem-estar",
+    title: "Keynote Speaker",
+    theme: "Liderança com saúde mental e significado",
     desc: "Como líderes podem sustentar alta performance sem abrir mão do propósito e do bem-estar — uma perspectiva prática para os desafios da Década da Implementação.",
-    points: [
-      "Saúde mental como vantagem competitiva organizacional",
-      "Liderança regenerativa: do esgotamento ao significado",
-      "Ferramentas práticas para gestores e equipes",
-    ],
     speakers: [
-      { name: "Alexandre Coimbra", title: "Consultor de Saúde Mental e Escritor", org: "Valor Econômico · TV Globo" },
+      { name: "Alexandre Coimbra", title: "Palestrante, consultor de saúde mental, escritor best seller, colunista do Valor Econômico e da TV Globo" },
     ],
   },
   {
-    time: "11h20",
-    duration: "50 min",
+    time: "11h30",
+    duration: "40 min",
     type: "painel",
-    title: "Rastreabilidade e Transparência na Cadeia de Valor",
-    theme: "Onde compliance, rastreabilidade e direitos humanos se encontram",
+    title: "Rastreabilidade na Cadeia de Valor",
+    theme: "Onde compliance e direitos humanos se encontram",
     desc: "Como empresas estão transformando suas cadeias produtivas para garantir integridade, rastreabilidade e respeito aos direitos humanos.",
     points: [
       "Due diligence em direitos humanos: da teoria à prática",
       "Tecnologia e rastreabilidade na cadeia produtiva",
       "Compliance socioambiental como critério de parceria",
       "Trabalho digno e certificações internacionais",
-      "Casos de fornecedores de alto risco transformados",
     ],
     speakers: [
-      { name: "Malu Pinto", title: "VP Executiva de Gente, Gestão, Sustentabilidade e Comunicação", org: "Suzano" },
-      { name: "Ricardo Wagner", title: "Diretor de Compliance", org: "Petrobras", note: "TBC" },
-      { name: "Irina Bacci", title: "Diretora Regional", org: "PADF", note: "TBC" },
-      { name: "Waleria Sampaio", title: "Gerente Executiva de Estratégia e Governança de Sustentabilidade", org: "Petrobras", note: "TBC" },
-      { name: "Vinicius Pinheiro", title: "Diretor Regional", org: "OIT – Organização Internacional do Trabalho", note: "TBC" },
+      { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras", note: "TBC" },
+      { name: "Irina Bacci", org: "PADF", note: "TBC" },
+      { name: "Tarciana Medeiros", title: "Presidente", org: "Banco do Brasil", note: "TBC" },
+      { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
     moderator: { name: "Caco Barcelos", title: "Jornalista", note: "TBC" },
   },
   {
     time: "12h10",
     duration: "20 min",
-    type: "business",
-    title: "Business Case: Financiamento Sustentável",
-    theme: "ESG em escala: da estratégia ao balanço",
-    desc: "Apresentação de caso prático sobre como o financiamento sustentável viabiliza a implementação de estratégias ESG em escala, com resultados mensuráveis e impacto real.",
-    points: [
-      "Estruturação de instrumentos de financiamento verde",
-      "Métricas de impacto e retorno financeiro integrado",
-      "Lições aprendidas e replicabilidade do modelo",
-    ],
+    type: "keynote",
+    title: "Keynote Speaker",
+    theme: "Financiamento Sustentável",
+    desc: "Como o financiamento sustentável viabiliza a implementação de estratégias ESG em escala, com resultados mensuráveis e impacto real.",
     speakers: [
       { name: "Adriana Albanese", title: "Diretora de Sustentabilidade", org: "Aegea" },
     ],
@@ -174,45 +166,34 @@ const SESSIONS: Session[] = [
     time: "12h30",
     duration: "2h",
     type: "intervalo",
-    title: "Almoço & Networking",
+    title: "Almoço",
     desc: "Pausa estratégica para networking qualificado entre lideranças de diferentes setores.",
   },
   {
     time: "14h30",
     duration: "20 min",
     type: "painel",
-    title: "Protagonismo sem Fronteiras",
+    title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
     theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
-    desc: "A agenda de gênero em tempos de crise — como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
-    points: [
-      "Arte como instrumento de transformação social e política",
-      "Ativismo e protagonismo feminino na cena pública",
-      "Representatividade e visibilidade como alavancas de mudança",
-    ],
+    desc: "Como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
     speakers: [
-      { name: "Camila Pitanga", title: "Atriz e Embaixadora", org: "ONU Mulheres", note: "TBC" },
-      { name: "Fernanda Torres", title: "Atriz", note: "TBC" },
-      { name: "Maria Prata", title: "Escritora e Roteirista", note: "TBC" },
+      { name: "Camila Pitanga", title: "Atriz e Embaixadora da ONU Mulheres", note: "TBC" },
+      { name: "Maria Prata", note: "TBC" },
     ],
   },
   {
     time: "14h50",
     duration: "30 min",
     type: "painel",
-    title: "Protagonismo sem Fronteiras",
-    theme: "Recomeços que inspiram e lideram",
+    title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
+    theme: "Recomeços que Inspiram e Lideram",
     desc: "Trajetórias reais de superação e liderança — como diversidade, inclusão e recomeços são forças estratégicas para as organizações e para a sociedade.",
-    points: [
-      "Diversidade na liderança: metas, dados e accountability",
-      "Inclusão de pessoas refugiadas no mercado de trabalho",
-      "Trajetórias de recomeço como modelo de resiliência organizacional",
-    ],
     speakers: [
-      { name: "Dani Suzuki", title: "Atriz e Ativista", note: "TBC" },
-      { name: "Pessoa Refugiada", title: "Trajetória de superação e recomeço" },
-      { name: "Fernando Viriato", title: "VP Sênior de Talento e Cultura", org: "Accor Américas", note: "TBC" },
+      { name: "Dani Suzuki", note: "TBC" },
+      { name: "Pessoa Refugiada" },
+      { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas", note: "TBC" },
     ],
-    moderator: { name: "Maria Prata", title: "Escritora e Roteirista", note: "TBC" },
+    moderator: { name: "Maria Prata", note: "TBC" },
   },
   {
     time: "15h20",
@@ -236,32 +217,16 @@ const SESSIONS: Session[] = [
   {
     time: "16h10",
     duration: "20 min",
-    type: "arte",
-    title: "Apresentação Artística",
-    theme: "Cultura integrada à agenda de sustentabilidade",
-    desc: "Intervenção cultural e reflexiva integrada à programação do evento — arte como expressão dos valores da Década da Implementação.",
+    type: "keynote",
+    title: "Keynote Speaker",
+    speakers: [
+      { name: "Fernanda Torres", title: "Atriz", note: "TBC" },
+    ],
   },
   {
     time: "16h30",
-    duration: "50 min",
-    type: "painel",
-    title: "Da Extração à Regeneração",
-    theme: "Novos caminhos para a gestão de recursos naturais e economia circular",
-    desc: "Como empresas e movimentos sociais constroem juntos a transição para modelos regenerativos — da economia circular à gestão responsável de resíduos e recursos naturais.",
-    points: [
-      "Economia circular como modelo de negócio lucrativo",
-      "Gestão de resíduos sólidos e responsabilidade estendida",
-      "Comunidades tradicionais e saberes ancestrais na regeneração",
-      "Catadores como agentes da economia circular",
-      "Métricas de impacto ambiental e social integradas",
-    ],
-    speakers: [
-      { name: "Waldir Beira Junior", title: "CEO", org: "Ypê" },
-      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Kalipety" },
-      { name: "Milton Pilão", title: "CEO", org: "Orizon", note: "TBC" },
-      { name: "Aline Matulja", title: "Comunicadora e Ativista", note: "TBC" },
-    ],
-    moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular" },
+    type: "debatable",
+    title: "Debatable",
   },
   {
     time: "17h20",
@@ -278,11 +243,10 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
+      { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs", note: "TBC" },
       { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
-      { name: "Claudia Romano", title: "VP", org: "Yduqs", note: "TBC" },
       { name: "Daniel Duque", title: "Pesquisador", org: "FGV", note: "TBC" },
       { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas", note: "TBC" },
-      { name: "Nina da Hora", title: "Pesquisadora e Ativista em Tecnologia", note: "TBC" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
   },
@@ -299,24 +263,13 @@ const SESSIONS: Session[] = [
   },
   {
     time: "18h20",
-    duration: "10 min",
     type: "encerramento",
-    title: "Encerramento Oficial",
-    theme: "Compromissos para a próxima etapa",
-    desc: "Considerações finais, síntese dos compromissos assumidos e fechamento oficial da 4ª edição do Fórum Ambição 2030.",
-    points: [
-      "Síntese dos principais compromissos do dia",
-      "Próximos passos da Ambição 2030",
-      "Convite à próxima edição",
-    ],
+    title: "Encerramento",
   },
   {
     time: "18h30",
-    duration: "—",
     type: "encerramento",
-    title: "Networking & Coquetel",
-    theme: "Conexões que geram impacto",
-    desc: "Momento final de relacionamento e conexões qualificadas entre os participantes — onde parcerias começam e compromissos se fortalecem.",
+    title: "Momento de Networking // Coquetel",
   },
 ];
 
@@ -632,7 +585,7 @@ export function Agenda() {
 
         {/* Legend */}
         <div className="mb-6 flex flex-wrap gap-2">
-          {(["keynote", "painel", "business", "arte", "estrategia"] as SessionType[]).map((type) => {
+          {(["keynote", "painel", "business", "arte", "estrategia", "debatable"] as SessionType[]).map((type) => {
             const c = TYPE_CONFIG[type];
             const Ic = c.icon;
             return (
