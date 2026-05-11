@@ -50,11 +50,9 @@ function Index() {
         <About />
         <Speakers />
         <Agenda />
+        <Venue />
         <WhatToExpect />
         <Stats />
-
-        {/* ATO 2 — O CONTEÚDO */}
-        <Venue />
         <Gallery />
         <CLevelExperience />
         <AmbitionStrategy />
