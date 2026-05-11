@@ -326,9 +326,9 @@ export function Gallery() {
       <div className="mx-auto mt-20 max-w-screen-xl border-t border-white/10 px-4 pt-16 sm:px-6 lg:px-12">
         <AnimatedSection className="mb-10">
           <SectionHeader
-            eyebrow="Legado de Autoridade"
-            title="Speakers que já estiveram no"
-            outline="Palco do Fórum"
+            eyebrow="Edições Anteriores"
+            title="Impacto"
+            outline="Histórico"
             description="Lideranças que ajudaram a construir a história e o legado do Fórum Ambição 2030."
           />
         </AnimatedSection>
