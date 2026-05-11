@@ -51,10 +51,10 @@ function Index() {
         <Speakers />
         <Agenda />
         <Venue />
+        <CLevelExperience />
         <WhatToExpect />
         <Stats />
         <Gallery />
-        <CLevelExperience />
         <AmbitionStrategy />
         <PactoGlobalInfo />
         <Sponsors />

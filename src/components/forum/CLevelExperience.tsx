@@ -4,7 +4,7 @@ import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 
 const experienceDetails = [
-  { icon: Users, label: "Público e Capacidade", value: "C-Level · 80 convidados" },
+  { icon: Users, label: "Público e Capacidade", value: "CEO · 80 convidados" },
   { icon: MapPin, label: "Local", value: "Cidade Matarazzo — Aya Hub, São Paulo" },
   { icon: GlassWater, label: "Formato", value: "Keynote + Coquetel de Relacionamento" },
 ];
@@ -20,12 +20,12 @@ export function CLevelExperience() {
             <SectionHeader
               eyebrow="Experiência Exclusiva"
               title="Coquetel"
-              outline="com C-Levels"
+              outline="com CEOs"
               description="Uma agenda complementar para conexões qualificadas entre a alta liderança."
             />
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/78">
               <p>
-                Na véspera do Fórum Ambição 2030, um grupo seleto de até 80 C-Levels se reúne num ambiente exclusivo e reservado.
+                Na véspera do Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reúne num ambiente exclusivo e reservado.
               </p>
               <p>
                 Uma conversa inspiradora abrirá o encontro — seguida de um espaço pensado para que lideranças que compartilham os mesmos desafios tenham trocas genuínas e conexões estratégicas.
