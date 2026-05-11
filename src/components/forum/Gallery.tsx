@@ -327,8 +327,8 @@ export function Gallery() {
         <AnimatedSection className="mb-10">
           <SectionHeader
             eyebrow="Edições Anteriores"
-            title="Impacto"
-            outline="Histórico"
+            title="Speakers que já passaram"
+            outline="pelo Fórum Ambição"
             description="Lideranças que ajudaram a construir a história e o legado do Fórum Ambição 2030."
           />
         </AnimatedSection>
