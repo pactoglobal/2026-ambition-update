@@ -10,12 +10,6 @@ const confirmedPhotos = import.meta.glob(
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
-// Auto-loads any photo dropped into assets/img/liderancas/historicos/
-const historicPhotos = import.meta.glob(
-  "../../../assets/img/liderancas/historicos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" }
-) as Record<string, string>;
-
 function photoByKey(modules: Record<string, string>, key: string): string | undefined {
   const entry = Object.entries(modules).find(([path]) =>
     path.toLowerCase().includes(key.toLowerCase())
@@ -87,26 +81,17 @@ const speakers = [
   },
 ];
 
-const historicalSpeakers = [
-  { name: "Paul Polman",           role: "Unilever",                         photoKey: "paul" },
-  { name: "Luiza Trajano",         role: "Magalu",                           photoKey: "luiza" },
-  { name: "Bela Gil",              role: "Ativista e comunicadora",          photoKey: "bela" },
-  { name: "Marta Suplicy",         role: "Gestão pública",                   photoKey: "marta" },
-  { name: "Luis Guimarães",        role: "Cosan",                            photoKey: "luis_guimaraes" },
-  { name: "Patricia Hill Collins", role: "Acadêmica e referência em equidade", photoKey: "patricia" },
-  { name: "Albert Cheung",         role: "BloombergNEF",                     photoKey: "albert" },
-];
+
+type SpeakerEntry = { name: string; role: string; photoKey?: string; tag?: string; note?: string };
 
 function SpeakerCarousel({
   speakers: list,
   slideWidth = "w-[86%] sm:w-[50%] lg:w-[33.333%]",
-  showPhoto = false,
   photoSource = confirmedPhotos,
   ariaLabel = "speakers",
 }: {
-  speakers: typeof speakers | typeof historicalSpeakers;
+  speakers: SpeakerEntry[];
   slideWidth?: string;
-  showPhoto?: boolean;
   photoSource?: Record<string, string>;
   ariaLabel?: string;
 }) {
@@ -234,25 +219,6 @@ export function Speakers() {
           ariaLabel="speaker"
         />
 
-        <div className="mx-auto mt-24 max-w-screen-xl px-4 sm:px-6 lg:px-12">
-          <div className="mb-10 border-t border-white/12 pt-16">
-            <AnimatedSection>
-              <SectionHeader
-                eyebrow="Legado de Autoridade"
-                title="Speakers que já estiveram no"
-                outline="Palco do Fórum"
-                description="Lideranças que ajudaram a construir a história e o legado do Fórum Ambição 2030."
-              />
-            </AnimatedSection>
-          </div>
-        </div>
-
-        <SpeakerCarousel
-          speakers={historicalSpeakers}
-          slideWidth="w-[82%] sm:w-[46%] lg:w-[28%]"
-          photoSource={historicPhotos}
-          ariaLabel="histórico"
-        />
       </div>
     </section>
   );
