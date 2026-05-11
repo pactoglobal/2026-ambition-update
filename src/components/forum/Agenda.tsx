@@ -215,7 +215,7 @@ const SESSIONS: Session[] = [
     moderator: { name: "Maria Prata", title: "Escritora e Roteirista", note: "TBC" },
   },
   {
-    time: "15h10",
+    time: "15h20",
     duration: "60 min",
     type: "estrategia",
     title: "Estratégia Ambição 2030",
@@ -223,15 +223,14 @@ const SESSIONS: Session[] = [
     desc: "Highlights do novo Relatório da Ambição 2030, novas metas dos Movimentos, lançamento do Estudo do Salário Digno e do Guia Saúde Mental e Futuro do Trabalho.",
     points: [
       "Highlights do novo Relatório da Ambição 2030",
-      "Novas metas dos 10 Movimentos e novo nome do Movimento Impacto Biomas",
-      "Lançamento: Estudo do Salário Digno",
-      "Lançamento: Guia Saúde Mental e Futuro do Trabalho",
+      "Novas metas dos movimentos e novo nome do Movimento Impacto Biomas",
+      "Lançamento do Estudo do Salário Digno e do Guia Saúde Mental e Futuro do Trabalho",
       "Menção aos Hubs ODS e Multiplicadores",
-      "Reconhecimento das empresas que bateram metas",
-      "Agradecimento às Empresas Embaixadoras",
+      "Reconhecimento das empresas que bateram as metas",
+      "Agradecimento das empresas embaixadoras",
     ],
     speakers: [
-      { name: "Mônica Gregori", title: "Diretora de Impacto", org: "Pacto Global – Rede Brasil" },
+      { name: "Mônica Gregori", title: "Diretora de Impacto", org: "Pacto Global - Rede Brasil" },
     ],
   },
   {
