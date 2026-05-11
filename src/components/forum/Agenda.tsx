@@ -135,9 +135,9 @@ const SESSIONS: Session[] = [
     speakers: [
       { name: "Malu Pinto", title: "VP Executiva de Gente, Gestão, Sustentabilidade e Comunicação", org: "Suzano" },
       { name: "Ricardo Wagner", title: "Diretor de Compliance", org: "Petrobras", note: "TBC" },
-      { name: "Irina Bacci", org: "PADF", note: "TBC" },
-      { name: "Waleria Sampaio", title: "Gerente Executiva de Estratégia e Governança de Sustentabilidade", note: "TBC" },
-      { name: "Vinicius Pinheiro", org: "OIT – Organização Internacional do Trabalho", note: "TBC" },
+      { name: "Irina Bacci", title: "Diretora Regional", org: "PADF", note: "TBC" },
+      { name: "Waleria Sampaio", title: "Gerente Executiva de Estratégia e Governança de Sustentabilidade", org: "Petrobras", note: "TBC" },
+      { name: "Vinicius Pinheiro", title: "Diretor Regional", org: "OIT – Organização Internacional do Trabalho", note: "TBC" },
     ],
     moderator: { name: "Caco Barcelos", title: "Jornalista", note: "TBC" },
   },
@@ -228,6 +228,9 @@ const SESSIONS: Session[] = [
     title: "Apresentação Artística",
     theme: "Cultura integrada à agenda de sustentabilidade",
     desc: "Intervenção cultural e reflexiva integrada à programação do evento — arte como expressão dos valores da Década da Implementação.",
+    speakers: [
+      { name: "Céu", title: "Cantora e Compositora Brasileira" },
+    ],
   },
   {
     time: "16h30",
@@ -281,6 +284,9 @@ const SESSIONS: Session[] = [
     title: "Atração Artística",
     theme: "Cultura como expressão da Década da Implementação",
     desc: "Encerramento cultural da programação — arte integrada à agenda de sustentabilidade como expressão dos valores e da força do Fórum Ambição 2030.",
+    speakers: [
+      { name: "Céu", title: "Cantora e Compositora Brasileira" },
+    ],
   },
   {
     time: "18h20",
