@@ -79,6 +79,12 @@ const speakers = [
     photoKey: "jera_guarani",
   },
   {
+    name: "Daniel Duque",
+    role: "Pesquisador de Economia Aplicada, FGV/Ibre",
+    tag: "Painel",
+    photoKey: "duque",
+  },
+  {
     name: "Camila Pitanga",
     role: "Atriz e Embaixadora da ONU Mulheres",
     tag: "Painel",
