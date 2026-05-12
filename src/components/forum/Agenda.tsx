@@ -222,7 +222,7 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
-      { name: "Daniel Duque", title: "Pesquisador", org: "FGV" },
+      { name: "Daniel Duque", title: "Pesquisador de Economia Aplicada", org: "FGV/Ibre" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
   },
