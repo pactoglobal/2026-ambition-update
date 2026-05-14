@@ -74,7 +74,7 @@ const speakers = [
   },
   {
     name: "Jera Guarani",
-    role: "Liderança Indígena, Aldeia Kalipety",
+    role: "Liderança Indígena, Aldeia Indígena Kalipety",
     tag: "Painel",
     photoKey: "jera_guarani",
   },

@@ -89,9 +89,12 @@ const SESSIONS: Session[] = [
       "Métricas de impacto ambiental e social integradas",
     ],
     speakers: [
+      { name: "Milton Pilão", title: "CEO", org: "Orizon" },
       { name: "Waldir Beira Junior", title: "CEO", org: "Ypê" },
-      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Kalipety" },
+      { name: "Aline Matulja", title: "Engenheira e Comunicadora Ambiental", org: "Instituto para Futuros Locais" },
+      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Indígena Kalipety" },
     ],
+    moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular" },
   },
   {
     time: "10h30",
