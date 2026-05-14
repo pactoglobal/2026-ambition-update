@@ -113,7 +113,7 @@ export function AmbitionStrategy() {
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 px-4 text-center">
             {[
-              "Aegea", "Axia", "Banco do Brasil", "C&A", "CBA",
+              "Aegea", "Banco do Brasil", "C&A", "CBA",
               "Coca-Cola", "Globo", "GOL", "Mulher360", "Natura", "Orizon",
               "Petrobras", "Santos Brasil", "Scania", "Ypê", "Yduqs"
             ].map((company) => (
