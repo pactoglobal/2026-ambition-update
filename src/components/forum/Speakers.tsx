@@ -85,6 +85,12 @@ const speakers = [
     photoKey: "duque",
   },
   {
+    name: "Avanish Sahai",
+    role: "Diretor Independente | SaaS, IA & Plataformas em Nuvem | GTM, Ecossistemas & Expansão Global",
+    tag: "Keynote",
+    photoKey: "avanish",
+  },
+  {
     name: "Camila Pitanga",
     role: "Atriz e Embaixadora da ONU Mulheres",
     tag: "Painel",
