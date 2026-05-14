@@ -113,8 +113,8 @@ export function AmbitionStrategy() {
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 px-4 text-center">
             {[
-              "Aegea", "Animale", "Axia Energia", "Banco do Brasil", "C&A", "CBA", 
-              "Coca-Cola", "Globo", "GOL", "Iguá", "Natura", "Orizon", 
+              "Aegea", "Banco do Brasil", "C&A", "CBA",
+              "Coca-Cola", "Globo", "GOL", "Iguá", "Natura", "Orizon",
               "Petrobras", "Santos Brasil", "Scania", "Yduqs"
             ].map((company) => (
               <span key={company} className="text-sm font-bold uppercase tracking-widest text-white/64 transition-colors hover:text-forum-cyan">
