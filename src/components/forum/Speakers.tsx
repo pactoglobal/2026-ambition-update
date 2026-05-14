@@ -73,6 +73,12 @@ const speakers = [
     photoKey: "ana_bavon",
   },
   {
+    name: "Aline Matulja",
+    role: "Engenheira e Comunicadora Ambiental, Instituto para Futuros Locais",
+    tag: "Painel",
+    photoKey: "aline_matulja",
+  },
+  {
     name: "Jera Guarani",
     role: "Liderança Indígena, Aldeia Indígena Kalipety",
     tag: "Painel",
