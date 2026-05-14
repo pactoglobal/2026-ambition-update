@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import { GlassWater, Users } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
+import { accentLines } from "./identity-assets";
+
+const confirmedPhotos = import.meta.glob(
+  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
+  { eager: true, query: "?url", import: "default" }
+) as Record<string, string>;
+
+function photoByKey(key: string): string | undefined {
+  const entry = Object.entries(confirmedPhotos).find(([path]) =>
+    path.toLowerCase().includes(key.toLowerCase())
+  );
+  return entry?.[1];
+}
 
 const experienceDetails = [
   { icon: Users, label: "Público e Capacidade", value: "CEO · 80 convidados" },
@@ -13,6 +26,7 @@ const experienceDetails = [
 const keynoteSpeaker = {
   name: "Avanish Sahai",
   role: "Diretor Independente | SaaS, IA & Plataformas em Nuvem | GTM, Ecossistemas & Expansão Global",
+  photoKey: "avanish",
 };
 
 
@@ -54,21 +68,66 @@ export function CLevelExperience() {
               ))}
             </div>
 
-            {/* Keynote Speaker */}
-            <div className="mt-8 rounded-xl border border-forum-gold/30 bg-forum-gold/8 p-5">
-              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-forum-gold/70">Keynote Speaker</p>
-              <p className="mt-2 font-display text-xl font-black uppercase tracking-tight text-white">{keynoteSpeaker.name}</p>
-              <p className="mt-1 text-[11px] leading-relaxed text-white/55">{keynoteSpeaker.role}</p>
-            </div>
           </AnimatedSection>
 
-          {/* right — decorative visual */}
+          {/* right — keynote speaker card */}
           <motion.div
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="hidden lg:block"
-          />
+            className="flex flex-col gap-4"
+          >
+            {(() => {
+              const photo = photoByKey(keynoteSpeaker.photoKey);
+              return (
+                <article className="forum-card group relative overflow-hidden rounded-2xl">
+                  {photo ? (
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <img
+                        src={photo}
+                        alt={`Foto de ${keynoteSpeaker.name}`}
+                        width={600}
+                        height={800}
+                        loading="eager"
+                        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-forum-ink via-forum-ink/30 to-transparent" />
+                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[1]}`} />
+                      <span className="absolute left-4 top-4 rounded-full border border-white/14 bg-forum-ink/70 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-gold backdrop-blur-sm">
+                        Keynote Speaker
+                      </span>
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
+                          {keynoteSpeaker.name}
+                        </h3>
+                        <p className="mt-1.5 text-[11px] font-bold uppercase leading-snug tracking-wider text-white/60">
+                          {keynoteSpeaker.role}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative min-h-[360px] p-7">
+                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[1]}`} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
+                      <div className="relative z-10 flex min-h-[300px] flex-col justify-between">
+                        <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-gold">
+                          Keynote Speaker
+                        </span>
+                        <div>
+                          <h3 className="text-2xl font-display font-black uppercase leading-tight tracking-tight text-white">
+                            {keynoteSpeaker.name}
+                          </h3>
+                          <p className="mt-3 text-[11px] font-bold uppercase leading-relaxed tracking-wider text-white/55">
+                            {keynoteSpeaker.role}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </article>
+              );
+            })()}
+          </motion.div>
         </div>
       </div>
     </section>
