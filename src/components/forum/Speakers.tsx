@@ -52,7 +52,7 @@ const speakers = [
     name: "Edison Carlos",
     role: "Presidente, Instituto AEGEA",
     tag: "Business Case",
-    photoKey: "edison",
+    photoKey: "edson",
   },
   {
     name: "Mônica Gregori",
