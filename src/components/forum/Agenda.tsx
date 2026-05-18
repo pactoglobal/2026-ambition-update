@@ -203,9 +203,6 @@ const SESSIONS: Session[] = [
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
-    speakers: [
-      { name: "Avanish Sahai", title: "Diretor Independente | SaaS, IA & Plataformas em Nuvem | GTM, Ecossistemas & Expansão Global" },
-    ],
   },
   {
     time: "16h30",
