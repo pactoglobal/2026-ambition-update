@@ -226,6 +226,7 @@ const SESSIONS: Session[] = [
     speakers: [
       { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
       { name: "Daniel Duque", title: "Pesquisador de Economia Aplicada", org: "FGV/Ibre" },
+      { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
   },

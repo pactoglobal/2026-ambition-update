@@ -91,6 +91,12 @@ const speakers = [
     photoKey: "duque",
   },
   {
+    name: "Gilson Rodrigues",
+    role: "Fundador, G10 Favelas",
+    tag: "Painel",
+    photoKey: "gilson",
+  },
+  {
     name: "Avanish Sahai",
     role: "Diretor Independente | SaaS, IA & Plataformas em Nuvem | GTM, Ecossistemas & Expansão Global",
     tag: "Keynote",
