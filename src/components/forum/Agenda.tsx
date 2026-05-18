@@ -138,6 +138,7 @@ const SESSIONS: Session[] = [
       "Trabalho digno e certificações internacionais",
     ],
     speakers: [
+      { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras" },
       { name: "Irina Bacci", org: "PADF" },
       { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
@@ -145,12 +146,10 @@ const SESSIONS: Session[] = [
   {
     time: "12h10",
     duration: "20 min",
-    type: "keynote",
-    title: "Keynote Speaker",
-    theme: "Financiamento Sustentável",
-    desc: "Como o financiamento sustentável viabiliza a implementação de estratégias ESG em escala, com resultados mensuráveis e impacto real.",
+    type: "business",
+    title: "Sustentabilidade como Estratégia: A Jornada da Aegea com o Pacto Global",
     speakers: [
-      { name: "Adriana Albanese", title: "Diretora de Relações com Investidores e Sustentabilidade", org: "Aegea" },
+      { name: "Edison Carlos", title: "Presidente", org: "Instituto AEGEA" },
     ],
   },
   {

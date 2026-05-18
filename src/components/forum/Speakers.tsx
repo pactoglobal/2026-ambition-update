@@ -43,6 +43,18 @@ const speakers = [
     photoKey: "adriana",
   },
   {
+    name: "Clarice Coppetti",
+    role: "Diretora Executiva de Assuntos Corporativos, Petrobras",
+    tag: "Painel",
+    photoKey: "clarice",
+  },
+  {
+    name: "Edison Carlos",
+    role: "Presidente, Instituto AEGEA",
+    tag: "Business Case",
+    photoKey: "edison",
+  },
+  {
     name: "Mônica Gregori",
     role: "Diretora de Impacto, Pacto Global – Rede Brasil",
     tag: "Estratégia",
