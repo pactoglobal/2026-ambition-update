@@ -61,12 +61,6 @@ const speakers = [
     photoKey: "monica_gregori",
   },
   {
-    name: "Waldir Beira Junior",
-    role: "CEO, Ypê",
-    tag: "Painel",
-    photoKey: "waldir_beira",
-  },
-  {
     name: "Vivian Broge",
     role: "Vice-Presidente de Relações Humanas e Marketing, TOTVS",
     tag: "Painel",
