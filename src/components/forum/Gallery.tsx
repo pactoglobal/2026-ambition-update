@@ -235,9 +235,9 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
 
       {/* Dot indicators */}
       <div className="mt-5 flex justify-center gap-1.5 px-5">
-        {images.map((_, i) => (
+        {images.map((image, i) => (
           <button
-            key={i}
+            key={image.src}
             type="button"
             aria-label={`Ir para foto ${i + 1}`}
             onClick={() => emblaApi?.scrollTo(i)}

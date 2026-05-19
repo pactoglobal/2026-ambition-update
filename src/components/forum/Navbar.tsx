@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
@@ -42,14 +40,14 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const scrollTo = (href: string) => {
+  const scrollTo = useCallback((href: string) => {
     setMobileOpen(false);
     const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
     window.scrollTo({ top, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <>

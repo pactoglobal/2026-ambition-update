@@ -19,7 +19,7 @@ export function Contact() {
 
         <div className="grid gap-6 md:grid-cols-2">
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.45 }}
@@ -40,7 +40,7 @@ export function Contact() {
           </motion.div>
 
           <motion.div
-            initial={false}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.45 }}

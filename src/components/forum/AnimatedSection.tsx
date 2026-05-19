@@ -8,6 +8,7 @@ interface AnimatedSectionProps {
   direction?: "up" | "left" | "right" | "none";
 }
 
+// Defined at module scope so the same object references are reused across renders
 const variants: Record<string, Variants> = {
   up: {
     hidden: { opacity: 0, y: 40 },
@@ -47,6 +48,13 @@ export function AnimatedSection({
   );
 }
 
+// Static variants for the default stagger delay. Components needing a custom
+// staggerDelay should construct their own variants at module scope.
+const staggerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
 export function StaggeredList({
   children,
   className,
@@ -56,16 +64,19 @@ export function StaggeredList({
   className?: string;
   staggerDelay?: number;
 }) {
+  // Only build a new object when the caller passes a non-default staggerDelay
+  const resolvedVariants =
+    staggerDelay === 0.1
+      ? staggerVariants
+      : { hidden: {}, visible: { transition: { staggerChildren: staggerDelay } } };
+
   return (
     <motion.div
       className={className}
       initial={false}
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: staggerDelay } },
-      }}
+      variants={resolvedVariants}
     >
       {children}
     </motion.div>

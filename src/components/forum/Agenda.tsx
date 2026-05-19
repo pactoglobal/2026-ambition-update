@@ -11,12 +11,14 @@ const artPhotos = import.meta.glob(
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
+// Pre-built lookup: normalize once at module load instead of on every render/call
+const artPhotoEntries: Array<[normalizedPath: string, url: string]> = Object.entries(artPhotos).map(
+  ([path, url]) => [path.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, ""), url]
+);
+
 function photoByArtist(name: string): string | undefined {
-  const key = name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-  const entry = Object.entries(artPhotos).find(([path]) =>
-    path.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").includes(key)
-  );
-  return entry?.[1];
+  const key = name.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "");
+  return artPhotoEntries.find(([path]) => path.includes(key))?.[1];
 }
 
 type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable";
@@ -59,6 +61,9 @@ const TYPE_CONFIG: Record<SessionType, {
   encerramento:{ label: "Encerramento",  borderColor: "border-l-white/25",      tagBg: "bg-white/6",          tagText: "text-white/40",      dot: "bg-white/30",      icon: Star },
   debatable:   { label: "Debatable",     borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/12",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Users },
 };
+
+// Extracted to module scope to avoid re-creating the array on every render
+const LEGEND_TYPES: SessionType[] = ["keynote", "painel", "business", "arte", "estrategia", "debatable"];
 
 const SESSIONS: Session[] = [
   {
@@ -563,7 +568,7 @@ export function Agenda() {
 
         {/* Legend */}
         <div className="mb-6 flex flex-wrap gap-2">
-          {(["keynote", "painel", "business", "arte", "estrategia", "debatable"] as SessionType[]).map((type) => {
+          {LEGEND_TYPES.map((type) => {
             const c = TYPE_CONFIG[type];
             const Ic = c.icon;
             return (

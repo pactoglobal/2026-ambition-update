@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import heroBg from "../../../assets/img/hero/hero-bg.jpg?url";
@@ -30,8 +31,9 @@ const HERO_PARTNERS = [
 ];
 
 export function Hero() {
-  const scrollTo = (id: string) =>
+  const scrollTo = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   return (
     <section id="hero" className="relative isolate min-h-screen overflow-hidden bg-forum-deep">

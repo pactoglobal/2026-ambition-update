@@ -1,21 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
+
+// Above-the-fold — load eagerly
 import { Hero } from "@/components/forum/Hero";
 import { Navbar } from "@/components/forum/Navbar";
 import { About } from "@/components/forum/About";
-import { WhatToExpect } from "@/components/forum/WhatToExpect";
-import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
-import { Stats } from "@/components/forum/Stats";
-import { Agenda } from "@/components/forum/Agenda";
-import { CLevelExperience } from "@/components/forum/CLevelExperience";
-import { Sponsors } from "@/components/forum/Sponsors";
-import { Waitlist } from "@/components/forum/Waitlist";
-import { Contact } from "@/components/forum/Contact";
-import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
-import { Footer } from "@/components/forum/Footer";
-import { Speakers } from "@/components/forum/Speakers";
-import { Venue } from "@/components/forum/Venue";
-import { Gallery } from "@/components/forum/Gallery";
-import { Faq } from "@/components/forum/Faq";
+
+// Below-the-fold — lazy load to split the bundle
+const Speakers = lazy(() => import("@/components/forum/Speakers").then((m) => ({ default: m.Speakers })));
+const Agenda = lazy(() => import("@/components/forum/Agenda").then((m) => ({ default: m.Agenda })));
+const Venue = lazy(() => import("@/components/forum/Venue").then((m) => ({ default: m.Venue })));
+const CLevelExperience = lazy(() => import("@/components/forum/CLevelExperience").then((m) => ({ default: m.CLevelExperience })));
+const WhatToExpect = lazy(() => import("@/components/forum/WhatToExpect").then((m) => ({ default: m.WhatToExpect })));
+const Stats = lazy(() => import("@/components/forum/Stats").then((m) => ({ default: m.Stats })));
+const Gallery = lazy(() => import("@/components/forum/Gallery").then((m) => ({ default: m.Gallery })));
+const AmbitionStrategy = lazy(() => import("@/components/forum/AmbitionStrategy").then((m) => ({ default: m.AmbitionStrategy })));
+const PactoGlobalInfo = lazy(() => import("@/components/forum/PactoGlobalInfo").then((m) => ({ default: m.PactoGlobalInfo })));
+const Sponsors = lazy(() => import("@/components/forum/Sponsors").then((m) => ({ default: m.Sponsors })));
+const Faq = lazy(() => import("@/components/forum/Faq").then((m) => ({ default: m.Faq })));
+const Waitlist = lazy(() => import("@/components/forum/Waitlist").then((m) => ({ default: m.Waitlist })));
+const Contact = lazy(() => import("@/components/forum/Contact").then((m) => ({ default: m.Contact })));
+const Footer = lazy(() => import("@/components/forum/Footer").then((m) => ({ default: m.Footer })));
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -43,25 +48,29 @@ function Index() {
     <>
       <Navbar />
       <main className="min-h-screen">
-        {/* ATO 1 — A PROMESSA */}
+        {/* ATO 1 — A PROMESSA (above-the-fold, eager) */}
         <Hero />
         <About />
-        <Speakers />
-        <Agenda />
-        <Venue />
-        <CLevelExperience />
-        <WhatToExpect />
-        <Stats />
-        <Gallery />
-        <AmbitionStrategy />
-        <PactoGlobalInfo />
-        <Sponsors />
 
-        {/* CONVERSÃO */}
-        <Faq />
-        <Waitlist />
-        <Contact />
-        <Footer />
+        {/* Below-the-fold sections lazy-loaded */}
+        <Suspense>
+          <Speakers />
+          <Agenda />
+          <Venue />
+          <CLevelExperience />
+          <WhatToExpect />
+          <Stats />
+          <Gallery />
+          <AmbitionStrategy />
+          <PactoGlobalInfo />
+          <Sponsors />
+
+          {/* CONVERSÃO */}
+          <Faq />
+          <Waitlist />
+          <Contact />
+          <Footer />
+        </Suspense>
       </main>
     </>
   );

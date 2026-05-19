@@ -10,12 +10,27 @@ const confirmedPhotos = import.meta.glob(
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
+// Pre-built lowercase entries so path scanning is O(n) once, not on every render
+const confirmedPhotoEntries = Object.entries(confirmedPhotos).map(
+  ([path, url]): [string, string] => [path.toLowerCase(), url]
+);
+
 function photoByKey(modules: Record<string, string>, key: string): string | undefined {
+  const lowerKey = key.toLowerCase();
+  // Use the pre-built entries when looking up confirmed photos
+  if (modules === confirmedPhotos) {
+    return confirmedPhotoEntries.find(([path]) => path.includes(lowerKey))?.[1];
+  }
   const entry = Object.entries(modules).find(([path]) =>
-    path.toLowerCase().includes(key.toLowerCase())
+    path.toLowerCase().includes(lowerKey)
   );
   return entry?.[1];
 }
+
+// Compute once at module load — speakers with confirmed photos
+const speakersWithPhotos = speakers.filter(
+  (s) => !!photoByKey(confirmedPhotos, s.photoKey ?? "")
+);
 
 const speakers = [
   {
@@ -249,7 +264,7 @@ export function Speakers() {
         </div>
 
         <SpeakerCarousel
-          speakers={speakers.filter((s) => !!photoByKey(confirmedPhotos, s.photoKey ?? ""))}
+          speakers={speakersWithPhotos}
           slideWidth="w-[86%] sm:w-[50%] lg:w-[33.333%]"
           photoSource={confirmedPhotos}
           ariaLabel="speaker"
