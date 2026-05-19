@@ -35,6 +35,8 @@ export function Venue() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin"
+              title="Localização do evento"
               className="opacity-[0.62] grayscale invert brightness-75 contrast-125 transition-[filter,opacity] duration-500 hover:opacity-100 hover:grayscale-0 hover:brightness-100"
               title="Localização MASP"
             />
