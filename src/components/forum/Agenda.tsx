@@ -11,14 +11,32 @@ const artPhotos = import.meta.glob(
   { eager: true, query: "?url", import: "default" }
 ) as Record<string, string>;
 
+const confirmedPhotos = import.meta.glob(
+  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
+  { eager: true, query: "?url", import: "default" }
+) as Record<string, string>;
+
 // Pre-built lookup: normalize once at module load instead of on every render/call
 const artPhotoEntries: Array<[normalizedPath: string, url: string]> = Object.entries(artPhotos).map(
+  ([path, url]) => [path.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, ""), url]
+);
+
+const confirmedPhotoEntries: Array<[normalizedPath: string, url: string]> = Object.entries(confirmedPhotos).map(
   ([path, url]) => [path.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, ""), url]
 );
 
 function photoByArtist(name: string): string | undefined {
   const key = name.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "");
   return artPhotoEntries.find(([path]) => path.includes(key))?.[1];
+}
+
+function photoBySpeaker(name: string): string | undefined {
+  const key = name.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "").replace(/\s+/g, "_");
+  const keyHyphen = key.replace(/_/g, "-");
+  return (
+    confirmedPhotoEntries.find(([path]) => path.includes(key))?.[1] ??
+    confirmedPhotoEntries.find(([path]) => path.includes(keyHyphen))?.[1]
+  );
 }
 
 type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable";
@@ -260,11 +278,22 @@ const SESSIONS: Session[] = [
 ];
 
 function SpeakerCard({ speaker, index }: { speaker: Speaker; index: number }) {
+  const photo = photoBySpeaker(speaker.name);
   return (
     <li className="flex items-start gap-3 rounded-xl border border-white/10 bg-forum-navy/60 p-4 backdrop-blur-sm">
-      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/8 text-[10px] font-black text-white/50">
-        {index + 1}
-      </span>
+      {photo ? (
+        <img
+          src={photo}
+          alt={speaker.name}
+          width={40}
+          height={40}
+          className="mt-0.5 h-10 w-10 shrink-0 rounded-full object-cover object-top ring-1 ring-white/20"
+        />
+      ) : (
+        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/8 text-[10px] font-black text-white/50">
+          {index + 1}
+        </span>
+      )}
       <div className="min-w-0">
         <p className="text-[13px] font-bold leading-snug text-white">{speaker.name}</p>
         {speaker.title && (
@@ -284,11 +313,22 @@ function SpeakerCard({ speaker, index }: { speaker: Speaker; index: number }) {
 }
 
 function ModeratorCard({ moderator }: { moderator: Speaker }) {
+  const photo = photoBySpeaker(moderator.name);
   return (
     <div className="flex items-center gap-4 rounded-xl border border-forum-cyan/30 bg-forum-cyan/8 px-5 py-4">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forum-cyan/30 bg-forum-cyan/15">
-        <Mic aria-hidden="true" size={16} className="text-forum-cyan" strokeWidth={1.8} />
-      </div>
+      {photo ? (
+        <img
+          src={photo}
+          alt={moderator.name}
+          width={40}
+          height={40}
+          className="h-10 w-10 shrink-0 rounded-full object-cover object-top ring-1 ring-forum-cyan/30"
+        />
+      ) : (
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forum-cyan/30 bg-forum-cyan/15">
+          <Mic aria-hidden="true" size={16} className="text-forum-cyan" strokeWidth={1.8} />
+        </div>
+      )}
       <div className="min-w-0 flex-1">
         <p className="mb-0.5 text-[9px] font-black uppercase tracking-[0.38em] text-forum-cyan/80">
           Moderação
