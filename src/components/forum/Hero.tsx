@@ -66,7 +66,7 @@ export function Hero() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-forum-gold/40 bg-forum-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-forum-gold" />
-              Entrada Gratuita
+              Evento Exclusivo
             </span>
           </motion.div>
 
