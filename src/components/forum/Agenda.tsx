@@ -171,10 +171,6 @@ const SESSIONS: Session[] = [
     title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
     theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
     desc: "Como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
-    speakers: [
-      { name: "Camila Pitanga", title: "Atriz e Embaixadora da ONU Mulheres", note: "TBC" },
-      { name: "Maria Prata", note: "TBC" },
-    ],
   },
   {
     time: "14h50",
@@ -188,7 +184,6 @@ const SESSIONS: Session[] = [
       { name: "Pessoa Refugiada" },
       { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas" },
     ],
-    moderator: { name: "Maria Prata", note: "TBC" },
   },
   {
     time: "15h20",

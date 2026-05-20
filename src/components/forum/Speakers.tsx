@@ -119,13 +119,6 @@ const speakers = [
     photoKey: "avanish",
   },
   {
-    name: "Camila Pitanga",
-    role: "Atriz e Embaixadora da ONU Mulheres",
-    tag: "Painel",
-    photoKey: "camila",
-    note: "TBC",
-  },
-  {
     name: "Irina Bacci",
     role: "Diretora Técnica, Fundação Pan-Americana para o Desenvolvimento (PADF)",
     tag: "Painel",
