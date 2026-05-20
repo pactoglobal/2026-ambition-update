@@ -143,7 +143,7 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras" },
-      { name: "Irina Bacci", org: "PADF" },
+      { name: "Irina Bacci", title: "Diretora Técnica", org: "PADF" },
       { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
   },
