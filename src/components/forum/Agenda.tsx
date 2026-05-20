@@ -114,6 +114,7 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
+      { name: "Miguel Castro", title: "Ponto focal regional", org: "OCDE" },
       { name: "Rafaela Guedes", title: "CEO e Fundadora", org: "RG Impact & Senior Fellow CEBRI" },
     ],
   },
@@ -170,6 +171,10 @@ const SESSIONS: Session[] = [
     title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
     theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
     desc: "Como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
+    speakers: [
+      { name: "Camila Pitanga", title: "Atriz e Embaixadora da ONU Mulheres", note: "TBC" },
+      { name: "Maria Prata", note: "TBC" },
+    ],
   },
   {
     time: "14h50",
@@ -179,8 +184,11 @@ const SESSIONS: Session[] = [
     theme: "Recomeços que Inspiram e Lideram",
     desc: "Trajetórias reais de superação e liderança — como diversidade, inclusão e recomeços são forças estratégicas para as organizações e para a sociedade.",
     speakers: [
+      { name: "Danni Suzuki" },
       { name: "Pessoa Refugiada" },
+      { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas" },
     ],
+    moderator: { name: "Maria Prata", note: "TBC" },
   },
   {
     time: "15h20",
