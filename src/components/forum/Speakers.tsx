@@ -130,6 +130,18 @@ const speakers = [
     photoKey: "camila",
     note: "TBC",
   },
+  {
+    name: "Irina Bacci",
+    role: "Diretora Técnica, Fundação Pan-Americana para o Desenvolvimento (PADF)",
+    tag: "Painel",
+    photoKey: "irina_bacci",
+  },
+  {
+    name: "Miguel Castro",
+    role: "Ponto focal regional da OCDE",
+    tag: "Transição Energética: Oportunidade ou Obrigação? O Brasil diante da nova economia",
+    photoKey: "miguel-castro",
+  },
 ];
 
 
