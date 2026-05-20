@@ -81,7 +81,7 @@ const TYPE_CONFIG: Record<SessionType, {
 };
 
 // Extracted to module scope to avoid re-creating the array on every render
-const LEGEND_TYPES: SessionType[] = ["keynote", "painel", "business", "arte", "estrategia", "debatable"];
+const LEGEND_TYPES: SessionType[] = ["keynote", "painel", "business", "estrategia", "debatable"];
 
 const SESSIONS: Session[] = [
   {
@@ -253,17 +253,6 @@ const SESSIONS: Session[] = [
       { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
-  },
-  {
-    time: "18h00",
-    duration: "20 min",
-    type: "arte",
-    title: "Atração Artística",
-    theme: "Cultura como expressão da Década da Implementação",
-    desc: "Encerramento cultural da programação — arte integrada à agenda de sustentabilidade como expressão dos valores e da força do Fórum Ambição 2030.",
-    speakers: [
-      { name: "Céu", title: "Cantora e Compositora Brasileira" },
-    ],
   },
   {
     time: "18h20",
