@@ -27,11 +27,6 @@ function photoByKey(modules: Record<string, string>, key: string): string | unde
   return entry?.[1];
 }
 
-// Compute once at module load — speakers with confirmed photos
-const speakersWithPhotos = speakers.filter(
-  (s) => !!photoByKey(confirmedPhotos, s.photoKey ?? "")
-);
-
 const speakers = [
   {
     name: "Guilherme Xavier",
@@ -144,6 +139,10 @@ const speakers = [
   },
 ];
 
+// Compute once at module load — speakers with confirmed photos
+const speakersWithPhotos = speakers.filter(
+  (s) => !!photoByKey(confirmedPhotos, s.photoKey ?? "")
+);
 
 type SpeakerEntry = { name: string; role: string; photoKey?: string; tag?: string; note?: string };
 
