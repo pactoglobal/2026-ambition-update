@@ -59,10 +59,14 @@ export function Hero() {
         <div className="max-w-5xl">
           <h1 className="sr-only">4º Fórum Ambição 2030 - A Década da Implementação</h1>
 
-          <motion.div initial={false} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="flex flex-wrap items-center gap-3">
             <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-cyan">
               <span className="h-1.5 w-1.5 rounded-full bg-forum-cyan" />
               4ª Edição · A Década da Implementação
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-forum-gold/40 bg-forum-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-gold">
+              <span className="h-1.5 w-1.5 rounded-full bg-forum-gold" />
+              Entrada Gratuita
             </span>
           </motion.div>
 
