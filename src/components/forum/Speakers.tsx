@@ -133,7 +133,7 @@ const speakers = [
   {
     name: "Irina Bacci",
     role: "Diretora Técnica, Fundação Pan-Americana para o Desenvolvimento (PADF)",
-    tag: "Painel",
+    tag: "Rastreabilidade na cadeia de valor: onde compliance e direitos humanos se encontram",
     photoKey: "irina_bacci",
   },
   {
