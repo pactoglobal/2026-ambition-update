@@ -266,7 +266,7 @@ const SESSIONS: Session[] = [
     ],
   },
   {
-    time: "18h20",
+    time: "18h30",
     type: "encerramento",
     title: "Encerramento",
   },
