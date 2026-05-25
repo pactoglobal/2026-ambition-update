@@ -3,29 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines } from "./identity-assets";
-
-// Auto-loads any photo dropped into assets/img/liderancas/confirmados-2026/
-const confirmedPhotos = import.meta.glob(
-  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
-) as Record<string, string>;
-
-// Pre-built lowercase entries so path scanning is O(n) once, not on every render
-const confirmedPhotoEntries = Object.entries(confirmedPhotos).map(
-  ([path, url]): [string, string] => [path.toLowerCase(), url]
-);
-
-function photoByKey(modules: Record<string, string>, key: string): string | undefined {
-  const lowerKey = key.toLowerCase();
-  // Use the pre-built entries when looking up confirmed photos
-  if (modules === confirmedPhotos) {
-    return confirmedPhotoEntries.find(([path]) => path.includes(lowerKey))?.[1];
-  }
-  const entry = Object.entries(modules).find(([path]) =>
-    path.toLowerCase().includes(lowerKey)
-  );
-  return entry?.[1];
-}
+import { photoByKey } from "../../lib/photos";
 
 const speakers = [
   {
@@ -62,7 +40,7 @@ const speakers = [
     name: "Edison Carlos",
     role: "Presidente, Instituto AEGEA",
     tag: "Business Case",
-    photoKey: "edson",
+    photoKey: "atual",
   },
   {
     name: "Mônica Gregori",
@@ -130,11 +108,16 @@ const speakers = [
     tag: "Painel",
     photoKey: "miguel-castro",
   },
+  {
+    name: "Danni Suzuki",
+    role: "Atriz, ativista social e apoiadora de alto perfil da ACNUR",
+    tag: "Keynote",
+    photoKey: "danni-suzuki",
+  },
 ];
 
-// Compute once at module load — speakers with confirmed photos
 const speakersWithPhotos = speakers.filter(
-  (s) => !!photoByKey(confirmedPhotos, s.photoKey ?? "")
+  (s) => !!photoByKey(s.photoKey ?? "")
 );
 
 type SpeakerEntry = { name: string; role: string; photoKey?: string; tag?: string; note?: string };
@@ -142,12 +125,10 @@ type SpeakerEntry = { name: string; role: string; photoKey?: string; tag?: strin
 function SpeakerCarousel({
   speakers: list,
   slideWidth = "w-[86%] sm:w-[50%] lg:w-[33.333%]",
-  photoSource = confirmedPhotos,
   ariaLabel = "speakers",
 }: {
   speakers: SpeakerEntry[];
   slideWidth?: string;
-  photoSource?: Record<string, string>;
   ariaLabel?: string;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -180,7 +161,7 @@ function SpeakerCarousel({
       <div ref={emblaRef} className="overflow-hidden px-4 sm:px-6 lg:px-12">
         <div className="flex gap-4">
           {list.map((speaker, index) => {
-            const photo = photoByKey(photoSource, speaker.photoKey ?? "");
+            const photo = photoByKey(speaker.photoKey ?? "");
             const hasPhoto = !!photo;
 
             return (
@@ -270,7 +251,6 @@ export function Speakers() {
         <SpeakerCarousel
           speakers={speakersWithPhotos}
           slideWidth="w-[86%] sm:w-[50%] lg:w-[33.333%]"
-          photoSource={confirmedPhotos}
           ariaLabel="speaker"
         />
 

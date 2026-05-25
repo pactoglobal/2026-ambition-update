@@ -5,39 +5,7 @@ import {
 } from "lucide-react";
 import { SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
-
-const artPhotos = import.meta.glob(
-  "../../../assets/img/liderancas/atracao-artistica/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
-) as Record<string, string>;
-
-const confirmedPhotos = import.meta.glob(
-  "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
-) as Record<string, string>;
-
-// Pre-built lookup: normalize once at module load instead of on every render/call
-const artPhotoEntries: Array<[normalizedPath: string, url: string]> = Object.entries(artPhotos).map(
-  ([path, url]) => [path.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, ""), url]
-);
-
-const confirmedPhotoEntries: Array<[normalizedPath: string, url: string]> = Object.entries(confirmedPhotos).map(
-  ([path, url]) => [path.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, ""), url]
-);
-
-function photoByArtist(name: string): string | undefined {
-  const key = name.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "");
-  return artPhotoEntries.find(([path]) => path.includes(key))?.[1];
-}
-
-function photoBySpeaker(name: string): string | undefined {
-  const key = name.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "").replace(/\s+/g, "_");
-  const keyHyphen = key.replace(/_/g, "-");
-  return (
-    confirmedPhotoEntries.find(([path]) => path.includes(key))?.[1] ??
-    confirmedPhotoEntries.find(([path]) => path.includes(keyHyphen))?.[1]
-  );
-}
+import { photoByArtist, photoBySpeaker } from "../../lib/photos";
 
 type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable";
 
