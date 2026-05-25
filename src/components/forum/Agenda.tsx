@@ -26,6 +26,7 @@ interface Session {
   points?: string[];
   speakers?: Speaker[];
   moderator?: Speaker;
+  jurados?: Speaker[];
 }
 
 // Colors aligned with Pacto Global ONU brand + ODS palette
@@ -195,11 +196,28 @@ const SESSIONS: Session[] = [
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
+    speakers: [
+      { name: "Aretha Duarte" },
+    ],
   },
   {
     time: "16h30",
     type: "debatable",
     title: "Debatable",
+    theme: "Os ODS são o melhor framework para ação coletiva",
+    speakers: [
+      { name: "Fabiana Costa", org: "Bradesco" },
+      { name: "Sonia Chapman" },
+      { name: "Patrícia Acioli", org: "Scania" },
+      { name: "Leandro Machado", title: "Cientista político" },
+      { name: "Rodrigo Santini", org: "Mars" },
+      { name: "Daniel Teixeira", note: "TBC" },
+    ],
+    jurados: [
+      { name: "Bruna Barros" },
+      { name: "Juliana Silva", org: "Motiva" },
+      { name: "Édson Higo", org: "AYA", note: "TBC" },
+    ],
   },
   {
     time: "17h20",
@@ -404,7 +422,8 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
   const Icon = cfg.icon;
   const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
   const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
-  const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator);
+  const confirmedJurados = session.jurados?.filter((s) => !s.note) ?? [];
+  const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator || confirmedJurados.length);
   const isBreak = session.type === "intervalo" || session.type === "encerramento";
   const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
 
@@ -543,6 +562,19 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
               {confirmedModerator && (
                 <div className="mt-3 max-w-sm">
                   <ModeratorCard moderator={confirmedModerator} />
+                </div>
+              )}
+
+              {confirmedJurados.length > 0 && (
+                <div className="mt-4">
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
+                    Jurados
+                  </p>
+                  <ul className={`grid gap-2 ${confirmedJurados.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}>
+                    {confirmedJurados.map((s, i) => (
+                      <SpeakerCard key={s.name} speaker={s} index={i} />
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
