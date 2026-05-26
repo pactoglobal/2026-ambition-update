@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronDown, Mic, Users, Coffee, Star, Music, Award, ArrowRight, Building2,
+  ChevronDown, Mic, Users, Coffee, Star, Music, Award, ArrowRight, Building2, Zap,
 } from "lucide-react";
 import { SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
 import { photoByArtist, photoBySpeaker } from "../../lib/photos";
 
-type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable";
+type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable" | "firechat";
 
 interface Speaker {
   name: string;
@@ -47,6 +47,7 @@ const TYPE_CONFIG: Record<SessionType, {
   estrategia:  { label: "Estratégia",    borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: ArrowRight },
   encerramento:{ label: "Encerramento",  borderColor: "border-l-white/25",      tagBg: "bg-white/6",          tagText: "text-white/40",      dot: "bg-white/30",      icon: Star },
   debatable:   { label: "Debatable",     borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/12",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Users },
+  firechat:    { label: "Firechat",      borderColor: "border-l-forum-magenta", tagBg: "bg-forum-magenta/10", tagText: "text-forum-magenta", dot: "bg-forum-magenta", icon: Zap },
 };
 
 // Extracted to module scope to avoid re-creating the array on every render
@@ -64,11 +65,32 @@ const SESSIONS: Session[] = [
     title: "Abertura",
     speakers: [
       { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global - Rede Brasil" },
+      { name: "Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
     ],
   },
   {
-    time: "09h50",
-    duration: "40 min",
+    time: "09h40",
+    type: "firechat",
+    title: "Firechat",
+    theme: "Evolução dos ODS e Sistema ONU",
+    speakers: [
+      { name: "Maristela Baioni", org: "PNUD", note: "TBC" },
+      { name: "Vinicius Pinheiro", org: "OIT" },
+    ],
+  },
+  {
+    time: "09h55",
+    duration: "10 min",
+    type: "keynote",
+    title: "Keynote Speaker",
+    theme: "Segurança Alimentar",
+    speakers: [
+      { name: "Jerá Guarani", title: "Liderança Indígena", org: "Aldeia Indígena Kalipety" },
+    ],
+  },
+  {
+    time: "10h05",
+    duration: "30 min",
     type: "painel",
     title: "Da Extração à Regeneração",
     theme: "Novos caminhos para a gestão de recursos naturais",
@@ -82,13 +104,13 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Milton Pilão", title: "CEO", org: "Orizon" },
+      { name: "Edison Carlos", title: "Presidente", org: "Instituto AEGEA" },
       { name: "Aline Matulja", title: "Engenheira e Comunicadora Ambiental", org: "Instituto para Futuros Locais" },
-      { name: "Jera Guarani", title: "Liderança Indígena", org: "Aldeia Indígena Kalipety" },
     ],
     moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular" },
   },
   {
-    time: "10h30",
+    time: "10h35",
     duration: "40 min",
     type: "painel",
     title: "Transição Energética: Oportunidade ou Obrigação?",
@@ -102,22 +124,24 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Miguel Castro", title: "Ponto focal regional", org: "OCDE" },
-      { name: "Rafaela Guedes", title: "CEO e Fundadora", org: "RG Impact & Senior Fellow CEBRI" },
+      { name: "Marcia Massoti", org: "Axia Energia" },
+      { name: "Ricardo Geromel", note: "TBC" },
+      { name: "Rafaela Guedes", org: "CEBRI" },
     ],
+    moderator: { name: "Vanessa Adachi", org: "Reset" },
   },
   {
-    time: "11h10",
+    time: "11h15",
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
-    theme: "Liderança com saúde mental e significado",
-    desc: "Como líderes podem sustentar alta performance sem abrir mão do propósito e do bem-estar — uma perspectiva prática para os desafios da Década da Implementação.",
+    theme: "Financiamento Sustentável",
     speakers: [
-      { name: "Alexandre Coimbra", title: "Palestrante, consultor de saúde mental, escritor best seller, colunista do Valor Econômico e da TV Globo" },
+      { name: "Adriana Albanese", title: "Diretora de Sustentabilidade", org: "Aegea" },
     ],
   },
   {
-    time: "11h30",
+    time: "11h35",
     duration: "40 min",
     type: "painel",
     title: "Rastreabilidade na Cadeia de Valor",
@@ -132,20 +156,13 @@ const SESSIONS: Session[] = [
     speakers: [
       { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras" },
       { name: "Irina Bacci", title: "Diretora Técnica da Fundação Pan-Americana para o Desenvolvimento", org: "PADF" },
+      { name: "Ana Cristina Rosa Garcia", title: "Vice-presidenta Corporativa", org: "Banco do Brasil" },
       { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
+    moderator: { name: "Joyce Ribeiro" },
   },
   {
-    time: "12h10",
-    duration: "20 min",
-    type: "business",
-    title: "Sustentabilidade como Estratégia: A Jornada da Aegea com o Pacto Global",
-    speakers: [
-      { name: "Edison Carlos", title: "Presidente", org: "Instituto AEGEA" },
-    ],
-  },
-  {
-    time: "12h30",
+    time: "12h15",
     duration: "2h",
     type: "intervalo",
     title: "Almoço",
@@ -154,23 +171,25 @@ const SESSIONS: Session[] = [
   {
     time: "14h30",
     duration: "20 min",
-    type: "painel",
-    title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
-    theme: "Entre o palco e o mundo: quando arte e ativismo se encontram",
-    desc: "Como artistas e ativistas amplificam causas urgentes e transformam a narrativa pública.",
+    type: "keynote",
+    title: "Keynote Speaker",
+    theme: "Liderança com saúde mental e significado",
+    desc: "Como líderes podem sustentar alta performance sem abrir mão do propósito e do bem-estar — uma perspectiva prática para os desafios da Década da Implementação.",
+    speakers: [
+      { name: "Alexandre Coimbra", title: "Palestrante em empresas e escolas, consultor de saúde mental, escritor best seller, colunista do Valor Econômico e da TV Globo" },
+    ],
   },
   {
     time: "14h50",
     duration: "30 min",
     type: "painel",
-    title: "Protagonismo sem Fronteiras: a agenda de gênero em tempos de crise",
-    theme: "Recomeços que Inspiram e Lideram",
-    desc: "Trajetórias reais de superação e liderança — como diversidade, inclusão e recomeços são forças estratégicas para as organizações e para a sociedade.",
+    title: "Protagonismo sem fronteiras: Recomeços que Inspiram",
     speakers: [
-      { name: "Danni Suzuki" },
-      { name: "Pessoa Refugiada" },
+      { name: "Danni Suzuki", title: "Apoiadora de Alto Perfil", org: "ACNUR" },
+      { name: "Risett Campos" },
       { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas" },
     ],
+    moderator: { name: "A confirmar", note: "TBC" },
   },
   {
     time: "15h20",
@@ -234,8 +253,9 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
-      { name: "Vivian Broge", title: "VP de Relações Humanas e Marketing", org: "TOTVS" },
-      { name: "Daniel Duque", title: "Pesquisador de Economia Aplicada", org: "FGV/Ibre" },
+      { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs" },
+      { name: "Vivian Broge", org: "TOTVS" },
+      { name: "Daniel Duque", title: "Pesquisador", org: "FGV" },
       { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas" },
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
