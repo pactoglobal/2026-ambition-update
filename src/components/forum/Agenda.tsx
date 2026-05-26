@@ -301,10 +301,7 @@ function SpeakerCard({ speaker, index }: { speaker: Speaker; index: number }) {
         </span>
       )}
       <div className="min-w-0">
-        <p className="flex items-center gap-1.5 text-[13px] font-bold leading-snug text-white">
-          {speaker.name}
-          {speaker.note === "TBC" && <span className="rounded-sm bg-white/10 px-1 text-[8px] font-black uppercase tracking-wider text-white/40">TBC</span>}
-        </p>
+        <p className="text-[13px] font-bold leading-snug text-white">{speaker.name}</p>
         {speaker.title && (
           <p className="mt-0.5 text-[11px] leading-snug text-white/58">{speaker.title}</p>
         )}
@@ -443,9 +440,9 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
   const cfg = TYPE_CONFIG[session.type];
   const Icon = cfg.icon;
-  const confirmedSpeakers = session.speakers ?? [];
-  const confirmedModerator = session.moderator;
-  const confirmedJurados = session.jurados ?? [];
+  const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
+  const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
+  const confirmedJurados = session.jurados?.filter((s) => !s.note) ?? [];
   const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator || confirmedJurados.length);
   const isBreak = session.type === "intervalo" || session.type === "encerramento";
   const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
@@ -508,7 +505,6 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                   {confirmedSpeakers.map((s) => (
                     <span key={s.name} className="inline-flex items-baseline gap-1.5 rounded-sm border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] leading-tight">
                       <span className="font-bold text-white/75">{s.name}</span>
-                      {s.note === "TBC" && <span className="rounded-sm bg-white/10 px-1 text-[8px] font-black uppercase tracking-wider text-white/35">TBC</span>}
                       {s.title && <span className="text-white/35">{s.title}{s.org ? ` · ${s.org}` : ""}</span>}
                     </span>
                   ))}
