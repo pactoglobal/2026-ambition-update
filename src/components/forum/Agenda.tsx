@@ -75,7 +75,7 @@ const SESSIONS: Session[] = [
     theme: "Evolução dos ODS e Sistema ONU",
     speakers: [
       { name: "Maristela Baioni", org: "PNUD", note: "TBC" },
-      { name: "Vinicius Pinheiro", org: "OIT" },
+      { name: "Vinicius Pinheiro", title: "Diretor do Escritório", org: "Organização Internacional do Trabalho (OIT)" },
     ],
   },
   {
