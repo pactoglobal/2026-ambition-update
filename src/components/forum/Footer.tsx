@@ -1,5 +1,5 @@
 import { Globe } from "lucide-react";
-import { identityAssets } from "./identity-assets";
+import { identityAssets, partnerGroups } from "./identity-assets";
 
 function IconInstagram({ size = 14 }: { size?: number }) {
   return (
@@ -27,7 +27,11 @@ function IconYouTube({ size = 14 }: { size?: number }) {
 
 const links = [
   { label: "Instagram", href: "https://www.instagram.com/pactoglobalonubr", Icon: IconInstagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/pactoglobalonubr/", Icon: IconLinkedIn },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/pactoglobalonubr/",
+    Icon: IconLinkedIn,
+  },
   { label: "YouTube", href: "https://www.youtube.com/@pactoglobalonubr", Icon: IconYouTube },
   { label: "pactoglobal.org.br", href: "https://www.pactoglobal.org.br/", Icon: Globe },
 ];
@@ -53,32 +57,18 @@ export function Footer() {
           <div className="h-0.5 w-12 bg-forum-cyan" />
         </div>
 
-        <div className="forum-card mx-auto mb-16 grid max-w-2xl grid-cols-1 gap-10 rounded-xl p-10 sm:grid-cols-2">
-          {[
-            {
-              label: "Realização",
-              src: identityAssets.pacto,
-              alt: "Pacto Global Rede Brasil",
-              className: "h-14",
-            },
-            {
-              label: "Patrocínio Master",
-              src: identityAssets.aegea,
-              alt: "Aegea",
-              className: "h-10",
-            },
-            // { label: "Apoio", src: identityAssets.aya, alt: "Aya Earth Partners", className: "h-10" },
-          ].map(({ label, src, alt, className }) => (
-            <div key={label} className="flex flex-col items-center gap-4">
+        <div className="forum-card mx-auto mb-16 grid max-w-3xl grid-cols-1 gap-8 rounded-xl p-8 sm:grid-cols-3 sm:p-10">
+          {partnerGroups.map(({ key, label, src, alt, width, height, footerClassName }) => (
+            <div key={key} className="flex min-h-[96px] flex-col items-center justify-center gap-4">
               <p className="text-[10px] font-black uppercase tracking-[0.36em] text-white/38">
                 {label}
               </p>
               <img
                 src={src}
                 alt={alt}
-                width={800}
-                height={864}
-                className={`${className} w-auto object-contain opacity-[0.78]`}
+                width={width}
+                height={height}
+                className={`${footerClassName} w-auto max-w-[220px] object-contain opacity-[0.78]`}
               />
             </div>
           ))}

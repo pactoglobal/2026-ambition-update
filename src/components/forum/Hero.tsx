@@ -2,32 +2,12 @@ import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import heroBg from "../../../assets/img/hero/hero-bg.jpg?url";
-import { identityAssets } from "./identity-assets";
+import { identityAssets, partnerGroups } from "./identity-assets";
 
 const EVENT_DETAILS = [
   { icon: Calendar, label: "Data", value: "02 de Junho de 2026", support: "Terça-feira" },
   { icon: Clock, label: "Horário", value: "09h às 18h", support: "Dia completo" },
   { icon: MapPin, label: "Local", value: "MASP", support: "São Paulo" },
-];
-
-const HERO_PARTNERS = [
-  {
-    label: "Realização",
-    src: identityAssets.pacto,
-    alt: "Pacto Global Rede Brasil",
-    width: 800,
-    height: 864,
-    className: "h-14 sm:h-16",
-  },
-  {
-    label: "Patrocínio Master",
-    src: identityAssets.aegea,
-    alt: "Aegea",
-    width: 1080,
-    height: 445,
-    className: "h-10 sm:h-12",
-  },
-  // { label: "Apoio", src: identityAssets.aya, alt: "Aya Earth Partners", width: 600, height: 200, className: "h-10 sm:h-12" },
 ];
 
 export function Hero() {
@@ -46,7 +26,10 @@ export function Hero() {
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.22),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.92)_4%,rgba(7,25,44,0.78)_42%,rgba(7,26,45,0.58)_72%,rgba(7,26,45,0.72)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
+        aria-hidden="true"
+      >
         <img
           src={identityAssets.waves}
           alt=""
@@ -59,7 +42,11 @@ export function Hero() {
         <div className="max-w-5xl">
           <h1 className="sr-only">4º Fórum Ambição 2030 - A Década da Implementação</h1>
 
-          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="flex flex-wrap items-center gap-3">
+          <motion.div
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-wrap items-center gap-3"
+          >
             <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-cyan">
               <span className="h-1.5 w-1.5 rounded-full bg-forum-cyan" />
               4ª Edição · A Década da Implementação
@@ -126,26 +113,28 @@ export function Hero() {
               ))}
             </div>
 
-            <div className="forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] sm:grid-cols-2">
-              {HERO_PARTNERS.map(({ label, src, alt, width, height, className }, index) => (
-                <div
-                  key={label}
-                  className={`flex min-h-[132px] flex-col items-center justify-center gap-3 border-white/12 px-5 py-6 text-center sm:px-6 ${
-                    index < 1 ? "border-b sm:border-b-0 sm:border-r" : ""
-                  }`}
-                >
-                  <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan/82">
-                    {label}
-                  </p>
-                  <img
-                    src={src}
-                    alt={alt}
-                    width={width}
-                    height={height}
-                    className={`${className} w-auto max-w-[160px] object-contain opacity-95`}
-                  />
-                </div>
-              ))}
+            <div className="forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] sm:grid-cols-3">
+              {partnerGroups.map(
+                ({ key, label, src, alt, width, height, heroClassName }, index) => (
+                  <div
+                    key={key}
+                    className={`flex min-h-[132px] flex-col items-center justify-center gap-3 border-white/12 px-5 py-6 text-center sm:px-6 ${
+                      index < partnerGroups.length - 1 ? "border-b sm:border-b-0 sm:border-r" : ""
+                    }`}
+                  >
+                    <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan/82">
+                      {label}
+                    </p>
+                    <img
+                      src={src}
+                      alt={alt}
+                      width={width}
+                      height={height}
+                      className={`${heroClassName} w-auto max-w-[220px] object-contain opacity-95`}
+                    />
+                  </div>
+                ),
+              )}
             </div>
           </motion.div>
 

@@ -1,17 +1,6 @@
 import { motion } from "framer-motion";
 import { KineticBackdrop, SectionHeader } from "./Identity";
-import { identityAssets } from "./identity-assets";
-
-const partners = [
-  {
-    label: "Realização",
-    logo: identityAssets.pacto,
-    alt: "Pacto Global Rede Brasil",
-    className: "h-24",
-  },
-  { label: "Patrocinador Master", logo: identityAssets.aegea, alt: "Aegea", className: "h-16" },
-  // { label: "Apoio", logo: identityAssets.aya, alt: "Aya Earth Partners", className: "h-16" },
-];
+import { partnerGroups } from "./identity-assets";
 
 export function Sponsors() {
   return (
@@ -28,23 +17,23 @@ export function Sponsors() {
           />
         </div>
 
-        <div className="forum-card mx-auto max-w-4xl overflow-hidden rounded-xl">
-          <div className="flex flex-col divide-y divide-white/8 sm:flex-row sm:divide-x sm:divide-y-0">
-            {partners.map(({ label, logo, alt, className }) => (
+        <div className="forum-card mx-auto max-w-5xl overflow-hidden rounded-xl">
+          <div className="grid divide-y divide-white/8 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {partnerGroups.map(({ key, label, src, alt, width, height, sponsorsClassName }) => (
               <motion.div
-                key={label}
+                key={key}
                 whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.045)" }}
-                className="group flex flex-1 flex-col items-center justify-center gap-6 px-10 py-16"
+                className="group flex min-h-[220px] flex-col items-center justify-center gap-6 px-8 py-14"
               >
                 <p className="text-[10px] font-black uppercase tracking-[0.36em] text-white/46 transition-colors group-hover:text-forum-cyan">
                   {label}
                 </p>
                 <img
-                  src={logo}
+                  src={src}
                   alt={alt}
-                  width={1080}
-                  height={864}
-                  className={`${className} w-auto object-contain opacity-[0.78] transition-opacity duration-300 group-hover:opacity-100`}
+                  width={width}
+                  height={height}
+                  className={`${sponsorsClassName} w-auto max-w-[260px] object-contain opacity-[0.78] transition-opacity duration-300 group-hover:opacity-100`}
                 />
               </motion.div>
             ))}

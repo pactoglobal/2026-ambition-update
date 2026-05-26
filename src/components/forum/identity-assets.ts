@@ -7,8 +7,45 @@ export const identityAssets = {
   wordmark: "/identity/forum-wordmark.png",
   pacto: "/identity/pacto-global-realizacao.png",
   aegea: "/identity/aegea-patrocinador.png",
+  caixaGoverno: "/identity/caixa-governo-do-brasil-patrocinador.png",
   aya: "/identity/logo-aya.png",
 } as const;
+
+export const partnerGroups = [
+  {
+    key: "realizacao",
+    label: "Realização",
+    src: identityAssets.pacto,
+    alt: "Pacto Global Rede Brasil",
+    width: 800,
+    height: 864,
+    heroClassName: "h-14 sm:h-16",
+    sponsorsClassName: "h-24",
+    footerClassName: "h-14",
+  },
+  {
+    key: "patrocinio-master",
+    label: "Patrocínio Master",
+    src: identityAssets.aegea,
+    alt: "Aegea",
+    width: 1080,
+    height: 445,
+    heroClassName: "h-10 sm:h-12",
+    sponsorsClassName: "h-16",
+    footerClassName: "h-10",
+  },
+  {
+    key: "patrocinador",
+    label: "Patrocinador",
+    src: identityAssets.caixaGoverno,
+    alt: "CAIXA e Governo do Brasil",
+    width: 1920,
+    height: 377,
+    heroClassName: "h-8 sm:h-10",
+    sponsorsClassName: "h-12 sm:h-14",
+    footerClassName: "h-8 sm:h-9",
+  },
+] as const;
 
 export type BackdropAssetKey = "kv" | "waves" | "lineField" | "deepField";
 
