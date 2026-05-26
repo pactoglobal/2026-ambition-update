@@ -256,7 +256,7 @@ const SESSIONS: Session[] = [
       { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs" },
       { name: "Vivian Broge", org: "TOTVS" },
       { name: "Daniel Duque", title: "Pesquisador", org: "FGV" },
-      { name: "Gilson Rodrigues", title: "Fundador", org: "G10 Favelas" },
+
     ],
     moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
   },
