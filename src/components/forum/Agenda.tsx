@@ -128,7 +128,7 @@ const SESSIONS: Session[] = [
       { name: "Ricardo Geromel", note: "TBC" },
       { name: "Rafaela Guedes", org: "CEBRI" },
     ],
-    moderator: { name: "Vanessa Adachi", org: "Reset" },
+    moderator: { name: "Vanessa Adachi", title: "Fundadora e Publisher", org: "Reset" },
   },
   {
     time: "11h15",
