@@ -37,9 +37,13 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    handleScroll();
+    // Delay initial call so useHashScroll in index.tsx runs first and preserves the hash
+    const t = setTimeout(handleScroll, 300);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [handleScroll]);
 
   const scrollTo = useCallback((href: string) => {
