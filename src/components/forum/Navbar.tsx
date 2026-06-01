@@ -27,11 +27,13 @@ export function Navbar() {
       const el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top <= 160) {
         setActiveSection(id);
+        history.replaceState(null, "", `#${id}`);
         return;
       }
     }
 
     setActiveSection("hero");
+    history.replaceState(null, "", window.location.pathname);
   }, []);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export function Navbar() {
     const el = document.getElementById(id);
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
+    history.pushState(null, "", `#${id}`);
     window.scrollTo({ top, behavior: "smooth" });
   }, []);
 
@@ -85,10 +88,10 @@ export function Navbar() {
                 const active = activeSection === id;
 
                 return (
-                  <button
+                  <a
                     key={link.href}
-                    type="button"
-                    onClick={() => scrollTo(link.href)}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                     className={`relative py-2 text-[10px] font-sans font-bold uppercase tracking-[0.3em] transition-colors duration-200 ${
                       active ? "text-forum-cyan" : "text-white/56 hover:text-white"
                     }`}
@@ -101,7 +104,7 @@ export function Navbar() {
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     ) : null}
-                  </button>
+                  </a>
                 );
               })}
             </nav>
@@ -166,20 +169,20 @@ export function Navbar() {
 
                     <nav aria-label="Navegação mobile" className="flex flex-col gap-1">
                       {NAV_LINKS.map((link, i) => (
-                        <motion.button
+                        <motion.a
                           key={link.href}
-                          type="button"
+                          href={link.href}
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.04 }}
-                          onClick={() => scrollTo(link.href)}
+                          onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                           className="group flex items-center justify-between border-b border-white/8 py-4 text-left text-lg font-display font-black uppercase tracking-tight text-white/74 transition-colors hover:text-forum-cyan"
                         >
                           {link.label}
                           <span className="text-forum-cyan opacity-60 transition-opacity group-hover:opacity-100">
                             →
                           </span>
-                        </motion.button>
+                        </motion.a>
                       ))}
                     </nav>
 
