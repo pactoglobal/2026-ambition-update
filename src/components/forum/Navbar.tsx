@@ -33,7 +33,6 @@ export function Navbar() {
     }
 
     setActiveSection("hero");
-    history.replaceState(null, "", window.location.pathname);
   }, []);
 
   useEffect(() => {

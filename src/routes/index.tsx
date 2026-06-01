@@ -60,7 +60,7 @@ function useHashScroll() {
       const el = document.getElementById(hash);
       if (!el) return false;
       const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top, behavior: "instant" });
       return true;
     };
 
