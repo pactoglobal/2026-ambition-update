@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Hero } from "@/components/forum/Hero";
 import { Navbar } from "@/components/forum/Navbar";
 import { About } from "@/components/forum/About";
@@ -50,7 +51,33 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+function useHashScroll() {
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    const scrollToHash = () => {
+      const el = document.getElementById(hash);
+      if (!el) return false;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
+      window.scrollTo({ top, behavior: "smooth" });
+      return true;
+    };
+
+    if (scrollToHash()) return;
+
+    let attempts = 0;
+    const interval = setInterval(() => {
+      if (scrollToHash() || ++attempts >= 20) clearInterval(interval);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+}
+
 function Index() {
+  useHashScroll();
+
   return (
     <>
       <Navbar />
