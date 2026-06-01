@@ -53,10 +53,19 @@ export const Route = createFileRoute("/")({
 
 function useHashScroll() {
   useEffect(() => {
+    // Prevent the browser from restoring its own scroll position, which can
+    // conflict with our programmatic scroll.
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
 
-    const scrollToHash = () => {
+    let cancelled = false;
+
+    const scrollToHash = (): boolean => {
+      if (cancelled) return false;
       const el = document.getElementById(hash);
       if (!el) return false;
       const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
@@ -64,14 +73,24 @@ function useHashScroll() {
       return true;
     };
 
-    if (scrollToHash()) return;
+    // Use two rAF to ensure the browser has painted layout before measuring
+    // element positions. This avoids the race where getBoundingClientRect
+    // returns stale values right after mount.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (scrollToHash()) return;
 
-    let attempts = 0;
-    const interval = setInterval(() => {
-      if (scrollToHash() || ++attempts >= 20) clearInterval(interval);
-    }, 100);
+        // Fallback: poll until the element appears (lazy-rendered sections)
+        let attempts = 0;
+        const interval = setInterval(() => {
+          if (scrollToHash() || ++attempts >= 30) clearInterval(interval);
+        }, 100);
+      });
+    });
 
-    return () => clearInterval(interval);
+    return () => {
+      cancelled = true;
+    };
   }, []);
 }
 

@@ -36,8 +36,9 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    // Delay initial call so useHashScroll in index.tsx runs first and preserves the hash
-    const t = setTimeout(handleScroll, 300);
+    // Delay initial call to give useHashScroll time to scroll to the target
+    // section before we start tracking the active section via scroll position.
+    const t = setTimeout(handleScroll, 800);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       clearTimeout(t);
