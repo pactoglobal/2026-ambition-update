@@ -1,0 +1,23 @@
+{
+  "_doc": "Hooks pra sessao Claude Code / Antigravity no Forum Ambicao 2030 - adaptado pra bun + TanStack Start. Symlinks hooks/ commands/ get-shit-done/ apontam para antigravity_system_core/.",
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "bash .claude/hooks/gsd-session-state.sh" }] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "node .claude/hooks/gsd-prompt-guard.js", "timeout": 5 }] },
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "node .claude/hooks/gsd-read-guard.js", "timeout": 5 }] },
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "node .claude/hooks/gsd-workflow-guard.js", "timeout": 5 }] },
+      { "matcher": "Bash", "hooks": [{ "type": "command", "command": "bash .claude/hooks/gsd-validate-commit.sh", "timeout": 5 }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Bash|Edit|Write|MultiEdit|Agent|Task", "hooks": [{ "type": "command", "command": "node .claude/hooks/gsd-context-monitor.js", "timeout": 10 }] },
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "bash .claude/hooks/gsd-phase-boundary.sh", "timeout": 5 }] },
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "FILE=\"$CLAUDE_TOOL_OUTPUT_FILE_PATH\"; if [ -n \"$FILE\" ] && echo \"$FILE\" | grep -qE '\\.tsx?$'; then bun typecheck 2>&1 | tail -10; fi; exit 0", "timeout": 30, "description": "TypeScript check apos editar .ts/.tsx" }] },
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "FILE=\"$CLAUDE_TOOL_OUTPUT_FILE_PATH\"; if [ -n \"$FILE\" ] && echo \"$FILE\" | grep -qE '\\.(ts|tsx|js|jsx)$'; then bun x eslint --fix \"$FILE\" --max-warnings=0 2>&1 | tail -5 || true; fi; exit 0", "timeout": 20, "description": "ESLint auto-fix" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "echo '[Stop] Verificacao final...' && bun typecheck 2>&1 | grep -E '(error TS|Found [0-9]+ error)' | head -10 || echo '[Stop] TypeScript OK'; exit 0", "timeout": 60, "description": "TypeScript check completo - site publico, gates rigorosos" }] }
+    ]
+  }
+}

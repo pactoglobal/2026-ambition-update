@@ -152,15 +152,6 @@ export function Hero() {
             >
               Ver Programação
             </motion.button>
-            <motion.button
-              type="button"
-              onClick={() => scrollTo("contato")}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="forum-glass-soft rounded-full px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:border-forum-cyan/70 hover:text-forum-cyan"
-            >
-              Confirmar Presença
-            </motion.button>
           </motion.div>
         </div>
       </div>

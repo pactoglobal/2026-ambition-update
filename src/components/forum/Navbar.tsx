@@ -114,17 +114,6 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-5">
-              <motion.button
-                type="button"
-                aria-label="Participar do evento"
-                onClick={() => scrollTo("#lista-de-espera")}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.98 }}
-                className="hidden rounded-full border border-forum-cyan/50 bg-forum-cyan/10 px-6 py-2.5 text-[10px] font-sans font-black uppercase tracking-widest text-forum-cyan backdrop-blur-sm transition-colors duration-200 hover:bg-forum-cyan hover:text-forum-deep sm:block"
-              >
-                Participar
-              </motion.button>
-
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <button
                   type="button"
@@ -190,16 +179,6 @@ export function Navbar() {
                       ))}
                     </nav>
 
-                    <div className="mt-auto pt-8">
-                      <button
-                        type="button"
-                        aria-label="Participar do evento"
-                        onClick={() => scrollTo("#lista-de-espera")}
-                        className="w-full rounded-full bg-forum-cyan py-4 text-xs font-sans font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
-                      >
-                        Participar Agora
-                      </button>
-                    </div>
                   </div>
                 </SheetContent>
               </Sheet>

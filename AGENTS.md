@@ -21,11 +21,11 @@
 
 **Sempre leia antes de mexer:**
 
-- `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/_MOC.md`
-- `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Brief.md` (concept note, eixos tematicos, painelistas confirmados)
-- `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Roadmap.md`
-- `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Regras-do-Projeto.md`
-- `../Second-Brain/20-Areas/20.01-Pacto-Global-ONU/_MOC.md` (governanca institucional)
+- `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/_MOC.md`
+- `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Brief.md` (concept note, eixos tematicos, painelistas confirmados)
+- `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Roadmap.md`
+- `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Regras-do-Projeto.md`
+- `../../../Second-Brain/20-Areas/20.01-Pacto-Global-ONU/_MOC.md` (governanca institucional)
 
 **Documentos do repo a respeitar:**
 
@@ -40,12 +40,12 @@
 
 | Gatilho | O que escrever | Onde | Template |
 |---|---|---|---|
-| Mudanca de copy publica (sobrevive a issue) | ADR + diff antes/depois | `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Decisions/YYYY-MM-DD-copy-<slug>.md` | `T-Decision-Log` |
+| Mudanca de copy publica (sobrevive a issue) | ADR + diff antes/depois | `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Decisions/YYYY-MM-DD-copy-<slug>.md` | `T-Decision-Log` |
 | Inclusao/remocao de painelista, patrocinador ou parceiro | ADR | mesmo lugar | `T-Decision-Log` |
 | Mudanca em data, horario, local | ADR | mesmo lugar | `T-Decision-Log` |
-| Sessao **humana** (sem agente Paperclip) ou kickoff de fase | nota | `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Sessions/` | `T-Session-AI` |
-| Post-mortem de bug em producao | sintese | `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Sessions/YYYY-MM-DD-postmortem-<slug>.md` | livre |
-| Aprendizado generalizavel | Permanent | `../Second-Brain/40-Zettelkasten/40.03-Permanent/` | `T-Permanent` |
+| Sessao **humana** (sem agente Paperclip) ou kickoff de fase | nota | `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Sessions/` | `T-Session-AI` |
+| Post-mortem de bug em producao | sintese | `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/Sessions/YYYY-MM-DD-postmortem-<slug>.md` | livre |
+| Aprendizado generalizavel | Permanent | `../../../Second-Brain/40-Zettelkasten/40.03-Permanent/` | `T-Permanent` |
 
 **O que NAO escrever no vault**: sessao de codigo agentic com issue aberta (activity log serve), espelho de issue.
 
@@ -76,7 +76,7 @@ Como o site eh **publico em nome do Pacto Global ONU**, gates sao agressivos:
   - Atualizacao de dependencias **patch** (x.y.Z) com `bun update`
   - Atualizacao de docs internos (UI-REVIEW.md, Readme.txt)
 
-Matriz completa: `../Second-Brain/20-Areas/20.06-Empresa-Zero-Humanos/Playbooks/Approval-Gate-Matrix.md`
+Matriz completa: `../../../Second-Brain/20-Areas/20.06-Empresa-Zero-Humanos/Playbooks/Approval-Gate-Matrix.md`
 
 ## 5. LGPD / privacidade
 
@@ -129,5 +129,5 @@ bun run preview
 ## 10. Linka
 
 - Topologia: `../AGENTS.md`
-- Vault MOC: `../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/_MOC.md`
-- Pacto Global Area: `../Second-Brain/20-Areas/20.01-Pacto-Global-ONU/_MOC.md`
+- Vault MOC: `../../../Second-Brain/10-Projetos/10.02-Forum-Ambicao-2030/_MOC.md`
+- Pacto Global Area: `../../../Second-Brain/20-Areas/20.01-Pacto-Global-ONU/_MOC.md`

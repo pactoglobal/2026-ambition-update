@@ -9,7 +9,6 @@ import { Stats } from "@/components/forum/Stats";
 import { Agenda } from "@/components/forum/Agenda";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { Sponsors } from "@/components/forum/Sponsors";
-import { Waitlist } from "@/components/forum/Waitlist";
 import { Contact } from "@/components/forum/Contact";
 import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
 import { Footer } from "@/components/forum/Footer";
@@ -118,7 +117,6 @@ function Index() {
 
         {/* CONVERSÃO */}
         <Faq />
-        <Waitlist />
         <Contact />
         <Footer />
       </main>

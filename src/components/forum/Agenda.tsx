@@ -24,6 +24,7 @@ interface Session {
   theme?: string;
   desc?: string;
   points?: string[];
+  opener?: Speaker;
   speakers?: Speaker[];
   moderator?: Speaker;
   jurados?: Speaker[];
@@ -55,41 +56,40 @@ const LEGEND_TYPES: SessionType[] = ["keynote", "painel", "business", "arte", "e
 
 const SESSIONS: Session[] = [
   {
-    time: "09h30",
+    time: "09h15",
+    type: "arte",
+    title: "Apresentação Artística",
+    speakers: [
+      { name: "Diego Carneiro", title: "Violoncelista" },
+    ],
+  },
+  {
+    time: "09h25",
     type: "abertura",
     title: "Vídeo Apresentação Movimentos Pacto Global da ONU - Rede Brasil",
   },
   {
-    time: "09h35",
+    time: "09h30",
     type: "abertura",
     title: "Abertura",
     speakers: [
       { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global - Rede Brasil" },
-      { name: "Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
+      { name: "Ana Paula Carracedo", title: "Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
+      { name: "Luciana Nicola", title: "Vice-Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
     ],
   },
   {
-    time: "09h40",
-    type: "firechat",
-    title: "Firechat",
-    theme: "Evolução dos ODS e Sistema ONU",
-    speakers: [
-      { name: "Maristela Baioni", org: "PNUD", note: "TBC" },
-      { name: "Vinicius Pinheiro", title: "Diretor do Escritório", org: "Organização Internacional do Trabalho (OIT)" },
-    ],
-  },
-  {
-    time: "09h55",
-    duration: "10 min",
+    time: "09h45",
+    duration: "15 min",
     type: "keynote",
     title: "Keynote Speaker",
-    theme: "Segurança Alimentar",
+    theme: "Evolução dos ODS e Sistema ONU",
     speakers: [
-      { name: "Jerá Guarani", title: "Liderança Indígena", org: "Aldeia Indígena Kalipety" },
+      { name: "Maristela Baioni", title: "Coordenadora de Programa", org: "PNUD" },
     ],
   },
   {
-    time: "10h05",
+    time: "10h15",
     duration: "30 min",
     type: "painel",
     title: "Da Extração à Regeneração",
@@ -103,14 +103,14 @@ const SESSIONS: Session[] = [
       "Métricas de impacto ambiental e social integradas",
     ],
     speakers: [
-      { name: "Milton Pilão", title: "CEO", org: "Orizon" },
+      { name: "Marilia Garcez", title: "Diretora de economia circular, comunicação e sustentabilidade", org: "Orizon" },
       { name: "Edison Carlos", title: "Presidente", org: "Instituto AEGEA" },
       { name: "Aline Matulja", title: "Engenheira e Comunicadora Ambiental", org: "Instituto para Futuros Locais" },
     ],
-    moderator: { name: "Cris Guterres", title: "Jornalista e Membro do Comitê Consultivo", org: "Movimento Conexão Circular" },
+    moderator: { name: "Emília Bizzoto", title: "Jornalista" },
   },
   {
-    time: "10h35",
+    time: "10h45",
     duration: "40 min",
     type: "painel",
     title: "Transição Energética: Oportunidade ou Obrigação?",
@@ -123,28 +123,28 @@ const SESSIONS: Session[] = [
       "Casos concretos de implementação de energias renováveis",
     ],
     speakers: [
-      { name: "Miguel Castro", title: "Ponto focal regional", org: "OCDE" },
-      { name: "Marcia Massoti", org: "Axia Energia" },
-      { name: "Ricardo Geromel", note: "TBC" },
-      { name: "Rafaela Guedes", org: "CEBRI" },
+      { name: "Miguel Castro", title: "Ponto Focal Latam, Centro CER", org: "OCDE" },
+      { name: "Michelle Fernandes Vieira", title: "Superintendente de Negócios de Impacto e Sustentabilidade", org: "Caixa" },
+      { name: "Rafaela Guedes", title: "CEO e Fundadora & Senior Fellow", org: "RG Impact & CEBRI" },
     ],
-    moderator: { name: "Vanessa Adachi", title: "Fundadora e Publisher", org: "Reset" },
+    moderator: { name: "Sofia Schuck", title: "Jornalista", org: "Exame" },
   },
   {
-    time: "11h15",
+    time: "11h25",
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
     theme: "Financiamento Sustentável",
     speakers: [
-      { name: "Adriana Albanese", title: "Diretora de Sustentabilidade", org: "Aegea" },
+      { name: "Adriana Albanese", title: "Diretora Relações com Investidores e Sustentabilidade", org: "Aegea" },
     ],
   },
   {
-    time: "11h35",
+    time: "11h45",
     duration: "40 min",
     type: "painel",
     title: "Rastreabilidade na Cadeia de Valor",
+    opener: { name: "Renato Maia Lopes", title: "Diretor jurídico de governança corporativa, riscos e compliance", org: "CBA" },
     theme: "Onde compliance e direitos humanos se encontram",
     desc: "Como empresas estão transformando suas cadeias produtivas para garantir integridade, rastreabilidade e respeito aos direitos humanos.",
     points: [
@@ -155,14 +155,14 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras" },
-      { name: "Irina Bacci", title: "Diretora Técnica da Fundação Pan-Americana para o Desenvolvimento", org: "PADF" },
+      { name: "Irina Bacci", title: "Diretora Técnica", org: "Fundação Pan-Americana para o Desenvolvimento (PADF)" },
       { name: "Ana Cristina Rosa Garcia", title: "Vice-presidenta Corporativa", org: "Banco do Brasil" },
-      { name: "Malu Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
+      { name: "Maria Luiza Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
     ],
-    moderator: { name: "Joyce Ribeiro" },
+    moderator: { name: "Joyce Ribeiro", title: "Jornalista" },
   },
   {
-    time: "12h15",
+    time: "12h25",
     duration: "2h",
     type: "intervalo",
     title: "Almoço",
@@ -176,7 +176,7 @@ const SESSIONS: Session[] = [
     theme: "Liderança com saúde mental e significado",
     desc: "Como líderes podem sustentar alta performance sem abrir mão do propósito e do bem-estar — uma perspectiva prática para os desafios da Década da Implementação.",
     speakers: [
-      { name: "Alexandre Coimbra", title: "Palestrante em empresas e escolas, consultor de saúde mental, escritor best seller, colunista do Valor Econômico e da TV Globo" },
+      { name: "Alexandre Coimbra", title: "Psicólogo, escritor best-seller, palestrante e consultor em saúde mental corporativa" },
     ],
   },
   {
@@ -185,11 +185,11 @@ const SESSIONS: Session[] = [
     type: "painel",
     title: "Protagonismo sem fronteiras: Recomeços que Inspiram",
     speakers: [
-      { name: "Danni Suzuki", title: "Apoiadora de Alto Perfil", org: "ACNUR" },
+      { name: "Danielle Suzuki", title: "Apoiadora de Alto Perfil", org: "ACNUR" },
       { name: "Risett Campos" },
       { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas" },
     ],
-    moderator: { name: "A confirmar", note: "TBC" },
+    moderator: { name: "Victor Boyadjian", title: "Jornalista" },
   },
   {
     time: "15h20",
@@ -225,17 +225,17 @@ const SESSIONS: Session[] = [
     title: "Debatable",
     theme: "Os ODS são o melhor framework para ação coletiva",
     speakers: [
-      { name: "Fabiana Costa", org: "Bradesco" },
-      { name: "Sonia Chapman" },
-      { name: "Patrícia Acioli", org: "Scania" },
-      { name: "Leandro Machado", title: "Cientista político" },
-      { name: "Rodrigo Santini", org: "Mars" },
-      { name: "Daniel Teixeira", note: "TBC" },
+      { name: "Daniel Bento Teixeira", title: "Diretor Executivo", org: "CEERT – Centro de Estudos das Relações do Trabalho e Desigualdades" },
+      { name: "Fabiana Costa", title: "Head de Sustentabilidade", org: "Bradesco" },
+      { name: "Rodrigo Santini", title: "Diretor de Impacto e Relações", org: "Mars Brasil" },
+      { name: "Sonia Chapman", title: "Diretora Executiva", org: "Rede Empresarial Brasileira de Avaliação de Ciclo de Vida (Rede ACV)" },
+      { name: "Patrícia Acioli", title: "Diretora de Comunicação e Sustentabilidade", org: "Scania Group" },
+      { name: "Leandro Machado", title: "Sócio-fundador", org: "CAUSE" },
     ],
     jurados: [
-      { name: "Bruna Barros" },
-      { name: "Juliana Silva", org: "Motiva" },
-      { name: "Édson Higo", org: "AYA", note: "TBC" },
+      { name: "Bruna Helena Barros", title: "Conselheira da Plataforma de Ação Colaborativa", org: "Fundação BMW" },
+      { name: "Edson Higo", title: "CEO", org: "AYA Earth Partners" },
+      { name: "Juliana Silva", title: "Diretora de Sustentabilidade", org: "Motiva" },
     ],
   },
   {
@@ -254,14 +254,14 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs" },
-      { name: "Vivian Broge", org: "TOTVS" },
-      { name: "Daniel Duque", title: "Pesquisador", org: "FGV" },
-
+      { name: "Vivian Broge", title: "Vice Presidente de RH e MKT", org: "TOTVS" },
+      { name: "Daniel Duque", title: "Pesquisador de Economia Aplicada", org: "FGV/Ibre" },
+      { name: "Vinicius Pinheiro", title: "Diretor", org: "OIT no Brasil" },
     ],
-    moderator: { name: "Ana Bavon", title: "CEO e Head de Estratégia", org: "Ana Bavon Strategic Consulting" },
+    moderator: { name: "Ana Bavon", title: "Consultora", org: "Ana Bavon Strategic Consulting" },
   },
   {
-    time: "18h00",
+    time: "18h",
     duration: "20 min",
     type: "arte",
     title: "Atração Artística",
@@ -272,7 +272,7 @@ const SESSIONS: Session[] = [
     ],
   },
   {
-    time: "18h30",
+    time: "18h20",
     type: "encerramento",
     title: "Encerramento",
   },
@@ -440,10 +440,11 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
   const [open, setOpen] = useState(false);
   const cfg = TYPE_CONFIG[session.type];
   const Icon = cfg.icon;
+  const opener = session.opener;
   const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
   const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
   const confirmedJurados = session.jurados?.filter((s) => !s.note) ?? [];
-  const hasDetails = !!(session.desc || session.points?.length || confirmedSpeakers.length || confirmedModerator || confirmedJurados.length);
+  const hasDetails = !!(session.desc || session.points?.length || opener || confirmedSpeakers.length || confirmedModerator || confirmedJurados.length);
   const isBreak = session.type === "intervalo" || session.type === "encerramento";
   const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
 
@@ -561,6 +562,17 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                         {point}
                       </li>
                     ))}
+                  </ul>
+                </div>
+              )}
+
+              {opener && (
+                <div className="mb-5">
+                  <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
+                    Abertura
+                  </p>
+                  <ul className="max-w-xs">
+                    <SpeakerCard speaker={opener} index={0} />
                   </ul>
                 </div>
               )}
