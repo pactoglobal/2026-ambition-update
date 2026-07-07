@@ -18,7 +18,9 @@ export function Sponsors() {
         </div>
 
         <div className="forum-card mx-auto max-w-5xl overflow-hidden rounded-xl">
-          <div className="grid divide-y divide-white/8 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div className={`grid divide-y divide-white/8 grid-cols-1 sm:divide-y-0 sm:divide-x ${
+            partnerGroups.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+          }`}>
             {partnerGroups.map(({ key, label, src, alt, width, height, sponsorsClassName }) => (
               <motion.div
                 key={key}

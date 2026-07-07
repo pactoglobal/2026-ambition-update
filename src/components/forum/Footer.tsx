@@ -57,7 +57,9 @@ export function Footer() {
           <div className="h-0.5 w-12 bg-forum-cyan" />
         </div>
 
-        <div className="forum-card mx-auto mb-16 grid max-w-3xl grid-cols-1 gap-8 rounded-xl p-8 sm:grid-cols-3 sm:p-10">
+        <div className={`forum-card mx-auto mb-16 grid grid-cols-1 gap-8 rounded-xl p-8 sm:p-10 ${
+          partnerGroups.length === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-3 max-w-3xl"
+        }`}>
           {partnerGroups.map(({ key, label, src, alt, width, height, footerClassName }) => (
             <div key={key} className="flex min-h-[96px] flex-col items-center justify-center gap-4">
               <p className="text-[10px] font-black uppercase tracking-[0.36em] text-white/38">

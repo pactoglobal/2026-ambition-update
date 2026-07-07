@@ -113,7 +113,9 @@ export function Hero() {
               ))}
             </div>
 
-            <div className="forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] sm:grid-cols-3">
+            <div className={`forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] grid-cols-1 ${
+              partnerGroups.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+            }`}>
               {partnerGroups.map(
                 ({ key, label, src, alt, width, height, heroClassName }, index) => (
                   <div
