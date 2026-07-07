@@ -7,8 +7,6 @@ export const identityAssets = {
   wordmark: "/identity/forum-wordmark.png",
   pacto: "/identity/pacto-global-realizacao.png",
   aegea: "/identity/aegea-patrocinador.png",
-  caixaGoverno: "/identity/caixa-governo-do-brasil-patrocinador.png",
-  aya: "/identity/logo-aya.png",
 } as const;
 
 export const partnerGroups = [
@@ -33,17 +31,6 @@ export const partnerGroups = [
     heroClassName: "h-10 sm:h-12",
     sponsorsClassName: "h-16",
     footerClassName: "h-10",
-  },
-  {
-    key: "patrocinador",
-    label: "Patrocinador",
-    src: identityAssets.caixaGoverno,
-    alt: "CAIXA e Governo do Brasil",
-    width: 1920,
-    height: 377,
-    heroClassName: "h-8 sm:h-10",
-    sponsorsClassName: "h-12 sm:h-14",
-    footerClassName: "h-8 sm:h-9",
   },
 ] as const;
 
