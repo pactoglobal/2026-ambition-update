@@ -7,6 +7,7 @@ export const identityAssets = {
   wordmark: "/identity/forum-wordmark.png",
   pacto: "/identity/pacto-global-realizacao.png",
   aegea: "/identity/aegea-patrocinador.png",
+  caixa: "/identity/caixa-patrocinador.png",
 } as const;
 
 export const partnerGroups = [
@@ -31,6 +32,17 @@ export const partnerGroups = [
     heroClassName: "h-10 sm:h-12",
     sponsorsClassName: "h-16",
     footerClassName: "h-10",
+  },
+  {
+    key: "patrocinador",
+    label: "Patrocinador",
+    src: identityAssets.caixa,
+    alt: "CAIXA",
+    width: 618,
+    height: 165,
+    heroClassName: "h-8 sm:h-10",
+    sponsorsClassName: "h-12 sm:h-14",
+    footerClassName: "h-8 sm:h-9",
   },
 ] as const;
 
