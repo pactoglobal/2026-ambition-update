@@ -9,49 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SobreRouteImport } from './routes/sobre'
-import { Route as Programacao_do_eventoRouteImport } from './routes/programacao_do_evento'
-import { Route as ParceirosRouteImport } from './routes/parceiros'
-import { Route as PalestrantesRouteImport } from './routes/palestrantes'
-import { Route as LocalRouteImport } from './routes/local'
-import { Route as InscricaoRouteImport } from './routes/inscricao'
-import { Route as ContatoRouteImport } from './routes/contato'
-import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgendaRouteImport } from './routes/agenda'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as InscricaoRouteImport } from './routes/inscricao'
+import { Route as LocalRouteImport } from './routes/local'
+import { Route as PalestrantesRouteImport } from './routes/palestrantes'
+import { Route as ParceirosRouteImport } from './routes/parceiros'
+import { Route as Programacao_do_eventoRouteImport } from './routes/programacao_do_evento'
+import { Route as SobreRouteImport } from './routes/sobre'
 
-const SobreRoute = SobreRouteImport.update({
-  id: '/sobre',
-  path: '/sobre',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Programacao_do_eventoRoute = Programacao_do_eventoRouteImport.update({
-  id: '/programacao_do_evento',
-  path: '/programacao_do_evento',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ParceirosRoute = ParceirosRouteImport.update({
-  id: '/parceiros',
-  path: '/parceiros',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PalestrantesRoute = PalestrantesRouteImport.update({
-  id: '/palestrantes',
-  path: '/palestrantes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LocalRoute = LocalRouteImport.update({
-  id: '/local',
-  path: '/local',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InscricaoRoute = InscricaoRouteImport.update({
-  id: '/inscricao',
-  path: '/inscricao',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContatoRoute = ContatoRouteImport.update({
-  id: '/contato',
-  path: '/contato',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgendaRoute = AgendaRouteImport.update({
@@ -59,9 +29,39 @@ const AgendaRoute = AgendaRouteImport.update({
   path: '/agenda',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InscricaoRoute = InscricaoRouteImport.update({
+  id: '/inscricao',
+  path: '/inscricao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalRoute = LocalRouteImport.update({
+  id: '/local',
+  path: '/local',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PalestrantesRoute = PalestrantesRouteImport.update({
+  id: '/palestrantes',
+  path: '/palestrantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParceirosRoute = ParceirosRouteImport.update({
+  id: '/parceiros',
+  path: '/parceiros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Programacao_do_eventoRoute = Programacao_do_eventoRouteImport.update({
+  id: '/programacao_do_evento',
+  path: '/programacao_do_evento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -149,53 +149,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sobre': {
-      id: '/sobre'
-      path: '/sobre'
-      fullPath: '/sobre'
-      preLoaderRoute: typeof SobreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/programacao_do_evento': {
-      id: '/programacao_do_evento'
-      path: '/programacao_do_evento'
-      fullPath: '/programacao_do_evento'
-      preLoaderRoute: typeof Programacao_do_eventoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/parceiros': {
-      id: '/parceiros'
-      path: '/parceiros'
-      fullPath: '/parceiros'
-      preLoaderRoute: typeof ParceirosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/palestrantes': {
-      id: '/palestrantes'
-      path: '/palestrantes'
-      fullPath: '/palestrantes'
-      preLoaderRoute: typeof PalestrantesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/local': {
-      id: '/local'
-      path: '/local'
-      fullPath: '/local'
-      preLoaderRoute: typeof LocalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inscricao': {
-      id: '/inscricao'
-      path: '/inscricao'
-      fullPath: '/inscricao'
-      preLoaderRoute: typeof InscricaoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contato': {
-      id: '/contato'
-      path: '/contato'
-      fullPath: '/contato'
-      preLoaderRoute: typeof ContatoRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agenda': {
@@ -205,11 +163,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgendaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inscricao': {
+      id: '/inscricao'
+      path: '/inscricao'
+      fullPath: '/inscricao'
+      preLoaderRoute: typeof InscricaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/local': {
+      id: '/local'
+      path: '/local'
+      fullPath: '/local'
+      preLoaderRoute: typeof LocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/palestrantes': {
+      id: '/palestrantes'
+      path: '/palestrantes'
+      fullPath: '/palestrantes'
+      preLoaderRoute: typeof PalestrantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parceiros': {
+      id: '/parceiros'
+      path: '/parceiros'
+      fullPath: '/parceiros'
+      preLoaderRoute: typeof ParceirosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programacao_do_evento': {
+      id: '/programacao_do_evento'
+      path: '/programacao_do_evento'
+      fullPath: '/programacao_do_evento'
+      preLoaderRoute: typeof Programacao_do_eventoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
