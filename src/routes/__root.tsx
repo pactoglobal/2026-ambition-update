@@ -69,6 +69,31 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
+    scripts: [
+      {
+        children: `
+                (function (w, d, s, o, f, js, fjs) {
+                        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                        js.id = o; js.src = f; js.async = 1;
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(window, document, 'script', 'widget4Events', 'https://cdn.4.events/mi-widget/bundle.js'));
+                    widget4Events('init', {
+                      client_id: '252676',
+                      event_id: '2',
+                      position: 'left',
+                      button_text: 'GARANTA SUA VAGA',
+                      language: 'pt-br',
+                      flow: 'default',
+                      image: 'https://4eventsfiles.nyc3.digitaloceanspaces.com/imagem_fundo_widget/252676/2/dee49cb6b4c51fcb1d22700536f6b92811c12a5f.png',
+                      theme: {
+                        button_color: '#2bbf64',
+                        button_text_color: '#ffffff',
+                      },
+                    });
+              `,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
