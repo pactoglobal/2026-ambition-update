@@ -14,7 +14,7 @@
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.4.events; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.4.events; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://*.4.events https://tickets.4.events https://app.4.events; connect-src 'self' https://api.4.events https://*.4.events https://*.posthog.com https://*.sentry.io; object-src 'none'; base-uri 'self'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.4.events https://4events2uploads.s3.amazonaws.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.4.events; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://*.4.events https://tickets.4.events https://app.4.events; connect-src 'self' https://api.4.events https://*.4.events https://*.posthog.com https://*.sentry.io; object-src 'none'; base-uri 'self'" }
       ]
     },
     {
