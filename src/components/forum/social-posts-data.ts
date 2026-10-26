@@ -131,11 +131,6 @@ export const RAW_SOCIAL_LINKS: (string | { url: string; title?: string; date?: s
 
   // --- LinkedIn ---
   {
-    url: "https://www.linkedin.com/posts/pactoglobalonubr_forumambicao2030-decadadaimplementacao-sustentabilidade-activity-7248721389012345678-AbCd",
-    title: "A Década da Implementação: o futuro da sustentabilidade corporativa",
-    date: "LinkedIn",
-  },
-  {
     url: "https://www.linkedin.com/feed/update/urn:li:activity:7251294801928374656/",
     title: "Lideranças confirmadas para o 4º Fórum Ambição 2030 no MASP",
     date: "LinkedIn",
