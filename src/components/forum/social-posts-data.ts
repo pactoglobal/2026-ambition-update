@@ -114,23 +114,7 @@ export function createSocialPosts(
  * ============================================================================
  */
 export const RAW_SOCIAL_LINKS: (string | { url: string; title?: string; date?: string })[] = [
-  // --- LinkedIn (originais + novos do chat) ---
-  {
-    url: "https://www.linkedin.com/posts/pactoglobalonubr_forumambicao2030-decadadaimplementacao-sustentabilidade-activity-7248721389012345678-AbCd",
-    title: "A Década da Implementação: o futuro da sustentabilidade corporativa",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7251294801928374656/",
-    title: "Lideranças confirmadas para o 4º Fórum Ambição 2030 no MASP",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7253867214844403712/",
-    title: "Painéis e temas estratégicos para a agenda ESG no Brasil",
-    date: "LinkedIn",
-  },
-  // Novos links LinkedIn (2025/2026) - do chat
+  // --- LinkedIn (apenas os que funcionam: 7 novos do chat) ---
   {
     url: "https://www.linkedin.com/feed/update/urn:li:activity:7473387028026458112/",
     title: "Post LinkedIn",
@@ -167,7 +151,7 @@ export const RAW_SOCIAL_LINKS: (string | { url: string; title?: string; date?: s
     date: "LinkedIn",
   },
 
-  // --- Instagram (reais do Fórum/Pacto Global) ---
+  // --- Instagram (reais do Fórum/Pacto Global - todos funcionam) ---
   "https://www.instagram.com/p/DZFqhsUDpTR/?img_index=1",
   "https://www.instagram.com/p/DZGNxlWGCJd/?img_index=1",
   "https://www.instagram.com/p/DZIhiKaRWXf/",
