@@ -15,7 +15,7 @@ interface SocialFeedProps {
 }
 
 export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
-  const [activePlatform, setActivePlatform] = useState<SocialPlatform>("linkedin");
+  const [activePlatform, setActivePlatform] = useState<SocialPlatform>("instagram");
 
   const filteredPosts = useMemo(
     () => posts.filter((p) => p.platform === activePlatform),
