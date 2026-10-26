@@ -16,6 +16,7 @@ import { Speakers } from "@/components/forum/Speakers";
 import { Venue } from "@/components/forum/Venue";
 import { Gallery } from "@/components/forum/Gallery";
 import { Faq } from "@/components/forum/Faq";
+import { SocialFeed } from "@/components/forum/SocialFeed";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -114,6 +115,7 @@ function Index() {
         <AmbitionStrategy />
         <PactoGlobalInfo />
         <Sponsors />
+        <SocialFeed />
 
         {/* CONVERSÃO */}
         <Faq />
