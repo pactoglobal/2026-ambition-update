@@ -7,8 +7,6 @@ export interface SocialPost {
   embedUrl: string;
   title?: string;
   date?: string;
-  /** URL opcional da imagem de capa (primeira foto do post). Se não informado, tenta fallback automático. */
-  imageUrl?: string;
 }
 
 /**
@@ -90,7 +88,7 @@ export function parseSocialUrl(
  * em uma lista tipada de SocialPost.
  */
 export function createSocialPosts(
-  items: (string | { url: string; title?: string; date?: string; imageUrl?: string })[]
+  items: (string | { url: string; title?: string; date?: string })[]
 ): SocialPost[] {
   const posts: SocialPost[] = [];
 
@@ -100,10 +98,7 @@ export function createSocialPosts(
       if (parsed) posts.push(parsed);
     } else if (item && typeof item === "object" && item.url) {
       const parsed = parseSocialUrl(item.url, { title: item.title, date: item.date });
-      if (parsed) {
-        if (item.imageUrl) parsed.imageUrl = item.imageUrl;
-        posts.push(parsed);
-      }
+      if (parsed) posts.push(parsed);
     }
   }
 
@@ -119,22 +114,12 @@ export function createSocialPosts(
  * ============================================================================
  */
 export const RAW_SOCIAL_LINKS: (string | { url: string; title?: string; date?: string })[] = [
-  // --- Instagram (Fórum Ambição 2030 / Pacto Global) ---
-  "https://www.instagram.com/p/DZFqhsUDpTR/?img_index=1",
-  "https://www.instagram.com/p/DZGNxlWGCJd/?img_index=1",
-  "https://www.instagram.com/p/DZIhiKaRWXf/",
-  "https://www.instagram.com/p/DZIqX58mGA0/?img_index=1",
-  "https://www.instagram.com/p/DZJDJ2kvmrq/",
-  "https://www.instagram.com/p/DZJIL5XGPw_/?img_index=1",
-  "https://www.instagram.com/p/DZa1sDNxtbo/",
-  "https://www.instagram.com/p/DZdediixRlt/",
-  {
-    url: "https://www.instagram.com/reel/DEm5K4j3H2g/",
-    title: "Confira a retrospectiva da última edição do Fórum",
-    date: "Instagram",
-  },
-
   // --- LinkedIn ---
+  {
+    url: "https://www.linkedin.com/posts/pactoglobalonubr_forumambicao2030-decadadaimplementacao-sustentabilidade-activity-7248721389012345678-AbCd",
+    title: "A Década da Implementação: o futuro da sustentabilidade corporativa",
+    date: "LinkedIn",
+  },
   {
     url: "https://www.linkedin.com/feed/update/urn:li:activity:7251294801928374656/",
     title: "Lideranças confirmadas para o 4º Fórum Ambição 2030 no MASP",
@@ -145,41 +130,22 @@ export const RAW_SOCIAL_LINKS: (string | { url: string; title?: string; date?: s
     title: "Painéis e temas estratégicos para a agenda ESG no Brasil",
     date: "LinkedIn",
   },
-  // Novos links LinkedIn (2025/2026)
+
+  // --- Instagram ---
   {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7473387028026458112/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
+    url: "https://www.instagram.com/p/DFa1B2c3D4e/",
+    title: "Save the Date: 02 de Junho no MASP",
+    date: "Instagram",
   },
   {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7472368916938420225/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
+    url: "https://www.instagram.com/p/DFz9Y8x7W6v/",
+    title: "Conexões que aceleram a Agenda 2030",
+    date: "Instagram",
   },
   {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7470592131485724674/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7468039388791201792/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7468027274995458048/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7467677522189742081/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
-  },
-  {
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7467559860939710464/",
-    title: "Post LinkedIn",
-    date: "LinkedIn",
+    url: "https://www.instagram.com/reel/DEm5K4j3H2g/",
+    title: "Confira a retrospectiva da última edição do Fórum",
+    date: "Instagram",
   },
 ];
 

@@ -15,7 +15,7 @@ interface SocialFeedProps {
 }
 
 export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
-  const [activePlatform, setActivePlatform] = useState<SocialPlatform>("instagram");
+  const [activePlatform, setActivePlatform] = useState<SocialPlatform>("linkedin");
 
   const filteredPosts = useMemo(
     () => posts.filter((p) => p.platform === activePlatform),
@@ -229,28 +229,11 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
 }
 
 function SocialCard({ post }: { post: SocialPost }) {
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const isLinkedIn = post.platform === "linkedin";
-  const [imgError, setImgError] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-
-  // Prioridade: imageUrl manual > Instagram auto-thumbnail > fallback estilizado
-  const getThumbnailUrl = (post: SocialPost): string => {
-    if (post.imageUrl) return post.imageUrl;
-    if (post.platform === "instagram") {
-      const code = post.id.replace("ig-", "");
-      return `https://www.instagram.com/p/${code}/media/?size=t`;
-    }
-    return "";
-  };
-
-  const thumbnailUrl = getThumbnailUrl(post);
-  const hasCustomImage = !!post.imageUrl;
-  const isInstagramAuto = post.platform === "instagram" && !post.imageUrl;
 
   return (
-    <article
-      className="forum-card group relative flex h-[580px] w-[86vw] max-w-[360px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-cyan/40 sm:w-[360px]"
-    >
+    <article className="forum-card group relative flex h-[580px] w-[86vw] max-w-[360px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-cyan/40 sm:w-[360px]">
       {/* Top bar */}
       <div className="relative z-10 flex shrink-0 items-center justify-between border-b border-white/8 bg-forum-deep/90 px-4 py-3 backdrop-blur-md">
         <div className="flex items-center gap-2">
@@ -280,67 +263,27 @@ function SocialCard({ post }: { post: SocialPost }) {
         </a>
       </div>
 
-      {/* Imagem do Post - clicável redireciona para o original */}
-      <a
-        href={post.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative flex-1 overflow-hidden bg-forum-ink focus:outline-none focus:ring-2 focus:ring-forum-cyan focus:ring-offset-2 focus:ring-offset-forum-ink"
-        aria-label={post.title || `Abrir post no ${isLinkedIn ? "LinkedIn" : "Instagram"}`}
-      >
-        {!imgLoaded && !imgError && (
+      {/* Container do Iframe / Embed */}
+      <div className="relative flex-1 overflow-hidden bg-forum-ink">
+        {!iframeLoaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-forum-deep/80 p-6 text-center backdrop-blur-sm">
             <div className="h-7 w-7 animate-spin rounded-full border-2 border-forum-cyan border-t-transparent" />
             <p className="text-[11px] font-bold uppercase tracking-wider text-white/50">
-              Carregando imagem...
+              Carregando publicação...
             </p>
           </div>
         )}
 
-        {/* Imagem real (custom ou Instagram auto) */}
-        {thumbnailUrl && !imgError && (
-          <img
-            src={thumbnailUrl}
-            alt={post.title || `Post ${post.platform} - ${post.id}`}
-            loading="lazy"
-            onLoad={() => setImgLoaded(true)}
-            onError={() => setImgError(true)}
-            className="h-full w-full object-cover transition-opacity duration-300 group-hover:scale-[1.02] group-hover:opacity-90"
-            crossOrigin={isInstagramAuto ? "anonymous" : undefined}
-          />
-        )}
-
-        {/* Fallback estilizado: LinkedIn ou Instagram se falhou */}
-        {(post.platform === "linkedin" && !hasCustomImage) || (isInstagramAuto && imgError) ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 bg-gradient-to-br from-forum-deep/90 to-forum-ink/95">
-            {isLinkedIn ? (
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0a66c2]/20 backdrop-blur-sm">
-                <Linkedin className="h-8 w-8 text-[#0a66c2]" />
-              </div>
-            ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#f09433]/20 via-[#dc2743]/20 to-[#bc1888]/20 backdrop-blur-sm">
-                <Instagram className="h-8 w-8 text-forum-pink" />
-              </div>
-            )}
-            <div className="text-center px-6">
-              <p className="text-xs font-bold uppercase tracking-widest text-forum-cyan/80 mb-2">
-                {isLinkedIn ? "LinkedIn" : "Instagram"}
-              </p>
-              {post.title && (
-                <p className="text-base font-semibold leading-snug text-white line-clamp-3">
-                  {post.title}
-                </p>
-              )}
-              <p className="mt-3 text-xs text-white/40">
-                Clique para abrir a publicação original
-              </p>
-            </div>
-          </div>
-        ) : null}
-
-        {/* Overlay hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </a>
+        <iframe
+          src={post.embedUrl}
+          title={post.title || `Post ${post.platform} - ${post.id}`}
+          loading="lazy"
+          allowFullScreen
+          onLoad={() => setIframeLoaded(true)}
+          className="h-full w-full border-0 bg-transparent"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        />
+      </div>
 
       {/* Legenda opcional */}
       {post.title && (
