@@ -138,6 +138,12 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--color-forum-deep);
@@ -145,6 +151,9 @@
     -webkit-font-smoothing: antialiased;
     color-scheme: dark;
     overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
   }
 
   h1,

@@ -200,7 +200,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
 
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex gap-4 px-5 sm:gap-5 sm:px-8 lg:px-[max(3rem,calc((100vw-1280px)/2+3rem))]">
+        <div className="flex gap-4 px-5 sm:gap-5 sm:px-8 lg:px-[max(3rem,calc((100%-1280px)/2+3rem))]">
           {images.map((image, i) => (
             <div
               key={image.src}

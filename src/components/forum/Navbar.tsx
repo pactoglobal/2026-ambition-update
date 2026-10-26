@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { identityAssets } from "./identity-assets";
 
@@ -19,15 +19,17 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const isManualScrollingRef = useRef(false);
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 60);
+
+    if (isManualScrollingRef.current) return;
 
     for (const id of [...SECTIONS].reverse()) {
       const el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top <= 160) {
         setActiveSection(id);
-        history.replaceState(null, "", `#${id}`);
         return;
       }
     }
@@ -36,13 +38,25 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     // Delay initial call to give useHashScroll time to scroll to the target
     // section before we start tracking the active section via scroll position.
     const t = setTimeout(handleScroll, 800);
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       clearTimeout(t);
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, [handleScroll]);
 
@@ -51,9 +65,14 @@ export function Navbar() {
     const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (!el) return;
+    isManualScrollingRef.current = true;
+    setActiveSection(id);
     const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
-    history.pushState(null, "", `#${id}`);
+    window.history.pushState(null, "", `#${id}`);
     window.scrollTo({ top, behavior: "smooth" });
+    setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1000);
   }, []);
 
   return (

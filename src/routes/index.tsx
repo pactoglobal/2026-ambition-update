@@ -99,7 +99,7 @@ function Index() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen max-w-full overflow-x-hidden">
         {/* ATO 1 — A PROMESSA (above-the-fold, eager) */}
         <Hero />
         <About />

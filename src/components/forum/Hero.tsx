@@ -16,7 +16,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative isolate min-h-screen overflow-hidden bg-forum-deep">
+    <section id="hero" className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep">
       <img
         src={heroBg}
         alt=""
@@ -38,7 +38,7 @@ export function Hero() {
       </div>
       <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-forum-deep to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-screen-xl flex-col justify-center px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:px-12">
+      <div className="relative z-10 mx-auto flex min-h-screen min-h-[100svh] w-full max-w-screen-xl flex-col justify-center px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:px-12">
         <div className="max-w-5xl">
           <h1 className="sr-only">4º Fórum Ambição 2030 - A Década da Implementação</h1>
 
