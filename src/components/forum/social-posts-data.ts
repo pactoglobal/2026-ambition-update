@@ -7,6 +7,8 @@ export interface SocialPost {
   embedUrl: string;
   title?: string;
   date?: string;
+  /** URL opcional da imagem de capa (primeira foto do post). Se não informado, tenta fallback automático. */
+  imageUrl?: string;
 }
 
 /**
@@ -88,7 +90,7 @@ export function parseSocialUrl(
  * em uma lista tipada de SocialPost.
  */
 export function createSocialPosts(
-  items: (string | { url: string; title?: string; date?: string })[]
+  items: (string | { url: string; title?: string; date?: string; imageUrl?: string })[]
 ): SocialPost[] {
   const posts: SocialPost[] = [];
 
@@ -98,7 +100,10 @@ export function createSocialPosts(
       if (parsed) posts.push(parsed);
     } else if (item && typeof item === "object" && item.url) {
       const parsed = parseSocialUrl(item.url, { title: item.title, date: item.date });
-      if (parsed) posts.push(parsed);
+      if (parsed) {
+        if (item.imageUrl) parsed.imageUrl = item.imageUrl;
+        posts.push(parsed);
+      }
     }
   }
 

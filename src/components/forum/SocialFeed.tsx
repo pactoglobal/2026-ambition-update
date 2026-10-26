@@ -233,18 +233,19 @@ function SocialCard({ post }: { post: SocialPost }) {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  // Gera URL de thumbnail baseada na plataforma
+  // Prioridade: imageUrl manual > Instagram auto-thumbnail > fallback estilizado
   const getThumbnailUrl = (post: SocialPost): string => {
+    if (post.imageUrl) return post.imageUrl;
     if (post.platform === "instagram") {
-      // Instagram: usar o código do post para gerar thumbnail via API pública
       const code = post.id.replace("ig-", "");
       return `https://www.instagram.com/p/${code}/media/?size=t`;
     }
-    // LinkedIn: usar placeholder estilizado com logo
     return "";
   };
 
   const thumbnailUrl = getThumbnailUrl(post);
+  const hasCustomImage = !!post.imageUrl;
+  const isInstagramAuto = post.platform === "instagram" && !post.imageUrl;
 
   return (
     <article
@@ -296,19 +297,21 @@ function SocialCard({ post }: { post: SocialPost }) {
           </div>
         )}
 
-        {post.platform === "instagram" && !imgError && thumbnailUrl && (
+        {/* Imagem real (custom ou Instagram auto) */}
+        {thumbnailUrl && !imgError && (
           <img
             src={thumbnailUrl}
-            alt={post.title || `Post Instagram - ${post.id}`}
+            alt={post.title || `Post ${post.platform} - ${post.id}`}
             loading="lazy"
             onLoad={() => setImgLoaded(true)}
             onError={() => setImgError(true)}
             className="h-full w-full object-cover transition-opacity duration-300 group-hover:scale-[1.02] group-hover:opacity-90"
+            crossOrigin={isInstagramAuto ? "anonymous" : undefined}
           />
         )}
 
-        {/* LinkedIn ou fallback Instagram: card estilizado com logo e título */}
-        {(post.platform === "linkedin" || imgError) && (
+        {/* Fallback estilizado: LinkedIn ou Instagram se falhou */}
+        {(post.platform === "linkedin" && !hasCustomImage) || (isInstagramAuto && imgError) ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 bg-gradient-to-br from-forum-deep/90 to-forum-ink/95">
             {isLinkedIn ? (
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0a66c2]/20 backdrop-blur-sm">
@@ -333,7 +336,7 @@ function SocialCard({ post }: { post: SocialPost }) {
               </p>
             </div>
           </div>
-        )}
+        ) : null}
 
         {/* Overlay hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
