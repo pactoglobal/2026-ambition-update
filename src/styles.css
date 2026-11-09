@@ -186,29 +186,80 @@
       linear-gradient(180deg, #102f4f 0%, #0b243c 100%);
   }
 
+  /*
+   * Vidro. Base um pouco mais transparente e saturação mais alta que antes, para
+   * a luz ambiente do KineticBackdrop (GLOW_PRESETS em Identity.tsx) atravessar
+   * o desfoque. Com fundo uniforme atrás, nenhum ajuste aqui faria o vidro
+   * aparecer — o par fundo-com-luz + vidro é o que funciona.
+   */
   .forum-card {
     position: relative;
-    border: 1px solid rgba(174, 207, 230, 0.2);
+    border: 1px solid rgba(174, 207, 230, 0.18);
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035)),
-      rgba(9, 29, 50, 0.48);
+      linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)),
+      rgba(9, 29, 50, 0.4);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 24px 80px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 24px 80px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(24px) saturate(170%);
+    -webkit-backdrop-filter: blur(24px) saturate(170%);
+  }
+
+  /* Borda especular: a luz pega na quina superior esquerda e some na diagonal. */
+  .forum-card::before,
+  .forum-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0) 38%,
+      rgba(255, 255, 255, 0) 70%,
+      rgba(35, 185, 214, 0.22)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   .forum-glass {
-    border: 1px solid rgba(174, 207, 230, 0.22);
+    position: relative;
+    border: 1px solid rgba(174, 207, 230, 0.2);
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
-      rgba(8, 24, 43, 0.58);
+      linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
+      rgba(8, 24, 43, 0.46);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.14),
-      0 24px 90px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(24px) saturate(145%);
-    -webkit-backdrop-filter: blur(24px) saturate(145%);
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 24px 90px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(24px) saturate(165%);
+    -webkit-backdrop-filter: blur(24px) saturate(165%);
+  }
+
+  /* Vidro sobre fotografia (bento): mais claro e com sombra própria, porque
+     o que está atrás já tem contraste de sobra. */
+  .forum-glass-photo {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+      rgba(7, 26, 44, 0.42);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      0 12px 32px -12px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .group:hover .forum-glass-photo {
+    border-color: rgba(255, 255, 255, 0.28);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
+      rgba(7, 26, 44, 0.34);
   }
 
   .forum-glass-soft {
@@ -222,17 +273,5 @@
   .forum-outline-text {
     color: transparent;
     -webkit-text-stroke: 1px rgba(174, 207, 230, 0.48);
-  }
-
-  .patchwork-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2px; /* Mathematically consistent gap as per guidelines */
-  }
-
-  .patchwork-item {
-    background: white;
-    padding: 2rem;
-    aspect-ratio: 1/1;
   }
 }

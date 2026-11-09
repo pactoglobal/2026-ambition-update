@@ -16,7 +16,7 @@ const stats = [
 export function Stats() {
   return (
     <section className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="waves" intensity="soft" />
+      <KineticBackdrop image="waves" intensity="soft" glow="warm" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <AnimatedSection className="mb-16">

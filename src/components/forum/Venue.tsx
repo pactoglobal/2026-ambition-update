@@ -12,7 +12,7 @@ const MASP_PHOTOS = [
 export function Venue() {
   return (
     <section id="local" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="deepField" />
+      <KineticBackdrop image="deepField" glow="warm" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <div className="mb-14">

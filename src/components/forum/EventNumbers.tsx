@@ -148,7 +148,7 @@ export function EventNumbers() {
 
   return (
     <section id="numeros" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="lineField" intensity="soft" />
+      <KineticBackdrop image="lineField" intensity="soft" glow="split" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <AnimatedSection className="mb-16">
@@ -192,7 +192,7 @@ export function EventNumbers() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.06, duration: 0.45 }}
-                        className={`forum-card relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 sm:p-8 ${span} ${
+                        className={`forum-card relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 sm:p-8 lg:p-6 xl:p-8 ${span} ${
                           featured ? "min-h-48 lg:min-h-56" : "min-h-40"
                         }`}
                       >

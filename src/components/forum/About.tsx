@@ -16,11 +16,15 @@ const EVENT_FACTS = [
 export function About() {
   return (
     <section id="sobre" className="forum-surface relative overflow-hidden py-24 lg:py-32">
-      <KineticBackdrop image="deepField" intensity="soft" />
+      <KineticBackdrop image="deepField" intensity="soft" glow="split" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <AnimatedSection>
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          {/* Duas colunas só a partir de xl, com minmax(0,…): trilhas `fr` têm
+              mínimo = conteúdo, e o "IMPLEMENTAÇÃO" gigante empurrava a coluna da
+              esquerda até espremer a lateral a 98px em 1024 — "POSICIONAMENTO"
+              vazava do card. */}
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] xl:items-start">
             <div className="forum-card rounded-2xl p-7 sm:p-9 lg:p-12">
               <SectionHeader
                 eyebrow="4° Fórum Ambição 2030"
@@ -58,8 +62,11 @@ export function About() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <article className="forum-glass rounded-xl p-6">
+            {/* 1 + 4 cards: em 2 colunas a mensagem-chave vira faixa de linha
+                inteira e os fatos fecham um 2×2 — sem a célula vazia que 5 cards
+                deixavam. */}
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+              <article className="forum-glass rounded-xl p-6 sm:col-span-2 xl:col-span-1">
                 <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
                   Mensagem-chave
                 </p>

@@ -65,7 +65,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
 
   return (
     <section id="redes" className="forum-surface relative overflow-hidden py-24 lg:py-32">
-      <KineticBackdrop image="waves" intensity="soft" />
+      <KineticBackdrop image="waves" intensity="soft" glow="rise" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start xl:grid-cols-[420px_1fr] xl:gap-16">

@@ -28,9 +28,9 @@ const highlights = [
 export function PactoGlobalInfo() {
   return (
     <section className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="deepField" />
+      <KineticBackdrop image="deepField" glow="warm" />
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-center">
           <div className="forum-card rounded-2xl p-8 sm:p-10">
             <SectionHeader
               eyebrow="Sobre o realizador"

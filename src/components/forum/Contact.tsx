@@ -5,7 +5,7 @@ import { KineticBackdrop, SectionHeader } from "./Identity";
 export function Contact() {
   return (
     <section id="contato" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="deepField" />
+      <KineticBackdrop image="deepField" glow="center" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <div className="mb-16 text-center">

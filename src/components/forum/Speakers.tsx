@@ -234,7 +234,7 @@ function SpeakerCarousel({
 export function Speakers() {
   return (
     <section id="speakers" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="deepField" />
+      <KineticBackdrop image="deepField" glow="center" />
 
       <div className="relative z-10">
         <div className="mx-auto mb-12 max-w-screen-xl px-4 sm:px-6 lg:px-12">

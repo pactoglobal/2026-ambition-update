@@ -29,7 +29,7 @@ const faqs = [
 export function Faq() {
   return (
     <section id="faq" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="waves" />
+      <KineticBackdrop image="waves" glow="rise" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-32">

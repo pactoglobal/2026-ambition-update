@@ -32,7 +32,7 @@ const ambitionAdvantages = [
 export function AmbitionStrategy() {
   return (
     <section id="ambicao-2030" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="waves" />
+      <KineticBackdrop image="waves" glow="split" />
       <img
         src={identityAssets.lineField}
         alt=""
@@ -40,7 +40,7 @@ export function AmbitionStrategy() {
       />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-[0.86fr_1fr] lg:items-center">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)] lg:items-center">
           <AnimatedSection>
             <SectionHeader
               eyebrow="A iniciativa que originou o Fórum"
@@ -71,10 +71,10 @@ export function AmbitionStrategy() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.06, duration: 0.4 }}
-                  className="forum-card min-h-40 rounded-xl p-5 sm:p-6"
+                  className="forum-card min-h-40 rounded-xl p-5 sm:p-6 lg:p-5 xl:p-6"
                 >
                   <div className={`mb-8 h-1 w-12 rounded-full ${accentLines[index]}`} />
-                  <p className="font-display text-4xl font-black tracking-tight text-white sm:text-5xl">
+                  <p className="font-display text-3xl font-black tracking-tight text-white sm:text-5xl">
                     {metric.value}
                   </p>
                   <p className="mt-3 text-[10px] font-black uppercase leading-tight tracking-widest text-white/62">
@@ -86,7 +86,7 @@ export function AmbitionStrategy() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {ambitionAdvantages.map(({ icon: Icon, title, text }, index) => (
             <motion.article
               key={title}

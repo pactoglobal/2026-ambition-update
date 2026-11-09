@@ -5,7 +5,7 @@ import { partnerGroups } from "./identity-assets";
 export function Sponsors() {
   return (
     <section id="sponsors" className="forum-surface relative overflow-hidden py-24">
-      <KineticBackdrop image="lineField" />
+      <KineticBackdrop image="lineField" glow="center" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <div className="mb-16">
