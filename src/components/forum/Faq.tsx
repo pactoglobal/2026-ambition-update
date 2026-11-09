@@ -15,13 +15,14 @@ const faqs = [
       "O Fórum Ambição 2030 é o principal evento do Pacto Global da ONU - Rede Brasil, voltado para acelerar o progresso em direção aos Objetivos de Desenvolvimento Sustentável (ODS).",
   },
   {
-    question: "Quem pode participar?",
+    question: "Quem participou?",
     answer:
-      "O evento é exclusivo para convidados — líderes empresariais, representantes governamentais e especialistas do terceiro setor comprometidos com a agenda ESG e o desenvolvimento sustentável.",
+      "O evento foi exclusivo para convidados — líderes empresariais, representantes governamentais e especialistas do terceiro setor comprometidos com a agenda ESG e o desenvolvimento sustentável.",
   },
   {
-    question: "Onde será realizado o evento?",
-    answer: "O Fórum será realizado presencialmente em São Paulo, no MASP, na Avenida Paulista.",
+    question: "Onde foi realizado o evento?",
+    answer:
+      "A 4ª edição foi realizada presencialmente em 02 de junho de 2026, em São Paulo, no MASP, na Avenida Paulista.",
   },
 ];
 
@@ -37,7 +38,7 @@ export function Faq() {
               eyebrow="Dúvidas"
               title="FAQ"
               outline="2026"
-              description="Tire suas dúvidas sobre a edição 2026 do Fórum Ambição e garanta sua participação."
+              description="Tire suas dúvidas sobre a 4ª edição do Fórum Ambição 2030, realizada em 02 de junho de 2026."
             />
           </AnimatedSection>
 

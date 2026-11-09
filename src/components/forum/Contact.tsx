@@ -17,33 +17,14 @@ export function Contact() {
           />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* O canal de RSVP saiu com o fim da 4a edicao: convidava a garantir
+            vaga num evento ja realizado. Parcerias e Apoio segue valido. */}
+        <div className="mx-auto max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.45 }}
-            className="forum-card rounded-xl border-forum-cyan/24 p-8 text-center sm:p-12"
-          >
-            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-forum-cyan/34 bg-forum-cyan/12 text-forum-cyan">
-              <Mail aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
-            </div>
-            <p className="mb-3 text-[9px] font-black uppercase tracking-[0.36em] text-forum-cyan/78">
-              RSVP — Convidados
-            </p>
-            <a
-              href="mailto:rsvp@pactoglobal.org.br"
-              className="block break-words text-xl font-display font-black tracking-tight text-white transition-colors hover:text-forum-cyan sm:text-2xl"
-            >
-              rsvp@pactoglobal.org.br
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.45 }}
             className="forum-card rounded-xl border-white/12 bg-white/5 p-8 text-center sm:p-12"
           >
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/22 bg-white/8 text-white">
@@ -65,7 +46,7 @@ export function Contact() {
         </div>
 
         <p className="mt-12 text-center text-sm font-bold uppercase tracking-widest text-white/44">
-          Evento exclusivo para convidados — Vagas limitadas
+          4ª edição realizada em 02 de junho de 2026 · MASP, São Paulo
         </p>
       </div>
     </section>
