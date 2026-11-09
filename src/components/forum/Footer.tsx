@@ -1,5 +1,5 @@
 import { Globe } from "lucide-react";
-import { identityAssets, partnerGroups } from "./identity-assets";
+import { identityAssets } from "./identity-assets";
 
 function IconInstagram({ size = 14 }: { size?: number }) {
   return (
@@ -57,24 +57,9 @@ export function Footer() {
           <div className="h-0.5 w-12 bg-forum-cyan" />
         </div>
 
-        <div className={`forum-card mx-auto mb-16 grid grid-cols-1 gap-8 rounded-xl p-8 sm:p-10 ${
-          partnerGroups.length === 2 ? "sm:grid-cols-2 max-w-2xl" : "sm:grid-cols-3 max-w-3xl"
-        }`}>
-          {partnerGroups.map(({ key, label, src, alt, width, height, footerClassName }) => (
-            <div key={key} className="flex min-h-[96px] flex-col items-center justify-center gap-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.36em] text-white/38">
-                {label}
-              </p>
-              <img
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                className={`${footerClassName} w-auto max-w-[220px] object-contain opacity-[0.78]`}
-              />
-            </div>
-          ))}
-        </div>
+        {/* Sem faixa de Realização/Patrocínio aqui: era cópia exata da seção
+            Parceiros (Sponsors.tsx), que fica pouco acima. O logo do Fórum
+            acima já carrega a marca do Pacto Global. */}
 
         <div className="flex flex-col items-center gap-10">
           <nav aria-label="Links institucionais" className="flex flex-wrap justify-center gap-4">

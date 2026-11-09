@@ -4,20 +4,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { identityAssets } from "./identity-assets";
 
-// A ordem precisa espelhar a ordem das secoes em routes/index.tsx: o
-// handleScroll abaixo percorre a lista de tras para frente e marca a primeira
-// secao que ja passou do topo — fora de ordem, o destaque cai no item errado.
+// Mesma ordem das seções em routes/index.tsx: ler o menu da esquerda para a
+// direita é percorrer a página de cima para baixo.
 const NAV_LINKS = [
   { label: "O Evento", href: "#sobre" },
-  { label: "Resultados", href: "#numeros" },
   { label: "Galeria", href: "#galeria" },
   { label: "Speakers", href: "#speakers" },
   { label: "Programação", href: "#agenda" },
   { label: "Parceiros", href: "#sponsors" },
+  { label: "Resultados", href: "#numeros" },
   { label: "Contato", href: "#contato" },
 ];
 
 const SECTIONS = NAV_LINKS.map((link) => link.href.replace("#", ""));
+
+/** Distância do topo (px) usada para decidir qual seção está sendo lida. */
+const READING_LINE = 160;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,9 +32,13 @@ export function Navbar() {
 
     if (isManualScrollingRef.current) return;
 
-    for (const id of [...SECTIONS].reverse()) {
-      const el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 160) {
+    // Acende só a seção que contém a linha de leitura. Checar apenas o topo
+    // deixava o destaque preso no último item do menu por todas as seções fora
+    // dele (Local, Coquetel, Ambição 2030, Sobre o Realizador...): lendo sobre o
+    // Pacto Global, o menu marcava "Programação".
+    for (const id of SECTIONS) {
+      const rect = document.getElementById(id)?.getBoundingClientRect();
+      if (rect && rect.top <= READING_LINE && rect.bottom > READING_LINE) {
         setActiveSection(id);
         return;
       }

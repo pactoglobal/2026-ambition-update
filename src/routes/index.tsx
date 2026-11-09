@@ -102,20 +102,15 @@ function Index() {
     <>
       <Navbar />
       <main className="min-h-screen max-w-full overflow-x-hidden">
-        {/* A ordem das secoes com item no menu precisa bater com NAV_LINKS
-            (Navbar.tsx) — o destaque do item ativo depende disso. */}
+        {/* Seções com item no menu seguem a mesma ordem de NAV_LINKS
+            (Navbar.tsx), para o menu ler a página de cima para baixo. */}
 
         {/* CONTEXTO */}
         <Hero />
         <About />
 
-        {/* RETROSPECTIVA — o que a edição entregou: números de 2026, histórico
-            das anteriores e fotos */}
-        <EventNumbers />
-        <Stats />
-        <Gallery />
-
         {/* REGISTRO DA EDIÇÃO */}
+        <Gallery />
         <Speakers />
         <Agenda />
         <Venue />
@@ -127,6 +122,11 @@ function Index() {
         <PactoGlobalInfo />
         <Sponsors />
         <SocialFeed />
+
+        {/* RESULTADOS — fecham o site em ordem cronológica: o histórico das
+            edições anteriores primeiro, os números da 4ª edição por último */}
+        <Stats />
+        <EventNumbers />
 
         {/* CONTATO */}
         <Faq />

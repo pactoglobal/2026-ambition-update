@@ -19,7 +19,6 @@ export const partnerGroups = [
     height: 864,
     heroClassName: "h-14 sm:h-16",
     sponsorsClassName: "h-24",
-    footerClassName: "h-14",
   },
   {
     key: "patrocinio-master",
@@ -30,7 +29,6 @@ export const partnerGroups = [
     height: 445,
     heroClassName: "h-10 sm:h-12",
     sponsorsClassName: "h-16",
-    footerClassName: "h-10",
   },
 ] as const;
 

@@ -51,13 +51,6 @@ export function Venue() {
               <h3 className="text-5xl font-display font-black uppercase tracking-tight text-white">
                 MASP
               </h3>
-              <img
-                src={identityAssets.pacto}
-                alt="Pacto Global Rede Brasil"
-                width={800}
-                height={864}
-                className="h-12 w-auto object-contain opacity-[0.48]"
-              />
             </div>
             <p className="relative z-10 mb-10 text-lg leading-relaxed text-white/72">
               Localizado na Avenida Paulista, o MASP é um dos museus mais importantes do hemisfério
