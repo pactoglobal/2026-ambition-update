@@ -49,8 +49,8 @@ export function About() {
                 </p>
                 <p>
                   Após anos de compromissos e declarações públicas, o desafio agora está na
-                  transformação concreta dos modelos de negócio, cadeias produtivas, investimentos
-                  e práticas de governança. O evento propôs uma reflexão sobre como o setor
+                  transformação concreta dos modelos de negócio, cadeias produtivas, investimentos e
+                  práticas de governança. O evento propôs uma reflexão sobre como o setor
                   empresarial brasileiro está incorporando a sustentabilidade como elemento central
                   da estratégia corporativa — impulsionando competitividade e geração de valor para
                   a sociedade.

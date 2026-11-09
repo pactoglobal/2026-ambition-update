@@ -1,23 +1,27 @@
 const artPhotos = import.meta.glob(
   "../../assets/img/liderancas/atracao-artistica/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 const confirmedPhotos = import.meta.glob(
   "../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 function normalizeStr(s: string) {
-  return s.toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "");
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Mn}/gu, "");
 }
 
-const artPhotoEntries = Object.entries(artPhotos).map(
-  ([path, url]): [string, string] => [normalizeStr(path), url]
-);
+const artPhotoEntries = Object.entries(artPhotos).map(([path, url]): [string, string] => [
+  normalizeStr(path),
+  url,
+]);
 
 const confirmedPhotoEntries = Object.entries(confirmedPhotos).map(
-  ([path, url]): [string, string] => [normalizeStr(path), url]
+  ([path, url]): [string, string] => [normalizeStr(path), url],
 );
 
 export function photoByArtist(name: string): string | undefined {

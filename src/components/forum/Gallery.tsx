@@ -9,24 +9,28 @@ import { accentLines } from "./identity-assets";
 // Historical speakers from previous editions
 const historicPhotos = import.meta.glob(
   "../../../assets/img/liderancas/historicos/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 function photoByKey(modules: Record<string, string>, key: string): string | undefined {
   const entry = Object.entries(modules).find(([path]) =>
-    path.toLowerCase().includes(key.toLowerCase())
+    path.toLowerCase().includes(key.toLowerCase()),
   );
   return entry?.[1];
 }
 
 const historicalSpeakers = [
-  { name: "Paul Polman",           role: "Unilever",                           photoKey: "paul" },
-  { name: "Luiza Trajano",         role: "Magalu",                             photoKey: "luiza" },
-  { name: "Bela Gil",              role: "Ativista e comunicadora",            photoKey: "bela" },
-  { name: "Marta Suplicy",         role: "Gestão pública",                     photoKey: "marta" },
-  { name: "Luis Guimarães",        role: "Cosan",                              photoKey: "luis_guimaraes" },
-  { name: "Patricia Hill Collins", role: "Acadêmica e referência em equidade", photoKey: "patricia" },
-  { name: "Albert Cheung",         role: "BloombergNEF",                       photoKey: "albert" },
+  { name: "Paul Polman", role: "Unilever", photoKey: "paul" },
+  { name: "Luiza Trajano", role: "Magalu", photoKey: "luiza" },
+  { name: "Bela Gil", role: "Ativista e comunicadora", photoKey: "bela" },
+  { name: "Marta Suplicy", role: "Gestão pública", photoKey: "marta" },
+  { name: "Luis Guimarães", role: "Cosan", photoKey: "luis_guimaraes" },
+  {
+    name: "Patricia Hill Collins",
+    role: "Acadêmica e referência em equidade",
+    photoKey: "patricia",
+  },
+  { name: "Albert Cheung", role: "BloombergNEF", photoKey: "albert" },
 ];
 
 function HistoricalSpeakersCarousel() {
@@ -75,7 +79,9 @@ function HistoricalSpeakersCarousel() {
                         className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink via-forum-ink/30 to-transparent" />
-                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`} />
+                      <div
+                        className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`}
+                      />
                       <div className="absolute inset-x-0 bottom-0 p-5">
                         <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
                           {speaker.name}
@@ -87,7 +93,9 @@ function HistoricalSpeakersCarousel() {
                     </div>
                   ) : (
                     <div className="relative min-h-[320px] p-7">
-                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`} />
+                      <div
+                        className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`}
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
                       <div className="relative z-10 flex min-h-[260px] flex-col justify-end">
                         <p className="mb-4 text-[9px] font-black uppercase tracking-[0.32em] text-white/35">
@@ -116,7 +124,7 @@ function HistoricalSpeakersCarousel() {
 // Each subfolder becomes a tab automatically — no code changes needed.
 const assetModules = import.meta.glob(
   "../../../assets/img/galeria-de-momentos/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" }
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 interface GalleryImage {
@@ -249,7 +257,10 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
       </div>
 
       {/* Lightbox */}
-      <Dialog open={lightboxImage !== null} onOpenChange={(open) => !open && setLightboxImage(null)}>
+      <Dialog
+        open={lightboxImage !== null}
+        onOpenChange={(open) => !open && setLightboxImage(null)}
+      >
         <DialogContent className="max-w-5xl border-white/10 bg-forum-ink/95 p-0 backdrop-blur-2xl">
           <DialogTitle className="sr-only">
             Fórum Ambição 2030 · Edição {lightboxImage?.year}

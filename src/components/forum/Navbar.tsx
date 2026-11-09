@@ -124,7 +124,10 @@ export function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollTo(link.href);
+                    }}
                     className={`relative py-2 text-[10px] font-sans font-bold uppercase tracking-[0.3em] transition-colors duration-200 ${
                       active ? "text-forum-cyan" : "text-white/56 hover:text-white"
                     }`}
@@ -197,7 +200,10 @@ export function Navbar() {
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.04 }}
-                          onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            scrollTo(link.href);
+                          }}
                           className="group flex items-center justify-between border-b border-white/8 py-4 text-left text-lg font-display font-black uppercase tracking-tight text-white/74 transition-colors hover:text-forum-cyan"
                         >
                           {link.label}
@@ -207,7 +213,6 @@ export function Navbar() {
                         </motion.a>
                       ))}
                     </nav>
-
                   </div>
                 </SheetContent>
               </Sheet>

@@ -37,17 +37,27 @@ export const Route = createFileRoute("/")({
         content:
           "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
       },
-      { property: "og:image", content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg" },
+      {
+        property: "og:image",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
+      },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "675" },
-      { property: "og:image:alt", content: "4º Fórum Ambição 2030 · 02 de Junho · MASP, São Paulo" },
+      {
+        property: "og:image:alt",
+        content: "4º Fórum Ambição 2030 · 02 de Junho · MASP, São Paulo",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "4º Fórum Ambição 2030 - A Década da Implementação" },
       {
         name: "twitter:description",
-        content: "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
+        content:
+          "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
       },
-      { name: "twitter:image", content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg" },
+      {
+        name: "twitter:image",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
+      },
     ],
   }),
 });

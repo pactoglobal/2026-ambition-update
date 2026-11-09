@@ -1,13 +1,32 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronDown, Mic, Users, Coffee, Star, Music, Award, ArrowRight, Building2, Zap,
+  ChevronDown,
+  Mic,
+  Users,
+  Coffee,
+  Star,
+  Music,
+  Award,
+  ArrowRight,
+  Building2,
+  Zap,
 } from "lucide-react";
 import { SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
 import { photoByArtist, photoBySpeaker } from "../../lib/photos";
 
-type SessionType = "abertura" | "keynote" | "painel" | "business" | "intervalo" | "arte" | "estrategia" | "encerramento" | "debatable" | "firechat";
+type SessionType =
+  | "abertura"
+  | "keynote"
+  | "painel"
+  | "business"
+  | "intervalo"
+  | "arte"
+  | "estrategia"
+  | "encerramento"
+  | "debatable"
+  | "firechat";
 
 interface Speaker {
   name: string;
@@ -31,37 +50,115 @@ interface Session {
 }
 
 // Colors aligned with Pacto Global ONU brand + ODS palette
-const TYPE_CONFIG: Record<SessionType, {
-  label: string;
-  borderColor: string;   // Tailwind border class
-  tagBg: string;         // tag pill background
-  tagText: string;       // tag pill text
-  dot: string;           // bullet dot color
-  icon: React.ElementType;
-}> = {
-  abertura:    { label: "Abertura",      borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: Star },
-  keynote:     { label: "Keynote",       borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/15",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Mic },
-  painel:      { label: "Painel",        borderColor: "border-l-[#23b9d6]",     tagBg: "bg-[#23b9d6]/12",     tagText: "text-[#23b9d6]",     dot: "bg-[#23b9d6]",     icon: Users },
-  business:    { label: "Business Case", borderColor: "border-l-forum-green",   tagBg: "bg-forum-green/12",   tagText: "text-forum-green",   dot: "bg-forum-green",   icon: Award },
-  intervalo:   { label: "Intervalo",     borderColor: "border-l-white/20",      tagBg: "bg-white/8",          tagText: "text-white/45",      dot: "bg-white/30",      icon: Coffee },
-  arte:        { label: "Apresentação",  borderColor: "border-l-forum-magenta", tagBg: "bg-forum-magenta/12", tagText: "text-forum-magenta", dot: "bg-forum-magenta", icon: Music },
-  estrategia:  { label: "Estratégia",    borderColor: "border-l-forum-cyan",    tagBg: "bg-forum-cyan/15",    tagText: "text-forum-cyan",    dot: "bg-forum-cyan",    icon: ArrowRight },
-  encerramento:{ label: "Encerramento",  borderColor: "border-l-white/25",      tagBg: "bg-white/6",          tagText: "text-white/40",      dot: "bg-white/30",      icon: Star },
-  debatable:   { label: "Debatable",     borderColor: "border-l-forum-gold",    tagBg: "bg-forum-gold/12",    tagText: "text-forum-gold",    dot: "bg-forum-gold",    icon: Users },
-  firechat:    { label: "Firechat",      borderColor: "border-l-forum-magenta", tagBg: "bg-forum-magenta/10", tagText: "text-forum-magenta", dot: "bg-forum-magenta", icon: Zap },
+const TYPE_CONFIG: Record<
+  SessionType,
+  {
+    label: string;
+    borderColor: string; // Tailwind border class
+    tagBg: string; // tag pill background
+    tagText: string; // tag pill text
+    dot: string; // bullet dot color
+    icon: React.ElementType;
+  }
+> = {
+  abertura: {
+    label: "Abertura",
+    borderColor: "border-l-forum-cyan",
+    tagBg: "bg-forum-cyan/15",
+    tagText: "text-forum-cyan",
+    dot: "bg-forum-cyan",
+    icon: Star,
+  },
+  keynote: {
+    label: "Keynote",
+    borderColor: "border-l-forum-gold",
+    tagBg: "bg-forum-gold/15",
+    tagText: "text-forum-gold",
+    dot: "bg-forum-gold",
+    icon: Mic,
+  },
+  painel: {
+    label: "Painel",
+    borderColor: "border-l-[#23b9d6]",
+    tagBg: "bg-[#23b9d6]/12",
+    tagText: "text-[#23b9d6]",
+    dot: "bg-[#23b9d6]",
+    icon: Users,
+  },
+  business: {
+    label: "Business Case",
+    borderColor: "border-l-forum-green",
+    tagBg: "bg-forum-green/12",
+    tagText: "text-forum-green",
+    dot: "bg-forum-green",
+    icon: Award,
+  },
+  intervalo: {
+    label: "Intervalo",
+    borderColor: "border-l-white/20",
+    tagBg: "bg-white/8",
+    tagText: "text-white/45",
+    dot: "bg-white/30",
+    icon: Coffee,
+  },
+  arte: {
+    label: "Apresentação",
+    borderColor: "border-l-forum-magenta",
+    tagBg: "bg-forum-magenta/12",
+    tagText: "text-forum-magenta",
+    dot: "bg-forum-magenta",
+    icon: Music,
+  },
+  estrategia: {
+    label: "Estratégia",
+    borderColor: "border-l-forum-cyan",
+    tagBg: "bg-forum-cyan/15",
+    tagText: "text-forum-cyan",
+    dot: "bg-forum-cyan",
+    icon: ArrowRight,
+  },
+  encerramento: {
+    label: "Encerramento",
+    borderColor: "border-l-white/25",
+    tagBg: "bg-white/6",
+    tagText: "text-white/40",
+    dot: "bg-white/30",
+    icon: Star,
+  },
+  debatable: {
+    label: "Debatable",
+    borderColor: "border-l-forum-gold",
+    tagBg: "bg-forum-gold/12",
+    tagText: "text-forum-gold",
+    dot: "bg-forum-gold",
+    icon: Users,
+  },
+  firechat: {
+    label: "Firechat",
+    borderColor: "border-l-forum-magenta",
+    tagBg: "bg-forum-magenta/10",
+    tagText: "text-forum-magenta",
+    dot: "bg-forum-magenta",
+    icon: Zap,
+  },
 };
 
 // Extracted to module scope to avoid re-creating the array on every render
-const LEGEND_TYPES: SessionType[] = ["keynote", "painel", "business", "arte", "estrategia", "debatable"];
+const LEGEND_TYPES: SessionType[] = [
+  "keynote",
+  "painel",
+  "business",
+  "arte",
+  "estrategia",
+  "debatable",
+];
 
 const SESSIONS: Session[] = [
   {
     time: "09h15",
     type: "arte",
     title: "Apresentação Artística",
-    speakers: [
-      { name: "Diego Carneiro", title: "Violoncelista" },
-    ],
+    speakers: [{ name: "Diego Carneiro", title: "Violoncelista" }],
   },
   {
     time: "09h25",
@@ -74,8 +171,16 @@ const SESSIONS: Session[] = [
     title: "Abertura",
     speakers: [
       { name: "Guilherme Xavier", title: "Diretor Executivo", org: "Pacto Global - Rede Brasil" },
-      { name: "Ana Paula Carracedo", title: "Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
-      { name: "Luciana Nicola", title: "Vice-Presidente do Conselho", org: "Pacto Global - Rede Brasil" },
+      {
+        name: "Ana Paula Carracedo",
+        title: "Presidente do Conselho",
+        org: "Pacto Global - Rede Brasil",
+      },
+      {
+        name: "Luciana Nicola",
+        title: "Vice-Presidente do Conselho",
+        org: "Pacto Global - Rede Brasil",
+      },
     ],
   },
   {
@@ -84,9 +189,7 @@ const SESSIONS: Session[] = [
     type: "keynote",
     title: "Keynote Speaker",
     theme: "Evolução dos ODS e Sistema ONU",
-    speakers: [
-      { name: "Maristela Baioni", title: "Coordenadora de Programa", org: "PNUD" },
-    ],
+    speakers: [{ name: "Maristela Baioni", title: "Coordenadora de Programa", org: "PNUD" }],
   },
   {
     time: "10h15",
@@ -103,9 +206,17 @@ const SESSIONS: Session[] = [
       "Métricas de impacto ambiental e social integradas",
     ],
     speakers: [
-      { name: "Marilia Garcez", title: "Diretora de economia circular, comunicação e sustentabilidade", org: "Orizon" },
+      {
+        name: "Marilia Garcez",
+        title: "Diretora de economia circular, comunicação e sustentabilidade",
+        org: "Orizon",
+      },
       { name: "Edison Carlos", title: "Presidente", org: "Instituto AEGEA" },
-      { name: "Aline Matulja", title: "Engenheira e Comunicadora Ambiental", org: "Instituto para Futuros Locais" },
+      {
+        name: "Aline Matulja",
+        title: "Engenheira e Comunicadora Ambiental",
+        org: "Instituto para Futuros Locais",
+      },
     ],
     moderator: { name: "Emília Bizzoto", title: "Jornalista" },
   },
@@ -124,8 +235,16 @@ const SESSIONS: Session[] = [
     ],
     speakers: [
       { name: "Miguel Castro", title: "Ponto Focal Latam, Centro CER", org: "OCDE" },
-      { name: "Michelle Fernandes Vieira", title: "Superintendente de Negócios de Impacto e Sustentabilidade", org: "Caixa" },
-      { name: "Rafaela Guedes", title: "CEO e Fundadora & Senior Fellow", org: "RG Impact & CEBRI" },
+      {
+        name: "Michelle Fernandes Vieira",
+        title: "Superintendente de Negócios de Impacto e Sustentabilidade",
+        org: "Caixa",
+      },
+      {
+        name: "Rafaela Guedes",
+        title: "CEO e Fundadora & Senior Fellow",
+        org: "RG Impact & CEBRI",
+      },
     ],
     moderator: { name: "Sofia Schuck", title: "Jornalista", org: "Exame" },
   },
@@ -136,7 +255,11 @@ const SESSIONS: Session[] = [
     title: "Keynote Speaker",
     theme: "Financiamento Sustentável",
     speakers: [
-      { name: "Adriana Albanese", title: "Diretora Relações com Investidores e Sustentabilidade", org: "Aegea" },
+      {
+        name: "Adriana Albanese",
+        title: "Diretora Relações com Investidores e Sustentabilidade",
+        org: "Aegea",
+      },
     ],
   },
   {
@@ -144,7 +267,11 @@ const SESSIONS: Session[] = [
     duration: "40 min",
     type: "painel",
     title: "Rastreabilidade na Cadeia de Valor",
-    opener: { name: "Renato Maia Lopes", title: "Diretor jurídico de governança corporativa, riscos e compliance", org: "CBA" },
+    opener: {
+      name: "Renato Maia Lopes",
+      title: "Diretor jurídico de governança corporativa, riscos e compliance",
+      org: "CBA",
+    },
     theme: "Onde compliance e direitos humanos se encontram",
     desc: "Como empresas estão transformando suas cadeias produtivas para garantir integridade, rastreabilidade e respeito aos direitos humanos.",
     points: [
@@ -154,10 +281,26 @@ const SESSIONS: Session[] = [
       "Trabalho digno e certificações internacionais",
     ],
     speakers: [
-      { name: "Clarice Coppetti", title: "Diretora Executiva de Assuntos Corporativos", org: "Petrobras" },
-      { name: "Irina Bacci", title: "Diretora Técnica", org: "Fundação Pan-Americana para o Desenvolvimento (PADF)" },
-      { name: "Ana Cristina Rosa Garcia", title: "Vice-presidenta Corporativa", org: "Banco do Brasil" },
-      { name: "Maria Luiza Pinto", title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca", org: "Suzano" },
+      {
+        name: "Clarice Coppetti",
+        title: "Diretora Executiva de Assuntos Corporativos",
+        org: "Petrobras",
+      },
+      {
+        name: "Irina Bacci",
+        title: "Diretora Técnica",
+        org: "Fundação Pan-Americana para o Desenvolvimento (PADF)",
+      },
+      {
+        name: "Ana Cristina Rosa Garcia",
+        title: "Vice-presidenta Corporativa",
+        org: "Banco do Brasil",
+      },
+      {
+        name: "Maria Luiza Pinto",
+        title: "Vice-presidente Executiva de Gente e Gestão, Sustentabilidade, Comunicação e Marca",
+        org: "Suzano",
+      },
     ],
     moderator: { name: "Joyce Ribeiro", title: "Jornalista" },
   },
@@ -176,7 +319,11 @@ const SESSIONS: Session[] = [
     theme: "Liderança com saúde mental e significado",
     desc: "Como líderes podem sustentar alta performance sem abrir mão do propósito e do bem-estar — uma perspectiva prática para os desafios da Década da Implementação.",
     speakers: [
-      { name: "Alexandre Coimbra", title: "Psicólogo, escritor best-seller, palestrante e consultor em saúde mental corporativa" },
+      {
+        name: "Alexandre Coimbra",
+        title:
+          "Psicólogo, escritor best-seller, palestrante e consultor em saúde mental corporativa",
+      },
     ],
   },
   {
@@ -187,7 +334,11 @@ const SESSIONS: Session[] = [
     speakers: [
       { name: "Danielle Suzuki", title: "Apoiadora de Alto Perfil", org: "ACNUR" },
       { name: "Risett Campos" },
-      { name: "Fernando Viriato", title: "Vice-Presidente Sênior de Talento e Cultura", org: "Accor Américas" },
+      {
+        name: "Fernando Viriato",
+        title: "Vice-Presidente Sênior de Talento e Cultura",
+        org: "Accor Américas",
+      },
     ],
     moderator: { name: "Victor Boyadjian", title: "Jornalista" },
   },
@@ -215,9 +366,7 @@ const SESSIONS: Session[] = [
     duration: "20 min",
     type: "keynote",
     title: "Keynote Speaker",
-    speakers: [
-      { name: "Aretha Duarte" },
-    ],
+    speakers: [{ name: "Aretha Duarte" }],
   },
   {
     time: "16h30",
@@ -225,15 +374,31 @@ const SESSIONS: Session[] = [
     title: "Debatable",
     theme: "Os ODS são o melhor framework para ação coletiva",
     speakers: [
-      { name: "Daniel Bento Teixeira", title: "Diretor Executivo", org: "CEERT – Centro de Estudos das Relações do Trabalho e Desigualdades" },
+      {
+        name: "Daniel Bento Teixeira",
+        title: "Diretor Executivo",
+        org: "CEERT – Centro de Estudos das Relações do Trabalho e Desigualdades",
+      },
       { name: "Fabiana Costa", title: "Head de Sustentabilidade", org: "Bradesco" },
       { name: "Rodrigo Santini", title: "Diretor de Impacto e Relações", org: "Mars Brasil" },
-      { name: "Sonia Chapman", title: "Diretora Executiva", org: "Rede Empresarial Brasileira de Avaliação de Ciclo de Vida (Rede ACV)" },
-      { name: "Patrícia Acioli", title: "Diretora de Comunicação e Sustentabilidade", org: "Scania Group" },
+      {
+        name: "Sonia Chapman",
+        title: "Diretora Executiva",
+        org: "Rede Empresarial Brasileira de Avaliação de Ciclo de Vida (Rede ACV)",
+      },
+      {
+        name: "Patrícia Acioli",
+        title: "Diretora de Comunicação e Sustentabilidade",
+        org: "Scania Group",
+      },
       { name: "Leandro Machado", title: "Sócio-fundador", org: "CAUSE" },
     ],
     jurados: [
-      { name: "Bruna Helena Barros", title: "Conselheira da Plataforma de Ação Colaborativa", org: "Fundação BMW" },
+      {
+        name: "Bruna Helena Barros",
+        title: "Conselheira da Plataforma de Ação Colaborativa",
+        org: "Fundação BMW",
+      },
       { name: "Edson Higo", title: "CEO", org: "AYA Earth Partners" },
       { name: "Juliana Silva", title: "Diretora de Sustentabilidade", org: "Motiva" },
     ],
@@ -253,7 +418,11 @@ const SESSIONS: Session[] = [
       "Governança de IA ética no ambiente corporativo",
     ],
     speakers: [
-      { name: "Joice Portella", title: "Diretora de Sustentabilidade, Parcerias e Carreiras", org: "Yduqs" },
+      {
+        name: "Joice Portella",
+        title: "Diretora de Sustentabilidade, Parcerias e Carreiras",
+        org: "Yduqs",
+      },
       { name: "Vivian Broge", title: "Vice Presidente de RH e MKT", org: "TOTVS" },
       { name: "Daniel Duque", title: "Pesquisador de Economia Aplicada", org: "FGV/Ibre" },
       { name: "Vinicius Pinheiro", title: "Diretor", org: "OIT no Brasil" },
@@ -267,9 +436,7 @@ const SESSIONS: Session[] = [
     title: "Atração Artística",
     theme: "Cultura como expressão da Década da Implementação",
     desc: "Encerramento cultural da programação — arte integrada à agenda de sustentabilidade como expressão dos valores e da força do Fórum Ambição 2030.",
-    speakers: [
-      { name: "Céu", title: "Cantora e Compositora Brasileira" },
-    ],
+    speakers: [{ name: "Céu", title: "Cantora e Compositora Brasileira" }],
   },
   {
     time: "18h20",
@@ -385,7 +552,9 @@ function ArteFeatureRow({ session, index }: { session: Session; index: number })
         {/* Content */}
         <div className="flex flex-1 items-center gap-5 px-5 py-5 md:px-7">
           <div className="min-w-0 flex-1">
-            <span className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}>
+            <span
+              className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}
+            >
               <Music aria-hidden="true" size={8} strokeWidth={2.5} />
               {cfg.label}
             </span>
@@ -393,7 +562,9 @@ function ArteFeatureRow({ session, index }: { session: Session; index: number })
               {session.title}
             </h3>
             {session.theme && (
-              <p className="mt-1 text-[12px] leading-snug text-white/52 md:text-[13px]">{session.theme}</p>
+              <p className="mt-1 text-[12px] leading-snug text-white/52 md:text-[13px]">
+                {session.theme}
+              </p>
             )}
             {artist && (
               <div className="mt-3 flex items-center gap-3">
@@ -410,9 +581,7 @@ function ArteFeatureRow({ session, index }: { session: Session; index: number })
                   <p className={`text-[13px] font-black uppercase tracking-tight ${cfg.tagText}`}>
                     {artist.name}
                   </p>
-                  {artist.title && (
-                    <p className="text-[11px] text-white/55">{artist.title}</p>
-                  )}
+                  {artist.title && <p className="text-[11px] text-white/55">{artist.title}</p>}
                 </div>
               </div>
             )}
@@ -444,9 +613,17 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
   const confirmedSpeakers = session.speakers?.filter((s) => !s.note) ?? [];
   const confirmedModerator = session.moderator?.note ? undefined : session.moderator;
   const confirmedJurados = session.jurados?.filter((s) => !s.note) ?? [];
-  const hasDetails = !!(session.desc || session.points?.length || opener || confirmedSpeakers.length || confirmedModerator || confirmedJurados.length);
+  const hasDetails = !!(
+    session.desc ||
+    session.points?.length ||
+    opener ||
+    confirmedSpeakers.length ||
+    confirmedModerator ||
+    confirmedJurados.length
+  );
   const isBreak = session.type === "intervalo" || session.type === "encerramento";
-  const speakerLabel = session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
+  const speakerLabel =
+    session.type === "keynote" || session.type === "business" ? "Speaker" : "Painelistas";
 
   return (
     <motion.article
@@ -461,9 +638,7 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
         onClick={() => hasDetails && setOpen((o) => !o)}
         aria-expanded={hasDetails ? open : undefined}
         className={`group relative w-full border-l-[4px] text-left transition-colors duration-200 ${cfg.borderColor} ${
-          open
-            ? "bg-forum-navy/80"
-            : "bg-forum-navy/40 hover:bg-forum-navy/65"
+          open ? "bg-forum-navy/80" : "bg-forum-navy/40 hover:bg-forum-navy/65"
         } ${hasDetails ? "cursor-pointer" : "cursor-default"}`}
       >
         <div className="flex items-stretch">
@@ -483,7 +658,9 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
           <div className="flex flex-1 items-center justify-between gap-4 px-5 py-5 md:px-7">
             <div className="min-w-0 flex-1">
               {/* Type tag */}
-              <span className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}>
+              <span
+                className={`mb-2.5 inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.28em] ${cfg.tagBg} ${cfg.tagText}`}
+              >
                 <Icon aria-hidden="true" size={8} strokeWidth={2.5} />
                 {cfg.label}
               </span>
@@ -504,16 +681,33 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
               {!isBreak && !open && (confirmedSpeakers.length > 0 || confirmedModerator) && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {confirmedSpeakers.map((s) => (
-                    <span key={s.name} className="inline-flex items-baseline gap-1.5 rounded-sm border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] leading-tight">
+                    <span
+                      key={s.name}
+                      className="inline-flex items-baseline gap-1.5 rounded-sm border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] leading-tight"
+                    >
                       <span className="font-bold text-white/75">{s.name}</span>
-                      {s.title && <span className="text-white/35">{s.title}{s.org ? ` · ${s.org}` : ""}</span>}
+                      {s.title && (
+                        <span className="text-white/35">
+                          {s.title}
+                          {s.org ? ` · ${s.org}` : ""}
+                        </span>
+                      )}
                     </span>
                   ))}
                   {confirmedModerator && (
                     <span className="inline-flex items-center gap-1.5 rounded-sm border border-forum-cyan/20 bg-forum-cyan/8 px-2.5 py-1 text-[10px] leading-tight">
-                      <Mic aria-hidden="true" size={8} strokeWidth={2.5} className="shrink-0 text-forum-cyan/70" />
-                      <span className="font-bold text-forum-cyan/80">{confirmedModerator.name}</span>
-                      {confirmedModerator.title && <span className="text-forum-cyan/45">{confirmedModerator.title}</span>}
+                      <Mic
+                        aria-hidden="true"
+                        size={8}
+                        strokeWidth={2.5}
+                        className="shrink-0 text-forum-cyan/70"
+                      />
+                      <span className="font-bold text-forum-cyan/80">
+                        {confirmedModerator.name}
+                      </span>
+                      {confirmedModerator.title && (
+                        <span className="text-forum-cyan/45">{confirmedModerator.title}</span>
+                      )}
                     </span>
                   )}
                 </div>
@@ -542,8 +736,9 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className={`border-l-[4px] ${cfg.borderColor} border-b border-r border-white/8 bg-forum-ink/60 px-5 pb-7 pt-5 md:pl-[calc(7rem+1.75rem)] md:pr-8`}>
-
+            <div
+              className={`border-l-[4px] ${cfg.borderColor} border-b border-r border-white/8 bg-forum-ink/60 px-5 pb-7 pt-5 md:pl-[calc(7rem+1.75rem)] md:pr-8`}
+            >
               {session.desc && (
                 <p className="mb-5 max-w-2xl text-[13px] leading-relaxed text-white/72 md:text-sm">
                   {session.desc}
@@ -557,7 +752,10 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                   </p>
                   <ul className="space-y-1.5">
                     {session.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75">
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75"
+                      >
                         <span className={`mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full ${cfg.dot}`} />
                         {point}
                       </li>
@@ -583,7 +781,9 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                   <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
                     {speakerLabel}
                   </p>
-                  <ul className={`grid gap-2 ${confirmedSpeakers.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}>
+                  <ul
+                    className={`grid gap-2 ${confirmedSpeakers.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}
+                  >
                     {confirmedSpeakers.map((s, i) => (
                       <SpeakerCard key={s.name} speaker={s} index={i} />
                     ))}
@@ -602,7 +802,9 @@ function SessionRow({ session, index }: { session: Session; index: number }) {
                   <p className="mb-3 text-[9px] font-black uppercase tracking-[0.38em] text-white/32">
                     Jurados
                   </p>
-                  <ul className={`grid gap-2 ${confirmedJurados.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}>
+                  <ul
+                    className={`grid gap-2 ${confirmedJurados.length > 1 ? "sm:grid-cols-2" : "max-w-xs"}`}
+                  >
                     {confirmedJurados.map((s, i) => (
                       <SpeakerCard key={s.name} speaker={s} index={i} />
                     ))}
@@ -674,7 +876,7 @@ export function Agenda() {
                   session={session}
                   index={index}
                 />
-              )
+              ),
             )}
           </div>
         </div>

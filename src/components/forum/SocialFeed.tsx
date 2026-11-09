@@ -19,7 +19,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
 
   const filteredPosts = useMemo(
     () => posts.filter((p) => p.platform === activePlatform),
-    [posts, activePlatform]
+    [posts, activePlatform],
   );
 
   const channel = SOCIAL_CHANNELS[activePlatform];
@@ -111,9 +111,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 type="button"
                 onClick={() => setActivePlatform("instagram")}
                 className={`relative flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-colors duration-200 ${
-                  activePlatform === "instagram"
-                    ? "text-white"
-                    : "text-white/60 hover:text-white"
+                  activePlatform === "instagram" ? "text-white" : "text-white/60 hover:text-white"
                 }`}
               >
                 {activePlatform === "instagram" && (
@@ -206,9 +204,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
             <div ref={emblaRef} className="overflow-hidden">
               <div className="flex gap-5 py-2">
                 {filteredPosts.length > 0 ? (
-                  filteredPosts.map((post) => (
-                    <SocialCard key={post.id} post={post} />
-                  ))
+                  filteredPosts.map((post) => <SocialCard key={post.id} post={post} />)
                 ) : (
                   <div className="forum-card flex h-[520px] w-full flex-col items-center justify-center rounded-2xl p-8 text-center">
                     <p className="text-sm font-bold uppercase tracking-wider text-white/60">

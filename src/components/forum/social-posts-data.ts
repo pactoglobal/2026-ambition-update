@@ -15,7 +15,7 @@ export interface SocialPost {
  */
 export function parseSocialUrl(
   rawUrl: string,
-  meta?: { title?: string; date?: string }
+  meta?: { title?: string; date?: string },
 ): SocialPost | null {
   if (!rawUrl || typeof rawUrl !== "string") return null;
   const url = rawUrl.trim();
@@ -88,7 +88,7 @@ export function parseSocialUrl(
  * em uma lista tipada de SocialPost.
  */
 export function createSocialPosts(
-  items: (string | { url: string; title?: string; date?: string })[]
+  items: (string | { url: string; title?: string; date?: string })[],
 ): SocialPost[] {
   const posts: SocialPost[] = [];
 

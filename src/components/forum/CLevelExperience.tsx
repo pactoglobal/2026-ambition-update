@@ -8,12 +8,12 @@ import { accentLines } from "./identity-assets";
 
 const confirmedPhotos = import.meta.glob(
   "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
-  { eager: true, query: "?url", import: "default" }
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 function photoByKey(key: string): string | undefined {
   const entry = Object.entries(confirmedPhotos).find(([path]) =>
-    path.toLowerCase().includes(key.toLowerCase())
+    path.toLowerCase().includes(key.toLowerCase()),
   );
   return entry?.[1];
 }
@@ -28,7 +28,6 @@ const keynoteSpeaker = {
   role: "Diretor Independente | SaaS, IA & Plataformas em Nuvem | GTM, Ecossistemas & Expansão Global",
   photoKey: "avanish",
 };
-
 
 export function CLevelExperience() {
   return (
@@ -47,10 +46,13 @@ export function CLevelExperience() {
             />
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/78">
               <p>
-                Na véspera do 4º Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reuniu num ambiente exclusivo e reservado.
+                Na véspera do 4º Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reuniu num
+                ambiente exclusivo e reservado.
               </p>
               <p>
-                Uma conversa inspiradora abriu o encontro — seguida de um espaço pensado para que lideranças que compartilham os mesmos desafios tivessem trocas genuínas e conexões estratégicas.
+                Uma conversa inspiradora abriu o encontro — seguida de um espaço pensado para que
+                lideranças que compartilham os mesmos desafios tivessem trocas genuínas e conexões
+                estratégicas.
               </p>
             </div>
 
@@ -61,13 +63,16 @@ export function CLevelExperience() {
                     <Icon size={20} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/42">{label}</p>
-                    <p className="font-display text-lg font-bold uppercase tracking-tight text-white">{value}</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white/42">
+                      {label}
+                    </p>
+                    <p className="font-display text-lg font-bold uppercase tracking-tight text-white">
+                      {value}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
-
           </AnimatedSection>
 
           {/* right — keynote speaker card */}

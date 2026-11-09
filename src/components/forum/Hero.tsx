@@ -16,7 +16,10 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep">
+    <section
+      id="hero"
+      className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep"
+    >
       <img
         src={heroBg}
         alt=""
@@ -113,9 +116,11 @@ export function Hero() {
               ))}
             </div>
 
-            <div className={`forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] grid-cols-1 ${
-              partnerGroups.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
-            }`}>
+            <div
+              className={`forum-glass grid w-full gap-0 overflow-hidden rounded-[22px] grid-cols-1 ${
+                partnerGroups.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+              }`}
+            >
               {partnerGroups.map(
                 ({ key, label, src, alt, width, height, heroClassName }, index) => (
                   <div

@@ -3,8 +3,14 @@ import { KineticBackdrop, SectionHeader } from "./Identity";
 import { identityAssets } from "./identity-assets";
 
 const MASP_PHOTOS = [
-  { src: "/img/local-masp/masp-exterior.webp", alt: "MASP - fachada na Avenida Paulista ao entardecer" },
-  { src: "/img/local-masp/masp-cafe.png", alt: "MASP Café - área de networking preparada para evento" },
+  {
+    src: "/img/local-masp/masp-exterior.webp",
+    alt: "MASP - fachada na Avenida Paulista ao entardecer",
+  },
+  {
+    src: "/img/local-masp/masp-cafe.png",
+    alt: "MASP Café - área de networking preparada para evento",
+  },
   { src: "/img/local-masp/masp-auditorio-palco.png", alt: "MASP - auditório visto do palco" },
   { src: "/img/local-masp/masp-auditorio-plateia.png", alt: "MASP - auditório visto da plateia" },
 ];

@@ -116,9 +116,7 @@ const speakers = [
   },
 ];
 
-const speakersWithPhotos = speakers.filter(
-  (s) => !!photoByKey(s.photoKey ?? "")
-);
+const speakersWithPhotos = speakers.filter((s) => !!photoByKey(s.photoKey ?? ""));
 
 type SpeakerEntry = { name: string; role: string; photoKey?: string; tag?: string; note?: string };
 
@@ -179,7 +177,9 @@ function SpeakerCarousel({
                         className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink via-forum-ink/30 to-transparent" />
-                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`} />
+                      <div
+                        className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`}
+                      />
                       {"tag" in speaker && (
                         <span className="absolute left-4 top-4 rounded-full border border-white/14 bg-forum-ink/70 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-cyan backdrop-blur-sm">
                           {speaker.tag}
@@ -197,7 +197,9 @@ function SpeakerCarousel({
                   ) : (
                     /* Editorial placeholder when photo not yet available */
                     <div className="relative min-h-[360px] p-7">
-                      <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`} />
+                      <div
+                        className={`absolute left-0 top-0 h-1 w-full ${accentLines[index % accentLines.length]}`}
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
                       <div className="relative z-10 flex min-h-[300px] flex-col justify-between">
                         <div>
@@ -253,7 +255,6 @@ export function Speakers() {
           slideWidth="w-[86%] sm:w-[50%] lg:w-[33.333%]"
           ariaLabel="speaker"
         />
-
       </div>
     </section>
   );
