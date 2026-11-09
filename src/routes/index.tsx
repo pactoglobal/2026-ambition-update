@@ -6,6 +6,7 @@ import { About } from "@/components/forum/About";
 import { WhatToExpect } from "@/components/forum/WhatToExpect";
 import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
 import { Stats } from "@/components/forum/Stats";
+import { EventNumbers } from "@/components/forum/EventNumbers";
 import { Agenda } from "@/components/forum/Agenda";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { Sponsors } from "@/components/forum/Sponsors";
@@ -110,6 +111,8 @@ function Index() {
         <Venue />
         <CLevelExperience />
         <WhatToExpect />
+        {/* Retrospectiva: 2026 primeiro, edicoes anteriores logo abaixo. */}
+        <EventNumbers />
         <Stats />
         <Gallery />
         <AmbitionStrategy />
