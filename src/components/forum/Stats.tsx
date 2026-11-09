@@ -25,7 +25,7 @@ export function Stats() {
             title="Edições"
             outline="Anteriores"
             align="center"
-            description="A base de alcance das edições anteriores reforça o papel do Fórum como ponto de encontro de decisão para a agenda 2030."
+            description="Registro do alcance das edições anteriores do Fórum Ambição 2030."
           />
         </AnimatedSection>
 

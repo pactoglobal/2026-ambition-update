@@ -7,7 +7,7 @@ import { KineticBackdrop, SectionHeader } from "./Identity";
 const BENTO_ITEMS = [
   {
     title: "Posicionamento Estratégico",
-    desc: "Sua organização conectada à agenda que influencia o futuro da sustentabilidade empresarial no Brasil.",
+    desc: "Organizações conectadas à agenda que influencia o futuro da sustentabilidade empresarial no Brasil.",
     icon: LineChart,
     bg: "#A21942",
     span: "md:col-span-2",
@@ -58,8 +58,8 @@ export function WhatToExpect() {
         <AnimatedSection className="mb-16">
           <SectionHeader
             eyebrow="Movimentos em foco"
-            title="O Que"
-            outline="Esperar"
+            title="O Que o Fórum"
+            outline="Entrega"
             align="center"
             description="Um espaço de troca de boas práticas, conhecimento estratégico e colaboração para acelerar a implementação dos ODS no Brasil."
           />

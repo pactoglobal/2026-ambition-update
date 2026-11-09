@@ -39,14 +39,14 @@ export function About() {
                 <p>
                   O Fórum Ambição 2030 é o maior evento sobre sustentabilidade corporativa do
                   Brasil, promovido pelo Pacto Global da ONU – Rede Brasil. Em sua quarta edição,
-                  reunirá centenas de altas lideranças empresariais, da sociedade civil e do poder
+                  reuniu centenas de altas lideranças empresariais, da sociedade civil e do poder
                   público para promover diálogos estratégicos e cocriar soluções concretas rumo aos
                   Objetivos de Desenvolvimento Sustentável (ODS).
                 </p>
                 <p>
                   Após anos de compromissos e declarações públicas, o desafio agora está na
                   transformação concreta dos modelos de negócio, cadeias produtivas, investimentos
-                  e práticas de governança. O evento propõe uma reflexão sobre como o setor
+                  e práticas de governança. O evento propôs uma reflexão sobre como o setor
                   empresarial brasileiro está incorporando a sustentabilidade como elemento central
                   da estratégia corporativa — impulsionando competitividade e geração de valor para
                   a sociedade.

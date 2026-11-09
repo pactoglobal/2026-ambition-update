@@ -47,10 +47,10 @@ export function CLevelExperience() {
             />
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/78">
               <p>
-                Na véspera do Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reúne num ambiente exclusivo e reservado.
+                Na véspera do 4º Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reuniu num ambiente exclusivo e reservado.
               </p>
               <p>
-                Uma conversa inspiradora abrirá o encontro — seguida de um espaço pensado para que lideranças que compartilham os mesmos desafios tenham trocas genuínas e conexões estratégicas.
+                Uma conversa inspiradora abriu o encontro — seguida de um espaço pensado para que lideranças que compartilham os mesmos desafios tivessem trocas genuínas e conexões estratégicas.
               </p>
             </div>
 

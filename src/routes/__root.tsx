@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "02 de Junho de 2026, das 09h às 18h, no MASP, São Paulo. O 4° Fórum Ambição 2030 reúne lideranças para transformar compromissos em posicionamento estratégico.",
+          "Retrospectiva do 4º Fórum Ambição 2030, realizado em 02 de junho de 2026 no MASP, São Paulo: números, fotos e programação da Década da Implementação.",
       },
       { name: "author", content: "Pacto Global da ONU - Rede Brasil" },
       { property: "og:title", content: "4º Fórum Ambição 2030 - A Década da Implementação" },

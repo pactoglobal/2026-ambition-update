@@ -21,7 +21,7 @@ export function Venue() {
             title="O Palco"
             outline="da Ação"
             align="center"
-            description="O MASP - Museu de Arte de São Paulo Assis Chateaubriand será o palco icônico do 4º Fórum Ambição 2030."
+            description="O MASP - Museu de Arte de São Paulo Assis Chateaubriand foi o palco icônico do 4º Fórum Ambição 2030."
           />
         </div>
 

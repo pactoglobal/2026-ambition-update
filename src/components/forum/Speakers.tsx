@@ -242,7 +242,7 @@ export function Speakers() {
             <SectionHeader
               eyebrow="Keynotes & Painelistas"
               title="Lideranças"
-              outline="Confirmadas"
+              outline="Presentes"
               description="As principais vozes do 4° Fórum Ambição 2030 — líderes que transformam compromissos em ação."
             />
           </AnimatedSection>

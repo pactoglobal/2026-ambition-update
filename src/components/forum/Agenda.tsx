@@ -678,10 +678,6 @@ export function Agenda() {
             )}
           </div>
         </div>
-
-        <p className="mt-6 text-center text-[9px] font-bold uppercase tracking-[0.32em] text-white/20">
-          Programação sujeita a alterações
-        </p>
       </div>
     </section>
   );

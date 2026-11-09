@@ -2,7 +2,8 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/inscricao")({
   loader: () => {
-    throw redirect({ to: "/", hash: "lista-de-espera" });
+    // Inscricoes encerradas: links antigos para /inscricao caem na retrospectiva.
+    throw redirect({ to: "/", hash: "numeros" });
   },
   component: () => null,
 });
