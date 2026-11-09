@@ -7,6 +7,7 @@ import { WhatToExpect } from "@/components/forum/WhatToExpect";
 import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
 import { Stats } from "@/components/forum/Stats";
 import { EventNumbers } from "@/components/forum/EventNumbers";
+import { MovementsBand, ResultsBand } from "@/components/forum/PhotoBand";
 import { Agenda } from "@/components/forum/Agenda";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { Sponsors } from "@/components/forum/Sponsors";
@@ -127,11 +128,17 @@ function Index() {
         <CLevelExperience />
         <WhatToExpect />
 
+        {/* Faixas fotográficas marcam as viradas de ato e quebram a sequência
+            de seções com o mesmo molde (fundo + título + grade de vidro). */}
+        <MovementsBand />
+
         {/* INSTITUCIONAL */}
         <AmbitionStrategy />
         <PactoGlobalInfo />
         <Sponsors />
         <SocialFeed />
+
+        <ResultsBand />
 
         {/* RESULTADOS — fecham o site em ordem cronológica: o histórico das
             edições anteriores primeiro, os números da 4ª edição por último */}

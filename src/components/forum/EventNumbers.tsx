@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines } from "./identity-assets";
+import plateia2026 from "../../../assets/img/galeria-de-momentos/2026/15_plateia_aplausos_2026.jpg?url";
 
 type Metric = {
   /** Prefixo (ex.: "R$"), renderizado menor que o numero. */
@@ -16,6 +17,8 @@ type Metric = {
   channel?: string;
   /** Numero-manchete do grupo: ganha mais escala que os demais. */
   featured?: boolean;
+  /** Foto de fundo — só onde ela ilustra o próprio número (ex.: plateia em "pessoas presentes"). */
+  photo?: { src: string; alt: string; focus: string };
   /** Spans literais — o scanner do Tailwind precisa ler a classe inteira no fonte. */
   span: string;
 };
@@ -49,6 +52,11 @@ const groups: MetricGroup[] = [
         value: "669",
         label: "pessoas presentes",
         featured: true,
+        photo: {
+          src: plateia2026,
+          alt: "Plateia da 4ª edição aplaudindo no auditório do MASP",
+          focus: "50% 40%",
+        },
         span: "col-span-2 lg:col-span-6",
       },
       { value: "40", label: "speakers", span: "col-span-1 lg:col-span-2" },
@@ -180,30 +188,13 @@ export function EventNumbers() {
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-12 lg:gap-6">
                 {metrics.map(
                   (
-                    { prefix, value, suffix, label: metricLabel, channel, featured, span },
+                    { prefix, value, suffix, label: metricLabel, channel, featured, photo, span },
                     index,
                   ) => {
                     const accent = accentLines[accentIndex++ % accentLines.length];
 
-                    return (
-                      <motion.div
-                        key={`${key}-${metricLabel}`}
-                        initial={false}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.06, duration: 0.45 }}
-                        className={`forum-card relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 sm:p-8 lg:p-6 xl:p-8 ${span} ${
-                          featured ? "min-h-48 lg:min-h-56" : "min-h-40"
-                        }`}
-                      >
-                        <div className={`absolute left-0 top-0 h-1 w-full ${accent}`} />
-
-                        {channel ? (
-                          <span className="mb-4 w-fit rounded-full border border-white/12 bg-white/8 px-3 py-1 text-[9px] font-black uppercase tracking-[0.22em] text-white/70">
-                            {channel}
-                          </span>
-                        ) : null}
-
+                    const figure = (
+                      <>
                         <p
                           className={`flex items-baseline gap-1.5 whitespace-nowrap font-display font-bold leading-none tracking-tight text-white ${
                             featured ? "text-5xl lg:text-6xl" : "text-3xl lg:text-4xl"
@@ -217,9 +208,65 @@ export function EventNumbers() {
                             <span className="text-[0.46em] font-black text-white/70">{suffix}</span>
                           ) : null}
                         </p>
-                        <p className="mt-3 text-[11px] font-black uppercase leading-snug tracking-[0.16em] text-white/58">
+                        <p
+                          className={`mt-3 text-[11px] font-black uppercase leading-snug tracking-[0.16em] ${
+                            photo ? "text-white/78" : "text-white/58"
+                          }`}
+                        >
                           {metricLabel}
                         </p>
+                      </>
+                    );
+
+                    return (
+                      <motion.div
+                        key={`${key}-${metricLabel}`}
+                        initial={false}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.06, duration: 0.45 }}
+                        className={`forum-card group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl ${
+                          photo ? "p-3 sm:p-4" : "p-6 sm:p-8 lg:p-6 xl:p-8"
+                        } ${span} ${
+                          photo
+                            ? "min-h-64 lg:min-h-72"
+                            : featured
+                              ? "min-h-48 lg:min-h-56"
+                              : "min-h-40"
+                        }`}
+                      >
+                        <div className={`absolute left-0 top-0 z-10 h-1 w-full ${accent}`} />
+
+                        {photo ? (
+                          <>
+                            <img
+                              src={photo.src}
+                              alt={photo.alt}
+                              width={1080}
+                              height={720}
+                              loading="lazy"
+                              decoding="async"
+                              style={{ objectPosition: photo.focus }}
+                              className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
+                            />
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(7,26,44,0.85)_0%,rgba(7,26,44,0.2)_55%,rgba(7,26,44,0.05)_100%)]"
+                            />
+                            <div className="forum-glass-photo w-fit rounded-xl px-6 py-5">
+                              {figure}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {channel ? (
+                              <span className="mb-4 w-fit rounded-full border border-white/12 bg-white/8 px-3 py-1 text-[9px] font-black uppercase tracking-[0.22em] text-white/70">
+                                {channel}
+                              </span>
+                            ) : null}
+                            {figure}
+                          </>
+                        )}
                       </motion.div>
                     );
                   },

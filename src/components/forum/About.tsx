@@ -1,17 +1,8 @@
-import { Calendar, Clock3, MapPin, Users } from "lucide-react";
+import { Users } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
-
-const EVENT_FACTS = [
-  { icon: Calendar, label: "Data", value: "02 de Junho de 2026" },
-  { icon: Clock3, label: "Horário", value: "09h às 18h" },
-  { icon: MapPin, label: "Local", value: "MASP, São Paulo" },
-  {
-    icon: Users,
-    label: "Público",
-    value: "Gestores e lideranças de áreas estratégicas",
-  },
-];
+import abertura1600 from "../../../assets/img/faixas/sobre_abertura_1600.jpg?url";
+import abertura800 from "../../../assets/img/faixas/sobre_abertura_800.jpg?url";
 
 export function About() {
   return (
@@ -62,11 +53,12 @@ export function About() {
               </div>
             </div>
 
-            {/* 1 + 4 cards: em 2 colunas a mensagem-chave vira faixa de linha
-                inteira e os fatos fecham um 2×2 — sem a célula vazia que 5 cards
-                deixavam. */}
+            {/* Data, Horário e Local saíram daqui: são a barra do Hero, logo
+                acima. Fica o que o Hero não diz (público), e a foto da abertura
+                mostra a edição em vez de repetir a logística dela.
+                2 colunas: mensagem + público lado a lado, foto em linha inteira. */}
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
-              <article className="forum-glass rounded-xl p-6 sm:col-span-2 xl:col-span-1">
+              <article className="forum-glass rounded-xl p-6">
                 <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
                   Mensagem-chave
                 </p>
@@ -74,19 +66,40 @@ export function About() {
                   Compromissos em posicionamento estratégico.
                 </p>
               </article>
-              {EVENT_FACTS.map(({ icon: Icon, label, value }) => (
-                <article key={label} className="forum-card rounded-xl p-6">
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-cyan/50 bg-forum-cyan/10 text-forum-cyan">
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
-                    {label}
-                  </p>
-                  <p className="mt-2 text-lg font-display font-black uppercase tracking-tight text-white">
-                    {value}
-                  </p>
-                </article>
-              ))}
+
+              <article className="forum-card rounded-xl p-6">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-cyan/50 bg-forum-cyan/10 text-forum-cyan">
+                  <Users aria-hidden="true" className="h-5 w-5" />
+                </div>
+                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
+                  Público
+                </p>
+                <p className="mt-2 text-lg font-display font-black uppercase tracking-tight text-white">
+                  Gestores e lideranças de áreas estratégicas
+                </p>
+              </article>
+
+              <figure className="forum-card relative isolate overflow-hidden rounded-xl sm:col-span-2 xl:col-span-1">
+                <img
+                  src={abertura800}
+                  srcSet={`${abertura800} 800w, ${abertura1600} 1600w`}
+                  sizes="(min-width: 1280px) 420px, (min-width: 640px) 90vw, 100vw"
+                  alt="Ana Paula Carracedo e Luciana Nicola no palco da abertura da 4ª edição, com seus nomes no telão"
+                  width={1600}
+                  height={1067}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[16/9] w-full object-cover object-[58%_40%] xl:aspect-[4/3]"
+                />
+                <figcaption className="forum-glass-photo absolute inset-x-3 bottom-3 rounded-lg px-4 py-3">
+                  <span className="block text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan">
+                    Abertura
+                  </span>
+                  <span className="mt-1 block text-sm font-bold text-white">
+                    Ana Paula Carracedo e Luciana Nicola
+                  </span>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </AnimatedSection>
