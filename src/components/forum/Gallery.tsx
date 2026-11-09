@@ -292,7 +292,7 @@ export function Gallery() {
       <div className="mx-auto mb-10 max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <AnimatedSection className="mb-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
-            eyebrow="Edições Anteriores"
+            eyebrow="Registro do Evento"
             title="Galeria de"
             outline="Momentos"
             description="Reviva os momentos de encontro, debate e transformação das edições do Fórum Ambição 2030."
