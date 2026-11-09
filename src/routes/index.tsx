@@ -102,25 +102,33 @@ function Index() {
     <>
       <Navbar />
       <main className="min-h-screen max-w-full overflow-x-hidden">
-        {/* ATO 1 — A PROMESSA (above-the-fold, eager) */}
+        {/* A ordem das secoes com item no menu precisa bater com NAV_LINKS
+            (Navbar.tsx) — o destaque do item ativo depende disso. */}
+
+        {/* CONTEXTO */}
         <Hero />
         <About />
 
+        {/* RETROSPECTIVA — o que a edição entregou: números de 2026, histórico
+            das anteriores e fotos */}
+        <EventNumbers />
+        <Stats />
+        <Gallery />
+
+        {/* REGISTRO DA EDIÇÃO */}
         <Speakers />
         <Agenda />
         <Venue />
         <CLevelExperience />
         <WhatToExpect />
-        {/* Retrospectiva: 2026 primeiro, edicoes anteriores logo abaixo. */}
-        <EventNumbers />
-        <Stats />
-        <Gallery />
+
+        {/* INSTITUCIONAL */}
         <AmbitionStrategy />
         <PactoGlobalInfo />
         <Sponsors />
         <SocialFeed />
 
-        {/* CONVERSÃO */}
+        {/* CONTATO */}
         <Faq />
         <Contact />
         <Footer />

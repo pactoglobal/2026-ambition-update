@@ -4,11 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { identityAssets } from "./identity-assets";
 
+// A ordem precisa espelhar a ordem das secoes em routes/index.tsx: o
+// handleScroll abaixo percorre a lista de tras para frente e marca a primeira
+// secao que ja passou do topo — fora de ordem, o destaque cai no item errado.
 const NAV_LINKS = [
   { label: "O Evento", href: "#sobre" },
+  { label: "Resultados", href: "#numeros" },
+  { label: "Galeria", href: "#galeria" },
   { label: "Speakers", href: "#speakers" },
-  { label: "Agenda", href: "#agenda" },
-  { label: "Local", href: "#local" },
+  { label: "Programação", href: "#agenda" },
   { label: "Parceiros", href: "#sponsors" },
   { label: "Contato", href: "#contato" },
 ];
