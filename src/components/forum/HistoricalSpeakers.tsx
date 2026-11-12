@@ -65,7 +65,7 @@ export function HistoricalSpeakersCarousel() {
           type="button"
           aria-label="Speaker anterior"
           onClick={() => emblaApi?.scrollPrev()}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-sky hover:text-forum-deep"
         >
           <ChevronLeft aria-hidden="true" size={18} />
         </button>
@@ -73,7 +73,7 @@ export function HistoricalSpeakersCarousel() {
           type="button"
           aria-label="Próximo speaker"
           onClick={() => emblaApi?.scrollNext()}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-sky hover:text-forum-deep"
         >
           <ChevronRight aria-hidden="true" size={18} />
         </button>

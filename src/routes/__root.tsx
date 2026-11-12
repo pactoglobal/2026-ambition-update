@@ -45,10 +45,10 @@ export const Route = createRootRoute({
         content:
           "O principal encontro de sustentabilidade corporativa do Brasil chega à 5ª edição. Estruturado a partir dos 10 Movimentos do Pacto Global da ONU – Rede Brasil, reúne altas lideranças para transformar intenção em ação.",
       },
-      { property: "og:image", content: "/identity/kv-4-edicao.jpg" },
+      { property: "og:image", content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/identity/kv-4-edicao.jpg" },
+      { name: "twitter:image", content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg" },
       { name: "twitter:site", content: "@PactoGlobalBR" },
     ],
     links: [

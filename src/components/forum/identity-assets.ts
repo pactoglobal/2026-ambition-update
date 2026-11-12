@@ -37,7 +37,7 @@ export const partnerGroups = [
 export type BackdropAssetKey = "kv" | "waves" | "lineField" | "deepField";
 
 export const accentLines = [
-  "bg-forum-cyan",
+  "bg-forum-sky",
   "bg-forum-blue",
   "bg-forum-magenta",
   "bg-forum-green",

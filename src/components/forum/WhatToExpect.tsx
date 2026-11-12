@@ -137,7 +137,7 @@ export function WhatToExpect() {
                 aria-hidden="true"
                 className="absolute inset-0 -z-10 transition-opacity duration-500 group-hover:opacity-90"
                 style={{
-                  background: `linear-gradient(140deg, ${ods}cc 0%, ${ods}33 38%, transparent 62%), linear-gradient(to top, rgba(7,26,44,0.9) 0%, rgba(7,26,44,0.25) 58%, rgba(7,26,44,0.1) 100%)`,
+                  background: `linear-gradient(140deg, ${ods}cc 0%, ${ods}33 38%, transparent 62%), linear-gradient(to top, rgba(15,26,43,0.9) 0%, rgba(15,26,43,0.25) 58%, rgba(15,26,43,0.1) 100%)`,
                 }}
               />
 

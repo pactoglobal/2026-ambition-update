@@ -34,10 +34,10 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESCRIPTION },
       {
         property: "og:image",
-        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg",
       },
       { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "675" },
+      { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
         content: "Fórum Ambição 2030 · Pacto Global da ONU – Rede Brasil",
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: DESCRIPTION },
       {
         name: "twitter:image",
-        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg",
       },
     ],
   }),

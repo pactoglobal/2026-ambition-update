@@ -71,7 +71,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
         <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start xl:grid-cols-[420px_1fr] xl:gap-16">
           {/* COLUNA ESQUERDA: Cabeçalho, Toggle de Redes, Descrição e CTA */}
           <div className="flex flex-col">
-            <span className="mb-3 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-cyan">
+            <span className="mb-3 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-sky">
               Conteúdo & Atualizações
             </span>
 
@@ -93,7 +93,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 {activePlatform === "linkedin" && (
                   <motion.div
                     layoutId="socialTabPill"
-                    className="absolute inset-0 rounded-full bg-forum-cyan shadow-[0_0_24px_rgba(35,185,214,0.35)]"
+                    className="absolute inset-0 rounded-full bg-forum-sky shadow-[0_0_24px_rgba(105,156,198,0.35)]"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -105,13 +105,15 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 type="button"
                 onClick={() => setActivePlatform("instagram")}
                 className={`relative flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-colors duration-200 ${
-                  activePlatform === "instagram" ? "text-white" : "text-white/72 hover:text-white"
+                  activePlatform === "instagram"
+                    ? "text-forum-deep"
+                    : "text-white/72 hover:text-white"
                 }`}
               >
                 {activePlatform === "instagram" && (
                   <motion.div
                     layoutId="socialTabPill"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-forum-pink via-forum-magenta to-forum-gold shadow-[0_0_24px_rgba(226,26,114,0.35)]"
+                    className="absolute inset-0 rounded-full bg-forum-sky shadow-[0_0_24px_rgba(105,156,198,0.35)]"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -133,7 +135,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 <p className="text-base leading-relaxed text-white/76 sm:text-lg">
                   {channel.description}
                 </p>
-                <p className="text-xs font-mono uppercase tracking-widest text-forum-cyan/80">
+                <p className="text-xs font-mono uppercase tracking-widest text-forum-sky">
                   {channel.handle}
                 </p>
               </motion.div>
@@ -145,7 +147,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 href={channel.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-forum-cyan px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-forum-deep shadow-[0_12px_32px_rgba(35,185,214,0.24)] transition-all duration-300 hover:bg-white hover:shadow-[0_16px_40px_rgba(255,255,255,0.2)]"
+                className="inline-flex items-center gap-3 rounded-full bg-forum-sky px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-forum-deep shadow-[0_12px_32px_rgba(105,156,198,0.24)] transition-all duration-300 hover:bg-white hover:shadow-[0_16px_40px_rgba(255,255,255,0.2)]"
               >
                 <span>{channel.cta}</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -158,7 +160,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
             {/* Controles de Navegação do Carrossel */}
             <div className="mb-4 flex items-center justify-between px-1">
               <div className="flex items-center gap-2">
-                <span className="inline-block h-2 w-2 rounded-full bg-forum-cyan" />
+                <span className="inline-block h-2 w-2 rounded-full bg-forum-sky" />
                 <span className="font-sans text-xs font-bold tabular-nums tracking-wider text-white/70">
                   {filteredPosts.length > 0 ? (
                     <>
@@ -178,7 +180,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                   aria-label="Publicação anterior"
                   disabled={!canScrollPrev}
                   onClick={() => emblaApi?.scrollPrev()}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-all hover:bg-forum-cyan hover:text-forum-deep disabled:cursor-not-allowed disabled:opacity-25"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-all hover:bg-forum-sky hover:text-forum-deep disabled:cursor-not-allowed disabled:opacity-25"
                 >
                   <ChevronLeft aria-hidden="true" size={18} />
                 </button>
@@ -187,7 +189,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                   aria-label="Próxima publicação"
                   disabled={!canScrollNext}
                   onClick={() => emblaApi?.scrollNext()}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-all hover:bg-forum-cyan hover:text-forum-deep disabled:cursor-not-allowed disabled:opacity-25"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-all hover:bg-forum-sky hover:text-forum-deep disabled:cursor-not-allowed disabled:opacity-25"
                 >
                   <ChevronRight aria-hidden="true" size={18} />
                 </button>
@@ -223,7 +225,7 @@ function SocialCard({ post }: { post: SocialPost }) {
   const isLinkedIn = post.platform === "linkedin";
 
   return (
-    <article className="forum-card group relative flex h-[580px] w-[86vw] max-w-[360px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-cyan/40 sm:w-[360px]">
+    <article className="forum-card group relative flex h-[580px] w-[86vw] max-w-[360px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-sky/40 sm:w-[360px]">
       {/* Top bar */}
       <div className="relative z-10 flex shrink-0 items-center justify-between border-b border-white/8 bg-forum-deep/90 px-4 py-3 backdrop-blur-md">
         <div className="flex items-center gap-2">
@@ -246,7 +248,7 @@ function SocialCard({ post }: { post: SocialPost }) {
           target="_blank"
           rel="noopener noreferrer"
           title="Abrir publicação original"
-          className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-forum-cyan transition-colors hover:text-white"
+          className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-forum-sky transition-colors hover:text-white"
         >
           <span>Ver post</span>
           <ExternalLink className="h-3 w-3" />
@@ -257,7 +259,7 @@ function SocialCard({ post }: { post: SocialPost }) {
       <div className="relative flex-1 overflow-hidden bg-forum-ink">
         {!iframeLoaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-forum-deep/80 p-6 text-center backdrop-blur-sm">
-            <div className="h-7 w-7 animate-spin rounded-full border-2 border-forum-cyan border-t-transparent" />
+            <div className="h-7 w-7 animate-spin rounded-full border-2 border-forum-sky border-t-transparent" />
             <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">
               Carregando publicação...
             </p>

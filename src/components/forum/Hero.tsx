@@ -26,10 +26,10 @@ export function Hero() {
       className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep"
     >
       <HeroSlides />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.16),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.9)_4%,rgba(7,25,44,0.78)_45%,rgba(7,26,45,0.4)_75%,rgba(7,26,45,0.5)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(105,156,198,0.16),transparent_32%),linear-gradient(96deg,rgba(15,26,43,0.9)_4%,rgba(15,26,43,0.78)_45%,rgba(15,26,43,0.4)_75%,rgba(15,26,43,0.5)_100%)]" />
       {/* No celular o texto ocupa a largura toda: o degradê horizontal não basta
           sobre a foto clara do MASP Café. Camada vertical extra só abaixo de md. */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,44,0.62)_0%,rgba(7,26,44,0.8)_55%,rgba(7,26,44,0.9)_100%)] md:hidden" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,26,43,0.62)_0%,rgba(15,26,43,0.8)_55%,rgba(15,26,43,0.9)_100%)] md:hidden" />
       <div
         className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
         aria-hidden="true"
@@ -49,12 +49,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-wrap items-center gap-3"
           >
-            <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-cyan">
-              <span className="h-1.5 w-1.5 rounded-full bg-forum-cyan" />
+            <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-sky">
+              <span className="h-1.5 w-1.5 rounded-full bg-forum-sky" />
               {NEXT_EDITION.label}
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-forum-gold/40 bg-forum-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-gold">
-              <span className="h-1.5 w-1.5 rounded-full bg-forum-gold" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/6 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-white/85">
+              <span className="h-1.5 w-1.5 rounded-full bg-forum-sky" />
               10 Movimentos · Pacto Global
             </span>
           </motion.div>
@@ -95,7 +95,7 @@ export function Hero() {
               startsAt={NEXT_EDITION.startsAt}
               label={`Faltam para a ${NEXT_EDITION.label}`}
             />
-            <div className="grid w-full overflow-hidden rounded-[22px] border border-forum-cyan/44 bg-[linear-gradient(135deg,rgba(35,185,214,0.18),rgba(255,255,255,0.045))] shadow-[0_0_36px_rgba(35,185,214,0.15)] backdrop-blur-2xl sm:grid-cols-3">
+            <div className="grid w-full overflow-hidden rounded-[22px] border border-forum-sky/44 bg-[linear-gradient(135deg,rgba(105,156,198,0.18),rgba(255,255,255,0.045))] shadow-[0_0_36px_rgba(105,156,198,0.15)] backdrop-blur-2xl sm:grid-cols-3">
               {EVENT_DETAILS.map(({ icon: Icon, label, value }, index) => (
                 <div
                   key={label}
@@ -103,11 +103,11 @@ export function Hero() {
                     index < 2 ? "border-b sm:border-b-0 sm:border-r" : ""
                   }`}
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-forum-cyan/75 bg-forum-cyan/10 text-forum-cyan">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-forum-sky/75 bg-forum-sky/10 text-forum-sky">
                     <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.7} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-forum-cyan">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-forum-sky">
                       {label}
                     </p>
                     <p className="mt-1 text-lg font-display font-black uppercase text-white">
@@ -129,7 +129,7 @@ export function Hero() {
               onClick={() => scrollTo("seja-parceiro")}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(35,185,214,0.22)] transition-colors hover:bg-white"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(105,156,198,0.22)] transition-colors hover:bg-white"
             >
               Seja parceiro do evento
               <ArrowRight aria-hidden="true" size={15} strokeWidth={2.5} />
@@ -139,7 +139,7 @@ export function Hero() {
               onClick={() => scrollTo("ultima-edicao")}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="forum-glass-soft rounded-full px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:text-forum-cyan"
+              className="forum-glass-soft rounded-full px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:text-forum-sky"
             >
               Como foi a 4ª edição
             </motion.button>

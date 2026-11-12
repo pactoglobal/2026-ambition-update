@@ -56,7 +56,7 @@ export function PactoGlobalInfo() {
             <div className="grid gap-4 sm:grid-cols-2">
               {highlights.map(({ icon: Icon, title, text }) => (
                 <article key={title} className="forum-card rounded-xl p-5">
-                  <Icon aria-hidden="true" className="mb-4 h-6 w-6 text-forum-cyan" />
+                  <Icon aria-hidden="true" className="mb-4 h-6 w-6 text-forum-sky" />
                   <h3 className="text-sm font-display font-black uppercase tracking-tight text-white">
                     {title}
                   </h3>

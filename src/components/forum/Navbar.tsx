@@ -133,14 +133,14 @@ export function Navbar() {
                       scrollTo(link.href);
                     }}
                     className={`relative py-2 text-[11px] font-sans font-bold uppercase tracking-[0.24em] transition-colors duration-200 ${
-                      active ? "text-forum-cyan" : "text-white/75 hover:text-white"
+                      active ? "text-forum-sky" : "text-white/75 hover:text-white"
                     }`}
                   >
                     {link.label}
                     {active ? (
                       <motion.span
                         layoutId="navActive"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-forum-cyan"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-forum-sky"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     ) : null}
@@ -159,7 +159,7 @@ export function Navbar() {
                 className={`hidden rounded-full px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.22em] transition-colors sm:inline-flex ${
                   activeSection === "seja-parceiro"
                     ? "bg-white text-forum-deep"
-                    : "bg-forum-cyan text-forum-deep hover:bg-white"
+                    : "bg-forum-sky text-forum-deep hover:bg-white"
                 }`}
               >
                 Seja parceiro
@@ -222,10 +222,10 @@ export function Navbar() {
                             e.preventDefault();
                             scrollTo(link.href);
                           }}
-                          className="group flex items-center justify-between border-b border-white/8 py-4 text-left text-lg font-display font-black uppercase tracking-tight text-white/74 transition-colors hover:text-forum-cyan"
+                          className="group flex items-center justify-between border-b border-white/8 py-4 text-left text-lg font-display font-black uppercase tracking-tight text-white/74 transition-colors hover:text-forum-sky"
                         >
                           {link.label}
-                          <span className="text-forum-cyan opacity-60 transition-opacity group-hover:opacity-100">
+                          <span className="text-forum-sky opacity-60 transition-opacity group-hover:opacity-100">
                             →
                           </span>
                         </motion.a>
@@ -238,7 +238,7 @@ export function Navbar() {
                         e.preventDefault();
                         scrollTo(PARTNER_HREF);
                       }}
-                      className="mt-10 inline-flex justify-center rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
+                      className="mt-10 inline-flex justify-center rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
                     >
                       Seja parceiro do evento
                     </a>

@@ -60,24 +60,26 @@
   --color-ungc-gold: #ccb146;
   --color-ungc-red: #ec3740;
 
-  /* Fórum Ambição 2030 2026 Key Visual */
-  --color-forum-navy: #0b243c;
-  --color-forum-deep: #102f4f;
-  --color-forum-ink: #071a2c;
-  --color-forum-cyan: #23b9d6;
-  --color-forum-blue: #08799c;
+  /* Fórum Ambição 2030 — paleta do logo oficial (UN Global Compact Rede Brasil).
+   * Destaque único: forum-sky #699cc6, o azul de "FÓRUM" no logo (≈4,9:1 sobre
+   * forum-deep, AA para texto pequeno). Fundos são o azul-marinho do logo
+   * (#1e3250) escurecido no mesmo matiz, para esse contraste fechar.
+   * Saíram o ciano #23b9d6 e o #08799c da arte da 4ª edição. */
+  --color-forum-navy: #152238;
+  --color-forum-deep: #1a2a44;
+  --color-forum-ink: #0f1a2b;
+  --color-forum-sky: #699cc6;
+  --color-forum-blue: #4c6b8b;
   --color-forum-magenta: #c0185c;
   --color-forum-pink: #e21a72;
   --color-forum-green: #4ea43f;
   --color-forum-red: #ef3d34;
   --color-forum-gold: #b8893f;
   --color-forum-orange: #f36c2d;
-  /* Azul-claro do "FÓRUM" no logo oficial: 2ª linha dos títulos (≈5:1 sobre forum-deep). */
-  --color-forum-sky: #699cc6;
 
   /* Legacy/Brand Mappings to avoid breakage, now redirected to UNGC Blue */
-  --color-brand-deep: #102f4f;
-  --color-brand-primary: #23b9d6;
+  --color-brand-deep: #1a2a44;
+  --color-brand-primary: #699cc6;
   --color-brand-secondary: #b8893f;
   --color-brand-accent: #c0185c;
   --color-brand-teal: #4ea43f;
@@ -92,7 +94,7 @@
   --radius: 0.5rem;
 
   /* UN Global Compact Palette — Official Hierachy */
-  --background: #102f4f;
+  --background: #1a2a44;
   --foreground: #eef2f8;
   --card: #ffffff;
   --card-foreground: #1e3250;
@@ -175,7 +177,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-forum-cyan);
+    outline: 2px solid var(--color-forum-sky);
     outline-offset: 4px;
   }
 }
@@ -183,9 +185,9 @@
 @layer utilities {
   .forum-surface {
     background:
-      radial-gradient(circle at 14% 10%, rgba(35, 185, 214, 0.12), transparent 30%),
+      radial-gradient(circle at 14% 10%, rgba(105, 156, 198, 0.12), transparent 30%),
       radial-gradient(circle at 88% 34%, rgba(192, 24, 92, 0.1), transparent 28%),
-      linear-gradient(180deg, #102f4f 0%, #0b243c 100%);
+      linear-gradient(180deg, #1a2a44 0%, #152238 100%);
   }
 
   /*
@@ -199,7 +201,7 @@
     border: 1px solid rgba(174, 207, 230, 0.18);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)),
-      rgba(9, 29, 50, 0.4);
+      rgba(21, 34, 56, 0.4);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.14),
       0 24px 80px rgba(0, 0, 0, 0.22);
@@ -220,7 +222,7 @@
       rgba(255, 255, 255, 0.34),
       rgba(255, 255, 255, 0) 38%,
       rgba(255, 255, 255, 0) 70%,
-      rgba(35, 185, 214, 0.22)
+      rgba(105, 156, 198, 0.22)
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
@@ -235,7 +237,7 @@
     border: 1px solid rgba(174, 207, 230, 0.2);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
-      rgba(8, 24, 43, 0.46);
+      rgba(15, 26, 43, 0.46);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.16),
       0 24px 90px rgba(0, 0, 0, 0.24);
@@ -249,7 +251,7 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
-      rgba(7, 26, 44, 0.42);
+      rgba(15, 26, 43, 0.42);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.22),
       0 12px 32px -12px rgba(0, 0, 0, 0.55);
@@ -261,7 +263,7 @@
     border-color: rgba(255, 255, 255, 0.28);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
-      rgba(7, 26, 44, 0.34);
+      rgba(15, 26, 43, 0.34);
   }
 
   .forum-glass-soft {

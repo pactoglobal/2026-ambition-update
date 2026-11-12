@@ -173,7 +173,7 @@ export function EventNumbers() {
           {groups.map(({ key, label, Icon, metrics }) => (
             <AnimatedSection key={key}>
               <div className="mb-6 flex items-center gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-cyan">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-sky">
                   <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.5} />
                 </span>
                 <h3 className="text-[11px] font-black uppercase tracking-[0.32em] text-white/70">
@@ -251,7 +251,7 @@ export function EventNumbers() {
                             />
                             <div
                               aria-hidden="true"
-                              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(7,26,44,0.85)_0%,rgba(7,26,44,0.2)_55%,rgba(7,26,44,0.05)_100%)]"
+                              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.85)_0%,rgba(15,26,43,0.2)_55%,rgba(15,26,43,0.05)_100%)]"
                             />
                             <div className="forum-glass-photo w-fit rounded-xl px-6 py-5">
                               {figure}

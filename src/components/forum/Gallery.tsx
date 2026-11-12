@@ -77,7 +77,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
             type="button"
             aria-label="Imagem anterior"
             onClick={() => emblaApi?.scrollPrev()}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-sky hover:text-forum-deep"
           >
             <ChevronLeft aria-hidden="true" size={18} />
           </button>
@@ -85,7 +85,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
             type="button"
             aria-label="Próxima imagem"
             onClick={() => emblaApi?.scrollNext()}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-cyan hover:text-forum-deep"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/5 text-white transition-colors hover:bg-forum-sky hover:text-forum-deep"
           >
             <ChevronRight aria-hidden="true" size={18} />
           </button>
@@ -110,7 +110,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
                 className="aspect-[16/10] w-full select-none object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-forum-ink/80 via-forum-ink/20 to-transparent px-6 pb-5 pt-16">
-                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan/80">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-sky">
                   Edição {image.year}
                 </p>
               </div>
@@ -118,7 +118,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
                 type="button"
                 aria-label="Ver em tela cheia"
                 onClick={() => setLightboxImage(image)}
-                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100 hover:bg-forum-cyan hover:text-forum-deep"
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100 hover:bg-forum-sky hover:text-forum-deep"
               >
                 <Maximize2 aria-hidden="true" size={15} />
               </button>
@@ -136,7 +136,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
             aria-label={`Ir para foto ${i + 1}`}
             onClick={() => emblaApi?.scrollTo(i)}
             className={`h-0.5 rounded-full transition-all duration-300 ${
-              i === selectedIndex ? "w-6 bg-forum-cyan" : "w-1.5 bg-white/20"
+              i === selectedIndex ? "w-6 bg-forum-sky" : "w-1.5 bg-white/20"
             }`}
           />
         ))}
@@ -161,11 +161,11 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
                 className="h-auto max-h-[80vh] w-full rounded-lg object-contain"
               />
               <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-gradient-to-t from-forum-ink/90 to-transparent p-5">
-                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-sky">
                   Fórum Ambição 2030 · Edição {lightboxImage.year}
                 </p>
               </div>
-              <DialogClose className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-70 backdrop-blur-md transition-opacity hover:opacity-100 hover:bg-forum-cyan hover:text-forum-deep focus:ring-forum-cyan">
+              <DialogClose className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-forum-ink/60 text-white opacity-70 backdrop-blur-md transition-opacity hover:opacity-100 hover:bg-forum-sky hover:text-forum-deep focus:ring-forum-sky">
                 <X aria-hidden="true" size={18} />
                 <span className="sr-only">Fechar</span>
               </DialogClose>
@@ -206,7 +206,7 @@ export function Gallery() {
                 onClick={() => setActiveYear(year)}
                 className={`rounded-full border px-5 py-2 text-[11px] font-black uppercase tracking-[0.24em] transition-all ${
                   activeYear === year
-                    ? "border-forum-cyan bg-forum-cyan/15 text-forum-cyan"
+                    ? "border-forum-sky bg-forum-sky/15 text-forum-sky"
                     : "border-white/12 bg-white/4 text-white/70 hover:border-white/24 hover:text-white/70"
                 }`}
               >

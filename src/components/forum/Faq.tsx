@@ -62,13 +62,13 @@ export function Faq() {
               <AccordionItem
                 key={faq.question}
                 value={`item-${index}`}
-                className="overflow-hidden rounded-xl border border-white/8 bg-white/5 backdrop-blur-xl transition-colors duration-300 data-[state=open]:border-forum-cyan/34 data-[state=open]:bg-white/10"
+                className="overflow-hidden rounded-xl border border-white/8 bg-white/5 backdrop-blur-xl transition-colors duration-300 data-[state=open]:border-forum-sky/34 data-[state=open]:bg-white/10"
               >
                 <AccordionTrigger className="flex w-full items-center justify-between gap-6 p-6 text-left hover:no-underline md:p-8 [&>svg]:hidden">
-                  <span className="text-xl font-display font-black tracking-tight text-white transition-colors [[data-state=open]_&]:text-forum-cyan">
+                  <span className="text-xl font-display font-black tracking-tight text-white transition-colors [[data-state=open]_&]:text-forum-sky">
                     {faq.question}
                   </span>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors duration-300 [[data-state=open]_&]:border-forum-cyan [[data-state=open]_&]:text-forum-cyan">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors duration-300 [[data-state=open]_&]:border-forum-sky [[data-state=open]_&]:text-forum-sky">
                     <ChevronDown
                       aria-hidden="true"
                       size={20}

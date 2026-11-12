@@ -59,7 +59,7 @@ export function CLevelExperience() {
             <div className="mt-10 space-y-4">
               {experienceDetails.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-forum-cyan/30 bg-forum-cyan/10 text-forum-cyan">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-forum-sky/30 bg-forum-sky/10 text-forum-sky">
                     <Icon size={20} />
                   </div>
                   <div>
@@ -98,7 +98,7 @@ export function CLevelExperience() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink via-forum-ink/30 to-transparent" />
                       <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[1]}`} />
-                      <span className="absolute left-4 top-4 rounded-full border border-white/14 bg-forum-ink/70 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-gold backdrop-blur-sm">
+                      <span className="absolute left-4 top-4 rounded-full border border-white/14 bg-forum-ink/70 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-sky backdrop-blur-sm">
                         Keynote Speaker
                       </span>
                       <div className="absolute inset-x-0 bottom-0 p-5">
@@ -115,7 +115,7 @@ export function CLevelExperience() {
                       <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[1]}`} />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
                       <div className="relative z-10 flex min-h-[300px] flex-col justify-between">
-                        <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-gold">
+                        <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-sky">
                           Keynote Speaker
                         </span>
                         <div>

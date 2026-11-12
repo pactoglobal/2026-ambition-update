@@ -24,7 +24,7 @@ export function About() {
                 outline="Fórum"
               />
 
-              <div className="mt-8 h-px w-20 bg-forum-cyan/70" />
+              <div className="mt-8 h-px w-20 bg-forum-sky/70" />
 
               <div className="mt-8 space-y-5 text-base leading-relaxed text-white/76 sm:text-[1.06rem]">
                 <p>
@@ -44,10 +44,10 @@ export function About() {
 
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
               <article className="forum-glass rounded-xl p-6">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-cyan/50 bg-forum-cyan/10 text-forum-cyan">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-sky/50 bg-forum-sky/10 text-forum-sky">
                   <Layers aria-hidden="true" className="h-5 w-5" />
                 </div>
-                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
+                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-sky">
                   Estrutura
                 </p>
                 <p className="mt-2 font-display text-2xl font-black uppercase leading-tight tracking-tight text-white">
@@ -56,10 +56,10 @@ export function About() {
               </article>
 
               <article className="forum-card rounded-xl p-6">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-cyan/50 bg-forum-cyan/10 text-forum-cyan">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-forum-sky/50 bg-forum-sky/10 text-forum-sky">
                   <Users aria-hidden="true" className="h-5 w-5" />
                 </div>
-                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
+                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-sky">
                   Público
                 </p>
                 <p className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-white">
@@ -84,7 +84,7 @@ export function About() {
                   className="aspect-[16/9] w-full object-cover object-[58%_40%] xl:aspect-[4/3]"
                 />
                 <figcaption className="forum-glass-photo absolute inset-x-3 bottom-3 rounded-lg px-4 py-3">
-                  <span className="block text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan">
+                  <span className="block text-[10px] font-black uppercase tracking-[0.26em] text-forum-sky">
                     Abertura da 4ª edição
                   </span>
                   <span className="mt-1 block text-sm font-bold text-white">

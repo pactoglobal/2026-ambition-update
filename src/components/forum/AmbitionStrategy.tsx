@@ -94,9 +94,9 @@ export function AmbitionStrategy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.07, duration: 0.4 }}
-              className="forum-card group min-h-64 rounded-xl p-7 transition-colors hover:border-forum-cyan/48"
+              className="forum-card group min-h-64 rounded-xl p-7 transition-colors hover:border-forum-sky/48"
             >
-              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-xl border border-white/14 bg-white/8 text-forum-cyan transition-colors group-hover:bg-forum-cyan group-hover:text-forum-deep">
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-xl border border-white/14 bg-white/8 text-forum-sky transition-colors group-hover:bg-forum-sky group-hover:text-forum-deep">
                 <Icon aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
               </div>
               <h3 className="text-2xl font-display font-black uppercase tracking-tight text-white">
@@ -131,7 +131,7 @@ export function AmbitionStrategy() {
             ].map((company) => (
               <span
                 key={company}
-                className="text-sm font-bold uppercase tracking-widest text-white/74 transition-colors hover:text-forum-cyan"
+                className="text-sm font-bold uppercase tracking-widest text-white/74 transition-colors hover:text-forum-sky"
               >
                 {company}
               </span>
@@ -141,14 +141,14 @@ export function AmbitionStrategy() {
 
         <div className="forum-glass-soft mt-16 flex flex-col gap-4 rounded-xl p-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forum-cyan text-forum-deep">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forum-sky text-forum-deep">
               <BarChart3 aria-hidden="true" className="h-6 w-6" strokeWidth={1.8} />
             </div>
             <p className="text-lg font-display font-black uppercase tracking-tight text-white">
               Uma vez por ano, toda essa liderança se encontra num só lugar.
             </p>
           </div>
-          <p className="text-sm font-black uppercase tracking-[0.24em] text-forum-cyan">
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-forum-sky">
             Fórum Ambição 2030
           </p>
         </div>

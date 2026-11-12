@@ -179,7 +179,7 @@ export const SOCIAL_CHANNELS = {
     description:
       "Fique por dentro das nossas análises, atualizações e conteúdos exclusivos no LinkedIn.",
     cta: "Ver LinkedIn",
-    themeColor: "#23b9d6",
+    themeColor: "#699cc6",
   },
   instagram: {
     name: "Instagram",

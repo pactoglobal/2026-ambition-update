@@ -68,7 +68,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/72 transition-all hover:border-forum-cyan/40 hover:bg-forum-cyan/10 hover:text-forum-cyan"
+                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/72 transition-all hover:border-forum-sky/40 hover:bg-forum-sky/10 hover:text-forum-sky"
               >
                 <Icon size={13} />
                 {label}

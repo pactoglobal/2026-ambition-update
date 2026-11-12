@@ -12,10 +12,10 @@ import { identityAssets, type BackdropAssetKey } from "./identity-assets";
  */
 const GLOW_PRESETS = {
   split:
-    "radial-gradient(40% 45% at 16% 50%, rgba(35,185,214,0.24), transparent 70%), radial-gradient(36% 42% at 84% 50%, rgba(192,24,92,0.18), transparent 70%)",
+    "radial-gradient(40% 45% at 16% 50%, rgba(105,156,198,0.24), transparent 70%), radial-gradient(36% 42% at 84% 50%, rgba(192,24,92,0.18), transparent 70%)",
   center:
-    "radial-gradient(46% 45% at 50% 56%, rgba(8,121,156,0.30), transparent 70%), radial-gradient(28% 35% at 14% 42%, rgba(35,185,214,0.18), transparent 70%)",
-  rise: "radial-gradient(38% 45% at 22% 58%, rgba(78,164,63,0.18), transparent 70%), radial-gradient(40% 45% at 80% 42%, rgba(35,185,214,0.24), transparent 70%)",
+    "radial-gradient(46% 45% at 50% 56%, rgba(105,156,198,0.30), transparent 70%), radial-gradient(28% 35% at 14% 42%, rgba(105,156,198,0.18), transparent 70%)",
+  rise: "radial-gradient(38% 45% at 22% 58%, rgba(78,164,63,0.18), transparent 70%), radial-gradient(40% 45% at 80% 42%, rgba(105,156,198,0.24), transparent 70%)",
   warm: "radial-gradient(38% 45% at 82% 56%, rgba(184,137,63,0.20), transparent 70%), radial-gradient(34% 42% at 16% 44%, rgba(192,24,92,0.18), transparent 70%)",
 } as const;
 
@@ -41,7 +41,7 @@ export function KineticBackdrop({
           intensity === "strong" ? "opacity-[0.28]" : "opacity-[0.12]"
         }`}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(174,207,230,0.18),transparent_30%),linear-gradient(180deg,rgba(14,38,63,0.72),rgba(14,38,63,0.96))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(174,207,230,0.18),transparent_30%),linear-gradient(180deg,rgba(26,42,68,0.72),rgba(26,42,68,0.96))]" />
       <div className="absolute inset-0" style={{ background: GLOW_PRESETS[glow] }} />
     </div>
   );
@@ -62,7 +62,7 @@ export function SectionHeader({
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <span className="mb-3 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-cyan">
+      <span className="mb-3 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-sky">
         {eyebrow}
       </span>
       <h2 className="text-4xl font-display font-black uppercase leading-[0.92] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">

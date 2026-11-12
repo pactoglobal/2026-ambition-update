@@ -57,7 +57,7 @@ function buildMailto(data: FormData): string {
 }
 
 const inputClass =
-  "w-full rounded-lg border border-white/14 bg-forum-ink/40 px-4 py-3 text-sm text-white placeholder:text-white/50 transition-colors focus:border-forum-cyan focus:outline-none focus:ring-2 focus:ring-forum-cyan/30 aria-[invalid=true]:border-forum-red";
+  "w-full rounded-lg border border-white/14 bg-forum-ink/40 px-4 py-3 text-sm text-white placeholder:text-white/50 transition-colors focus:border-forum-sky focus:outline-none focus:ring-2 focus:ring-forum-sky/30 aria-[invalid=true]:border-forum-red";
 
 function Field({
   name,
@@ -79,7 +79,7 @@ function Field({
         className="text-[10px] font-black uppercase tracking-[0.22em] text-white/70"
       >
         {label}
-        {required ? <span className="text-forum-cyan"> *</span> : null}
+        {required ? <span className="text-forum-sky"> *</span> : null}
       </label>
       {children}
       {error ? (
@@ -136,7 +136,7 @@ export function PartnerForm() {
             <ul className="mt-10 space-y-5">
               {BENEFITS.map(({ title, desc }) => (
                 <li key={title} className="flex gap-4">
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forum-cyan/20 text-forum-cyan">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forum-sky/20 text-forum-sky">
                     <Check aria-hidden="true" size={14} strokeWidth={3} />
                   </span>
                   <span>
@@ -161,7 +161,7 @@ export function PartnerForm() {
                     key={key}
                     className="flex min-h-[132px] flex-col items-center justify-center gap-3 px-4 py-6 text-center"
                   >
-                    <p className="text-[9px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
+                    <p className="text-[9px] font-black uppercase tracking-[0.26em] text-forum-sky">
                       {label}
                     </p>
                     <img
@@ -186,7 +186,7 @@ export function PartnerForm() {
           >
             {sent ? (
               <div role="status" className="flex min-h-[420px] flex-col justify-center gap-5">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forum-cyan/15 text-forum-cyan">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forum-sky/15 text-forum-sky">
                   <Mail aria-hidden="true" className="h-7 w-7" strokeWidth={1.6} />
                 </span>
                 <p className="font-display text-3xl font-black uppercase leading-tight tracking-tight text-white">
@@ -197,7 +197,7 @@ export function PartnerForm() {
                   abriu, escreva direto para{" "}
                   <a
                     href={`mailto:${PARTNER_CONTACT.email}`}
-                    className="font-bold text-forum-cyan underline-offset-4 hover:underline"
+                    className="font-bold text-forum-sky underline-offset-4 hover:underline"
                   >
                     {PARTNER_CONTACT.email}
                   </a>
@@ -268,7 +268,7 @@ export function PartnerForm() {
                       aria-describedby={
                         errors.consentimento ? "parceiro-consentimento-erro" : undefined
                       }
-                      className="mt-0.5 h-4 w-4 shrink-0 accent-forum-cyan"
+                      className="mt-0.5 h-4 w-4 shrink-0 accent-forum-sky"
                     />
                     Autorizo o Pacto Global da ONU – Rede Brasil a usar estes dados apenas para
                     contato sobre parcerias com o Fórum Ambição 2030, conforme a LGPD.
@@ -286,7 +286,7 @@ export function PartnerForm() {
                 <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(35,185,214,0.22)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(105,156,198,0.22)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     Enviar interesse
                     <Send aria-hidden="true" size={14} strokeWidth={2.5} />
@@ -295,7 +295,7 @@ export function PartnerForm() {
                     <a
                       href={PARTNER_TERM_URL}
                       download
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:border-forum-cyan hover:text-forum-cyan"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:border-forum-sky hover:text-forum-sky"
                     >
                       <Download aria-hidden="true" size={14} />
                       Baixar o termo
@@ -308,7 +308,7 @@ export function PartnerForm() {
                   :{" "}
                   <a
                     href={`mailto:${PARTNER_CONTACT.email}`}
-                    className="font-bold text-forum-cyan underline-offset-4 hover:underline"
+                    className="font-bold text-forum-sky underline-offset-4 hover:underline"
                   >
                     {PARTNER_CONTACT.email}
                   </a>

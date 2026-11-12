@@ -53,7 +53,7 @@ export function Countdown({ startsAt, label }: { startsAt: string | null; label:
 
   return (
     <div className="forum-glass flex w-fit flex-col gap-4 rounded-[22px] px-5 py-4 sm:flex-row sm:items-center sm:gap-6 sm:px-6">
-      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-cyan">
+      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-sky">
         {label}
         <span className="sr-only">
           : faltam {remaining.days} {units[0].unit}

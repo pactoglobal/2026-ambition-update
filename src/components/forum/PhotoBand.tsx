@@ -39,8 +39,8 @@ type PhotoBandProps = {
  * - <picture> com direção de arte: corte 2:1 no desktop, 3:2 inteiro no
  *   celular. Cada visitante baixa uma variante só.
  * - Parallax só com transform e desligada sob prefers-reduced-motion.
- * - Topo e base esmaecem nas cores de borda do .forum-surface (#0b243c em
- *   baixo da seção anterior, #102f4f no topo da seguinte): sem emenda dura.
+ * - Topo e base esmaecem nas cores de borda do .forum-surface (#152238 em
+ *   baixo da seção anterior, #1a2a44 no topo da seguinte): sem emenda dura.
  */
 function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: PhotoBandProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -81,11 +81,11 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
       {/* Legibilidade do texto (base e esquerda) + emendas com as seções vizinhas. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,#102f4f_0%,rgba(16,47,79,0.82)_22%,rgba(16,47,79,0.2)_58%,transparent_78%),linear-gradient(to_right,rgba(7,26,44,0.78)_0%,rgba(7,26,44,0.3)_45%,transparent_70%),linear-gradient(to_bottom,#0b243c_0%,transparent_16%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,#1a2a44_0%,rgba(26,42,68,0.82)_22%,rgba(26,42,68,0.2)_58%,transparent_78%),linear-gradient(to_right,rgba(15,26,43,0.78)_0%,rgba(15,26,43,0.3)_45%,transparent_70%),linear-gradient(to_bottom,#152238_0%,transparent_16%)]"
       />
 
       <div className="mx-auto w-full max-w-screen-xl px-5 pb-14 sm:px-8 sm:pb-20 lg:px-12">
-        <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-cyan">
+        <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-sky">
           {eyebrow}
         </span>
         <p className="max-w-4xl font-display text-[clamp(2.6rem,7.4vw,7rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
@@ -103,7 +103,7 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
               window.history.pushState(null, "", `#${cta.targetId}`);
               window.scrollTo({ top, behavior: "smooth" });
             }}
-            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(35,185,214,0.22)] transition-colors hover:bg-white"
+            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(105,156,198,0.22)] transition-colors hover:bg-white"
           >
             {cta.label}
             <ArrowRight aria-hidden="true" size={15} strokeWidth={2.5} />

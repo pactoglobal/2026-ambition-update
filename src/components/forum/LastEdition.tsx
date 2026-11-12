@@ -82,10 +82,10 @@ export function LastEdition() {
             />
             <div
               aria-hidden="true"
-              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(7,26,44,0.85)_0%,rgba(7,26,44,0.2)_55%,rgba(7,26,44,0.05)_100%)]"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.85)_0%,rgba(15,26,43,0.2)_55%,rgba(15,26,43,0.05)_100%)]"
             />
             <figcaption className="forum-glass-photo w-fit rounded-xl px-6 py-5">
-              <span className="block text-[10px] font-black uppercase tracking-[0.3em] text-forum-cyan">
+              <span className="block text-[10px] font-black uppercase tracking-[0.3em] text-forum-sky">
                 {LAST_EDITION.label}
               </span>
               <span className="mt-2 block font-display text-3xl font-black uppercase leading-none tracking-tight text-white sm:text-4xl">
@@ -105,7 +105,7 @@ export function LastEdition() {
             >
               <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index + 1]}`} />
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-cyan">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-sky">
                   <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.6} />
                 </span>
                 <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/72">
