@@ -1,14 +1,19 @@
 import { useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import auditorio2400 from "../../../assets/img/hero/2026/hero_masp_auditorio_2400.webp?url";
-import auditorio1200 from "../../../assets/img/hero/2026/hero_masp_auditorio_1200.webp?url";
+import plateia2400 from "../../../assets/img/hero/2026/hero_masp_plateia_2400.webp?url";
+import plateia1600 from "../../../assets/img/hero/2026/hero_masp_plateia_1600.webp?url";
+import plateia1200 from "../../../assets/img/hero/2026/hero_masp_plateia_1200.webp?url";
 import cafe2400 from "../../../assets/img/hero/2026/hero_masp_cafe_2400.webp?url";
+import cafe1600 from "../../../assets/img/hero/2026/hero_masp_cafe_1600.webp?url";
 import cafe1200 from "../../../assets/img/hero/2026/hero_masp_cafe_1200.webp?url";
-import plateia1080 from "../../../assets/img/hero/2026/hero_masp_plateia_1080.webp?url";
+import concreto2400 from "../../../assets/img/hero/2026/hero_masp_concreto_2400.webp?url";
+import concreto1600 from "../../../assets/img/hero/2026/hero_masp_concreto_1600.webp?url";
+import concreto1200 from "../../../assets/img/hero/2026/hero_masp_concreto_1200.webp?url";
 
 type Slide = {
-  wide: string;
+  w2400: string;
+  w1600: string;
   narrow: string;
   /** object-position no desktop e no celular (onde o corte é quase vertical). */
   focus: string;
@@ -18,14 +23,34 @@ type Slide = {
 };
 
 /**
- * Fotos da 4ª edição (2026) que mostram o MASP: o auditório com as paredes de
- * concreto e o telão do Fórum, o MASP Café com o letreiro, e a plateia lotada.
- * A primeira é a imagem de LCP; as outras só entram depois que ela carrega.
+ * Fotos da 4ª edição (02/06/2026, no MASP), todas em alta resolução: a plateia
+ * lotada diante das paredes de concreto iluminadas do auditório (primeira, é
+ * a imagem de LCP), o MASP Café com o letreiro e a plateia vista do fundo.
+ * Nenhuma mostra o telão "4º Fórum": o Hero fala da 5ª edição.
  */
 const SLIDES: Slide[] = [
-  { wide: auditorio2400, narrow: auditorio1200, focus: "50% 50%", focusMobile: "50% 50%" },
-  { wide: cafe2400, narrow: cafe1200, focus: "50% 55%", focusMobile: "82% 50%", brightness: 0.62 },
-  { wide: plateia1080, narrow: plateia1080, focus: "50% 45%", focusMobile: "50% 45%" },
+  {
+    w2400: plateia2400,
+    w1600: plateia1600,
+    narrow: plateia1200,
+    focus: "50% 55%",
+    focusMobile: "62% 60%",
+  },
+  {
+    w2400: cafe2400,
+    w1600: cafe1600,
+    narrow: cafe1200,
+    focus: "50% 55%",
+    focusMobile: "82% 50%",
+    brightness: 0.62,
+  },
+  {
+    w2400: concreto2400,
+    w1600: concreto1600,
+    narrow: concreto1200,
+    focus: "50% 40%",
+    focusMobile: "70% 40%",
+  },
 ];
 
 const SLIDE_MS = 7000;
@@ -55,11 +80,11 @@ export function HeroSlides() {
         const isActive = index === active;
 
         return (
-          <picture key={slide.wide}>
+          <picture key={slide.w2400}>
             <source
               media="(min-width: 768px)"
               type="image/webp"
-              srcSet={slide.wide}
+              srcSet={`${slide.w1600} 1600w, ${slide.w2400} 2400w`}
               sizes="100vw"
             />
             <img

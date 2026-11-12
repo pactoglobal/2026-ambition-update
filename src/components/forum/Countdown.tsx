@@ -1,3 +1,4 @@
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const SECOND = 1000;
@@ -20,59 +21,79 @@ function remainingUntil(target: number, now: number): Remaining | null {
 
 const pad = (value: number) => String(value).padStart(2, "0");
 
+/** Um dígito que rola para cima quando muda (desligado sob prefers-reduced-motion). */
+function RollingDigit({ char }: { char: string }) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <span className="relative inline-flex h-[1em] w-[0.62em] justify-center overflow-hidden">
+      <AnimatePresence initial={false} mode="popLayout">
+        <motion.span
+          key={char}
+          initial={reduceMotion ? false : { y: "100%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={reduceMotion ? undefined : { y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          {char}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
 /**
- * Contagem regressiva até `startsAt` (ISO com fuso, ex. "2027-06-01T09:00:00-03:00").
+ * Contagem regressiva até `target` (ISO com fuso).
  *
- * - Não renderiza nada sem data válida ou depois que o evento começa.
- * - O primeiro cálculo acontece só no navegador (useEffect): a página é
- *   pré-renderizada no build, e um relógio calculado ali já nasceria velho e
- *   divergiria da hidratação.
- * - Os números mudam a cada segundo, mas só o texto para leitores de tela
- *   (dias) é exposto, e sem aria-live: anunciar cada segundo seria ruído.
+ * - O primeiro cálculo acontece só no navegador: a página é pré-renderizada
+ *   no build, e um relógio calculado ali nasceria velho e divergiria da
+ *   hidratação. Até lá, as células mostram "––" no mesmo tamanho (sem pulo).
+ * - Some depois que a data passa.
+ * - Para leitores de tela só os dias são expostos, sem aria-live: anunciar
+ *   cada segundo seria ruído.
  */
-export function Countdown({ startsAt, label }: { startsAt: string | null; label: string }) {
-  const target = startsAt ? Date.parse(startsAt) : Number.NaN;
-  const [remaining, setRemaining] = useState<Remaining | null>(null);
+export function Countdown({ target, label }: { target: string; label: string }) {
+  const targetMs = Date.parse(target);
+  const [remaining, setRemaining] = useState<Remaining | null | undefined>(undefined);
 
   useEffect(() => {
-    if (Number.isNaN(target)) return;
-    const tick = () => setRemaining(remainingUntil(target, Date.now()));
+    if (Number.isNaN(targetMs)) return;
+    const tick = () => setRemaining(remainingUntil(targetMs, Date.now()));
     tick();
     const id = window.setInterval(tick, SECOND);
     return () => window.clearInterval(id);
-  }, [target]);
+  }, [targetMs]);
 
-  if (!remaining) return null;
+  if (remaining === null) return null;
 
   const units = [
-    { value: String(remaining.days), unit: remaining.days === 1 ? "dia" : "dias" },
-    { value: pad(remaining.hours), unit: "horas" },
-    { value: pad(remaining.minutes), unit: "min" },
-    { value: pad(remaining.seconds), unit: "seg" },
+    { value: remaining ? String(remaining.days) : "––", unit: "dias" },
+    { value: remaining ? pad(remaining.hours) : "––", unit: "horas" },
+    { value: remaining ? pad(remaining.minutes) : "––", unit: "min" },
+    { value: remaining ? pad(remaining.seconds) : "––", unit: "seg" },
   ];
 
   return (
-    <div className="forum-glass flex w-fit flex-col gap-4 rounded-[22px] px-5 py-4 sm:flex-row sm:items-center sm:gap-6 sm:px-6">
-      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-forum-sky">
+    <div>
+      <p className="text-[11px] font-black uppercase tracking-[0.28em] text-forum-sky">
         {label}
-        <span className="sr-only">
-          : faltam {remaining.days} {units[0].unit}
-        </span>
+        {remaining ? <span className="sr-only">: {remaining.days} dias</span> : null}
       </p>
-      <div aria-hidden="true" className="flex items-end gap-3 sm:gap-4">
-        {units.map(({ value, unit }, index) => (
-          <div key={unit} className="flex items-end gap-3 sm:gap-4">
-            {index > 0 ? (
-              <span className="pb-5 font-display text-2xl font-black text-white/30">:</span>
-            ) : null}
-            <div className="flex min-w-[3ch] flex-col items-center">
-              <span className="font-display text-4xl font-black leading-none tabular-nums text-white sm:text-5xl">
-                {value}
-              </span>
-              <span className="mt-1.5 text-[9px] font-black uppercase tracking-[0.24em] text-white/72">
-                {unit}
-              </span>
-            </div>
+      <div aria-hidden="true" className="mt-4 grid grid-cols-4 gap-2 sm:gap-3">
+        {units.map(({ value, unit }) => (
+          <div
+            key={unit}
+            className="flex flex-col items-center rounded-xl border border-white/10 bg-forum-ink/45 px-1 py-3 sm:py-4"
+          >
+            <span className="flex font-display text-3xl font-black leading-none tabular-nums text-white sm:text-[2.6rem]">
+              {value.split("").map((char, index) => (
+                <RollingDigit key={`${unit}-${value.length - index}`} char={char} />
+              ))}
+            </span>
+            <span className="mt-2 text-[9px] font-black uppercase tracking-[0.24em] text-white/70">
+              {unit}
+            </span>
           </div>
         ))}
       </div>

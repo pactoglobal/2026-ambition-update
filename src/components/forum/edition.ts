@@ -17,6 +17,11 @@ export const NEXT_EDITION = {
    * "Maio de 2027" não basta: a contagem só liga com dia e hora definidos.
    */
   startsAt: null as string | null,
+  /**
+   * Enquanto não há dia definido, a contagem do Hero corre até o início do mês
+   * previsto e diz isso no rótulo ("Faltam para maio de 2027").
+   */
+  countdownFallback: { at: "2027-05-01T00:00:00-03:00", label: "Faltam para maio de 2027" },
 };
 
 export const LAST_EDITION = {

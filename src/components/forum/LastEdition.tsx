@@ -1,127 +1,143 @@
 import { motion } from "framer-motion";
-import { CalendarCheck, Lightbulb, MapPin, Mic } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
-import { accentLines } from "./identity-assets";
 import { LAST_EDITION } from "./edition";
 import chegadaMasp from "../../../assets/img/galeria-de-momentos/2026/01_chegada_masp_cafe_2026.jpg?url";
+import debate from "../../../assets/img/galeria-de-momentos/2026/11_debatable_2026.jpg?url";
+import musica from "../../../assets/img/galeria-de-momentos/2026/23_atracao_musical_2026.jpg?url";
 
-type Fact = {
-  Icon: LucideIcon;
-  label: string;
-  value: string;
-  support?: string;
-  /** Spans literais — o scanner do Tailwind precisa ler a classe inteira. */
-  span: string;
-};
-
-/**
- * Abre o bloco "última edição" (este card → Big Numbers → Coquetel com CEOs
- * → Vídeo memória). Substitui as antigas seções Local e Programação: o que
- * delas interessa a quem chega para a 5ª edição (tema, data, lugar, formato)
- * cabe aqui.
- *
- * Grade sem buracos: md = A A B / A A C / D E E · sm = A A / B C / D D / E E.
- */
-const facts: Fact[] = [
-  { Icon: Lightbulb, label: "Tema", value: LAST_EDITION.theme, span: "" },
-  { Icon: CalendarCheck, label: "Data", value: LAST_EDITION.date, span: "" },
+/** Fotos que não se repetem em "O que o Fórum entrega" nem nos números. */
+const PHOTOS = [
   {
-    Icon: MapPin,
-    label: "Local",
-    value: LAST_EDITION.venue,
-    support: LAST_EDITION.address,
-    span: "sm:col-span-2 md:col-span-1",
+    src: chegadaMasp,
+    alt: "Convidados chegando ao MASP Café para a 4ª edição do Fórum Ambição 2030",
+    caption: "Chegada · MASP Café",
+    span: "col-span-2 row-span-2",
   },
   {
-    Icon: Mic,
-    label: "Formato",
-    value: "10h de conteúdo em 6 eixos temáticos",
-    support: "Keynotes, painéis e business cases, com coquetel para CEOs na véspera.",
-    span: "sm:col-span-2",
+    src: debate,
+    alt: "Debate no palco da 4ª edição, com participantes em púlpitos",
+    caption: "Debate no palco",
+    span: "col-span-1",
+  },
+  {
+    src: musica,
+    alt: "Apresentação musical no palco do auditório do MASP durante a 4ª edição",
+    caption: "Atração musical",
+    span: "col-span-1",
   },
 ];
 
+const RECORD = [
+  { term: "Data", detail: `${LAST_EDITION.date} · terça-feira` },
+  { term: "Local", detail: `${LAST_EDITION.venue} · Avenida Paulista, ${LAST_EDITION.city}` },
+  {
+    term: "Programação",
+    detail: "10h de conteúdo em 6 eixos temáticos: keynotes, painéis e business cases",
+  },
+  { term: "Véspera", detail: "Coquetel exclusivo com CEOs" },
+];
+
+/**
+ * Abre o bloco da última edição (este → números → coquetel → vídeo →
+ * speakers). Composição editorial: colagem de fotos à esquerda, o tema como
+ * citação e uma ficha técnica à direita, em vez da grade de cards.
+ */
 export function LastEdition() {
   return (
-    <section id="ultima-edicao" className="forum-surface relative overflow-hidden py-24">
+    <section id="ultima-edicao" className="forum-surface relative overflow-hidden py-24 lg:py-32">
       <KineticBackdrop image="deepField" intensity="soft" glow="warm" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <AnimatedSection className="mb-14 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end">
+        <AnimatedSection className="mb-14">
           <SectionHeader
             eyebrow={`Saiba mais · ${LAST_EDITION.label}`}
             title="Como foi a"
             outline="última edição"
+            stacked
           />
-          <p className="text-base leading-relaxed text-white/72 sm:text-lg">
-            Em sua quarta edição, o Fórum reuniu centenas de altas lideranças empresariais, da
-            sociedade civil e do poder público para promover diálogos estratégicos e cocriar
-            soluções concretas rumo aos Objetivos de Desenvolvimento Sustentável. O evento propôs
-            uma reflexão sobre como o setor empresarial brasileiro está incorporando a
-            sustentabilidade como elemento central da estratégia corporativa.
-          </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[200px] md:grid-cols-3">
-          <motion.figure
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="forum-card group relative isolate flex min-h-[340px] flex-col justify-end overflow-hidden rounded-2xl p-3 sm:col-span-2 sm:p-4 md:row-span-2 md:min-h-0"
-          >
-            <img
-              src={chegadaMasp}
-              alt="Convidados chegando ao MASP para a 4ª edição do Fórum Ambição 2030"
-              width={1200}
-              height={800}
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 -z-20 h-full w-full object-cover object-center transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.85)_0%,rgba(15,26,43,0.2)_55%,rgba(15,26,43,0.05)_100%)]"
-            />
-            <figcaption className="forum-glass-photo w-fit rounded-xl px-6 py-5">
-              <span className="block text-[10px] font-black uppercase tracking-[0.3em] text-forum-sky">
-                {LAST_EDITION.label}
-              </span>
-              <span className="mt-2 block font-display text-3xl font-black uppercase leading-none tracking-tight text-white sm:text-4xl">
-                Recepção dos convidados
-              </span>
-            </figcaption>
-          </motion.figure>
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="grid grid-cols-3 grid-rows-2 gap-3 sm:gap-4 lg:col-span-7 lg:h-[520px]">
+            {PHOTOS.map(({ src, alt, caption, span }, index) => (
+              <motion.figure
+                key={caption}
+                initial={false}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
+                className={`group relative isolate min-h-36 overflow-hidden rounded-2xl border border-white/10 sm:min-h-48 ${span}`}
+              >
+                <img
+                  src={src}
+                  alt={alt}
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.7),transparent_50%)]"
+                />
+                <figcaption className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-forum-ink/60 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-white/90 backdrop-blur-md">
+                  {caption}
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
 
-          {facts.map(({ Icon, label, value, support, span }, index) => (
-            <motion.article
-              key={label}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.06, duration: 0.45 }}
-              className={`forum-card relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl p-6 ${span}`}
-            >
-              <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[index + 1]}`} />
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-sky">
-                  <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.6} />
-                </span>
-                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/72">
+          <AnimatedSection className="lg:col-span-5">
+            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
+              Tema da {LAST_EDITION.label}
+            </p>
+            <blockquote className="mt-4 border-l-2 border-forum-sky pl-6">
+              <p className="font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-forum-sky sm:text-5xl">
+                {LAST_EDITION.theme}
+              </p>
+            </blockquote>
+
+            <p className="mt-8 text-base leading-relaxed text-white/76">
+              Em sua quarta edição, o Fórum reuniu centenas de altas lideranças empresariais, da
+              sociedade civil e do poder público para promover diálogos estratégicos e cocriar
+              soluções concretas rumo aos ODS — e para refletir sobre como o setor empresarial
+              brasileiro está incorporando a sustentabilidade ao centro da estratégia.
+            </p>
+
+            <dl className="mt-8 divide-y divide-white/10 border-y border-white/10">
+              {RECORD.map(({ term, detail }) => (
+                <div key={term} className="grid grid-cols-[7.5rem_1fr] gap-4 py-3.5">
+                  <dt className="pt-0.5 text-[10px] font-black uppercase tracking-[0.24em] text-forum-sky">
+                    {term}
+                  </dt>
+                  <dd className="text-sm font-bold leading-snug text-white">{detail}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {[
+                { href: "#numeros", label: "Ver os números" },
+                { href: "#galeria", label: "Ver a galeria" },
+              ].map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-[10px] font-black uppercase tracking-[0.22em] text-white transition-colors hover:border-forum-sky hover:text-forum-sky"
+                >
                   {label}
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-2xl font-black uppercase leading-tight tracking-tight text-white">
-                  {value}
-                </p>
-                {support ? (
-                  <p className="mt-2 text-sm leading-snug text-white/74">{support}</p>
-                ) : null}
-              </div>
-            </motion.article>
-          ))}
+                  <ArrowRight
+                    aria-hidden="true"
+                    size={13}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </a>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

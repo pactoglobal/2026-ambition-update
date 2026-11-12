@@ -158,8 +158,8 @@ export function Navbar() {
                 }}
                 className={`hidden rounded-full px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.22em] transition-colors sm:inline-flex ${
                   activeSection === "seja-parceiro"
-                    ? "bg-white text-forum-deep"
-                    : "bg-forum-sky text-forum-deep hover:bg-white"
+                    ? "bg-forum-action-hover text-white ring-2 ring-forum-sky/60"
+                    : "bg-forum-action text-white hover:bg-forum-action-hover"
                 }`}
               >
                 Seja parceiro
@@ -238,7 +238,7 @@ export function Navbar() {
                         e.preventDefault();
                         scrollTo(PARTNER_HREF);
                       }}
-                      className="mt-10 inline-flex justify-center rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
+                      className="mt-10 inline-flex justify-center rounded-full bg-forum-action px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:bg-forum-action-hover"
                     >
                       Seja parceiro do evento
                     </a>

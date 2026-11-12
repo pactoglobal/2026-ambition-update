@@ -103,7 +103,7 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
               window.history.pushState(null, "", `#${cta.targetId}`);
               window.scrollTo({ top, behavior: "smooth" });
             }}
-            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(105,156,198,0.22)] transition-colors hover:bg-white"
+            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-action px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(74,122,168,0.35)] transition-colors hover:bg-forum-action-hover"
           >
             {cta.label}
             <ArrowRight aria-hidden="true" size={15} strokeWidth={2.5} />
@@ -114,14 +114,17 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
   );
 }
 
-/** Abre o bloco da última edição com o slogan da 4ª edição. */
-export function LastEditionBand() {
+/**
+ * Abre "A iniciativa que originou o Fórum" (Ambição 2030). O slogan fala dos
+ * 10 Movimentos, e a foto é o auditório do MASP com esse slogan no telão.
+ */
+export function MovementsBand() {
   return (
     <PhotoBand
-      eyebrow="4ª edição · 02.06.2026 · MASP, São Paulo"
+      eyebrow="A iniciativa que originou o Fórum"
       title="Múltiplos movimentos."
       outline="Uma só ação."
-      focus="50% 55%"
+      focus="62% 45%"
       photo={{
         wide2400: movimentos2400,
         wide1600: movimentos1600,
@@ -132,7 +135,7 @@ export function LastEditionBand() {
   );
 }
 
-/** CTA âncora depois dos speakers: leva ao formulário "Seja parceiro". */
+/** CTA âncora logo depois de "O que o Fórum entrega": leva ao formulário "Seja parceiro". */
 export function PartnerBand() {
   return (
     <PhotoBand

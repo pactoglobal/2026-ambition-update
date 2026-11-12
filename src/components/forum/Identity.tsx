@@ -53,12 +53,15 @@ export function SectionHeader({
   outline,
   description,
   align = "left",
+  stacked = false,
 }: {
   eyebrow: string;
   title: string;
   outline?: string;
   description?: ReactNode;
   align?: "left" | "center";
+  /** 2ª parte em linha própria: evita uma palavra órfã na quebra. */
+  stacked?: boolean;
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
@@ -72,7 +75,7 @@ export function SectionHeader({
             {" "}
             {/* 2ª linha no azul-claro do logo ("FÓRUM" / "AMBIÇÃO 2030"). Antes
                 era contorno de 1px a 52%: some no fundo azul (contraste ~1,6:1). */}
-            <span className="text-forum-sky">{outline}</span>
+            <span className={stacked ? "block text-forum-sky" : "text-forum-sky"}>{outline}</span>
           </>
         ) : null}
       </h2>

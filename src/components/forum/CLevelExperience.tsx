@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GlassWater, Users } from "lucide-react";
+import { CalendarClock, GlassWater, Users } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines } from "./identity-assets";
@@ -19,8 +19,9 @@ function photoByKey(key: string): string | undefined {
 }
 
 const experienceDetails = [
-  { icon: Users, label: "Público e Capacidade", value: "CEO · 80 convidados" },
-  { icon: GlassWater, label: "Formato", value: "Keynote + Coquetel de Relacionamento" },
+  { icon: CalendarClock, label: "Quando", value: "Na véspera do Fórum" },
+  { icon: Users, label: "Para quem", value: "CEOs · até 80 convidados" },
+  { icon: GlassWater, label: "Formato", value: "Keynote + coquetel de relacionamento" },
 ];
 
 const keynoteSpeaker = {
@@ -39,19 +40,23 @@ export function CLevelExperience() {
           {/* left — description */}
           <AnimatedSection>
             <SectionHeader
-              eyebrow="Experiência exclusiva · 4ª edição"
+              eyebrow="Experiência exclusiva do Fórum"
               title="Coquetel"
               outline="com CEOs"
-              description="Uma agenda complementar para conexões qualificadas entre a alta liderança."
+              stacked
+              description="Um encontro reservado, fora do palco, para quem decide a agenda de sustentabilidade das maiores empresas do país."
             />
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/78">
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-white/78">
               <p>
-                Na véspera do 4º Fórum Ambição 2030, um grupo seleto de até 80 CEOs se reuniu num
-                ambiente exclusivo e reservado.
+                O Coquetel com CEOs é uma experiência exclusiva do Fórum Ambição 2030: na véspera do
+                evento, um grupo seleto de presidentes de empresas se reúne em ambiente reservado
+                para conversas francas entre pares que compartilham os mesmos desafios.
               </p>
               <p>
-                Uma conversa inspiradora abriu o encontro — seguida de um espaço pensado para que
-                lideranças que compartilham os mesmos desafios tivessem trocas genuínas e conexões
+                Na 4ª edição, o encontro foi aberto por{" "}
+                <strong className="font-bold text-white">Avanish Sahai</strong>, diretor
+                independente com trajetória em SaaS, inteligência artificial e plataformas em nuvem,
+                e seguiu em um coquetel de relacionamento pensado para trocas genuínas e conexões
                 estratégicas.
               </p>
             </div>
@@ -99,7 +104,7 @@ export function CLevelExperience() {
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink via-forum-ink/30 to-transparent" />
                       <div className={`absolute left-0 top-0 h-1 w-full ${accentLines[1]}`} />
                       <span className="absolute left-4 top-4 rounded-full border border-white/14 bg-forum-ink/70 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-sky backdrop-blur-sm">
-                        Keynote Speaker
+                        Keynote · 4ª edição
                       </span>
                       <div className="absolute inset-x-0 bottom-0 p-5">
                         <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
@@ -116,7 +121,7 @@ export function CLevelExperience() {
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
                       <div className="relative z-10 flex min-h-[300px] flex-col justify-between">
                         <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-forum-sky">
-                          Keynote Speaker
+                          Keynote · 4ª edição
                         </span>
                         <div>
                           <h3 className="text-2xl font-display font-black uppercase leading-tight tracking-tight text-white">

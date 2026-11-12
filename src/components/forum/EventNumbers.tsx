@@ -1,277 +1,199 @@
 import { motion } from "framer-motion";
-import { Megaphone, Smartphone, Users } from "lucide-react";
+import { Megaphone, Smartphone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
+import { CountUp } from "./CountUp";
 import { KineticBackdrop, SectionHeader } from "./Identity";
-import { accentLines } from "./identity-assets";
 import plateia2026 from "../../../assets/img/galeria-de-momentos/2026/15_plateia_aplausos_2026.jpg?url";
 
 type Metric = {
-  /** Prefixo (ex.: "R$"), renderizado menor que o numero. */
+  /** Prefixo (ex.: "R$"), renderizado menor que o número. */
   prefix?: string;
+  /** Formato de exibição, com vírgula decimal: anima de 0 até ele. */
   value: string;
-  /** Unidade (ex.: "M", "mil", "h", "%"), tambem menor que o numero. */
+  /** Unidade (ex.: "M", "mil", "h", "%"), também menor que o número. */
   suffix?: string;
   label: string;
-  /** Canal de origem do dado, quando o numero so faz sentido com ele. */
+  /** Canal de origem, quando o número só faz sentido com ele. */
   channel?: string;
-  /** Numero-manchete do grupo: ganha mais escala que os demais. */
-  featured?: boolean;
-  /** Foto de fundo — só onde ela ilustra o próprio número (ex.: plateia em "pessoas presentes"). */
-  photo?: { src: string; alt: string; focus: string };
-  /** Spans literais — o scanner do Tailwind precisa ler a classe inteira no fonte. */
-  span: string;
 };
 
-type MetricGroup = {
-  key: string;
-  label: string;
-  Icon: LucideIcon;
-  metrics: Metric[];
-};
+type Panel = { key: string; title: string; Icon: LucideIcon; featured: Metric[]; list: Metric[] };
 
 /**
- * Numeros da 4a edicao (02/06/2026, MASP), conforme o consolidado
- * Ambicao2030_BigNumbers enviado pela equipe de comunicacao.
- *
- * Prefixo e unidade ficam separados do numero de proposito: "R$ 11,3M" e
- * "60,8 mil" quebravam a linha e vazavam do cartao quando renderizados como
- * um texto unico no tamanho de manchete.
- *
- * Os spans sao deliberadamente irregulares: o numero-manchete de cada bloco
- * ocupa mais colunas, para a secao ter hierarquia em vez de virar uma grade
- * uniforme de 15 cartoes iguais.
+ * Números da 4ª edição (02/06/2026, MASP), conforme o consolidado
+ * Ambicao2030_BigNumbers da equipe de comunicação.
  */
-const groups: MetricGroup[] = [
-  {
-    key: "evento",
-    label: "No evento",
-    Icon: Users,
-    metrics: [
-      {
-        value: "669",
-        label: "pessoas presentes",
-        featured: true,
-        photo: {
-          src: plateia2026,
-          alt: "Plateia da 4ª edição aplaudindo no auditório do MASP",
-          focus: "50% 40%",
-        },
-        span: "col-span-2 lg:col-span-6",
-      },
-      { value: "40", label: "speakers", span: "col-span-1 lg:col-span-2" },
-      { value: "10", suffix: "h", label: "de conteúdo", span: "col-span-1 lg:col-span-2" },
-      { value: "6", label: "eixos temáticos", span: "col-span-2 lg:col-span-2" },
-    ],
-  },
+const EVENT: Metric[] = [
+  { value: "40", label: "speakers" },
+  { value: "10", suffix: "h", label: "de conteúdo" },
+  { value: "6", label: "eixos temáticos" },
+];
+
+const PANELS: Panel[] = [
   {
     key: "imprensa",
-    label: "Imprensa",
+    title: "Imprensa",
     Icon: Megaphone,
-    metrics: [
-      {
-        value: "23,5",
-        suffix: "M",
-        label: "pessoas impactadas",
-        featured: true,
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        prefix: "R$",
-        value: "11,3",
-        suffix: "M",
-        label: "em valoração de mídia",
-        featured: true,
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        value: "179",
-        label: "matérias publicadas, 100% positivas",
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        value: "+239",
-        suffix: "%",
-        label: "de crescimento em exposição",
-        span: "col-span-1 lg:col-span-4",
-      },
-      {
-        value: "8",
-        label: "jornalistas presentes no evento",
-        span: "col-span-1 lg:col-span-4",
-      },
-      {
-        value: "22",
-        label: "conteúdos enviados à imprensa pela RBPG",
-        span: "col-span-2 lg:col-span-4",
-      },
+    featured: [
+      { value: "23,5", suffix: "M", label: "pessoas impactadas" },
+      { prefix: "R$", value: "11,3", suffix: "M", label: "em valoração de mídia" },
+    ],
+    list: [
+      { value: "179", label: "matérias publicadas, 100% positivas" },
+      { value: "+239", suffix: "%", label: "de crescimento em exposição" },
+      { value: "8", label: "jornalistas presentes no evento" },
+      { value: "22", label: "conteúdos enviados à imprensa pela RBPG" },
     ],
   },
   {
     key: "digital",
-    label: "Digital",
+    title: "Digital",
     Icon: Smartphone,
-    metrics: [
-      {
-        value: "60,8",
-        suffix: "mil",
-        label: "visualizações",
-        channel: "Instagram",
-        featured: true,
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        value: "23,1",
-        suffix: "mil",
-        label: "contas alcançadas",
-        channel: "Instagram",
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        value: "7,5",
-        suffix: "mil",
-        label: "impressões em 7 posts",
-        channel: "LinkedIn",
-        span: "col-span-2 lg:col-span-4",
-      },
-      {
-        value: "264",
-        label: "interações",
-        channel: "LinkedIn",
-        span: "col-span-1 lg:col-span-6",
-      },
-      {
-        value: "8,3",
-        suffix: "mil",
-        label: "usuários no site",
-        channel: "Site",
-        span: "col-span-1 lg:col-span-6",
-      },
+    featured: [
+      { value: "60,8", suffix: "mil", label: "visualizações", channel: "Instagram" },
+      { value: "23,1", suffix: "mil", label: "contas alcançadas", channel: "Instagram" },
+    ],
+    list: [
+      { value: "7,5", suffix: "mil", label: "impressões em 7 posts", channel: "LinkedIn" },
+      { value: "264", label: "interações", channel: "LinkedIn" },
+      { value: "8,3", suffix: "mil", label: "usuários no site", channel: "Site" },
     ],
   },
 ];
 
-export function EventNumbers() {
-  let accentIndex = 0;
-
+function Figure({ prefix, value, suffix, className }: Metric & { className: string }) {
   return (
-    <section id="numeros" className="forum-surface relative overflow-hidden py-24">
+    <span
+      className={`flex items-baseline gap-1.5 whitespace-nowrap font-display font-black leading-none tracking-tight text-white ${className}`}
+    >
+      {prefix ? <span className="text-[0.4em] text-forum-sky">{prefix}</span> : null}
+      <CountUp value={value} />
+      {suffix ? <span className="text-[0.42em] text-forum-sky">{suffix}</span> : null}
+    </span>
+  );
+}
+
+/** Fio que se desenha da esquerda para a direita quando entra na tela. */
+function Rule() {
+  return (
+    <motion.div
+      aria-hidden="true"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      className="h-px origin-left bg-gradient-to-r from-forum-sky/70 via-white/15 to-transparent"
+    />
+  );
+}
+
+export function EventNumbers() {
+  return (
+    <section id="numeros" className="forum-surface relative overflow-hidden py-24 lg:py-32">
       <KineticBackdrop image="lineField" intensity="soft" glow="split" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-14">
           <SectionHeader
-            eyebrow="Big numbers · 4ª edição"
+            eyebrow="Resultados · 4ª edição"
             title="O Fórum em"
             outline="Números"
-            align="center"
             description="O que a 4ª edição deixou registrado — 02 de junho de 2026, MASP, São Paulo."
           />
         </AnimatedSection>
 
-        <div className="flex flex-col gap-14">
-          {groups.map(({ key, label, Icon, metrics }) => (
+        {/* No evento: o número-manchete sobre a foto da plateia + três marcas da programação. */}
+        <div className="grid gap-4 lg:grid-cols-12 lg:gap-6">
+          <figure className="group relative isolate flex min-h-[340px] flex-col justify-end overflow-hidden rounded-[28px] border border-white/10 p-7 sm:p-9 lg:col-span-7 lg:min-h-[420px]">
+            <img
+              src={plateia2026}
+              alt="Plateia da 4ª edição aplaudindo no auditório do MASP"
+              width={1080}
+              height={720}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_40%] transition-transform duration-1000 ease-out motion-safe:group-hover:scale-105"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.92)_0%,rgba(15,26,43,0.35)_55%,rgba(15,26,43,0.1)_100%)]"
+            />
+            <figcaption>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-forum-sky">
+                No evento
+              </p>
+              <Figure value="669" label="" className="mt-3 text-[5.5rem] sm:text-[8rem]" />
+              <p className="mt-2 text-sm font-black uppercase tracking-[0.2em] text-white/85">
+                pessoas presentes
+              </p>
+            </figcaption>
+          </figure>
+
+          <div className="forum-glass flex flex-col justify-center rounded-[28px] px-7 py-4 sm:px-9 lg:col-span-5">
+            {EVENT.map((metric, index) => (
+              <div key={metric.label}>
+                {index > 0 ? <Rule /> : null}
+                <div className="flex items-baseline justify-between gap-6 py-6">
+                  <Figure {...metric} className="text-6xl sm:text-7xl" />
+                  <p className="text-right text-xs font-black uppercase tracking-[0.2em] text-white/76">
+                    {metric.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Imprensa e Digital lado a lado: dois destaques e uma lista com fios. */}
+        <div className="mt-4 grid gap-4 lg:mt-6 lg:grid-cols-2 lg:gap-6">
+          {PANELS.map(({ key, title, Icon, featured, list }) => (
             <AnimatedSection key={key}>
-              <div className="mb-6 flex items-center gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-sky">
-                  <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.5} />
-                </span>
-                <h3 className="text-[11px] font-black uppercase tracking-[0.32em] text-white/70">
-                  {label}
-                </h3>
-                <span
-                  aria-hidden="true"
-                  className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent"
-                />
-              </div>
+              <article className="forum-card h-full rounded-[28px] p-7 sm:p-9">
+                <header className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-forum-sky/50 bg-forum-sky/10 text-forum-sky">
+                    <Icon aria-hidden="true" className="h-[18px] w-[18px]" strokeWidth={1.6} />
+                  </span>
+                  <h3 className="text-[11px] font-black uppercase tracking-[0.32em] text-white/80">
+                    {title}
+                  </h3>
+                </header>
 
-              <div className="grid grid-cols-2 gap-4 lg:grid-cols-12 lg:gap-6">
-                {metrics.map(
-                  (
-                    { prefix, value, suffix, label: metricLabel, channel, featured, photo, span },
-                    index,
-                  ) => {
-                    const accent = accentLines[accentIndex++ % accentLines.length];
-
-                    const figure = (
-                      <>
-                        <p
-                          className={`flex items-baseline gap-1.5 whitespace-nowrap font-display font-bold leading-none tracking-tight text-white ${
-                            featured ? "text-5xl lg:text-6xl" : "text-3xl lg:text-4xl"
-                          }`}
-                        >
-                          {prefix ? (
-                            <span className="text-[0.42em] font-black text-white/70">{prefix}</span>
-                          ) : null}
-                          {value}
-                          {suffix ? (
-                            <span className="text-[0.46em] font-black text-white/70">{suffix}</span>
-                          ) : null}
+                <div className="mt-8 grid grid-cols-2 gap-6">
+                  {featured.map((metric) => (
+                    <div key={metric.label}>
+                      {metric.channel ? (
+                        <p className="mb-3 text-[9px] font-black uppercase tracking-[0.24em] text-forum-sky">
+                          {metric.channel}
                         </p>
-                        <p
-                          className={`mt-3 text-[11px] font-black uppercase leading-snug tracking-[0.16em] ${
-                            photo ? "text-white/78" : "text-white/72"
-                          }`}
-                        >
-                          {metricLabel}
-                        </p>
-                      </>
-                    );
+                      ) : null}
+                      <Figure {...metric} className="text-5xl sm:text-6xl" />
+                      <p className="mt-3 text-[11px] font-black uppercase leading-snug tracking-[0.16em] text-white/76">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
 
-                    return (
-                      <motion.div
-                        key={`${key}-${metricLabel}`}
-                        initial={false}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.06, duration: 0.45 }}
-                        className={`forum-card group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl ${
-                          photo ? "p-3 sm:p-4" : "p-6 sm:p-8 lg:p-6 xl:p-8"
-                        } ${span} ${
-                          photo
-                            ? "min-h-64 lg:min-h-72"
-                            : featured
-                              ? "min-h-48 lg:min-h-56"
-                              : "min-h-40"
-                        }`}
-                      >
-                        <div className={`absolute left-0 top-0 z-10 h-1 w-full ${accent}`} />
-
-                        {photo ? (
-                          <>
-                            <img
-                              src={photo.src}
-                              alt={photo.alt}
-                              width={1080}
-                              height={720}
-                              loading="lazy"
-                              decoding="async"
-                              style={{ objectPosition: photo.focus }}
-                              className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
-                            />
-                            <div
-                              aria-hidden="true"
-                              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(15,26,43,0.85)_0%,rgba(15,26,43,0.2)_55%,rgba(15,26,43,0.05)_100%)]"
-                            />
-                            <div className="forum-glass-photo w-fit rounded-xl px-6 py-5">
-                              {figure}
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            {channel ? (
-                              <span className="mb-4 w-fit rounded-full border border-white/12 bg-white/8 px-3 py-1 text-[9px] font-black uppercase tracking-[0.22em] text-white/70">
-                                {channel}
-                              </span>
-                            ) : null}
-                            {figure}
-                          </>
-                        )}
-                      </motion.div>
-                    );
-                  },
-                )}
-              </div>
+                <div className="mt-8">
+                  {list.map((metric) => (
+                    <div key={metric.label}>
+                      <Rule />
+                      <div className="flex items-center justify-between gap-5 py-4">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <p className="text-sm leading-snug text-white/80">{metric.label}</p>
+                          {metric.channel ? (
+                            <span className="shrink-0 rounded-full border border-white/12 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-white/70">
+                              {metric.channel}
+                            </span>
+                          ) : null}
+                        </div>
+                        <Figure {...metric} className="text-3xl" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </article>
             </AnimatedSection>
           ))}
         </div>

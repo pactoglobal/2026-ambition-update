@@ -70,6 +70,11 @@
   --color-forum-ink: #0f1a2b;
   --color-forum-sky: #699cc6;
   --color-forum-blue: #4c6b8b;
+  /* Botões com texto branco: o mesmo matiz do azul do logo, um degrau mais
+     escuro. Branco sobre #699cc6 daria 2,9:1 (ilegível em 11px); sobre
+     #4a7aa8 dá 4,5:1 e sobre o hover #3d6893, 5,9:1. */
+  --color-forum-action: #4a7aa8;
+  --color-forum-action-hover: #3d6893;
   --color-forum-magenta: #c0185c;
   --color-forum-pink: #e21a72;
   --color-forum-green: #4ea43f;
@@ -174,6 +179,11 @@
   a,
   button {
     touch-action: manipulation;
+  }
+
+  /* Âncoras internas (#numeros, #galeria...) param abaixo do cabeçalho fixo. */
+  section[id] {
+    scroll-margin-top: 88px;
   }
 
   :focus-visible {

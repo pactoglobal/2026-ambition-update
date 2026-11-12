@@ -9,7 +9,7 @@ import { EventNumbers } from "@/components/forum/EventNumbers";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { MemoryVideo } from "@/components/forum/MemoryVideo";
 import { Speakers } from "@/components/forum/Speakers";
-import { LastEditionBand, PartnerBand } from "@/components/forum/PhotoBand";
+import { MovementsBand, PartnerBand } from "@/components/forum/PhotoBand";
 import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
 import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
 import { Gallery } from "@/components/forum/Gallery";
@@ -113,18 +113,18 @@ function Index() {
         <About />
         <WhatToExpect />
 
+        {/* CTA âncora → formulário no fim da página */}
+        <PartnerBand />
+
         {/* 3–7 · A ÚLTIMA EDIÇÃO (4ª, 2026) */}
-        <LastEditionBand />
         <LastEdition />
         <EventNumbers />
         <CLevelExperience />
         <MemoryVideo />
         <Speakers />
 
-        {/* CTA âncora → formulário no fim da página */}
-        <PartnerBand />
-
-        {/* 8–9 · CONTEXTO */}
+        {/* 8–9 · CONTEXTO: a faixa do slogan abre a iniciativa que originou o Fórum */}
+        <MovementsBand />
         <AmbitionStrategy />
         <PactoGlobalInfo />
 

@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Check, Download, Mail, Send } from "lucide-react";
+import { ArrowRight, Check, Download, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
-import { partnerGroups } from "./identity-assets";
-import { LAST_EDITION, NEXT_EDITION, PARTNER_CONTACT, PARTNER_TERM_URL } from "./edition";
+import { identityAssets } from "./identity-assets";
+import { NEXT_EDITION, PARTNER_CONTACT, PARTNER_TERM_URL } from "./edition";
 
 const BENEFITS = [
   { title: "Visibilidade", desc: "Posicionamento em ambiente institucional de alto nível." },
@@ -149,32 +149,42 @@ export function PartnerForm() {
               ))}
             </ul>
 
-            {/* As marcas da 4ª edição moram aqui (antes eram a seção Parceiros):
-                quem avalia uma parceria quer ver quem já esteve junto. */}
-            <div className="forum-card mt-12 overflow-hidden rounded-xl">
-              <p className="border-b border-white/8 px-6 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/72">
-                Estiveram conosco na {LAST_EDITION.label}
-              </p>
-              <div className="grid grid-cols-2 divide-x divide-white/8">
-                {partnerGroups.map(({ key, label, src, alt, width, height, sponsorsClassName }) => (
-                  <div
-                    key={key}
-                    className="flex min-h-[132px] flex-col items-center justify-center gap-3 px-4 py-6 text-center"
-                  >
-                    <p className="text-[9px] font-black uppercase tracking-[0.26em] text-forum-sky">
-                      {label}
-                    </p>
-                    <img
-                      src={src}
-                      alt={alt}
-                      width={width}
-                      height={height}
-                      loading="lazy"
-                      className={`${sponsorsClassName} w-auto max-w-[180px] object-contain opacity-90`}
-                    />
-                  </div>
-                ))}
+            {/* Realização + o espaço do patrocinador da 5ª edição, em aberto. */}
+            <div className="mt-12 grid grid-cols-2 gap-3">
+              <div className="forum-card flex min-h-[150px] flex-col items-center justify-center gap-3 rounded-2xl px-4 py-6 text-center">
+                <p className="text-[9px] font-black uppercase tracking-[0.26em] text-forum-sky">
+                  Realização
+                </p>
+                <img
+                  src={identityAssets.pacto}
+                  alt="Pacto Global da ONU – Rede Brasil"
+                  width={800}
+                  height={864}
+                  loading="lazy"
+                  className="h-20 w-auto object-contain opacity-90"
+                />
               </div>
+              <a
+                href="#parceiro-nome"
+                onClick={(event) => {
+                  event.preventDefault();
+                  const field = document.getElementById("parceiro-nome");
+                  field?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  field?.focus({ preventScroll: true });
+                }}
+                className="group flex min-h-[150px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-forum-sky/60 bg-forum-sky/5 px-4 py-6 text-center transition-colors hover:border-forum-sky hover:bg-forum-sky/10"
+              >
+                <p className="text-[9px] font-black uppercase tracking-[0.26em] text-forum-sky">
+                  Patrocínio · {NEXT_EDITION.label}
+                </p>
+                <span className="font-display text-xl font-black uppercase leading-tight tracking-tight text-white">
+                  Seja patrocinador
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white/76 transition-colors group-hover:text-white">
+                  Sua marca aqui
+                  <ArrowRight aria-hidden="true" size={12} />
+                </span>
+              </a>
             </div>
           </AnimatedSection>
 
@@ -286,7 +296,7 @@ export function PartnerForm() {
                 <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-sky px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(105,156,198,0.22)] transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-action px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(74,122,168,0.35)] transition-colors hover:bg-forum-action-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     Enviar interesse
                     <Send aria-hidden="true" size={14} strokeWidth={2.5} />

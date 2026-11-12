@@ -147,7 +147,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 href={channel.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-forum-sky px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-forum-deep shadow-[0_12px_32px_rgba(105,156,198,0.24)] transition-all duration-300 hover:bg-white hover:shadow-[0_16px_40px_rgba(255,255,255,0.2)]"
+                className="inline-flex items-center gap-3 rounded-full bg-forum-action px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_12px_32px_rgba(105,156,198,0.24)] transition-all duration-300 hover:bg-forum-action-hover hover:shadow-[0_16px_40px_rgba(255,255,255,0.2)]"
               >
                 <span>{channel.cta}</span>
                 <ExternalLink className="h-3.5 w-3.5" />

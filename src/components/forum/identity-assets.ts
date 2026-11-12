@@ -8,31 +8,7 @@ export const identityAssets = {
   deepField: "/identity/deep-blue-field.png",
   wordmark: "/identity/forum-wordmark.png",
   pacto: "/identity/pacto-global-realizacao.png",
-  aegea: "/identity/aegea-patrocinador.png",
 } as const;
-
-export const partnerGroups = [
-  {
-    key: "realizacao",
-    label: "Realização",
-    src: identityAssets.pacto,
-    alt: "Pacto Global Rede Brasil",
-    width: 800,
-    height: 864,
-    heroClassName: "h-14 sm:h-16",
-    sponsorsClassName: "h-24",
-  },
-  {
-    key: "patrocinio-master",
-    label: "Patrocínio Master",
-    src: identityAssets.aegea,
-    alt: "Aegea",
-    width: 1080,
-    height: 445,
-    heroClassName: "h-10 sm:h-12",
-    sponsorsClassName: "h-16",
-  },
-] as const;
 
 export type BackdropAssetKey = "kv" | "waves" | "lineField" | "deepField";
 
