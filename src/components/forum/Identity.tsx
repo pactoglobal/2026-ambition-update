@@ -70,12 +70,9 @@ export function SectionHeader({
         {outline ? (
           <>
             {" "}
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "1px rgba(174, 207, 230, 0.52)" }}
-            >
-              {outline}
-            </span>
+            {/* 2ª linha no azul-claro do logo ("FÓRUM" / "AMBIÇÃO 2030"). Antes
+                era contorno de 1px a 52%: some no fundo azul (contraste ~1,6:1). */}
+            <span className="text-forum-sky">{outline}</span>
           </>
         ) : null}
       </h2>

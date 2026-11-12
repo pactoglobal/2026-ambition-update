@@ -108,7 +108,7 @@ export function LastEdition() {
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-forum-cyan">
                   <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.6} />
                 </span>
-                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/58">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/72">
                   {label}
                 </p>
               </div>
@@ -117,7 +117,7 @@ export function LastEdition() {
                   {value}
                 </p>
                 {support ? (
-                  <p className="mt-2 text-sm leading-snug text-white/62">{support}</p>
+                  <p className="mt-2 text-sm leading-snug text-white/74">{support}</p>
                 ) : null}
               </div>
             </motion.article>

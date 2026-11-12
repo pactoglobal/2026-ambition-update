@@ -210,7 +210,7 @@ export function EventNumbers() {
                         </p>
                         <p
                           className={`mt-3 text-[11px] font-black uppercase leading-snug tracking-[0.16em] ${
-                            photo ? "text-white/78" : "text-white/58"
+                            photo ? "text-white/78" : "text-white/72"
                           }`}
                         >
                           {metricLabel}

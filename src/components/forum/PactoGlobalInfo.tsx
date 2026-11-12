@@ -60,7 +60,7 @@ export function PactoGlobalInfo() {
                   <h3 className="text-sm font-display font-black uppercase tracking-tight text-white">
                     {title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-white/64">{text}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-white/74">{text}</p>
                 </article>
               ))}
             </div>

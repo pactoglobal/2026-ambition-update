@@ -1,6 +1,5 @@
 import { Globe } from "lucide-react";
 import { identityAssets } from "./identity-assets";
-import { ForumWordmark } from "./Wordmark";
 
 function IconInstagram({ size = 14 }: { size?: number }) {
   return (
@@ -48,20 +47,16 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-center gap-6">
-          <ForumWordmark size="lg" />
-          <div className="flex items-center gap-4">
-            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/46">
-              Realização
-            </p>
-            <img
-              src={identityAssets.pacto}
-              alt="Pacto Global da ONU – Rede Brasil"
-              width={800}
-              height={864}
-              loading="lazy"
-              className="h-14 w-auto object-contain opacity-90"
-            />
-          </div>
+          {/* O logo oficial já traz a marca do UN Global Compact – Rede Brasil:
+              uma faixa "Realização" ao lado repetiria a mesma marca. */}
+          <img
+            src={identityAssets.logoOficial}
+            alt="Fórum Ambição 2030 · Pacto Global da ONU – Rede Brasil"
+            width={460}
+            height={232}
+            loading="lazy"
+            className="h-20 w-auto sm:h-24"
+          />
         </div>
 
         <div className="flex flex-col items-center gap-10">
@@ -73,7 +68,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/55 transition-all hover:border-forum-cyan/40 hover:bg-forum-cyan/10 hover:text-forum-cyan"
+                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/72 transition-all hover:border-forum-cyan/40 hover:bg-forum-cyan/10 hover:text-forum-cyan"
               >
                 <Icon size={13} />
                 {label}
@@ -81,7 +76,7 @@ export function Footer() {
             ))}
           </nav>
 
-          <p className="max-w-2xl text-center text-[10px] uppercase leading-loose tracking-[0.3em] text-white/28">
+          <p className="max-w-2xl text-center text-[10px] uppercase leading-loose tracking-[0.3em] text-white/55">
             © {new Date().getFullYear()} United Nations Global Compact - Rede Brasil.
             <br />
             Fórum Ambição 2030 - Transformar intenção em ação.

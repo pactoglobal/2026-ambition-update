@@ -69,7 +69,7 @@ export function Countdown({ startsAt, label }: { startsAt: string | null; label:
               <span className="font-display text-4xl font-black leading-none tabular-nums text-white sm:text-5xl">
                 {value}
               </span>
-              <span className="mt-1.5 text-[9px] font-black uppercase tracking-[0.24em] text-white/56">
+              <span className="mt-1.5 text-[9px] font-black uppercase tracking-[0.24em] text-white/72">
                 {unit}
               </span>
             </div>

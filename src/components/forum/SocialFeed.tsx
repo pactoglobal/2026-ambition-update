@@ -76,13 +76,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
             </span>
 
             <h2 className="text-4xl font-display font-black uppercase leading-[0.92] tracking-tight text-white sm:text-5xl md:text-6xl">
-              Nas nossas{" "}
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "1px rgba(174, 207, 230, 0.52)" }}
-              >
-                Redes
-              </span>
+              Nas nossas <span className="text-forum-sky">Redes</span>
             </h2>
 
             {/* SELETOR DE REDES SOCIAIS (SLIDE/TABS) */}
@@ -93,7 +87,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 className={`relative flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-colors duration-200 ${
                   activePlatform === "linkedin"
                     ? "text-forum-deep"
-                    : "text-white/60 hover:text-white"
+                    : "text-white/72 hover:text-white"
                 }`}
               >
                 {activePlatform === "linkedin" && (
@@ -111,7 +105,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                 type="button"
                 onClick={() => setActivePlatform("instagram")}
                 className={`relative flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-colors duration-200 ${
-                  activePlatform === "instagram" ? "text-white" : "text-white/60 hover:text-white"
+                  activePlatform === "instagram" ? "text-white" : "text-white/72 hover:text-white"
                 }`}
               >
                 {activePlatform === "instagram" && (
@@ -165,7 +159,7 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
             <div className="mb-4 flex items-center justify-between px-1">
               <div className="flex items-center gap-2">
                 <span className="inline-block h-2 w-2 rounded-full bg-forum-cyan" />
-                <span className="font-sans text-xs font-bold tabular-nums tracking-wider text-white/45">
+                <span className="font-sans text-xs font-bold tabular-nums tracking-wider text-white/70">
                   {filteredPosts.length > 0 ? (
                     <>
                       {String(selectedIndex + 1).padStart(2, "0")}
@@ -207,10 +201,10 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
                   filteredPosts.map((post) => <SocialCard key={post.id} post={post} />)
                 ) : (
                   <div className="forum-card flex h-[520px] w-full flex-col items-center justify-center rounded-2xl p-8 text-center">
-                    <p className="text-sm font-bold uppercase tracking-wider text-white/60">
+                    <p className="text-sm font-bold uppercase tracking-wider text-white/72">
                       Nenhuma publicação cadastrada para {channel.name}.
                     </p>
-                    <p className="mt-2 text-xs text-white/40">
+                    <p className="mt-2 text-xs text-white/70">
                       Envie os links para adicionarmos automaticamente ao carrossel.
                     </p>
                   </div>
@@ -264,7 +258,7 @@ function SocialCard({ post }: { post: SocialPost }) {
         {!iframeLoaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-forum-deep/80 p-6 text-center backdrop-blur-sm">
             <div className="h-7 w-7 animate-spin rounded-full border-2 border-forum-cyan border-t-transparent" />
-            <p className="text-[11px] font-bold uppercase tracking-wider text-white/50">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">
               Carregando publicação...
             </p>
           </div>

@@ -89,14 +89,8 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
           {eyebrow}
         </span>
         <p className="max-w-4xl font-display text-[clamp(2.6rem,7.4vw,7rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
-          {title}{" "}
-          {/* block: a frase em contorno ganha linha própria em vez de quebrar
-              no meio ("UMA SÓ" numa linha, "AÇÃO." na outra). Traço próprio, e
-              não o .forum-outline-text: aquele (1px a 48%) foi feito para fundo
-              liso e quase some sobre foto. */}
-          <span className="block text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.82)]">
-            {outline}
-          </span>
+          {title} {/* block: a 2ª frase ganha linha própria em vez de quebrar no meio. */}
+          <span className="block text-forum-sky">{outline}</span>
         </p>
         {cta ? (
           <a

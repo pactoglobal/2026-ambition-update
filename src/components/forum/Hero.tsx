@@ -26,7 +26,10 @@ export function Hero() {
       className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep"
     >
       <HeroSlides />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.16),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.9)_4%,rgba(7,25,44,0.7)_40%,rgba(7,26,45,0.34)_70%,rgba(7,26,45,0.46)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.16),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.9)_4%,rgba(7,25,44,0.78)_45%,rgba(7,26,45,0.4)_75%,rgba(7,26,45,0.5)_100%)]" />
+      {/* No celular o texto ocupa a largura toda: o degradê horizontal não basta
+          sobre a foto clara do MASP Café. Camada vertical extra só abaixo de md. */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,44,0.62)_0%,rgba(7,26,44,0.8)_55%,rgba(7,26,44,0.9)_100%)] md:hidden" />
       <div
         className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
         aria-hidden="true"
@@ -56,25 +59,26 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* O h1 é a própria assinatura do evento: o logo oficial ainda é o
-              da 4ª edição ("4º Fórum" está gravado na arte). */}
-          <motion.h1
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-9 font-display font-black uppercase leading-[0.88] tracking-tight text-white"
-          >
-            <span className="block text-2xl text-forum-cyan sm:text-3xl lg:text-4xl">
-              {NEXT_EDITION.ordinal} Fórum
-            </span>
-            <span className="mt-2 block text-6xl sm:text-8xl lg:text-9xl">Ambição 2030</span>
+          {/* O h1 é o logo oficial; o texto completo fica para leitores de tela e buscadores. */}
+          <motion.h1 initial={false} animate={{ opacity: 1, y: 0 }} className="mt-9">
+            <span className="sr-only">{NEXT_EDITION.ordinal} Fórum Ambição 2030</span>
+            <img
+              src={identityAssets.logoOficial}
+              alt=""
+              width={460}
+              height={232}
+              fetchPriority="high"
+              className="h-auto w-[280px] drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)] sm:w-[380px] lg:w-[440px]"
+            />
           </motion.h1>
 
           <motion.p
             initial={false}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-8 max-w-3xl font-display text-2xl font-black uppercase leading-[1.02] tracking-tight text-white/92 sm:text-4xl"
+            className="mt-10 max-w-4xl font-display text-3xl font-black uppercase leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            O principal encontro de sustentabilidade corporativa do Brasil
+            O principal encontro de{" "}
+            <span className="text-forum-sky">sustentabilidade corporativa</span> do Brasil
           </motion.p>
 
           <motion.p
@@ -139,19 +143,6 @@ export function Hero() {
             >
               Como foi a 4ª edição
             </motion.button>
-
-            <div className="flex items-center gap-4 sm:ml-auto">
-              <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/56">
-                Realização
-              </p>
-              <img
-                src={identityAssets.pacto}
-                alt="Pacto Global da ONU – Rede Brasil"
-                width={800}
-                height={864}
-                className="h-14 w-auto object-contain opacity-95"
-              />
-            </div>
           </motion.div>
         </div>
       </div>

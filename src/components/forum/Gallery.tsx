@@ -67,7 +67,7 @@ function CarouselTrack({ images }: { images: GalleryImage[] }) {
     <>
       {/* Counter + arrows */}
       <div className="mb-6 flex items-center justify-between px-5 sm:px-8 lg:px-12">
-        <span className="font-sans text-sm font-bold tabular-nums text-white/40">
+        <span className="font-sans text-sm font-bold tabular-nums text-white/70">
           {String(selectedIndex + 1).padStart(2, "0")}
           <span className="mx-1.5 opacity-40">/</span>
           {String(images.length).padStart(2, "0")}
@@ -207,7 +207,7 @@ export function Gallery() {
                 className={`rounded-full border px-5 py-2 text-[11px] font-black uppercase tracking-[0.24em] transition-all ${
                   activeYear === year
                     ? "border-forum-cyan bg-forum-cyan/15 text-forum-cyan"
-                    : "border-white/12 bg-white/4 text-white/45 hover:border-white/24 hover:text-white/70"
+                    : "border-white/12 bg-white/4 text-white/70 hover:border-white/24 hover:text-white/70"
                 }`}
               >
                 {year}

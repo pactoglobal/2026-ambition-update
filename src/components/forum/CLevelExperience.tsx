@@ -63,7 +63,7 @@ export function CLevelExperience() {
                     <Icon size={20} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/42">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white/70">
                       {label}
                     </p>
                     <p className="font-display text-lg font-bold uppercase tracking-tight text-white">
@@ -105,7 +105,7 @@ export function CLevelExperience() {
                         <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
                           {keynoteSpeaker.name}
                         </h3>
-                        <p className="mt-1.5 text-[11px] font-bold uppercase leading-snug tracking-wider text-white/60">
+                        <p className="mt-1.5 text-[11px] font-bold uppercase leading-snug tracking-wider text-white/72">
                           {keynoteSpeaker.role}
                         </p>
                       </div>
@@ -122,7 +122,7 @@ export function CLevelExperience() {
                           <h3 className="text-2xl font-display font-black uppercase leading-tight tracking-tight text-white">
                             {keynoteSpeaker.name}
                           </h3>
-                          <p className="mt-3 text-[11px] font-bold uppercase leading-relaxed tracking-wider text-white/55">
+                          <p className="mt-3 text-[11px] font-bold uppercase leading-relaxed tracking-wider text-white/72">
                             {keynoteSpeaker.role}
                           </p>
                         </div>

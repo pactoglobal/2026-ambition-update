@@ -57,7 +57,7 @@ function buildMailto(data: FormData): string {
 }
 
 const inputClass =
-  "w-full rounded-lg border border-white/14 bg-forum-ink/40 px-4 py-3 text-sm text-white placeholder:text-white/36 transition-colors focus:border-forum-cyan focus:outline-none focus:ring-2 focus:ring-forum-cyan/30 aria-[invalid=true]:border-forum-red";
+  "w-full rounded-lg border border-white/14 bg-forum-ink/40 px-4 py-3 text-sm text-white placeholder:text-white/50 transition-colors focus:border-forum-cyan focus:outline-none focus:ring-2 focus:ring-forum-cyan/30 aria-[invalid=true]:border-forum-red";
 
 function Field({
   name,
@@ -143,7 +143,7 @@ export function PartnerForm() {
                     <span className="block font-display font-black uppercase tracking-tight text-white">
                       {title}
                     </span>
-                    <span className="mt-1 block text-sm text-white/62">{desc}</span>
+                    <span className="mt-1 block text-sm text-white/74">{desc}</span>
                   </span>
                 </li>
               ))}
@@ -152,7 +152,7 @@ export function PartnerForm() {
             {/* As marcas da 4ª edição moram aqui (antes eram a seção Parceiros):
                 quem avalia uma parceria quer ver quem já esteve junto. */}
             <div className="forum-card mt-12 overflow-hidden rounded-xl">
-              <p className="border-b border-white/8 px-6 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/56">
+              <p className="border-b border-white/8 px-6 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/72">
                 Estiveram conosco na {LAST_EDITION.label}
               </p>
               <div className="grid grid-cols-2 divide-x divide-white/8">
@@ -206,7 +206,7 @@ export function PartnerForm() {
                 <button
                   type="button"
                   onClick={() => setSent(false)}
-                  className="w-fit text-[10px] font-black uppercase tracking-widest text-white/60 transition-colors hover:text-white"
+                  className="w-fit text-[10px] font-black uppercase tracking-widest text-white/72 transition-colors hover:text-white"
                 >
                   Voltar ao formulário
                 </button>
@@ -217,7 +217,7 @@ export function PartnerForm() {
                   <p className="font-display text-2xl font-black uppercase tracking-tight text-white">
                     Manifeste seu interesse
                   </p>
-                  <p className="mt-2 text-sm text-white/62">
+                  <p className="mt-2 text-sm text-white/74">
                     Nossa equipe de parcerias retorna com as cotas e contrapartidas da{" "}
                     {NEXT_EDITION.label}.
                   </p>
@@ -303,7 +303,7 @@ export function PartnerForm() {
                   ) : null}
                 </div>
 
-                <p className="border-t border-white/10 pt-5 text-xs text-white/56">
+                <p className="border-t border-white/10 pt-5 text-xs text-white/72">
                   Prefere falar direto? {PARTNER_CONTACT.name}, {PARTNER_CONTACT.role.toLowerCase()}
                   :{" "}
                   <a

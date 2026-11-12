@@ -13,6 +13,8 @@ type Slide = {
   /** object-position no desktop e no celular (onde o corte é quase vertical). */
   focus: string;
   focusMobile: string;
+  /** Fotos claras (o café é diurno) escurecem para o texto do Hero manter contraste. */
+  brightness?: number;
 };
 
 /**
@@ -22,7 +24,7 @@ type Slide = {
  */
 const SLIDES: Slide[] = [
   { wide: auditorio2400, narrow: auditorio1200, focus: "50% 50%", focusMobile: "50% 50%" },
-  { wide: cafe2400, narrow: cafe1200, focus: "50% 55%", focusMobile: "82% 50%" },
+  { wide: cafe2400, narrow: cafe1200, focus: "50% 55%", focusMobile: "82% 50%", brightness: 0.62 },
   { wide: plateia1080, narrow: plateia1080, focus: "50% 45%", focusMobile: "50% 45%" },
 ];
 
@@ -75,6 +77,7 @@ export function HeroSlides() {
                   // que sai segue ampliando devagar enquanto some, sem salto.
                   transitionProperty: "opacity, transform",
                   transitionDuration: "1600ms, 8000ms",
+                  filter: slide.brightness ? `brightness(${slide.brightness})` : undefined,
                 } as CSSProperties
               }
               className={`absolute inset-0 h-full w-full object-cover ease-out [object-position:var(--focus-mobile)] motion-reduce:!transition-none md:[object-position:var(--focus)] ${

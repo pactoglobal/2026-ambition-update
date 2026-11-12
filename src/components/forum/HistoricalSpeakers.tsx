@@ -104,7 +104,7 @@ export function HistoricalSpeakersCarousel() {
                         <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
                           {speaker.name}
                         </h3>
-                        <p className="mt-1.5 text-[11px] font-bold uppercase leading-snug tracking-wider text-white/60">
+                        <p className="mt-1.5 text-[11px] font-bold uppercase leading-snug tracking-wider text-white/72">
                           {speaker.role}
                         </p>
                       </div>
@@ -116,13 +116,13 @@ export function HistoricalSpeakersCarousel() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-forum-ink/90 via-forum-ink/60 to-forum-ink/20" />
                       <div className="relative z-10 flex min-h-[260px] flex-col justify-end">
-                        <p className="mb-4 text-[9px] font-black uppercase tracking-[0.32em] text-white/35">
+                        <p className="mb-4 text-[9px] font-black uppercase tracking-[0.32em] text-white/62">
                           Fórum Ambição 2030
                         </p>
                         <h3 className="text-xl font-display font-black uppercase leading-tight tracking-tight text-white">
                           {speaker.name}
                         </h3>
-                        <p className="mt-2 text-[11px] font-bold uppercase leading-relaxed tracking-wider text-white/55">
+                        <p className="mt-2 text-[11px] font-bold uppercase leading-relaxed tracking-wider text-white/72">
                           {speaker.role}
                         </p>
                       </div>

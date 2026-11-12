@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { identityAssets } from "./identity-assets";
-import { ForumWordmark } from "./Wordmark";
 
 // Mesma ordem das seções em routes/index.tsx: ler o menu da esquerda para a
 // direita é percorrer a página de cima para baixo.
@@ -111,9 +110,13 @@ export function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="group flex items-center"
             >
-              <span className="transition-transform duration-300 group-hover:scale-105">
-                <ForumWordmark />
-              </span>
+              <img
+                src={identityAssets.logoOficial}
+                alt="Fórum Ambição 2030 · Pacto Global da ONU – Rede Brasil"
+                width={460}
+                height={232}
+                className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-85 sm:h-12"
+              />
             </button>
 
             <nav aria-label="Navegação principal" className="hidden items-center gap-6 xl:flex">
@@ -129,8 +132,8 @@ export function Navbar() {
                       e.preventDefault();
                       scrollTo(link.href);
                     }}
-                    className={`relative py-2 text-[10px] font-sans font-bold uppercase tracking-[0.3em] transition-colors duration-200 ${
-                      active ? "text-forum-cyan" : "text-white/56 hover:text-white"
+                    className={`relative py-2 text-[11px] font-sans font-bold uppercase tracking-[0.24em] transition-colors duration-200 ${
+                      active ? "text-forum-cyan" : "text-white/75 hover:text-white"
                     }`}
                   >
                     {link.label}
@@ -190,7 +193,13 @@ export function Navbar() {
 
                   <div className="relative z-10 flex h-full flex-col p-8">
                     <div className="mb-12 flex items-center justify-between">
-                      <ForumWordmark />
+                      <img
+                        src={identityAssets.logoOficial}
+                        alt="Fórum Ambição 2030 · Pacto Global da ONU – Rede Brasil"
+                        width={460}
+                        height={232}
+                        className="h-11 w-auto"
+                      />
                       <button
                         type="button"
                         aria-label="Fechar menu"

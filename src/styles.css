@@ -72,6 +72,8 @@
   --color-forum-red: #ef3d34;
   --color-forum-gold: #b8893f;
   --color-forum-orange: #f36c2d;
+  /* Azul-claro do "FÓRUM" no logo oficial: 2ª linha dos títulos (≈5:1 sobre forum-deep). */
+  --color-forum-sky: #699cc6;
 
   /* Legacy/Brand Mappings to avoid breakage, now redirected to UNGC Blue */
   --color-brand-deep: #102f4f;

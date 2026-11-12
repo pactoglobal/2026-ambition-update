@@ -77,7 +77,7 @@ export function AmbitionStrategy() {
                   <p className="font-display text-3xl font-black tracking-tight text-white sm:text-5xl">
                     {metric.value}
                   </p>
-                  <p className="mt-3 text-[10px] font-black uppercase leading-tight tracking-widest text-white/62">
+                  <p className="mt-3 text-[10px] font-black uppercase leading-tight tracking-widest text-white/74">
                     {metric.label}
                   </p>
                 </motion.div>
@@ -102,13 +102,13 @@ export function AmbitionStrategy() {
               <h3 className="text-2xl font-display font-black uppercase tracking-tight text-white">
                 {title}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-white/64">{text}</p>
+              <p className="mt-4 text-sm leading-relaxed text-white/74">{text}</p>
             </motion.article>
           ))}
         </div>
 
         <div className="mt-16 border-t border-white/12 pt-12">
-          <p className="mb-8 text-center text-[10px] font-black uppercase tracking-[0.42em] text-white/42">
+          <p className="mb-8 text-center text-[10px] font-black uppercase tracking-[0.42em] text-white/70">
             Empresas Embaixadoras que lideram esta agenda
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 px-4 text-center">
@@ -131,7 +131,7 @@ export function AmbitionStrategy() {
             ].map((company) => (
               <span
                 key={company}
-                className="text-sm font-bold uppercase tracking-widest text-white/64 transition-colors hover:text-forum-cyan"
+                className="text-sm font-bold uppercase tracking-widest text-white/74 transition-colors hover:text-forum-cyan"
               >
                 {company}
               </span>
