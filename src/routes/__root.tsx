@@ -29,18 +29,21 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "4º Fórum Ambição 2030 - A Década da Implementação" },
+      { title: "5º Fórum Ambição 2030 | Pacto Global da ONU – Rede Brasil" },
       {
         name: "description",
         content:
-          "Retrospectiva do 4º Fórum Ambição 2030, realizado em 02 de junho de 2026 no MASP, São Paulo: números, fotos e programação da Década da Implementação.",
+          "O principal encontro de sustentabilidade corporativa do Brasil chega à 5ª edição. Estruturado a partir dos 10 Movimentos do Pacto Global da ONU – Rede Brasil, reúne altas lideranças para transformar intenção em ação.",
       },
       { name: "author", content: "Pacto Global da ONU - Rede Brasil" },
-      { property: "og:title", content: "4º Fórum Ambição 2030 - A Década da Implementação" },
+      {
+        property: "og:title",
+        content: "5º Fórum Ambição 2030 | Pacto Global da ONU – Rede Brasil",
+      },
       {
         property: "og:description",
         content:
-          "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
+          "O principal encontro de sustentabilidade corporativa do Brasil chega à 5ª edição. Estruturado a partir dos 10 Movimentos do Pacto Global da ONU – Rede Brasil, reúne altas lideranças para transformar intenção em ação.",
       },
       { property: "og:image", content: "/identity/kv-4-edicao.jpg" },
       { property: "og:type", content: "website" },

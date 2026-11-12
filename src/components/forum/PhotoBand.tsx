@@ -1,4 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import movimentos2400 from "../../../assets/img/faixas/faixa_multiplos_movimentos_2x1_2400.webp?url";
 import movimentos1600 from "../../../assets/img/faixas/faixa_multiplos_movimentos_2x1_1600.webp?url";
@@ -26,6 +27,8 @@ type PhotoBandProps = {
   photo: BandPhoto;
   /** object-position da foto dentro da faixa. */
   focus?: string;
+  /** Botão de âncora opcional (ex.: "Seja parceiro do evento"). */
+  cta?: { label: string; targetId: string };
 };
 
 /**
@@ -39,7 +42,7 @@ type PhotoBandProps = {
  * - Topo e base esmaecem nas cores de borda do .forum-surface (#0b243c em
  *   baixo da seção anterior, #102f4f no topo da seguinte): sem emenda dura.
  */
-function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%" }: PhotoBandProps) {
+function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: PhotoBandProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -95,16 +98,33 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%" }: PhotoB
             {outline}
           </span>
         </p>
+        {cta ? (
+          <a
+            href={`#${cta.targetId}`}
+            onClick={(event) => {
+              const el = document.getElementById(cta.targetId);
+              if (!el) return;
+              event.preventDefault();
+              const top = el.getBoundingClientRect().top + window.pageYOffset - 96;
+              window.history.pushState(null, "", `#${cta.targetId}`);
+              window.scrollTo({ top, behavior: "smooth" });
+            }}
+            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep shadow-[0_18px_45px_rgba(35,185,214,0.22)] transition-colors hover:bg-white"
+          >
+            {cta.label}
+            <ArrowRight aria-hidden="true" size={15} strokeWidth={2.5} />
+          </a>
+        ) : null}
       </div>
     </div>
   );
 }
 
-/** Entre "O Que o Fórum Entrega" e "Ambição 2030": o slogan da edição. */
-export function MovementsBand() {
+/** Abre o bloco da última edição com o slogan da 4ª edição. */
+export function LastEditionBand() {
   return (
     <PhotoBand
-      eyebrow="4ª edição · MASP, São Paulo"
+      eyebrow="4ª edição · 02.06.2026 · MASP, São Paulo"
       title="Múltiplos movimentos."
       outline="Uma só ação."
       focus="50% 55%"
@@ -118,14 +138,15 @@ export function MovementsBand() {
   );
 }
 
-/** Abre o bloco de resultados (Edições Anteriores → O Fórum em Números). */
-export function ResultsBand() {
+/** CTA âncora depois dos speakers: leva ao formulário "Seja parceiro". */
+export function PartnerBand() {
   return (
     <PhotoBand
-      eyebrow="Resultados"
-      title="Do palco"
-      outline="aos números."
+      eyebrow="Oportunidade de parceria"
+      title="Seja parceiro"
+      outline="da 5ª edição."
       focus="40% 50%"
+      cta={{ label: "Seja parceiro do evento", targetId: "seja-parceiro" }}
       photo={{
         wide2400: resultados2400,
         wide1600: resultados1600,

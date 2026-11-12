@@ -7,22 +7,32 @@ import {
 } from "@/components/ui/accordion";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
+import { LAST_EDITION, NEXT_EDITION } from "./edition";
 
 const faqs = [
   {
     question: "O que é o Fórum Ambição 2030?",
     answer:
-      "O Fórum Ambição 2030 é o principal evento do Pacto Global da ONU - Rede Brasil, voltado para acelerar o progresso em direção aos Objetivos de Desenvolvimento Sustentável (ODS).",
+      "É o principal encontro de sustentabilidade corporativa do Brasil, promovido pelo Pacto Global da ONU – Rede Brasil. Estruturado a partir dos 10 Movimentos, reúne altas lideranças para trocar boas práticas, firmar parcerias e transformar intenção em ação rumo aos ODS.",
   },
   {
-    question: "Quem participou?",
+    question: `Quando e onde será a ${NEXT_EDITION.label}?`,
     answer:
-      "O evento foi exclusivo para convidados — líderes empresariais, representantes governamentais e especialistas do terceiro setor comprometidos com a agenda ESG e o desenvolvimento sustentável.",
+      "Data, horário e local da 5ª edição ainda serão confirmados e divulgados aqui no site e nos canais do Pacto Global da ONU – Rede Brasil.",
   },
   {
-    question: "Onde foi realizado o evento?",
+    question: "Quem participa?",
     answer:
-      "A 4ª edição foi realizada presencialmente em 02 de junho de 2026, em São Paulo, no MASP, na Avenida Paulista.",
+      "Altas lideranças empresariais, da sociedade civil e do poder público. Nas edições anteriores, a participação foi por convite.",
+  },
+  {
+    question: "Como minha empresa pode ser parceira do evento?",
+    answer:
+      "Preencha o formulário “Seja parceiro”, no fim desta página. A equipe de parcerias do Pacto Global retorna com as cotas e contrapartidas disponíveis.",
+  },
+  {
+    question: `Como foi a ${LAST_EDITION.label}?`,
+    answer: `A 4ª edição, com o tema “${LAST_EDITION.theme}”, foi realizada em ${LAST_EDITION.date} no ${LAST_EDITION.venue}, em ${LAST_EDITION.city}, e reuniu 669 pessoas e 40 speakers. Os números, as fotos e os speakers estão nesta página.`,
   },
 ];
 
@@ -36,9 +46,9 @@ export function Faq() {
           <AnimatedSection className="lg:w-1/3">
             <SectionHeader
               eyebrow="Dúvidas"
-              title="FAQ"
-              outline="2026"
-              description="Tire suas dúvidas sobre a 4ª edição do Fórum Ambição 2030, realizada em 02 de junho de 2026."
+              title="Perguntas"
+              outline="frequentes"
+              description="O essencial sobre o Fórum Ambição 2030 e a próxima edição."
             />
           </AnimatedSection>
 

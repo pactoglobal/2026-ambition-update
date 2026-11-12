@@ -161,7 +161,7 @@ export function EventNumbers() {
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <AnimatedSection className="mb-16">
           <SectionHeader
-            eyebrow="Retrospectiva · 4ª Edição"
+            eyebrow="Big numbers · 4ª edição"
             title="O Fórum em"
             outline="Números"
             align="center"

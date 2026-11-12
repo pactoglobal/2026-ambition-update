@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines } from "./identity-assets";
+import { HistoricalSpeakersCarousel } from "./HistoricalSpeakers";
 import { photoByKey } from "../../lib/photos";
 
 const speakers = [
@@ -243,18 +244,26 @@ export function Speakers() {
           <AnimatedSection>
             <SectionHeader
               eyebrow="Keynotes & Painelistas"
-              title="Lideranças"
-              outline="Presentes"
-              description="As principais vozes do 4° Fórum Ambição 2030 — líderes que transformam compromissos em ação."
+              title="Quem já passou"
+              outline="pelo Fórum"
+              description="Lideranças que ajudaram a construir a história do Fórum Ambição 2030 — e que transformam compromissos em ação."
             />
           </AnimatedSection>
         </div>
 
+        <h3 className="mx-auto mb-2 max-w-screen-xl px-4 text-[11px] font-black uppercase tracking-[0.32em] text-white/70 sm:px-6 lg:px-12">
+          4ª edição · 2026
+        </h3>
         <SpeakerCarousel
           speakers={speakersWithPhotos}
           slideWidth="w-[86%] sm:w-[50%] lg:w-[33.333%]"
           ariaLabel="speaker"
         />
+
+        <h3 className="mx-auto mb-2 mt-16 max-w-screen-xl border-t border-white/10 px-4 pt-12 text-[11px] font-black uppercase tracking-[0.32em] text-white/70 sm:px-6 lg:px-12">
+          Edições anteriores
+        </h3>
+        <HistoricalSpeakersCarousel />
       </div>
     </section>
   );

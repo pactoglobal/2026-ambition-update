@@ -39,7 +39,7 @@ export function CLevelExperience() {
           {/* left — description */}
           <AnimatedSection>
             <SectionHeader
-              eyebrow="Experiência Exclusiva"
+              eyebrow="Experiência exclusiva · 4ª edição"
               title="Coquetel"
               outline="com CEOs"
               description="Uma agenda complementar para conexões qualificadas entre a alta liderança."

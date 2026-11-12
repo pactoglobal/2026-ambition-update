@@ -4,40 +4,34 @@ import { Hero } from "@/components/forum/Hero";
 import { Navbar } from "@/components/forum/Navbar";
 import { About } from "@/components/forum/About";
 import { WhatToExpect } from "@/components/forum/WhatToExpect";
-import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
-import { Stats } from "@/components/forum/Stats";
+import { LastEdition } from "@/components/forum/LastEdition";
 import { EventNumbers } from "@/components/forum/EventNumbers";
-import { MovementsBand, ResultsBand } from "@/components/forum/PhotoBand";
-import { Agenda } from "@/components/forum/Agenda";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
-import { Sponsors } from "@/components/forum/Sponsors";
-import { Contact } from "@/components/forum/Contact";
-import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
-import { Footer } from "@/components/forum/Footer";
+import { MemoryVideo } from "@/components/forum/MemoryVideo";
 import { Speakers } from "@/components/forum/Speakers";
-import { Venue } from "@/components/forum/Venue";
+import { LastEditionBand, PartnerBand } from "@/components/forum/PhotoBand";
+import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
+import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
 import { Gallery } from "@/components/forum/Gallery";
-import { Faq } from "@/components/forum/Faq";
 import { SocialFeed } from "@/components/forum/SocialFeed";
+import { Faq } from "@/components/forum/Faq";
+import { PartnerForm } from "@/components/forum/PartnerForm";
+import { Footer } from "@/components/forum/Footer";
+
+const TITLE = "5º Fórum Ambição 2030 | Pacto Global da ONU – Rede Brasil";
+const DESCRIPTION =
+  "O principal encontro de sustentabilidade corporativa do Brasil chega à 5ª edição. Estruturado a partir dos 10 Movimentos do Pacto Global da ONU – Rede Brasil, reúne altas lideranças para transformar intenção em ação.";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "4º Fórum Ambição 2030 - A Década da Implementação" },
-      {
-        name: "description",
-        content:
-          "Retrospectiva do 4º Fórum Ambição 2030, realizado em 02 de junho de 2026 no MASP, São Paulo: números, fotos e programação da Década da Implementação.",
-      },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://forumambicao2030.pactoglobal.org.br/" },
-      { property: "og:title", content: "4º Fórum Ambição 2030 - A Década da Implementação" },
-      {
-        property: "og:description",
-        content:
-          "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
-      },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       {
         property: "og:image",
         content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
@@ -46,15 +40,11 @@ export const Route = createFileRoute("/")({
       { property: "og:image:height", content: "675" },
       {
         property: "og:image:alt",
-        content: "4º Fórum Ambição 2030 · 02 de Junho · MASP, São Paulo",
+        content: "Fórum Ambição 2030 · Pacto Global da ONU – Rede Brasil",
       },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "4º Fórum Ambição 2030 - A Década da Implementação" },
-      {
-        name: "twitter:description",
-        content:
-          "02 de Junho de 2026 · MASP, São Paulo. A Década da Implementação: como as empresas estão redesenhando o futuro do Brasil.",
-      },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
       {
         name: "twitter:image",
         content: "https://forumambicao2030.pactoglobal.org.br/identity/og-image.jpg",
@@ -113,41 +103,38 @@ function Index() {
     <>
       <Navbar />
       <main className="min-h-screen max-w-full overflow-x-hidden">
-        {/* Seções com item no menu seguem a mesma ordem de NAV_LINKS
-            (Navbar.tsx), para o menu ler a página de cima para baixo. */}
+        {/* Estrutura da 5ª edição, definida pela comunicação: o que é o
+            evento → a última edição → por que ser parceiro → contexto →
+            registro → dúvidas → formulário. O menu (Navbar.tsx) segue a
+            mesma ordem. */}
 
-        {/* CONTEXTO */}
+        {/* 0–2 · O EVENTO */}
         <Hero />
         <About />
-
-        {/* REGISTRO DA EDIÇÃO */}
-        <Gallery />
-        <Speakers />
-        <Agenda />
-        <Venue />
-        <CLevelExperience />
         <WhatToExpect />
 
-        {/* Faixas fotográficas marcam as viradas de ato e quebram a sequência
-            de seções com o mesmo molde (fundo + título + grade de vidro). */}
-        <MovementsBand />
+        {/* 3–7 · A ÚLTIMA EDIÇÃO (4ª, 2026) */}
+        <LastEditionBand />
+        <LastEdition />
+        <EventNumbers />
+        <CLevelExperience />
+        <MemoryVideo />
+        <Speakers />
 
-        {/* INSTITUCIONAL */}
+        {/* CTA âncora → formulário no fim da página */}
+        <PartnerBand />
+
+        {/* 8–9 · CONTEXTO */}
         <AmbitionStrategy />
         <PactoGlobalInfo />
-        <Sponsors />
+
+        {/* 10–12 · REGISTRO E DÚVIDAS */}
+        <Gallery />
         <SocialFeed />
-
-        <ResultsBand />
-
-        {/* RESULTADOS — fecham o site em ordem cronológica: o histórico das
-            edições anteriores primeiro, os números da 4ª edição por último */}
-        <Stats />
-        <EventNumbers />
-
-        {/* CONTATO */}
         <Faq />
-        <Contact />
+
+        {/* 13 · SEJA PARCEIRO */}
+        <PartnerForm />
         <Footer />
       </main>
     </>

@@ -1,5 +1,6 @@
 import { Globe } from "lucide-react";
 import { identityAssets } from "./identity-assets";
+import { ForumWordmark } from "./Wordmark";
 
 function IconInstagram({ size = 14 }: { size?: number }) {
   return (
@@ -47,19 +48,21 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-center gap-6">
-          <img
-            src={identityAssets.logo}
-            alt="4º Fórum Ambição 2030"
-            width={400}
-            height={151}
-            className="h-16 w-auto object-contain"
-          />
-          <div className="h-0.5 w-12 bg-forum-cyan" />
+          <ForumWordmark size="lg" />
+          <div className="flex items-center gap-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/46">
+              Realização
+            </p>
+            <img
+              src={identityAssets.pacto}
+              alt="Pacto Global da ONU – Rede Brasil"
+              width={800}
+              height={864}
+              loading="lazy"
+              className="h-14 w-auto object-contain opacity-90"
+            />
+          </div>
         </div>
-
-        {/* Sem faixa de Realização/Patrocínio aqui: era cópia exata da seção
-            Parceiros (Sponsors.tsx), que fica pouco acima. O logo do Fórum
-            acima já carrega a marca do Pacto Global. */}
 
         <div className="flex flex-col items-center gap-10">
           <nav aria-label="Links institucionais" className="flex flex-wrap justify-center gap-4">
@@ -80,7 +83,8 @@ export function Footer() {
 
           <p className="max-w-2xl text-center text-[10px] uppercase leading-loose tracking-[0.3em] text-white/28">
             © {new Date().getFullYear()} United Nations Global Compact - Rede Brasil.
-            <br />A Década da Implementação - Transformando o futuro das empresas no Brasil.
+            <br />
+            Fórum Ambição 2030 - Transformar intenção em ação.
           </p>
         </div>
       </div>

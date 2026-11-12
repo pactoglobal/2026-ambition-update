@@ -3,20 +3,25 @@ import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { identityAssets } from "./identity-assets";
+import { ForumWordmark } from "./Wordmark";
 
 // Mesma ordem das seções em routes/index.tsx: ler o menu da esquerda para a
 // direita é percorrer a página de cima para baixo.
 const NAV_LINKS = [
-  { label: "O Evento", href: "#sobre" },
-  { label: "Galeria", href: "#galeria" },
+  { label: "O Fórum", href: "#sobre" },
+  { label: "4ª Edição", href: "#ultima-edicao" },
   { label: "Speakers", href: "#speakers" },
-  { label: "Programação", href: "#agenda" },
-  { label: "Parceiros", href: "#sponsors" },
-  { label: "Resultados", href: "#numeros" },
-  { label: "Contato", href: "#contato" },
+  { label: "Ambição 2030", href: "#ambicao-2030" },
+  { label: "Galeria", href: "#galeria" },
+  { label: "FAQ", href: "#faq" },
 ];
 
-const SECTIONS = NAV_LINKS.map((link) => link.href.replace("#", ""));
+/** Destino da chamada principal: fica fora de NAV_LINKS e vira botão. */
+const PARTNER_HREF = "#seja-parceiro";
+
+const SECTIONS = [...NAV_LINKS.map((link) => link.href), PARTNER_HREF].map((href) =>
+  href.replace("#", ""),
+);
 
 /** Distância do topo (px) usada para decidir qual seção está sendo lida. */
 const READING_LINE = 160;
@@ -106,13 +111,9 @@ export function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="group flex items-center"
             >
-              <img
-                src={identityAssets.logo}
-                alt="4º Fórum Ambição 2030"
-                width={400}
-                height={151}
-                className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-11"
-              />
+              <span className="transition-transform duration-300 group-hover:scale-105">
+                <ForumWordmark />
+              </span>
             </button>
 
             <nav aria-label="Navegação principal" className="hidden items-center gap-6 xl:flex">
@@ -145,7 +146,21 @@ export function Navbar() {
               })}
             </nav>
 
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3">
+              <a
+                href={PARTNER_HREF}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(PARTNER_HREF);
+                }}
+                className={`hidden rounded-full px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.22em] transition-colors sm:inline-flex ${
+                  activeSection === "seja-parceiro"
+                    ? "bg-white text-forum-deep"
+                    : "bg-forum-cyan text-forum-deep hover:bg-white"
+                }`}
+              >
+                Seja parceiro
+              </a>
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <button
                   type="button"
@@ -175,13 +190,7 @@ export function Navbar() {
 
                   <div className="relative z-10 flex h-full flex-col p-8">
                     <div className="mb-12 flex items-center justify-between">
-                      <img
-                        src={identityAssets.logo}
-                        alt="4º Fórum Ambição 2030"
-                        width={400}
-                        height={151}
-                        className="h-8 w-auto"
-                      />
+                      <ForumWordmark />
                       <button
                         type="button"
                         aria-label="Fechar menu"
@@ -213,6 +222,17 @@ export function Navbar() {
                         </motion.a>
                       ))}
                     </nav>
+
+                    <a
+                      href={PARTNER_HREF}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollTo(PARTNER_HREF);
+                      }}
+                      className="mt-10 inline-flex justify-center rounded-full bg-forum-cyan px-8 py-4 text-[10px] font-black uppercase tracking-widest text-forum-deep transition-colors hover:bg-white"
+                    >
+                      Seja parceiro do evento
+                    </a>
                   </div>
                 </SheetContent>
               </Sheet>

@@ -2,8 +2,8 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/inscricao")({
   loader: () => {
-    // Inscricoes encerradas: links antigos para /inscricao caem na retrospectiva.
-    throw redirect({ to: "/", hash: "numeros" });
+    // Sem inscrições abertas para a 5ª edição: links antigos caem em "Sobre o Fórum".
+    throw redirect({ to: "/", hash: "sobre" });
   },
   component: () => null,
 });
