@@ -18,12 +18,12 @@ const faqs = [
   {
     question: `Quando e onde será a ${NEXT_EDITION.label}?`,
     answer:
-      "Data, horário e local da 5ª edição ainda serão confirmados e divulgados aqui no site e nos canais do Pacto Global da ONU – Rede Brasil.",
+      "A 5ª edição está prevista para maio de 2027, no MASP, em São Paulo. O dia e o horário serão divulgados aqui no site e nos canais do Pacto Global da ONU – Rede Brasil.",
   },
   {
     question: "Quem participa?",
     answer:
-      "Altas lideranças empresariais, da sociedade civil e do poder público. Nas edições anteriores, a participação foi por convite.",
+      "A 5ª edição prevê 400 participantes: gestores e lideranças de áreas estratégicas responsáveis por impulsionar a agenda de sustentabilidade corporativa nas organizações. Nas edições anteriores, a participação foi por convite.",
   },
   {
     question: "Como minha empresa pode ser parceira do evento?",

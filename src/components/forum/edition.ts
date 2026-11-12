@@ -7,13 +7,14 @@
 export const NEXT_EDITION = {
   ordinal: "5º",
   label: "5ª edição",
-  /** "A confirmar" enquanto a data oficial não for divulgada. */
-  date: { value: "A confirmar", support: "Data prevista" },
+  /** Previsão do deck institucional (nov/2026); dia exato ainda não definido. */
+  date: { value: "Maio de 2027", support: "Data prevista" },
   time: { value: "A confirmar", support: "Horário previsto" },
-  venue: { value: "A confirmar", support: "Local previsto" },
+  venue: { value: "MASP, São Paulo", support: "Local previsto" },
   /**
    * Início do evento, com fuso de Brasília (ex.: "2027-06-01T09:00:00-03:00").
    * Alimenta a contagem regressiva do Hero; enquanto for null ela não aparece.
+   * "Maio de 2027" não basta: a contagem só liga com dia e hora definidos.
    */
   startsAt: null as string | null,
 };

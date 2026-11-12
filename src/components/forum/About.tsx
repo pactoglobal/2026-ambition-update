@@ -62,8 +62,12 @@ export function About() {
                 <p className="text-[10px] font-black uppercase tracking-[0.26em] text-forum-cyan/82">
                   Público
                 </p>
-                <p className="mt-2 text-lg font-display font-black uppercase tracking-tight text-white">
-                  Altas lideranças empresariais, da sociedade civil e do poder público
+                <p className="mt-2 font-display text-2xl font-black uppercase tracking-tight text-white">
+                  400 pessoas
+                </p>
+                <p className="mt-2 text-sm leading-snug text-white/68">
+                  Gestores e lideranças de áreas estratégicas responsáveis por impulsionar a agenda
+                  de sustentabilidade corporativa nas organizações.
                 </p>
               </article>
 
