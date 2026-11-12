@@ -11,7 +11,12 @@ export const NEXT_EDITION = {
   date: { value: "A confirmar", support: "Data prevista" },
   time: { value: "A confirmar", support: "Horário previsto" },
   venue: { value: "A confirmar", support: "Local previsto" },
-} as const;
+  /**
+   * Início do evento, com fuso de Brasília (ex.: "2027-06-01T09:00:00-03:00").
+   * Alimenta a contagem regressiva do Hero; enquanto for null ela não aparece.
+   */
+  startsAt: null as string | null,
+};
 
 export const LAST_EDITION = {
   label: "4ª edição",
@@ -26,7 +31,10 @@ export const LAST_EDITION = {
  * Vídeo memória da 4ª edição. Enquanto for null a seção não aparece no site.
  * Preencha com o ID do vídeo no YouTube (o trecho depois de "v=" no link).
  */
-export const MEMORY_VIDEO: { youtubeId: string; title: string } | null = null;
+export const MEMORY_VIDEO: { youtubeId: string; title: string } | null = {
+  youtubeId: "h6V4rDkxqQk",
+  title: "Fórum Ambição 2030 | Vídeo memória",
+};
 
 /** Quem recebe as manifestações de interesse do formulário "Seja parceiro". */
 export const PARTNER_CONTACT = {

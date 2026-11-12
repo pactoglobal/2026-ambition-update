@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
-import heroBg from "../../../assets/img/hero/hero-bg.jpg?url";
+import { Countdown } from "./Countdown";
+import { HeroSlides } from "./HeroSlides";
 import { identityAssets } from "./identity-assets";
 import { NEXT_EDITION } from "./edition";
 
@@ -24,15 +25,8 @@ export function Hero() {
       id="hero"
       className="relative isolate min-h-screen min-h-[100svh] overflow-hidden bg-forum-deep"
     >
-      <img
-        src={heroBg}
-        alt=""
-        width={1920}
-        height={1080}
-        fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.22),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.92)_4%,rgba(7,25,44,0.78)_42%,rgba(7,26,45,0.58)_72%,rgba(7,26,45,0.72)_100%)]" />
+      <HeroSlides />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_14%,rgba(35,185,214,0.16),transparent_32%),linear-gradient(96deg,rgba(6,20,36,0.9)_4%,rgba(7,25,44,0.7)_40%,rgba(7,26,45,0.34)_70%,rgba(7,26,45,0.46)_100%)]" />
       <div
         className="pointer-events-none absolute inset-0 z-[2] overflow-hidden"
         aria-hidden="true"
@@ -92,7 +86,11 @@ export function Hero() {
             parcerias e transformar intenção em ação.
           </motion.p>
 
-          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="mt-10">
+          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="mt-10 space-y-4">
+            <Countdown
+              startsAt={NEXT_EDITION.startsAt}
+              label={`Faltam para a ${NEXT_EDITION.label}`}
+            />
             <div className="grid w-full overflow-hidden rounded-[22px] border border-forum-cyan/44 bg-[linear-gradient(135deg,rgba(35,185,214,0.18),rgba(255,255,255,0.045))] shadow-[0_0_36px_rgba(35,185,214,0.15)] backdrop-blur-2xl sm:grid-cols-3">
               {EVENT_DETAILS.map(({ icon: Icon, label, value }, index) => (
                 <div
