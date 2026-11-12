@@ -120,11 +120,11 @@ export function PartnerForm() {
   });
 
   return (
-    <section id="seja-parceiro" className="forum-surface relative overflow-hidden py-24 lg:py-32">
+    <section id="seja-parceiro" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="lineField" glow="center" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-16">
           <AnimatedSection>
             <SectionHeader
               eyebrow={`Seja parceiro · ${NEXT_EDITION.label}`}
@@ -192,7 +192,7 @@ export function PartnerForm() {
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="forum-glass rounded-2xl p-6 sm:p-9"
+            className="forum-glass rounded-2xl p-6 sm:p-9 lg:sticky lg:top-28"
           >
             {sent ? (
               <div role="status" className="flex min-h-[420px] flex-col justify-center gap-5">
@@ -233,7 +233,7 @@ export function PartnerForm() {
                   </p>
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <Field name="nome" label="Nome" required error={errors.nome}>
                     <input {...fieldProps("nome")} type="text" autoComplete="name" />
                   </Field>

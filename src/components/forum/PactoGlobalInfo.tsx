@@ -27,10 +27,10 @@ const highlights = [
 
 export function PactoGlobalInfo() {
   return (
-    <section className="forum-surface relative overflow-hidden py-24">
+    <section className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="deepField" glow="warm" />
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-center">
+        <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-center">
           <div className="forum-card rounded-2xl p-8 sm:p-10">
             <SectionHeader
               eyebrow="Sobre o realizador"
@@ -53,7 +53,7 @@ export function PactoGlobalInfo() {
               height={864}
               className="mb-8 h-16 w-auto object-contain opacity-90 sm:h-20"
             />
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {highlights.map(({ icon: Icon, title, text }) => (
                 <article key={title} className="forum-card rounded-xl p-5">
                   <Icon aria-hidden="true" className="mb-4 h-6 w-6 text-forum-sky" />

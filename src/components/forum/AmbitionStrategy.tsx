@@ -31,7 +31,7 @@ const ambitionAdvantages = [
 
 export function AmbitionStrategy() {
   return (
-    <section id="ambicao-2030" className="forum-surface relative overflow-hidden py-24">
+    <section id="ambicao-2030" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="waves" glow="split" />
       <img
         src={identityAssets.lineField}
@@ -40,7 +40,7 @@ export function AmbitionStrategy() {
       />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)] lg:items-center">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)] lg:items-center">
           <AnimatedSection>
             <SectionHeader
               eyebrow="Pacto Global da ONU – Rede Brasil"
@@ -71,9 +71,9 @@ export function AmbitionStrategy() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.06, duration: 0.4 }}
-                  className="forum-card min-h-40 rounded-xl p-5 sm:p-6 lg:p-5 xl:p-6"
+                  className="forum-card flex flex-col rounded-xl p-5 sm:p-6 lg:p-5 xl:p-6"
                 >
-                  <div className={`mb-8 h-1 w-12 rounded-full ${accentLines[index]}`} />
+                  <div className={`mb-5 h-1 w-12 rounded-full ${accentLines[index]}`} />
                   <p className="font-display text-3xl font-black tracking-tight text-white sm:text-5xl">
                     {metric.value}
                   </p>
@@ -86,7 +86,7 @@ export function AmbitionStrategy() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {ambitionAdvantages.map(({ icon: Icon, title, text }, index) => (
             <motion.article
               key={title}
@@ -94,9 +94,9 @@ export function AmbitionStrategy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.07, duration: 0.4 }}
-              className="forum-card group min-h-64 rounded-xl p-7 transition-colors hover:border-forum-sky/48"
+              className="forum-card group rounded-xl p-7 transition-colors hover:border-forum-sky/48"
             >
-              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-xl border border-white/14 bg-white/8 text-forum-sky transition-colors group-hover:bg-forum-sky group-hover:text-forum-deep">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-white/14 bg-white/8 text-forum-sky transition-colors group-hover:bg-forum-sky group-hover:text-forum-deep">
                 <Icon aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
               </div>
               <h3 className="text-2xl font-display font-black uppercase tracking-tight text-white">

@@ -32,11 +32,11 @@ const keynoteSpeaker = {
 
 export function CLevelExperience() {
   return (
-    <section id="coquetel" className="forum-surface relative overflow-hidden py-24">
+    <section id="coquetel" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="deepField" intensity="soft" glow="rise" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-16 lg:grid-cols-[1fr_0.85fr] lg:items-start">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_0.85fr] lg:items-start">
           {/* left — description */}
           <AnimatedSection>
             <SectionHeader

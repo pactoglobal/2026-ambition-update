@@ -13,7 +13,7 @@ const PHOTOS = [
     src: chegadaMasp,
     alt: "Convidados chegando ao MASP Café para a 4ª edição do Fórum Ambição 2030",
     caption: "Chegada · MASP Café",
-    span: "col-span-2 row-span-2",
+    span: "col-span-2 aspect-[4/3] sm:aspect-auto sm:row-span-2",
   },
   {
     src: debate,
@@ -46,7 +46,7 @@ const RECORD = [
  */
 export function LastEdition() {
   return (
-    <section id="ultima-edicao" className="forum-surface relative overflow-hidden py-24 lg:py-32">
+    <section id="ultima-edicao" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="deepField" intensity="soft" glow="warm" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
@@ -59,8 +59,8 @@ export function LastEdition() {
           />
         </AnimatedSection>
 
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
-          <div className="grid grid-cols-3 grid-rows-2 gap-3 sm:gap-4 lg:col-span-7 lg:h-[520px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:grid-rows-2 sm:gap-4 lg:col-span-7 lg:h-[520px]">
             {PHOTOS.map(({ src, alt, caption, span }, index) => (
               <motion.figure
                 key={caption}
@@ -95,7 +95,7 @@ export function LastEdition() {
               Tema da {LAST_EDITION.label}
             </p>
             <blockquote className="mt-4 border-l-2 border-forum-sky pl-6">
-              <p className="font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-forum-sky sm:text-5xl">
+              <p className="font-display text-[2rem] font-black uppercase leading-[0.95] tracking-tight text-forum-sky [overflow-wrap:anywhere] min-[380px]:text-4xl sm:text-5xl">
                 {LAST_EDITION.theme}
               </p>
             </blockquote>

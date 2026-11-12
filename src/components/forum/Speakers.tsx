@@ -9,7 +9,7 @@ import { HistoricalSpeakersCarousel } from "./HistoricalSpeakers";
  */
 export function Speakers() {
   return (
-    <section id="speakers" className="forum-surface relative overflow-hidden py-24">
+    <section id="speakers" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="deepField" glow="center" />
 
       <div className="relative z-10">

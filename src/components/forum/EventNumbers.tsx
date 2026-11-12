@@ -90,7 +90,7 @@ function Rule() {
 
 export function EventNumbers() {
   return (
-    <section id="numeros" className="forum-surface relative overflow-hidden py-24 lg:py-32">
+    <section id="numeros" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="lineField" intensity="soft" glow="split" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
@@ -104,7 +104,7 @@ export function EventNumbers() {
         </AnimatedSection>
 
         {/* No evento: o número-manchete sobre a foto da plateia + três marcas da programação. */}
-        <div className="grid gap-4 lg:grid-cols-12 lg:gap-6">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
           <figure className="group relative isolate flex min-h-[340px] flex-col justify-end overflow-hidden rounded-[28px] border border-white/10 p-7 sm:p-9 lg:col-span-7 lg:min-h-[420px]">
             <img
               src={plateia2026}
@@ -130,11 +130,13 @@ export function EventNumbers() {
             </figcaption>
           </figure>
 
-          <div className="forum-glass flex flex-col justify-center rounded-[28px] px-7 py-4 sm:px-9 lg:col-span-5">
+          <div className="forum-glass flex flex-col rounded-[28px] px-7 py-2 sm:px-9 lg:col-span-5">
+            {/* Cada linha ocupa 1/3 do painel: ele acompanha a altura da foto ao
+                lado sem deixar sobra concentrada no topo e na base. */}
             {EVENT.map((metric, index) => (
-              <div key={metric.label}>
+              <div key={metric.label} className="flex flex-1 flex-col">
                 {index > 0 ? <Rule /> : null}
-                <div className="flex items-baseline justify-between gap-6 py-6">
+                <div className="flex flex-1 items-center justify-between gap-6 py-6">
                   <Figure {...metric} className="text-6xl sm:text-7xl" />
                   <p className="text-right text-xs font-black uppercase tracking-[0.2em] text-white/76">
                     {metric.label}
@@ -146,7 +148,7 @@ export function EventNumbers() {
         </div>
 
         {/* Imprensa e Digital lado a lado: dois destaques e uma lista com fios. */}
-        <div className="mt-4 grid gap-4 lg:mt-6 lg:grid-cols-2 lg:gap-6">
+        <div className="mt-4 grid grid-cols-1 gap-4 lg:mt-6 lg:grid-cols-2 lg:gap-6">
           {PANELS.map(({ key, title, Icon, featured, list }) => (
             <AnimatedSection key={key}>
               <article className="forum-card h-full rounded-[28px] p-7 sm:p-9">

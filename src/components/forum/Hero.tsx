@@ -49,7 +49,7 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-forum-deep to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-screen min-h-[100svh] w-full max-w-screen-xl flex-col justify-center px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-12">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14 xl:gap-20">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14 xl:gap-20">
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-sky">

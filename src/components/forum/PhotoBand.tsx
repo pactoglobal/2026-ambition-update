@@ -56,7 +56,7 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
   return (
     <div
       ref={ref}
-      className="relative isolate flex h-[64vh] max-h-[640px] min-h-[380px] items-end overflow-hidden bg-forum-ink sm:min-h-[440px]"
+      className="relative isolate flex min-h-[420px] items-end overflow-hidden bg-forum-ink sm:min-h-[480px] lg:min-h-[min(64vh,640px)]"
     >
       <motion.div style={{ y }} className="absolute inset-x-0 -top-[10%] -z-20 h-[120%]">
         <picture>
@@ -87,11 +87,15 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
         className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,#1a2a44_0%,rgba(26,42,68,0.82)_22%,rgba(26,42,68,0.2)_58%,transparent_78%),linear-gradient(to_right,rgba(15,26,43,0.78)_0%,rgba(15,26,43,0.3)_45%,transparent_70%),linear-gradient(to_bottom,#152238_0%,transparent_16%)]"
       />
 
-      <div className="mx-auto w-full max-w-screen-xl px-5 pb-14 sm:px-8 sm:pb-20 lg:px-12">
+      {/* Altura mínima, nunca fixa: o texto empurra a faixa. Antes era h-[64vh]
+          com max-h, e um título de 4 linhas (ex.: "A iniciativa que originou o
+          Fórum" em ~1000px) vazava por cima e era cortado. pt garante respiro
+          no topo quando o texto é que define a altura. */}
+      <div className="mx-auto w-full max-w-screen-xl px-5 pb-14 pt-24 sm:px-8 sm:pb-20 sm:pt-28 lg:px-12">
         <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.38em] text-forum-sky">
           {eyebrow}
         </span>
-        <p className="max-w-4xl font-display text-[clamp(2.6rem,7.4vw,7rem)] font-black uppercase leading-[0.9] tracking-tight text-white">
+        <p className="max-w-5xl font-display text-[clamp(2.25rem,6vw,6rem)] font-black uppercase leading-[0.92] tracking-tight text-white [overflow-wrap:anywhere] [text-wrap:balance]">
           {title} {/* block: a 2ª frase ganha linha própria em vez de quebrar no meio. */}
           <span className="block text-forum-sky">{outline}</span>
         </p>

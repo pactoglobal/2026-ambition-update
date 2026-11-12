@@ -20,11 +20,11 @@ const FACTS = [
  */
 export function About() {
   return (
-    <section id="sobre" className="forum-surface relative overflow-hidden py-24 lg:py-32">
+    <section id="sobre" className="forum-surface relative overflow-hidden py-20 lg:py-24">
       <KineticBackdrop image="deepField" intensity="soft" glow="split" />
 
       <div className="relative z-10 mx-auto max-w-screen-xl px-5 sm:px-8 lg:px-12">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
           <AnimatedSection className="lg:col-span-7">
             <SectionHeader
               eyebrow={`Sobre o Fórum · ${NEXT_EDITION.label}`}
@@ -43,7 +43,7 @@ export function About() {
               centenas de altas lideranças para ir além do diagnóstico:
             </p>
 
-            <ol className="mt-10 grid max-w-2xl gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+            <ol className="mt-10 grid grid-cols-1 max-w-2xl gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
               {PROMISES.map((promise, index) => (
                 <li key={promise} className="flex flex-col gap-6 bg-forum-deep/85 p-5 sm:p-6">
                   <span className="font-display text-sm font-black tabular-nums text-forum-sky">

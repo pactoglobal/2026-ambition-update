@@ -185,7 +185,7 @@ export function Gallery() {
   const images = byYear[activeYear] ?? [];
 
   return (
-    <section id="galeria" className="forum-surface overflow-hidden py-24">
+    <section id="galeria" className="forum-surface overflow-hidden py-20 lg:py-24">
       <div className="mx-auto mb-10 max-w-screen-xl px-5 sm:px-8 lg:px-12">
         <AnimatedSection className="mb-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
