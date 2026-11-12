@@ -2,30 +2,52 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { accentLines } from "./identity-assets";
 
-// Historical speakers from previous editions
+import { photoByKey as confirmedPhotoByKey } from "../../lib/photos";
+
 const historicPhotos = import.meta.glob(
   "../../../assets/img/liderancas/historicos/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
   { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
-function photoByKey(modules: Record<string, string>, key: string): string | undefined {
-  const entry = Object.entries(modules).find(([path]) =>
+/** Procura em historicos/ e, se não achar, nas fotos de 2026 (confirmados-2026/). */
+function photoFor(key: string): string | undefined {
+  const entry = Object.entries(historicPhotos).find(([path]) =>
     path.toLowerCase().includes(key.toLowerCase()),
   );
-  return entry?.[1];
+  return entry?.[1] ?? confirmedPhotoByKey(key);
 }
 
+/**
+ * Seleção e ordem do deck institucional da 5ª edição ("Speakers que já
+ * estiveram no palco do Fórum Ambição 2030"). Para mudar quem aparece, mude
+ * esta lista — não há outra fonte de speakers no site.
+ */
 const historicalSpeakers = [
   { name: "Paul Polman", role: "Unilever", photoKey: "paul" },
-  { name: "Luiza Trajano", role: "Magalu", photoKey: "luiza" },
-  { name: "Bela Gil", role: "Ativista e comunicadora", photoKey: "bela" },
-  { name: "Marta Suplicy", role: "Gestão pública", photoKey: "marta" },
+  {
+    name: "Aretha Duarte",
+    role: "Alpinista, primeira mulher negra latino-americana a chegar ao topo do Everest",
+    photoKey: "aretha",
+  },
+  {
+    name: "Danni Suzuki",
+    role: "Atriz, ativista social e apoiadora de alto perfil da ACNUR",
+    photoKey: "danni-suzuki",
+  },
+  {
+    name: "Alexandre Coimbra",
+    role: "Consultor de saúde mental, escritor e colunista",
+    photoKey: "alexandre_coimbra",
+  },
   { name: "Luis Guimarães", role: "Cosan", photoKey: "luis_guimaraes" },
+  { name: "Marta Suplicy", role: "Gestão pública", photoKey: "marta" },
+  { name: "Bela Gil", role: "Ativista e comunicadora", photoKey: "bela" },
   {
     name: "Patricia Hill Collins",
     role: "Acadêmica e referência em equidade",
     photoKey: "patricia",
   },
+  { name: "Luiza Trajano", role: "Magalu", photoKey: "luiza" },
   { name: "Albert Cheung", role: "BloombergNEF", photoKey: "albert" },
 ];
 
@@ -60,7 +82,7 @@ export function HistoricalSpeakersCarousel() {
       <div ref={emblaRef} className="overflow-hidden px-4 sm:px-6 lg:px-12">
         <div className="flex gap-4">
           {historicalSpeakers.map((speaker, index) => {
-            const photo = photoByKey(historicPhotos, speaker.photoKey);
+            const photo = photoFor(speaker.photoKey);
             return (
               <div key={speaker.name} className="flex-none w-[82%] sm:w-[46%] lg:w-[28%]">
                 <article className="forum-card group relative overflow-hidden rounded-2xl">
