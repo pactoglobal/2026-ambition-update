@@ -1,10 +1,10 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
-import movimentos2400 from "../../../assets/img/faixas/faixa_multiplos_movimentos_2x1_2400.webp?url";
-import movimentos1600 from "../../../assets/img/faixas/faixa_multiplos_movimentos_2x1_1600.webp?url";
-import movimentosMobile from "../../../assets/img/faixas/faixa_multiplos_movimentos_3x2_1200.webp?url";
-import movimentosFallback from "../../../assets/img/faixas/faixa_multiplos_movimentos_3x2_1200.jpg?url";
+import iniciativa2400 from "../../../assets/img/faixas/faixa_iniciativa_2x1_2400.webp?url";
+import iniciativa1600 from "../../../assets/img/faixas/faixa_iniciativa_2x1_1600.webp?url";
+import iniciativaMobile from "../../../assets/img/faixas/faixa_iniciativa_3x2_1200.webp?url";
+import iniciativaFallback from "../../../assets/img/faixas/faixa_iniciativa_3x2_1200.jpg?url";
 import resultados2400 from "../../../assets/img/faixas/faixa_resultados_2x1_2400.webp?url";
 import resultados1600 from "../../../assets/img/faixas/faixa_resultados_2x1_1600.webp?url";
 import resultadosMobile from "../../../assets/img/faixas/faixa_resultados_3x2_1200.webp?url";
@@ -27,8 +27,11 @@ type PhotoBandProps = {
   photo: BandPhoto;
   /** object-position da foto dentro da faixa. */
   focus?: string;
-  /** Botão de âncora opcional (ex.: "Seja parceiro do evento"). */
-  cta?: { label: string; targetId: string };
+  /**
+   * Botão opcional: âncora na própria página (`targetId`) ou link externo
+   * (`href`, abre em nova aba).
+   */
+  cta?: { label: string; targetId: string } | { label: string; href: string };
 };
 
 /**
@@ -92,7 +95,18 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
           {title} {/* block: a 2ª frase ganha linha própria em vez de quebrar no meio. */}
           <span className="block text-forum-sky">{outline}</span>
         </p>
-        {cta ? (
+        {cta && "href" in cta ? (
+          <a
+            href={cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-9 inline-flex items-center gap-3 rounded-full bg-forum-action px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(74,122,168,0.35)] transition-colors hover:bg-forum-action-hover"
+          >
+            {cta.label}
+            <ArrowUpRight aria-hidden="true" size={15} strokeWidth={2.5} />
+            <span className="sr-only">(abre em nova aba)</span>
+          </a>
+        ) : cta ? (
           <a
             href={`#${cta.targetId}`}
             onClick={(event) => {
@@ -115,21 +129,25 @@ function PhotoBand({ eyebrow, title, outline, photo, focus = "50% 50%", cta }: P
 }
 
 /**
- * Abre "A iniciativa que originou o Fórum" (Ambição 2030). O slogan fala dos
- * 10 Movimentos, e a foto é o auditório do MASP com esse slogan no telão.
+ * Abre a seção Ambição 2030. A foto é o mural de compromissos dos Movimentos
+ * (+Água, Ambição Net Zero, Conexão Circular) montado na 4ª edição.
  */
-export function MovementsBand() {
+export function InitiativeBand() {
   return (
     <PhotoBand
-      eyebrow="A iniciativa que originou o Fórum"
-      title="Múltiplos movimentos."
-      outline="Uma só ação."
-      focus="62% 45%"
+      eyebrow="Ambição 2030"
+      title="A iniciativa que"
+      outline="originou o Fórum"
+      focus="50% 35%"
+      cta={{
+        label: "Conheça a Ambição 2030",
+        href: "https://www.pactoglobal.org.br/ambicao_2030/",
+      }}
       photo={{
-        wide2400: movimentos2400,
-        wide1600: movimentos1600,
-        mobile: movimentosMobile,
-        fallback: movimentosFallback,
+        wide2400: iniciativa2400,
+        wide1600: iniciativa1600,
+        mobile: iniciativaMobile,
+        fallback: iniciativaFallback,
       }}
     />
   );

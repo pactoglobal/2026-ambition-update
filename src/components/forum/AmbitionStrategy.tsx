@@ -43,7 +43,7 @@ export function AmbitionStrategy() {
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)] lg:items-center">
           <AnimatedSection>
             <SectionHeader
-              eyebrow="Lançada em 2022 pelo Pacto Global"
+              eyebrow="Pacto Global da ONU – Rede Brasil"
               title="Ambição"
               outline="2030"
               description="Onde sustentabilidade vira estratégia, escala e influência."

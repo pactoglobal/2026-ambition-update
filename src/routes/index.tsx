@@ -9,7 +9,7 @@ import { EventNumbers } from "@/components/forum/EventNumbers";
 import { CLevelExperience } from "@/components/forum/CLevelExperience";
 import { MemoryVideo } from "@/components/forum/MemoryVideo";
 import { Speakers } from "@/components/forum/Speakers";
-import { MovementsBand, PartnerBand } from "@/components/forum/PhotoBand";
+import { InitiativeBand, PartnerBand } from "@/components/forum/PhotoBand";
 import { AmbitionStrategy } from "@/components/forum/AmbitionStrategy";
 import { PactoGlobalInfo } from "@/components/forum/PactoGlobalInfo";
 import { Gallery } from "@/components/forum/Gallery";
@@ -123,8 +123,8 @@ function Index() {
         <MemoryVideo />
         <Speakers />
 
-        {/* 8–9 · CONTEXTO: a faixa do slogan abre a iniciativa que originou o Fórum */}
-        <MovementsBand />
+        {/* 8–9 · CONTEXTO: a faixa abre a iniciativa que originou o Fórum */}
+        <InitiativeBand />
         <AmbitionStrategy />
         <PactoGlobalInfo />
 
