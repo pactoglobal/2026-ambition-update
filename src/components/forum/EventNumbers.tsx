@@ -43,22 +43,29 @@ const PANELS: Panel[] = [
       { value: "179", label: "matérias publicadas, 100% positivas" },
       { value: "+239", suffix: "%", label: "de crescimento em exposição" },
       { value: "8", label: "jornalistas presentes no evento" },
-      { value: "22", label: "conteúdos enviados à imprensa pela RBPG" },
     ],
   },
   {
     key: "digital",
     title: "Digital",
     Icon: Smartphone,
+    // Quatro números do mesmo peso, consolidando Instagram + LinkedIn onde
+    // há dado. Visualizações e impressões: 60,8 mil (IG) + 7,5 mil (LI).
+    // Pendentes da comunicação: contas alcançadas no LinkedIn (para somar às
+    // do Instagram) e a taxa de engajamento consolidada, que substitui
+    // "interações" quando chegar.
     featured: [
-      { value: "60,8", suffix: "mil", label: "visualizações", channel: "Instagram" },
+      {
+        value: "68,3",
+        suffix: "mil",
+        label: "visualizações e impressões",
+        channel: "Instagram + LinkedIn",
+      },
       { value: "23,1", suffix: "mil", label: "contas alcançadas", channel: "Instagram" },
-    ],
-    list: [
-      { value: "7,5", suffix: "mil", label: "impressões em 7 posts", channel: "LinkedIn" },
       { value: "264", label: "interações", channel: "LinkedIn" },
       { value: "8,3", suffix: "mil", label: "usuários no site", channel: "Site" },
     ],
+    list: [],
   },
 ];
 
@@ -161,7 +168,7 @@ export function EventNumbers() {
                   </h3>
                 </header>
 
-                <div className="mt-8 grid grid-cols-2 gap-6">
+                <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-10">
                   {featured.map((metric) => (
                     <div key={metric.label}>
                       {metric.channel ? (
@@ -177,24 +184,26 @@ export function EventNumbers() {
                   ))}
                 </div>
 
-                <div className="mt-8">
-                  {list.map((metric) => (
-                    <div key={metric.label}>
-                      <Rule />
-                      <div className="flex items-center justify-between gap-5 py-4">
-                        <div className="flex min-w-0 items-center gap-3">
-                          <p className="text-sm leading-snug text-white/80">{metric.label}</p>
-                          {metric.channel ? (
-                            <span className="shrink-0 rounded-full border border-white/12 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-white/70">
-                              {metric.channel}
-                            </span>
-                          ) : null}
+                {list.length > 0 ? (
+                  <div className="mt-8">
+                    {list.map((metric) => (
+                      <div key={metric.label}>
+                        <Rule />
+                        <div className="flex items-center justify-between gap-5 py-4">
+                          <div className="flex min-w-0 items-center gap-3">
+                            <p className="text-sm leading-snug text-white/80">{metric.label}</p>
+                            {metric.channel ? (
+                              <span className="shrink-0 rounded-full border border-white/12 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-white/70">
+                                {metric.channel}
+                              </span>
+                            ) : null}
+                          </div>
+                          <Figure {...metric} className="text-3xl" />
                         </div>
-                        <Figure {...metric} className="text-3xl" />
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             </AnimatedSection>
           ))}

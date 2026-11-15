@@ -173,7 +173,7 @@ export const INITIAL_SOCIAL_POSTS = createSocialPosts(RAW_SOCIAL_LINKS);
 export const SOCIAL_CHANNELS = {
   linkedin: {
     name: "LinkedIn",
-    handle: "pactoglobalonubr",
+    handle: "Pacto Global da ONU – Rede Brasil",
     url: "https://www.linkedin.com/company/pactoglobalonubr/",
     eyebrow: "Conteúdo & Atualizações",
     description:
@@ -183,8 +183,8 @@ export const SOCIAL_CHANNELS = {
   },
   instagram: {
     name: "Instagram",
-    handle: "@pactoglobalbr",
-    url: "https://www.instagram.com/pactoglobalbr/",
+    handle: "@pactoglobalonubr",
+    url: "https://www.instagram.com/pactoglobalonubr/",
     eyebrow: "Cobertura & Bastidores",
     description:
       "Acompanhe a cobertura em tempo real, bastidores, destaques e novidades do Fórum no Instagram.",

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, Clock, MapPin, Users } from "lucide-react";
 import { Countdown } from "./Countdown";
 import { HeroSlides } from "./HeroSlides";
 import { identityAssets } from "./identity-assets";
@@ -10,9 +10,10 @@ const EVENT_DETAILS = [
   { icon: Calendar, label: NEXT_EDITION.date.support, value: NEXT_EDITION.date.value },
   { icon: Clock, label: NEXT_EDITION.time.support, value: NEXT_EDITION.time.value },
   { icon: MapPin, label: NEXT_EDITION.venue.support, value: NEXT_EDITION.venue.value },
+  { icon: Users, label: NEXT_EDITION.audience.support, value: NEXT_EDITION.audience.value },
 ];
 
-/** Com dia definido, conta até a abertura; sem ele, até o mês previsto. */
+/** Com horário definido, conta até a abertura; sem ele, até o início do dia previsto. */
 const countdownTarget = NEXT_EDITION.startsAt ?? NEXT_EDITION.countdownFallback.at;
 const countdownLabel = NEXT_EDITION.startsAt
   ? `Faltam para a ${NEXT_EDITION.label}`
@@ -93,7 +94,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-3 rounded-full bg-forum-action px-8 py-4 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(74,122,168,0.35)] transition-colors hover:bg-forum-action-hover"
               >
-                Seja parceiro do evento
+                Seja patrocinador
                 <ArrowRight aria-hidden="true" size={15} strokeWidth={2.5} />
               </motion.button>
               <motion.button

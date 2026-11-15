@@ -3,28 +3,35 @@ import { ArrowRight } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { LAST_EDITION } from "./edition";
-import chegadaMasp from "../../../assets/img/galeria-de-momentos/2026/01_chegada_masp_cafe_2026.jpg?url";
-import debate from "../../../assets/img/galeria-de-momentos/2026/11_debatable_2026.jpg?url";
-import musica from "../../../assets/img/galeria-de-momentos/2026/23_atracao_musical_2026.jpg?url";
+import ativacoes from "../../../assets/img/destaques/ativacoes_painel_tvs.jpg?url";
+import debate from "../../../assets/img/destaques/debate_pulpito.jpg?url";
+import violoncelo from "../../../assets/img/destaques/violoncelo.jpg?url";
 
-/** Fotos que não se repetem em "O que o Fórum entrega" nem nos números. */
+/**
+ * Fotos que não se repetem em "O que o Fórum entrega" nem nos números:
+ * o painel de ativações dos Movimentos (espaço do Fórum, não o café do MASP),
+ * um debatedor no púlpito em primeiro plano e o violoncelista da 4ª edição.
+ */
 const PHOTOS = [
   {
-    src: chegadaMasp,
-    alt: "Convidados chegando ao MASP Café para a 4ª edição do Fórum Ambição 2030",
-    caption: "Chegada · MASP Café",
+    src: ativacoes,
+    alt: "Painel de ativações com telas dos Movimentos do Pacto Global na 4ª edição",
+    caption: "Ativações · Movimentos",
+    focus: "50% 45%",
     span: "col-span-2 aspect-[4/3] sm:aspect-auto sm:row-span-2",
   },
   {
     src: debate,
-    alt: "Debate no palco da 4ª edição, com participantes em púlpitos",
+    alt: "Debatedor fala no púlpito durante o Debatable da 4ª edição, com outros participantes ao lado",
     caption: "Debate no palco",
+    focus: "55% 40%",
     span: "col-span-1",
   },
   {
-    src: musica,
-    alt: "Apresentação musical no palco do auditório do MASP durante a 4ª edição",
+    src: violoncelo,
+    alt: "Violoncelista se apresenta no palco do auditório do MASP durante a 4ª edição",
     caption: "Atração musical",
+    focus: "40% 40%",
     span: "col-span-1",
   },
 ];
@@ -61,7 +68,7 @@ export function LastEdition() {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:grid-rows-2 sm:gap-4 lg:col-span-7 lg:h-[520px]">
-            {PHOTOS.map(({ src, alt, caption, span }, index) => (
+            {PHOTOS.map(({ src, alt, caption, focus, span }, index) => (
               <motion.figure
                 key={caption}
                 initial={false}
@@ -77,6 +84,7 @@ export function LastEdition() {
                   height={800}
                   loading="lazy"
                   decoding="async"
+                  style={{ objectPosition: focus }}
                   className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
                 />
                 <div
@@ -95,7 +103,7 @@ export function LastEdition() {
               Tema da {LAST_EDITION.label}
             </p>
             <blockquote className="mt-4 border-l-2 border-forum-sky pl-6">
-              <p className="font-display text-[2rem] font-black uppercase leading-[0.95] tracking-tight text-forum-sky [overflow-wrap:anywhere] min-[380px]:text-4xl sm:text-5xl">
+              <p className="font-display text-[1.75rem] font-black uppercase leading-[0.95] tracking-tight text-forum-sky min-[380px]:text-4xl sm:text-5xl lg:text-[2rem] xl:text-[2.6rem]">
                 {LAST_EDITION.theme}
               </p>
             </blockquote>

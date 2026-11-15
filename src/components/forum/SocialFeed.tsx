@@ -141,17 +141,26 @@ export function SocialFeed({ posts = INITIAL_SOCIAL_POSTS }: SocialFeedProps) {
               </motion.div>
             </AnimatePresence>
 
-            {/* BOTÃO CTA DA REDE ATIVA */}
-            <div className="mt-8">
-              <a
-                href={channel.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-forum-action px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_12px_32px_rgba(105,156,198,0.24)] transition-all duration-300 hover:bg-forum-action-hover hover:shadow-[0_16px_40px_rgba(255,255,255,0.2)]"
-              >
-                <span>{channel.cta}</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+            {/* Os dois perfis sempre visíveis (antes só aparecia o da aba ativa). */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {(["linkedin", "instagram"] as const).map((platform) => {
+                const profile = SOCIAL_CHANNELS[platform];
+                const Icon = platform === "linkedin" ? Linkedin : Instagram;
+                return (
+                  <a
+                    key={platform}
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-forum-action px-6 py-3.5 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_12px_32px_rgba(74,122,168,0.3)] transition-colors duration-200 hover:bg-forum-action-hover"
+                  >
+                    <Icon aria-hidden="true" className="h-4 w-4" />
+                    <span>Ver no {profile.name}</span>
+                    <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+                    <span className="sr-only">(abre em nova aba)</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -225,7 +234,7 @@ function SocialCard({ post }: { post: SocialPost }) {
   const isLinkedIn = post.platform === "linkedin";
 
   return (
-    <article className="forum-card group relative flex h-[580px] w-[86vw] max-w-[360px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-sky/40 sm:w-[360px]">
+    <article className="forum-card group relative flex h-[640px] w-[86vw] max-w-[380px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/12 bg-forum-ink/80 shadow-[0_20px_50px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-forum-sky/40 sm:w-[380px]">
       {/* Top bar */}
       <div className="relative z-10 flex shrink-0 items-center justify-between border-b border-white/8 bg-forum-deep/90 px-4 py-3 backdrop-blur-md">
         <div className="flex items-center gap-2">
@@ -275,6 +284,20 @@ function SocialCard({ post }: { post: SocialPost }) {
           className="h-full w-full border-0 bg-transparent"
           sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
         />
+
+        {/* O embed é mais alto que o card: em vez de um corte seco no meio do
+            texto, o fim do card esmaece e convida a abrir o post completo. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-28 items-end justify-center bg-gradient-to-t from-forum-ink via-forum-ink/85 to-transparent pb-4">
+          <a
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-forum-deep/90 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md transition-colors hover:border-forum-sky hover:text-forum-sky"
+          >
+            Ver publicação completa
+            <ExternalLink aria-hidden="true" className="h-3 w-3" />
+          </a>
+        </div>
       </div>
 
       {/* Legenda opcional */}

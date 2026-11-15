@@ -47,13 +47,13 @@ export const Route = createRootRoute({
       },
       {
         property: "og:image",
-        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao-v2.jpg",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:image",
-        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao.jpg",
+        content: "https://forumambicao2030.pactoglobal.org.br/identity/og-5a-edicao-v2.jpg",
       },
       { name: "twitter:site", content: "@PactoGlobalBR" },
     ],

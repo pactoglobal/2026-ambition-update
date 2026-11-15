@@ -7,7 +7,7 @@ import auditorio from "../../../assets/img/galeria-de-momentos/2026/04_auditorio
 import painel from "../../../assets/img/galeria-de-momentos/2026/07_painel_1_2026.jpg?url";
 import assinatura from "../../../assets/img/galeria-de-momentos/2026/17_assinatura_termo_2026.jpg?url";
 import relatorio from "../../../assets/img/galeria-de-momentos/2026/12_relatorio_ambicao_2026.jpg?url";
-import networking from "../../../assets/img/galeria-de-momentos/2026/16_networking_2026.jpg?url";
+import networking from "../../../assets/img/destaques/networking.jpg?url";
 import coletiva from "../../../assets/img/galeria-de-momentos/2026/22_foto_coletiva_2026.jpg?url";
 
 type BentoItem = {

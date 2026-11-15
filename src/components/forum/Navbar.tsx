@@ -162,7 +162,7 @@ export function Navbar() {
                     : "bg-forum-action text-white hover:bg-forum-action-hover"
                 }`}
               >
-                Seja parceiro
+                Seja patrocinador
               </a>
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <button
@@ -240,7 +240,7 @@ export function Navbar() {
                       }}
                       className="mt-10 inline-flex justify-center rounded-full bg-forum-action px-8 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:bg-forum-action-hover"
                     >
-                      Seja parceiro do evento
+                      Seja patrocinador
                     </a>
                   </div>
                 </SheetContent>

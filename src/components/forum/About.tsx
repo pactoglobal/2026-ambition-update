@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { NEXT_EDITION } from "./edition";
@@ -8,15 +7,10 @@ import abertura800 from "../../../assets/img/faixas/sobre_abertura_800.jpg?url";
 /** O fim da frase do deck, desdobrado: são os três verbos que o Fórum promete. */
 const PROMISES = ["Trocar boas práticas", "Firmar parcerias", "Transformar intenção em ação"];
 
-const FACTS = [
-  { value: "10", label: "Movimentos do Pacto Global estruturam a agenda" },
-  { value: "400", label: "lideranças previstas na 5ª edição" },
-];
-
 /**
  * Texto do deck institucional da 5ª edição, em composição editorial: texto
- * corrido sem caixa à esquerda, foto alta à direita com os dois números
- * sobrepostos (profundidade em vez de mais um card).
+ * corrido sem caixa à esquerda, foto alta à direita. Os 10 Movimentos já
+ * estão no texto e as 400 lideranças ficam no painel do Hero (público previsto).
  */
 export function About() {
   return (
@@ -78,27 +72,6 @@ export function About() {
                 Abertura da 4ª edição · MASP
               </figcaption>
             </figure>
-
-            {/* Os números sobrepõem a base da foto no desktop; no celular vêm abaixo dela. */}
-            <div className="relative mt-4 grid grid-cols-2 gap-3 lg:absolute lg:-bottom-8 lg:-left-10 lg:right-10 lg:mt-0">
-              {FACTS.map(({ value, label }, index) => (
-                <motion.div
-                  key={value}
-                  initial={false}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08, duration: 0.45 }}
-                  className="forum-glass rounded-2xl p-5"
-                >
-                  <p className="font-display text-4xl font-black leading-none tracking-tight text-white sm:text-5xl">
-                    {value}
-                  </p>
-                  <p className="mt-2 text-[11px] font-bold uppercase leading-snug tracking-[0.14em] text-white/74">
-                    {label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

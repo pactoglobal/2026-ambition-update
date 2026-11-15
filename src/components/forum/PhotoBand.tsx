@@ -161,11 +161,11 @@ export function InitiativeBand() {
 export function PartnerBand() {
   return (
     <PhotoBand
-      eyebrow="Oportunidade de parceria"
-      title="Seja parceiro"
+      eyebrow="Oportunidade de patrocínio"
+      title="Seja patrocinador"
       outline="da 5ª edição."
       focus="40% 50%"
-      cta={{ label: "Seja parceiro do evento", targetId: "seja-parceiro" }}
+      cta={{ label: "Quero patrocinar", targetId: "seja-parceiro" }}
       photo={{
         wide2400: resultados2400,
         wide1600: resultados1600,

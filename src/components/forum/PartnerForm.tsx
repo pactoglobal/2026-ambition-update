@@ -41,7 +41,7 @@ function validate(data: FormData): Errors {
  */
 function buildMailto(data: FormData): string {
   const value = (name: FieldName) => String(data.get(name) ?? "").trim() || "—";
-  const subject = `Seja parceiro · ${NEXT_EDITION.ordinal} Fórum Ambição 2030 · ${value("empresa")}`;
+  const subject = `Seja patrocinador · ${NEXT_EDITION.ordinal} Fórum Ambição 2030 · ${value("empresa")}`;
   const body = [
     `Nome: ${value("nome")}`,
     `Empresa: ${value("empresa")}`,
@@ -127,9 +127,9 @@ export function PartnerForm() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-16">
           <AnimatedSection>
             <SectionHeader
-              eyebrow={`Seja parceiro · ${NEXT_EDITION.label}`}
+              eyebrow={`Patrocínio · ${NEXT_EDITION.label}`}
               title="Seja"
-              outline="parceiro"
+              outline="patrocinador"
               description="Empresas que lideram a agenda de sustentabilidade constroem autoridade, não apenas reputação."
             />
 
@@ -178,10 +178,10 @@ export function PartnerForm() {
                   Patrocínio · {NEXT_EDITION.label}
                 </p>
                 <span className="font-display text-xl font-black uppercase leading-tight tracking-tight text-white">
-                  Seja patrocinador
+                  Sua marca aqui
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white/76 transition-colors group-hover:text-white">
-                  Sua marca aqui
+                  Quero patrocinar
                   <ArrowRight aria-hidden="true" size={12} />
                 </span>
               </a>
