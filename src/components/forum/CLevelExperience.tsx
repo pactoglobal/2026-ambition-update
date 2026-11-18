@@ -5,8 +5,6 @@ import { CalendarClock, GlassWater, Users } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { KineticBackdrop, SectionHeader } from "./Identity";
 import { accentLines } from "./identity-assets";
-import { COCKTAIL_VIDEO } from "./edition";
-import { YouTubeLite } from "./YouTubeLite";
 
 const confirmedPhotos = import.meta.glob(
   "../../../assets/img/liderancas/confirmados-2026/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}",
@@ -80,13 +78,6 @@ export function CLevelExperience() {
                 </div>
               ))}
             </div>
-            {COCKTAIL_VIDEO ? (
-              <YouTubeLite
-                youtubeId={COCKTAIL_VIDEO.youtubeId}
-                title={COCKTAIL_VIDEO.title}
-                className="mt-10"
-              />
-            ) : null}
           </AnimatedSection>
 
           {/* right — keynote speaker card */}

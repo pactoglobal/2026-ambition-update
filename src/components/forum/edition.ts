@@ -43,13 +43,7 @@ export const MEMORY_VIDEO: { youtubeId: string; title: string } | null = {
   title: "Fórum Ambição 2030 | Vídeo memória",
 };
 
-/**
- * Vídeo do Coquetel com CEOs da 4ª edição. Enquanto for null, o player não
- * aparece na seção do coquetel. Preencha com o ID do YouTube, como acima.
- */
-export const COCKTAIL_VIDEO: { youtubeId: string; title: string } | null = null;
-
-/** Quem recebe as manifestações de interesse do formulário "Seja parceiro". */
+/** Quem recebe as manifestações de interesse do formulário "Seja patrocinador". */
 export const PARTNER_CONTACT = {
   name: "Rafael Carmo",
   role: "Parcerias e Apoio",
