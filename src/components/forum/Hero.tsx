@@ -53,9 +53,14 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14 xl:gap-20">
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <span className="forum-glass-soft inline-flex items-center gap-3 rounded-full px-5 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-forum-sky">
+              <span className="forum-glass-soft inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-3xl px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-forum-sky sm:gap-x-3 sm:rounded-full sm:tracking-[0.34em]">
                 <span className="h-1.5 w-1.5 rounded-full bg-forum-sky" />
                 {NEXT_EDITION.label}
+                <span aria-hidden="true" className="text-white/40">
+                  ·
+                </span>
+                {/* A data abre a página, antes do logo: é a primeira informação lida. */}
+                <span className="whitespace-nowrap text-white">{NEXT_EDITION.date.value}</span>
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/6 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-white/85">
                 <span className="h-1.5 w-1.5 rounded-full bg-forum-sky" />
