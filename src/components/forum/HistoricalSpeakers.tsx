@@ -9,11 +9,18 @@ const historicPhotos = import.meta.glob(
   { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
-/** Procura em historicos/ e, se não achar, nas fotos de 2026 (confirmados-2026/). */
+/**
+ * Procura a foto em historicos/ pelo NOME DO ARQUIVO (sem extensão) começando
+ * com a chave e, se não achar, nas fotos de 2026 (confirmados-2026/).
+ * Antes a busca era "o caminho contém a chave": "paul" casava com
+ * "ana_paula_carracedo.jpg" e o card do Paul Polman mostrava a foto dela.
+ */
 function photoFor(key: string): string | undefined {
-  const entry = Object.entries(historicPhotos).find(([path]) =>
-    path.toLowerCase().includes(key.toLowerCase()),
-  );
+  const wanted = key.toLowerCase();
+  const entry = Object.entries(historicPhotos).find(([path]) => {
+    const file = (path.split("/").pop() ?? "").replace(/\.[^.]+$/, "").toLowerCase();
+    return file.startsWith(wanted);
+  });
   return entry?.[1] ?? confirmedPhotoByKey(key);
 }
 
@@ -23,11 +30,11 @@ function photoFor(key: string): string | undefined {
  * esta lista — não há outra fonte de speakers no site.
  */
 const historicalSpeakers = [
-  { name: "Paul Polman", role: "Liderança empresarial", photoKey: "paul" },
+  { name: "Paul Polman", role: "Liderança empresarial", photoKey: "paul_polman" },
   {
     name: "Aretha Duarte",
     role: "Alpinista, primeira mulher negra latino-americana a chegar ao topo do Everest",
-    photoKey: "aretha",
+    photoKey: "aretha_duarte",
   },
   {
     name: "Danni Suzuki",
@@ -40,15 +47,15 @@ const historicalSpeakers = [
     photoKey: "alexandre_coimbra",
   },
   { name: "Luis Guimarães", role: "Liderança empresarial", photoKey: "luis_guimaraes" },
-  { name: "Marta Suplicy", role: "Gestão pública", photoKey: "marta" },
-  { name: "Bela Gil", role: "Ativista e comunicadora", photoKey: "bela" },
+  { name: "Marta Suplicy", role: "Gestão pública", photoKey: "marta_suplicy" },
+  { name: "Bela Gil", role: "Ativista e comunicadora", photoKey: "bela_gil" },
   {
     name: "Patricia Hill Collins",
     role: "Acadêmica e referência em equidade",
-    photoKey: "patricia",
+    photoKey: "patricia_hill_collins",
   },
-  { name: "Luiza Trajano", role: "Liderança empresarial", photoKey: "luiza" },
-  { name: "Albert Cheung", role: "Liderança empresarial", photoKey: "albert" },
+  { name: "Luiza Trajano", role: "Liderança empresarial", photoKey: "luiza_trajano" },
+  { name: "Albert Cheung", role: "Liderança empresarial", photoKey: "albert_cheung" },
   // Conselheiras do Pacto Global – Rede Brasil (atuais e ex). Cargos de
   // Ana Paula e Luciana conforme o telão da abertura da 4ª edição.
   {
@@ -61,8 +68,7 @@ const historicalSpeakers = [
     role: "Vice-presidente do Conselho de Administração do Pacto Global da ONU – Rede Brasil",
     photoKey: "luciana_nicola",
   },
-  // Aparecem sozinhas quando houver foto em liderancas/historicos/
-  // (rachel_maia.jpg e ana_fontes.jpg, retrato 3:4).
+  // Retratos 3:4 em liderancas/historicos/ (rachel_maia.jpg, ana_fontes.jpg).
   {
     name: "Rachel Maia",
     role: "Conselho do Pacto Global da ONU – Rede Brasil",
