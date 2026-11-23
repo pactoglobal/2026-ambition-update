@@ -49,11 +49,12 @@ const PANELS: Panel[] = [
     key: "digital",
     title: "Digital",
     Icon: Smartphone,
-    // Quatro números do mesmo peso, consolidando Instagram + LinkedIn onde
-    // há dado. Visualizações e impressões: 60,8 mil (IG) + 7,5 mil (LI).
-    // Pendentes da comunicação: contas alcançadas no LinkedIn (para somar às
-    // do Instagram) e a taxa de engajamento consolidada, que substitui
-    // "interações" quando chegar.
+    // Quatro números do mesmo peso, consolidando Instagram + LinkedIn.
+    // Visualizações e impressões: 60,8 mil (IG) + 7,5 mil (LI).
+    // Contas alcançadas: 23,1 mil (IG) + 13,2 mil (LI: impressões únicas,
+    // exportação do LinkedIn de 26/05 a 09/06/2026 — 13.205).
+    // Pendente da comunicação: taxa de engajamento consolidada (falta a do
+    // Instagram); ela substitui "interações". LinkedIn sozinho: 2,96%.
     featured: [
       {
         value: "68,3",
@@ -61,7 +62,7 @@ const PANELS: Panel[] = [
         label: "visualizações e impressões",
         channel: "Instagram + LinkedIn",
       },
-      { value: "23,1", suffix: "mil", label: "contas alcançadas", channel: "Instagram" },
+      { value: "36,3", suffix: "mil", label: "contas alcançadas", channel: "Instagram + LinkedIn" },
       { value: "264", label: "interações", channel: "LinkedIn" },
       { value: "8,3", suffix: "mil", label: "usuários no site", channel: "Site" },
     ],
